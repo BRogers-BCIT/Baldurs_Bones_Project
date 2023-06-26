@@ -7,7 +7,7 @@ package baldursbones.bb;
 public class Map {
     private static final int STARTING_X = 0;
     private static final int STARTING_Y = 6;
-    private static final int BEATEN_TUTORIAL = 100;
+    private static final int BEATEN_TUTORIAL = 13;
     private static final int LOCATION_DIVIDER = 100;
     private static final int UNEXPLORED_LOCATION = 11;
     private static final int UNBEATEN_LOCATION = 21;
@@ -19,7 +19,7 @@ public class Map {
             {121, 211, 211, 211, 221, 321, 321},
             {121, 121, 121, 211, 221, 311, 321},
             {111, 111, 121, 211, 221, 311, 311},
-            {0, 111, 121, 121, 211, 221, 311}};
+            {11, 111, 121, 121, 211, 221, 311}};
 
     private static final String[][] STARTING_MAP_PLAYER =
             {{"?", "?", "?", "?", "?", "?", "X"},

@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @version 2023-TermProject
  */
 public class TutorialLocation extends Location {
-    private static final int RETURNED_TUTORIAL = 100;
+    private static final int RETURNED_TUTORIAL = 13;
     /** Initializes a new easy location object.
      * @param newLocationType an integer representing what location type it is and if it has been explored
      */
