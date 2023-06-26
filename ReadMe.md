@@ -50,3 +50,32 @@ The game finishes when the player beats the Volo in a final game of Baldur's Bon
 #### *Location (Abstract) - Extended by EasyLocation, MediumLocation, & HardLocation.*
 
 #### *Enemy (Abstract) - Extended by EasyEnemy, MediumEnemy, & HardEnemy.*
+
+
+## Future Plans
+I have plans to expand the text descriptions currently in the game and to fix / improve some current features.
+In the future I hope to return to continue to expand on this game. Here are some features I hope to add in the future.
+
+#### Enemies
+<ul>
+<li> New Enemy Types </li>
+<li> Harder Enemies </li>
+<li> New Bosses </li>
+</ul>
+
+#### Map / World
+<ul>
+<li> New / Bigger Maps </li>
+<li> New Location Areas </li>
+<li> New Location Types </li>
+<li> New Location Events / Interactions </li>
+<li> New Action Location Types </li>
+</ul>
+
+#### Player / Characters
+<ul>
+<li> Saving Characters </li>
+<li> New Abilities </li>
+<li> Different Characters </li>
+<li> Higher Level Caps </li>
+</ul>
