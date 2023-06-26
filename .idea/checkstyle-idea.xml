@@ -4,6 +4,7 @@
     <checkstyleVersion>10.3.4</checkstyleVersion>
     <scanScope>JavaOnly</scanScope>
     <copyLibs>true</copyLibs>
+    <option name="thirdPartyClasspath" />
     <option name="activeLocationIds">
       <option value="764d15a4-3cd2-44f9-ae13-a2edc5423b54" />
     </option>
