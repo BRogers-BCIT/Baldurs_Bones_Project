@@ -43,6 +43,11 @@ The game finishes when the player beats the Volo in a final game of Baldur's Bon
 #### Sound: To Be Found
 
 
+## Project Planning
+
+#### [Trello Board](https://trello.com/invite/b/7hnoGmZc/ATTI7dee082d7010112b6e5427664f40806eF9882E72/baldurs-bones-project)
+
+
 ## Class Hierarchy
 
 #### *Combat - Contains Player and Enemy Objects, Extended by BossCombat*
