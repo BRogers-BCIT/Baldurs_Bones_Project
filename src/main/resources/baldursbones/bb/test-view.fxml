@@ -21,12 +21,12 @@
     <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Button accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="SettingsButton" textOverrun="CLIP" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+      <Button accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="settingsButton" textOverrun="CLIP" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
          <GridPane.margin>
             <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
          </GridPane.margin>
          <graphic>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="SettingsIcon">
+            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="settingsIcon">
                <image>
                   <Image url="@settings icon.png" />
                </image>
