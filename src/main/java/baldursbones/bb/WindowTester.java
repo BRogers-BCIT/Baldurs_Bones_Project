@@ -12,7 +12,7 @@ import java.io.IOException;
 public class WindowTester extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(WindowTester.class.getResource("test-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(WindowTester.class.getResource("MainMenu.fxml"));
         Rectangle2D userScreen = Screen.getPrimary().getBounds();
         Scene scene = new Scene(fxmlLoader.load(), userScreen.getWidth(), userScreen.getHeight() - 70);
         stage.setTitle("Main Menu");
