@@ -8,15 +8,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox id="QuitMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<VBox id="QuitMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label id="QuitLabel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Are you sure you want to quit?" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="24.0" />
          </font>
          <padding>
-            <Insets top="40.0" />
+            <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
          </padding>
       </Label>
       <HBox id="QuitButtonsContainer" alignment="CENTER" VBox.vgrow="ALWAYS">
@@ -29,6 +28,9 @@
             <Button id="DesktopQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="QuitButtons" text="Quit to Desktop" textAlignment="CENTER" textOverrun="CLIP" />
             <Region HBox.hgrow="ALWAYS" />
          </children>
+         <padding>
+            <Insets bottom="20.0" />
+         </padding>
       </HBox>
    </children>
 </VBox>
