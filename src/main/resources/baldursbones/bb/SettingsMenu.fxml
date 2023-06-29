@@ -10,7 +10,6 @@
 
 <VBox id="SettingsMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Region VBox.vgrow="ALWAYS" />
       <Label id="SettingsLabel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Settings" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
          <font>
             <Font size="24.0" />
@@ -18,6 +17,9 @@
          <padding>
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin>
       </Label>
       <Region VBox.vgrow="ALWAYS" />
       <CheckBox id="MusicDisable" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="0.0" styleClass="SoundSettings" text="Disable Music" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
@@ -40,8 +42,7 @@
       <Region VBox.vgrow="ALWAYS" />
       <Button id="QuitButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SettingsButton" text="Quit" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
-            <Insets bottom="20.0" />
+            <Insets bottom="50.0" />
          </VBox.margin></Button>
-      <Region id="BottomRegion" VBox.vgrow="ALWAYS" />
    </children>
 </VBox>
