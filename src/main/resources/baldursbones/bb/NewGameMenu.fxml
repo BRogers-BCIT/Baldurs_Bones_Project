@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
-
+<?import javafx.scene.text.Font?>
 
 <VBox id="NewGameMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
@@ -17,6 +17,9 @@
          <VBox.margin>
             <Insets bottom="20.0" top="30.0" />
          </VBox.margin>
+         <font>
+            <Font size="24.0" />
+         </font>
       </Label>
       <Region VBox.vgrow="ALWAYS" />
       <HBox id="CharacterNameContainer" alignment="CENTER" VBox.vgrow="NEVER">
