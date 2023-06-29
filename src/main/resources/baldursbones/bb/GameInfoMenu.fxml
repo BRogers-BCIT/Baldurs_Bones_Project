@@ -9,10 +9,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <VBox id="GameInfoPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <HBox alignment="CENTER" VBox.vgrow="NEVER">
+      <HBox id="TitleBox" alignment="CENTER" VBox.vgrow="NEVER">
          <children>
             <Label id="GameInfotitle" alignment="CENTER" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game Info: Page X" textAlignment="CENTER" textOverrun="CLIP">
                <font>
@@ -69,13 +68,19 @@
       <Region VBox.vgrow="ALWAYS" />
       <HBox>
          <children>
-            <Button mnemonicParsing="false" text="Button">
+            <Button id="PrevInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="GameInfoButton" text="Previous Page" textAlignment="CENTER" textOverrun="CLIP">
                <HBox.margin>
                   <Insets left="100.0" />
                </HBox.margin>
             </Button>
             <Region HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" text="Button" HBox.hgrow="NEVER">
+            <Button id="CloseInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="GameInfoButton" text="Close Game Info" textAlignment="CENTER" textOverrun="CLIP">
+               <HBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </HBox.margin>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button id="NextInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="MenuPaginatioGameInfoButtonnButton" text="Next Page" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
                <HBox.margin>
                   <Insets right="100.0" />
                </HBox.margin>
