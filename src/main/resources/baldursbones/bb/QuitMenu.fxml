@@ -10,7 +10,7 @@
 
 <VBox id="QuitMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Label id="QuitLabel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Are you sure you want to quit?" textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="QuitLabel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Are you sure you want to quit?" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
          <font>
             <Font size="24.0" />
          </font>
@@ -21,11 +21,11 @@
       <HBox id="QuitButtonsContainer" alignment="CENTER" VBox.vgrow="ALWAYS">
          <children>
             <Region HBox.hgrow="ALWAYS" />
-            <Button id="CancelQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="QuitButtons" text="Cancel Quit" textAlignment="CENTER" textOverrun="CLIP" />
+            <Button id="CancelQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="QuitButton" text="Cancel Quit" textAlignment="CENTER" textOverrun="CLIP" />
             <Region HBox.hgrow="ALWAYS" />
-            <Button id="MenuQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="QuitButtons" text="Return to Menu" textAlignment="CENTER" textOverrun="CLIP" />
+            <Button id="MenuQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="QuitButton" text="Return to Menu" textAlignment="CENTER" textOverrun="CLIP" />
             <Region HBox.hgrow="ALWAYS" />
-            <Button id="DesktopQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="QuitButtons" text="Quit to Desktop" textAlignment="CENTER" textOverrun="CLIP" />
+            <Button id="DesktopQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="QuitButton" text="Quit to Desktop" textAlignment="CENTER" textOverrun="CLIP" />
             <Region HBox.hgrow="ALWAYS" />
          </children>
          <padding>

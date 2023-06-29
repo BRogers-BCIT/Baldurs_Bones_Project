@@ -11,7 +11,7 @@
 <VBox id="SettingsMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Region VBox.vgrow="ALWAYS" />
-      <Label id="SettingsLabel" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" text="Settings" textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="SettingsLabel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Settings" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
          <font>
             <Font size="24.0" />
          </font>
@@ -27,18 +27,18 @@
          </VBox.margin></Button>
       <Region VBox.vgrow="ALWAYS" />
       <CheckBox id="EffectsDisable" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="0.0" styleClass="SoundSettings" text="CheckBox" visible="false" />
-      <Button id="SoundSettings" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SettingsButton" text="Sound Settings" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="SoundSettings" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SettingsButton" text="Sound Settings" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="20.0" />
          </VBox.margin></Button>
       <Region VBox.vgrow="ALWAYS" />
       <Button id="ReturnFromSound" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" prefHeight="0.0" styleClass="SoundSettings" text="Return" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
-      <Button id="RulesButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SettingsButton" text="Game Rules" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="RulesButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SettingsButton" text="Game Rules" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="20.0" />
          </VBox.margin></Button>
       <Region VBox.vgrow="ALWAYS" />
-      <Button id="QuitButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SettingsButton" text="Quit" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="QuitButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SettingsButton" text="Quit" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="20.0" />
          </VBox.margin></Button>

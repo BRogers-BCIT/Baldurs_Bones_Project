@@ -20,12 +20,12 @@
       <RowConstraints vgrow="ALWAYS" />
       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
    </rowConstraints>
-   <Button accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="settingsButton" textOverrun="CLIP" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+   <Button id="SettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
       <GridPane.margin>
          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
       </GridPane.margin>
       <graphic>
-         <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true" styleClass="settingsIcon">
+         <ImageView id="SettingsIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
             <viewport>
                <Rectangle2D />
             </viewport>
@@ -39,7 +39,7 @@
          <Cursor fx:constant="DEFAULT" />
       </cursor>
    </Button>
-   <HBox maxHeight="-Infinity" minHeight="-Infinity" prefHeight="120.0" GridPane.rowIndex="1">
+   <HBox id="MainMenuButtonContainer" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="120.0" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
       <Region HBox.hgrow="ALWAYS" />
       <Button contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="New Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
