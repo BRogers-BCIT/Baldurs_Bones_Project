@@ -31,9 +31,9 @@
       <Region VBox.vgrow="ALWAYS" />
       <TableView id="SavedFilesTable" fx:id="saves" focusTraversable="false" VBox.vgrow="NEVER">
         <columns>
-          <TableColumn id="SavedTableFileName" fx:id="saveName" editable="false" maxWidth="-Infinity" minWidth="136.0" prefWidth="-1.0" styleClass="SavedTableColumn" text="File Name" />
-          <TableColumn id="SavedTableCharacterName" fx:id="characterName" editable="false" maxWidth="-Infinity" minWidth="136.0" prefWidth="-1.0" styleClass="SavedTableColumn" text="Character" />
-            <TableColumn id="SavedTableSaveTime" fx:id="saveTime" editable="false" maxWidth="-Infinity" minWidth="135.0" prefWidth="-1.0" styleClass="SavedTableColumn" text="Save Time" />
+          <TableColumn id="SavedTableFileName" fx:id="saveName" editable="false" maxWidth="-Infinity" minWidth="136.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="File Name" />
+          <TableColumn id="SavedTableCharacterName" fx:id="characterName" editable="false" maxWidth="-Infinity" minWidth="136.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="Character" />
+            <TableColumn id="SavedTableSaveTime" fx:id="saveTime" editable="false" maxWidth="-Infinity" minWidth="135.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="Save Time" />
         </columns>
          <VBox.margin>
             <Insets left="20.0" right="20.0" />
