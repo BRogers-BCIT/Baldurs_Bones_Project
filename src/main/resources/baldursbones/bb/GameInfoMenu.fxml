@@ -9,94 +9,83 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="GameInfoPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      xmlns="http://javafx.com/javafx/19">
+<VBox id="GameInfoPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <HBox id="TitleBox" alignment="CENTER" VBox.vgrow="NEVER">
-      <Label id="GameInfoTitle" alignment="CENTER" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-             text="Game Info: Page X" textAlignment="CENTER" textOverrun="CLIP">
+      <Region fx:id="GameInfoHeaderLeft" prefWidth="50.0" />
+      <Label id="GameInfoTitle" alignment="CENTER" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game Info: Page X" textAlignment="CENTER" textOverrun="CLIP">
          <font>
-            <Font size="24.0"/>
+            <Font size="24.0" />
          </font>
          <HBox.margin>
-            <Insets top="50.0"/>
+            <Insets top="50.0" />
          </HBox.margin>
       </Label>
+      <Region fx:id="GameInfoHeaderRight" prefWidth="50.0" />
    </HBox>
-   <Region VBox.vgrow="ALWAYS"/>
-   <Label id="InfoTitleOne" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="InfoTitle"
-          text="Info Element One" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+   <Label id="InfoTitleOne" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="InfoTitle" text="Info Element One" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
       <VBox.margin>
-         <Insets left="30.0" top="20.0"/>
+         <Insets left="30.0" top="20.0" />
       </VBox.margin>
    </Label>
-   <TextArea id="InfoBoxTwo" editable="false" prefColumnCount="0" prefRowCount="0" styleClass="InfoBox" wrapText="true"
-             VBox.vgrow="NEVER">
+   <TextArea id="InfoBoxTwo" editable="false" prefColumnCount="0" prefRowCount="0" styleClass="InfoBox" wrapText="true" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets left="20.0" right="20.0" top="10.0"/>
+         <Insets left="20.0" right="20.0" top="10.0" />
       </VBox.margin>
    </TextArea>
-   <Region VBox.vgrow="ALWAYS"/>
-   <Label id="InfoElementTwo" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="InfoTitle"
-          text="Info Element Two" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+   <Region VBox.vgrow="ALWAYS" />
+   <Label id="InfoElementTwo" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="InfoTitle" text="Info Element Two" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
       <VBox.margin>
-         <Insets left="30.0" top="20.0"/>
+         <Insets left="30.0" top="20.0" />
       </VBox.margin>
    </Label>
-   <TextArea id="InfoBoxTwo" editable="false" prefColumnCount="0" prefRowCount="0" styleClass="InfoBox" wrapText="true"
-             VBox.vgrow="NEVER">
+   <TextArea id="InfoBoxTwo" editable="false" prefColumnCount="0" prefRowCount="0" styleClass="InfoBox" wrapText="true" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets left="20.0" right="20.0" top="10.0"/>
+         <Insets left="20.0" right="20.0" top="10.0" />
       </VBox.margin>
    </TextArea>
-   <Region VBox.vgrow="ALWAYS"/>
-   <Label id="InfoElementThree" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="InfoTitle"
-          text="Info Element Three" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+   <Region VBox.vgrow="ALWAYS" />
+   <Label id="InfoElementThree" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="InfoTitle" text="Info Element Three" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
       <font>
-         <Font size="18.0"/>
+         <Font size="18.0" />
       </font>
       <VBox.margin>
-         <Insets left="30.0" top="20.0"/>
+         <Insets left="30.0" top="20.0" />
       </VBox.margin>
    </Label>
-   <TextArea id="InfoBoxTwo" editable="false" prefColumnCount="0" prefRowCount="0" styleClass="InfoBox" wrapText="true"
-             VBox.vgrow="NEVER">
+   <TextArea id="InfoBoxTwo" editable="false" prefColumnCount="0" prefRowCount="0" styleClass="InfoBox" wrapText="true" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets left="20.0" right="20.0" top="10.0"/>
+         <Insets left="20.0" right="20.0" top="10.0" />
       </VBox.margin>
    </TextArea>
-   <Region VBox.vgrow="ALWAYS"/>
+   <Region VBox.vgrow="ALWAYS" />
    <HBox>
       <VBox.margin>
-         <Insets bottom="50.0" top="30.0"/>
+         <Insets bottom="50.0" top="30.0" />
       </VBox.margin>
-      <Button id="PrevInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-              mnemonicParsing="false" styleClass="GameInfoButton" text="Previous Page" textAlignment="CENTER"
-              textOverrun="CLIP">
+      <Region fx:id="GameInfoFooterLeft" prefWidth="50.0" />
+      <Button id="PrevInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="GameInfoButton" text="Previous Page" textAlignment="CENTER" textOverrun="CLIP">
          <HBox.margin>
-            <Insets left="100.0"/>
+            <Insets left="100.0" />
          </HBox.margin>
       </Button>
-      <Region HBox.hgrow="ALWAYS"/>
-      <Button id="CloseInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-              mnemonicParsing="false" styleClass="GameInfoButton" text="Close Game Info" textAlignment="CENTER"
-              textOverrun="CLIP">
+      <Region HBox.hgrow="ALWAYS" />
+      <Button id="CloseInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="GameInfoButton" text="Close Game Info" textAlignment="CENTER" textOverrun="CLIP">
          <HBox.margin>
-            <Insets left="20.0" right="20.0"/>
+            <Insets left="20.0" right="20.0" />
          </HBox.margin>
       </Button>
-      <Region HBox.hgrow="ALWAYS"/>
-      <Button id="NextInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-              mnemonicParsing="false" styleClass="GameInfoButton" text="Next Page"
-              textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+      <Region HBox.hgrow="ALWAYS" />
+      <Button id="NextInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="GameInfoButton" text="Next Page" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
-            <Insets right="100.0"/>
+            <Insets right="100.0" />
          </HBox.margin>
       </Button>
+      <Region fx:id="GameInfoFooterRight" prefWidth="50.0" />
    </HBox>
 </VBox>

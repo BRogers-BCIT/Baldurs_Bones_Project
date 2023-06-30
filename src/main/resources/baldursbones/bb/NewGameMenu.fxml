@@ -10,59 +10,52 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="NewGameMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-      minWidth="-Infinity" xmlns="http://javafx.com/javafx/19">
-   <Label id="NewGameTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="New Game"
-          textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+<VBox id="NewGameMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+   <Region fx:id="NewGameHeader" prefHeight="100.0" />
+   <Label id="NewGameTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="New Game" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets bottom="20.0" top="50.0"/>
+         <Insets bottom="20.0" top="50.0" />
       </VBox.margin>
       <font>
-         <Font size="24.0"/>
+         <Font size="24.0" />
       </font>
    </Label>
-   <Region VBox.vgrow="ALWAYS"/>
+   <Region VBox.vgrow="ALWAYS" />
    <HBox id="CharacterNameContainer" alignment="CENTER" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets bottom="20.0" left="30.0" right="30.0"/>
+         <Insets bottom="20.0" left="30.0" right="30.0" />
       </VBox.margin>
-      <Label id="CharacterNameLabel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-             text="Character Name :" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+      <Label id="CharacterNameLabel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name :" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
-            <Insets right="30.0"/>
+            <Insets right="30.0" />
          </HBox.margin>
       </Label>
-      <TextField id="CharacterNameField" alignment="CENTER" promptText="Enter Name" HBox.hgrow="NEVER"/>
+      <TextField id="CharacterNameField" alignment="CENTER" promptText="Enter Name" HBox.hgrow="NEVER" />
    </HBox>
-   <Region VBox.vgrow="ALWAYS"/>
-   <CheckBox id="DisableTutorialCheckbox" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-             mnemonicParsing="false" text="Disable Tutorial" textAlignment="CENTER" textOverrun="CLIP"
-             VBox.vgrow="NEVER">
+   <Region VBox.vgrow="ALWAYS" />
+   <CheckBox id="DisableTutorialCheckbox" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" text="Disable Tutorial" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets bottom="20.0"/>
+         <Insets bottom="20.0" />
       </VBox.margin>
    </CheckBox>
-   <Region VBox.vgrow="ALWAYS"/>
+   <Region VBox.vgrow="ALWAYS" />
    <HBox id="NewGameButtonsContainer" alignment="CENTER" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets bottom="60.0" left="30.0" right="30.0"/>
+         <Insets bottom="60.0" left="30.0" right="30.0" />
       </VBox.margin>
-      <Region HBox.hgrow="ALWAYS"/>
-      <Button id="ReturnMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-              mnemonicParsing="false" styleClass="NewGameButton" text="Return to Menu" textAlignment="CENTER"
-              textOverrun="CLIP" HBox.hgrow="NEVER">
+      <Region HBox.hgrow="ALWAYS" />
+      <Button id="ReturnMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="NewGameButton" text="Return to Menu" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
-            <Insets right="20.0"/>
+            <Insets right="20.0" />
          </HBox.margin>
       </Button>
-      <Region HBox.hgrow="ALWAYS"/>
-      <Button id="StartGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-              mnemonicParsing="false" styleClass="NewGameButton" text="Start Game" textAlignment="CENTER"
-              textOverrun="CLIP" HBox.hgrow="NEVER">
+      <Region HBox.hgrow="ALWAYS" />
+      <Button id="StartGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="NewGameButton" text="Start Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
-            <Insets left="20.0"/>
+            <Insets left="20.0" />
          </HBox.margin>
       </Button>
-      <Region HBox.hgrow="ALWAYS"/>
+      <Region HBox.hgrow="ALWAYS" />
    </HBox>
+   <Region fx:id="NewGameFooter" prefHeight="100.0" />
 </VBox>

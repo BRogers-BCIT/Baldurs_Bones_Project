@@ -18,8 +18,10 @@
    </columnConstraints>
    <rowConstraints>
       <RowConstraints vgrow="ALWAYS" />
+      <RowConstraints vgrow="ALWAYS" />
       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
    </rowConstraints>
+   <Region fx:id="MainMenuHeader" />
    <Button id="SettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
       <GridPane.margin>
          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
@@ -39,8 +41,8 @@
          <Cursor fx:constant="DEFAULT" />
       </cursor>
    </Button>
-   <HBox id="MainMenuButtonContainer" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="120.0" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
-      <Region HBox.hgrow="ALWAYS" />
+   <HBox id="MainMenuButtonContainer" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="120.0" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+      <Region fx:id="MainMenuFooterLeft" HBox.hgrow="ALWAYS" />
       <Button contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="New Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
             <Insets bottom="50.0" left="30.0" right="30.0" top="30.0" />
@@ -67,6 +69,7 @@
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </padding>
       </Button>
-      <Region HBox.hgrow="ALWAYS" />
+      <Region fx:id="MainMenuFooterRight" HBox.hgrow="ALWAYS" />
    </HBox>
+   <Region fx:id="MainMenuCenterContent" prefHeight="50.0" GridPane.rowIndex="1" />
 </GridPane>
