@@ -8,23 +8,22 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.Region;
 
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class SavesWindowController implements Initializable {
 
+    @FXML public Region SaveHeaderLeft;
+    @FXML public Region SaveHeaderRight;
     @FXML private TableView<TestSaves> saves;
-
     @FXML private TableColumn<TestSaves, String> saveName;
-
     @FXML private TableColumn<TestSaves, String> characterName;
-
     @FXML private TableColumn<TestSaves, String> saveTime;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        System.out.println("test");
         saveName.minWidthProperty().bind(saves.widthProperty().divide(3));
         saveName.setCellValueFactory(new PropertyValueFactory<>("saveName"));
         characterName.minWidthProperty().bind(saves.widthProperty().divide(3));
