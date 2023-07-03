@@ -30,7 +30,7 @@
       <RowConstraints valignment="TOP" vgrow="NEVER" />
       <RowConstraints valignment="TOP" vgrow="NEVER" />
    </rowConstraints>
-   <Region fx:id="LocationHeaderLeft" prefHeight="50.0" prefWidth="50.0" />
+   <Region fx:id="LocationHeaderLeft" prefHeight="100.0" prefWidth="100.0" />
    <Region fx:id="LocationHeaderMiddleOne" GridPane.columnIndex="1" />
    <Region fx:id="LocationHeaderMiddleTwo" GridPane.columnIndex="2" />
    <Region fx:id="LocationHeaderMiddleThree" GridPane.columnIndex="3" />
@@ -53,7 +53,7 @@
          <Cursor fx:constant="DEFAULT" />
       </cursor>
    </Button>
-   <Region fx:id="LocationHeaderRight" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="4" />
+   <Region fx:id="LocationHeaderRight" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="4" />
    <Region fx:id="LocationLeftOne" GridPane.rowIndex="1" />
    <GridPane id="LocationMoveGrid" GridPane.columnIndex="1" GridPane.rowIndex="1">
       <columnConstraints>
@@ -199,9 +199,9 @@
       </GridPane.margin>
    </GridPane>
    <Region fx:id="LocationRightThree" GridPane.columnIndex="4" GridPane.rowIndex="3" />
-   <Region fx:id="LocationFooterLeft" prefHeight="50.0" prefWidth="50.0" GridPane.rowIndex="4" />
+   <Region fx:id="LocationFooterLeft" prefHeight="100.0" prefWidth="100.0" GridPane.rowIndex="4" />
    <Region fx:id="LocationFooterMiddleOne" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    <Region fx:id="LocationFooterMiddleTwo" GridPane.columnIndex="2" GridPane.rowIndex="4" />
    <Region fx:id="LocationFooterMiddleThree" GridPane.columnIndex="3" GridPane.rowIndex="4" />
-   <Region fx:id="LocationFooterMiddleRight" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
+   <Region fx:id="LocationFooterMiddleRight" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="4" GridPane.rowIndex="4" />
 </GridPane>
