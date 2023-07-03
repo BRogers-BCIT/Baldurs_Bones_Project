@@ -12,11 +12,15 @@
 <?import javafx.scene.text.Font?>
 
 <VBox id="SaveMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SavesWindowController">
+   <Region fx:id="SaveMenuHeader" prefHeight="50.0" />
    <HBox id="TitleBox" alignment="CENTER" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets bottom="30.0" left="20.0" right="20.0" top="50.0" />
+         <Insets />
       </VBox.margin>
-      <Region fx:id="SaveHeaderLeft" prefWidth="100.0" />
+      <Region fx:id="SaveHeaderLeft" prefWidth="100.0">
+         <HBox.margin>
+            <Insets left="20.0" />
+         </HBox.margin></Region>
       <Label id="SaveMenuTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Saved Characters" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <font>
             <Font size="24.0" />
@@ -24,8 +28,14 @@
          <HBox.margin>
             <Insets />
          </HBox.margin>
+         <padding>
+            <Insets bottom="20.0" top="20.0" />
+         </padding>
       </Label>
-      <Region fx:id="SaveHeaderRight" prefWidth="100.0" />
+      <Region fx:id="SaveHeaderRight" prefWidth="100.0">
+         <HBox.margin>
+            <Insets right="20.0" />
+         </HBox.margin></Region>
    </HBox>
    <Region VBox.vgrow="ALWAYS" />
    <TableView id="SavedFilesTable" fx:id="saves" focusTraversable="false" VBox.vgrow="NEVER">
@@ -44,14 +54,14 @@
    <Region VBox.vgrow="ALWAYS" />
    <HBox id="SaveMenuInputContainer" alignment="CENTER" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets bottom="30.0" left="20.0" right="20.0" top="30.0" />
+         <Insets />
       </VBox.margin>
-      <Label id="NewSaveTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Create New Save:" textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="SaveFileTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Create New Save:" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="24.0" />
          </font>
          <HBox.margin>
-            <Insets left="50.0" right="50.0" />
+            <Insets bottom="30.0" left="70.0" right="50.0" top="30.0" />
          </HBox.margin>
       </Label>
       <Label id="FileSaveLabel" ellipsisString="" graphicTextGap="0.0" text="File Name :" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
@@ -59,41 +69,42 @@
             <Font size="18.0" />
          </font>
          <HBox.margin>
-            <Insets right="5.0" />
+            <Insets bottom="30.0" right="10.0" top="30.0" />
          </HBox.margin>
       </Label>
       <TextField id="SaveFileInputField" HBox.hgrow="NEVER">
          <HBox.margin>
-            <Insets right="50.0" />
+            <Insets bottom="30.0" right="50.0" top="30.0" />
          </HBox.margin>
       </TextField>
       <Region HBox.hgrow="ALWAYS" />
       <Button id="SaveFileButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SaveMenuButton" text="Create New Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
-            <Insets right="200.0" />
+            <Insets bottom="30.0" right="220.0" top="30.0" />
          </HBox.margin>
       </Button>
    </HBox>
    <Region VBox.vgrow="ALWAYS" />
    <HBox id="SaveMenuButtonsContainer" alignment="CENTER" VBox.vgrow="NEVER">
       <VBox.margin>
-         <Insets bottom="50.0" left="20.0" right="20.0" top="20.0" />
+         <Insets />
       </VBox.margin>
       <Button id="LoadSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SaveMenuButton" text="Load Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
-            <Insets left="100.0" right="50.0" />
+            <Insets bottom="20.0" left="100.0" right="50.0" top="20.0" />
          </HBox.margin>
       </Button>
       <Region HBox.hgrow="ALWAYS" />
       <Button id="CloseSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SaveMenuButton" text="Close Menu" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
-            <Insets right="155.5" />
+            <Insets bottom="20.0" right="155.0" top="20.0" />
          </HBox.margin>
       </Button>
       <Button id="DeleteSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SaveMenuButton" text="Delete Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
          <HBox.margin>
-            <Insets left="60.0" right="70.0" />
+            <Insets bottom="20.0" left="60.0" right="70.0" top="20.0" />
          </HBox.margin>
       </Button>
    </HBox>
+   <Region fx:id="SaveMenuFooter" prefHeight="50.0" />
 </VBox>
