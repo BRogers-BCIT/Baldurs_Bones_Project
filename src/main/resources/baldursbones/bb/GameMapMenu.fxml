@@ -11,75 +11,85 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox id="MapWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+
+<HBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Region fx:id="MapHeaderArea" prefHeight="50.0" VBox.vgrow="ALWAYS" />
-      <HBox id="MapTitleContainer" alignment="CENTER">
+      <Region fx:id="GameMapLeft" prefWidth="50.0" />
+      <VBox id="MapWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
-            <Region id="GameMapTitleLeft" fx:id="MapTitleLeft" HBox.hgrow="ALWAYS" />
-            <Label id="GameMapTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game Map" textAlignment="CENTER" textOverrun="CLIP">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <padding>
-                  <Insets bottom="50.0" left="20.0" right="20.0" top="30.0" />
-               </padding>
-            </Label>
-            <Region id="GameMapTitleRight" fx:id="MapTitleRight" HBox.hgrow="ALWAYS" />
+            <Region fx:id="MapHeaderArea" prefHeight="50.0" VBox.vgrow="ALWAYS" />
+            <HBox id="MapTitleContainer" alignment="CENTER">
+               <children>
+                  <Region id="GameMapTitleLeft" fx:id="MapTitleLeft" HBox.hgrow="ALWAYS" />
+                  <Label id="GameMapTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game Map" textAlignment="CENTER" textOverrun="CLIP">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="50.0" left="20.0" right="20.0" top="30.0" />
+                     </padding>
+                  </Label>
+                  <Region id="GameMapTitleRight" fx:id="MapTitleRight" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <GridPane id="GameMapGrid" VBox.vgrow="NEVER">
+              <columnConstraints>
+                <ColumnConstraints fx:id="LegendColumn" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+                <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+                  <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints fx:id="LegendRow" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+                <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+                  <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
+              </rowConstraints>
+               <VBox.margin>
+                  <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+               </VBox.margin>
+            </GridPane>
+            <Region fx:id="GameMapLegend" prefHeight="100.0" />
+            <HBox id="HighlightMapContainer" alignment="CENTER" VBox.vgrow="NEVER">
+               <children>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button id="HighlightPosition" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="-Infinity" mnemonicParsing="false" prefWidth="115.0" styleClass="HighlightMapButtons" text="Highlight Position" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets bottom="30.0" top="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <Button id="HighlightBoss" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="-Infinity" mnemonicParsing="false" prefWidth="115.0" styleClass="HighlightMapButtons" text="Highlight Boss" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets bottom="30.0" top="50.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Region HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox id="CloseMapContainer" alignment="CENTER" VBox.vgrow="NEVER">
+               <children>
+                  <Button id="CloseMap" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" text="Close Map" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+                     <HBox.margin>
+                        <Insets bottom="30.0" top="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+            <Region fx:id="MapFooterArea" prefHeight="50.0" />
          </children>
-      </HBox>
-      <GridPane id="GameMapGrid" VBox.vgrow="NEVER">
-        <columnConstraints>
-          <ColumnConstraints fx:id="LegendColumn" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-          <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-            <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints fx:id="LegendRow" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-          <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="NEVER" />
-        </rowConstraints>
-         <VBox.margin>
-            <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
-         </VBox.margin>
-      </GridPane>
-      <Region fx:id="GameMapLegend" prefHeight="100.0" />
-      <HBox id="HighlightMapContainer" alignment="CENTER" VBox.vgrow="NEVER">
-         <children>
-            <Region HBox.hgrow="ALWAYS" />
-            <Button id="HighlightPosition" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="-Infinity" mnemonicParsing="false" prefWidth="115.0" styleClass="HighlightMapButtons" text="Highlight Position" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
-               <HBox.margin>
-                  <Insets bottom="30.0" top="50.0" />
-               </HBox.margin></Button>
-            <Region HBox.hgrow="ALWAYS" />
-            <Button id="HighlightBoss" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="-Infinity" mnemonicParsing="false" prefWidth="115.0" styleClass="HighlightMapButtons" text="Highlight Boss" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
-               <HBox.margin>
-                  <Insets bottom="30.0" top="50.0" />
-               </HBox.margin></Button>
-            <Region HBox.hgrow="ALWAYS" />
-         </children>
-      </HBox>
-      <HBox id="CloseMapContainer" alignment="CENTER" VBox.vgrow="NEVER">
-         <children>
-            <Button id="CloseMap" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" text="Close Map" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
-               <HBox.margin>
-                  <Insets bottom="30.0" top="10.0" />
-               </HBox.margin></Button>
-         </children>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-      </HBox>
-      <Region fx:id="MapFooterArea" prefHeight="50.0" />
+      </VBox>
+      <Region fx:id="GameMapRight" prefWidth="50.0" />
    </children>
-</VBox>
+</HBox>

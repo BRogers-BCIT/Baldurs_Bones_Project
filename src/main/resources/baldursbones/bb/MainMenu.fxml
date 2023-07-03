@@ -11,6 +11,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
 
 <GridPane id="MainMenu" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <columnConstraints>
@@ -22,11 +23,14 @@
       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
       <RowConstraints vgrow="SOMETIMES" />
    </rowConstraints>
-   <Region fx:id="MainMenuHeader" />
-   <Button id="SettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
-      <GridPane.margin>
-         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-      </GridPane.margin>
+   <HBox id="MainMenuContentContainer" prefHeight="100.0">
+      <children>
+         <Region fx:id="MainMenuHeaderLeft" prefWidth="100.0" />
+         <Region fx:id="MainMenuHeaderCenter" prefWidth="500.0" />
+         <Region fx:id="MainMenuHeaderRight" prefHeight="100.0" prefWidth="100.0" />
+      </children>
+   </HBox>
+   <Button id="SettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER" textOverrun="CLIP" GridPane.halignment="RIGHT">
       <graphic>
          <ImageView id="SettingsIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
             <viewport>
@@ -41,6 +45,9 @@
       <cursor>
          <Cursor fx:constant="DEFAULT" />
       </cursor>
+      <GridPane.margin>
+         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+      </GridPane.margin>
    </Button>
    <HBox id="MainMenuContentContainer" prefHeight="100.0" GridPane.rowIndex="1">
       <children>
@@ -49,35 +56,39 @@
          <Region fx:id="MainMenuContentRight" prefHeight="100.0" prefWidth="100.0" />
       </children>
    </HBox>
-   <Region fx:id="MainMenuFooter" prefHeight="50.0" GridPane.rowIndex="2" />
-   <HBox id="MainMenuButtonContainer" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="120.0" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
-      <Region fx:id="MainMenuFooterLeft" HBox.hgrow="ALWAYS" />
-      <Button id="NewGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="New Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
-         <HBox.margin>
-            <Insets bottom="50.0" left="30.0" right="30.0" top="30.0" />
-         </HBox.margin>
-         <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-         </padding>
-      </Button>
-      <Region HBox.hgrow="ALWAYS" />
-      <Button id="LoadSaveButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="Load Saves" HBox.hgrow="NEVER">
-         <HBox.margin>
-            <Insets bottom="50.0" left="30.0" right="30.0" top="30.0" />
-         </HBox.margin>
-         <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-         </padding>
-      </Button>
-      <Region HBox.hgrow="ALWAYS" />
-      <Button id="GameRulesButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="Game Rules" HBox.hgrow="NEVER">
-         <HBox.margin>
-            <Insets bottom="50.0" left="30.0" right="30.0" top="30.0" />
-         </HBox.margin>
-         <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-         </padding>
-      </Button>
-      <Region fx:id="MainMenuFooterRight" HBox.hgrow="ALWAYS" />
-   </HBox>
+   <VBox id="MainMenuFooterContainer" alignment="CENTER" GridPane.rowIndex="2">
+      <children>
+         <HBox id="MainMenuButtonContainer" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity">
+            <Region fx:id="MainMenuFooterLeft" HBox.hgrow="ALWAYS" />
+            <Button id="NewGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="New Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button id="LoadSaveButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="Load Saves" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </Button>
+            <Region HBox.hgrow="ALWAYS" />
+            <Button id="GameRulesButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="Game Rules" HBox.hgrow="NEVER">
+               <HBox.margin>
+                  <Insets bottom="30.0" top="30.0" />
+               </HBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               </padding>
+            </Button>
+            <Region fx:id="MainMenuFooterRight" HBox.hgrow="ALWAYS" />
+         </HBox>
+         <Region fx:id="MainMenuFooter" prefHeight="50.0" />
+      </children>
+   </VBox>
 </GridPane>
