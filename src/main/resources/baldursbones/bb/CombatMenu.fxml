@@ -54,150 +54,162 @@
    </Button>
    <Region fx:id="CombatHeaderRight" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="4" />
    <Region fx:id="CombatLeftOne" GridPane.rowIndex="1" />
-   <VBox id="CombatDescriptionContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
-      <children>
-         <Label id="CombatDescriptionTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Combat Name / Location" textAlignment="CENTER" textOverrun="CLIP">
-            <font>
-               <Font size="24.0" />
-            </font>
-            <VBox.margin>
-               <Insets />
-            </VBox.margin>
-            <padding>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </padding>
-         </Label>
-         <TextArea id="CombatDescriptionTextBox" prefHeight="100.0" prefWidth="200.0" promptText="Combat Diologue / Description">
-            <font>
-               <Font size="18.0" />
-            </font>
-            <VBox.margin>
-               <Insets bottom="20.0" left="20.0" right="20.0" />
-            </VBox.margin>
-         </TextArea>
-      </children>
+   <VBox id="CombatDescriptionContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="NEVER"
+         GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+      <Label id="CombatDescriptionTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
+             text="Combat Name / Location" textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="24.0"/>
+         </font>
+         <VBox.margin>
+            <Insets/>
+         </VBox.margin>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         </padding>
+      </Label>
+      <TextArea id="CombatDescriptionTextBox" prefHeight="100.0" prefWidth="200.0"
+                promptText="Combat Dialogue / Description">
+         <font>
+            <Font size="18.0"/>
+         </font>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0"/>
+         </VBox.margin>
+      </TextArea>
    </VBox>
    <Region fx:id="CombatDisplayLeft" GridPane.columnIndex="2" GridPane.rowIndex="1" />
    <Region fx:id="CombatDisplayRight" GridPane.columnIndex="3" GridPane.rowIndex="1" />
    <Region fx:id="CombatRightOne" GridPane.columnIndex="4" GridPane.rowIndex="1" />
    <Region fx:id="CombatLeftTwo" GridPane.rowIndex="2" />
-   <VBox id="CharacterInfoContainer" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
-      <children>
-         <Label id="CombatInfoTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Combat Info" textAlignment="CENTER" textOverrun="CLIP">
-            <font>
-               <Font size="36.0" />
-            </font>
-            <padding>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </padding>
-            <VBox.margin>
-               <Insets left="20.0" top="20.0" />
-            </VBox.margin>
-         </Label>
-         <Label id="CombatInfoStartRolls" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CombatInfoElements" text="Starting Rolls : " textAlignment="CENTER" textOverrun="CLIP">
-            <VBox.margin>
-               <Insets left="40.0" />
-            </VBox.margin>
-            <font>
-               <Font size="24.0" />
-            </font>
-            <padding>
-               <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-            </padding>
-         </Label>
-         <Label id="CombatInfoLastRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CombatInfoElements" text="Last Roll :" textAlignment="CENTER" textOverrun="CLIP">
-            <VBox.margin>
-               <Insets left="40.0" />
-            </VBox.margin>
-            <font>
-               <Font size="24.0" />
-            </font>
-            <padding>
-               <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-            </padding>
-         </Label>
-         <Label id="CombatInfoPlayerTotal" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CombatInfoElements" text="Current Total : " textAlignment="CENTER" textOverrun="CLIP">
-            <VBox.margin>
-               <Insets bottom="20.0" left="40.0" />
-            </VBox.margin>
-            <font>
-               <Font size="24.0" />
-            </font>
-            <padding>
-               <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
-            </padding>
-         </Label>
-      </children>
+   <VBox id="CharacterInfoContainer" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="2"
+         GridPane.vgrow="NEVER">
+      <Label id="CombatInfoTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Combat Info"
+             textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="36.0"/>
+         </font>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         </padding>
+         <VBox.margin>
+            <Insets left="20.0" top="20.0"/>
+         </VBox.margin>
+      </Label>
+      <Label id="CombatInfoStartRolls" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
+             styleClass="CombatInfoElements" text="Starting Rolls : " textAlignment="CENTER" textOverrun="CLIP">
+         <VBox.margin>
+            <Insets left="40.0"/>
+         </VBox.margin>
+         <font>
+            <Font size="24.0"/>
+         </font>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+         </padding>
+      </Label>
+      <Label id="CombatInfoLastRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
+             styleClass="CombatInfoElements" text="Last Roll :" textAlignment="CENTER" textOverrun="CLIP">
+         <VBox.margin>
+            <Insets left="40.0"/>
+         </VBox.margin>
+         <font>
+            <Font size="24.0"/>
+         </font>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+         </padding>
+      </Label>
+      <Label id="CombatInfoPlayerTotal" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
+             styleClass="CombatInfoElements" text="Current Total : " textAlignment="CENTER" textOverrun="CLIP">
+         <VBox.margin>
+            <Insets bottom="20.0" left="40.0"/>
+         </VBox.margin>
+         <font>
+            <Font size="24.0"/>
+         </font>
+         <padding>
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0"/>
+         </padding>
+      </Label>
    </VBox>
    <VBox id="GameActionsContainer" alignment="TOP_CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
-      <children>
-         <Label id="GameActionsTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game Actions" textAlignment="CENTER" textOverrun="CLIP">
-            <font>
-               <Font size="24.0" />
-            </font>
-            <padding>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </padding>
-            <VBox.margin>
-               <Insets top="20.0" />
-            </VBox.margin>
-         </Label>
-         <Button id="GameActionRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="150.0" mnemonicParsing="false" styleClass="GameActionsButtons" text="Add New Roll" textAlignment="CENTER" textOverrun="CLIP">
-            <VBox.margin>
-               <Insets bottom="40.0" left="20.0" right="20.0" top="40.0" />
-            </VBox.margin>
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-         <Button id="GameActionHold" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="150.0" mnemonicParsing="false" styleClass="GameActionsButtons" text="Hold Total" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
-            <VBox.margin>
-               <Insets bottom="40.0" left="20.0" right="20.0" top="20.0" />
-            </VBox.margin>
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-      </children>
+      <Label id="GameActionsTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game Actions"
+             textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="24.0"/>
+         </font>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         </padding>
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+      </Label>
+      <Button id="GameActionRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="150.0"
+              mnemonicParsing="false" styleClass="GameActionsButtons" text="Add New Roll" textAlignment="CENTER"
+              textOverrun="CLIP">
+         <VBox.margin>
+            <Insets bottom="40.0" left="20.0" right="20.0" top="40.0"/>
+         </VBox.margin>
+         <font>
+            <Font size="18.0"/>
+         </font>
+      </Button>
+      <Button id="GameActionHold" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="150.0"
+              mnemonicParsing="false" styleClass="GameActionsButtons" text="Hold Total" textAlignment="CENTER"
+              textOverrun="CLIP" VBox.vgrow="NEVER">
+         <VBox.margin>
+            <Insets bottom="40.0" left="20.0" right="20.0" top="20.0"/>
+         </VBox.margin>
+         <font>
+            <Font size="18.0"/>
+         </font>
+      </Button>
    </VBox>
-   <VBox id="PlayerAbiltiesContainer" alignment="TOP_CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
-      <children>
-         <Label id="PlayerAbilityTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Player Abillities" textAlignment="CENTER" textOverrun="CLIP">
-            <font>
-               <Font size="24.0" />
-            </font>
-            <padding>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </padding>
-            <VBox.margin>
-               <Insets top="20.0" />
-            </VBox.margin>
-         </Label>
-         <Button id="PlayerAbilityAdd" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="200.0" mnemonicParsing="false" styleClass="PlayerAbilityButtons" text="Add OneTo Total" textAlignment="CENTER" textOverrun="CLIP">
-            <VBox.margin>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </VBox.margin>
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-         <Button id="PlayerAbilityTakeAway" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="200.0" mnemonicParsing="false" styleClass="PlayerAbilityButtons" text="Take One From Total" textAlignment="CENTER" textOverrun="CLIP">
-            <font>
-               <Font size="18.0" />
-            </font>
-            <VBox.margin>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </VBox.margin>
-         </Button>
-         <Button id="PlayerAbilityReRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="200.0" mnemonicParsing="false" styleClass="PlayerAbilityButtons" text="Re-Roll Last Roll" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
-            <VBox.margin>
-               <Insets bottom="40.0" left="20.0" right="20.0" top="20.0" />
-            </VBox.margin>
-            <font>
-               <Font size="18.0" />
-            </font>
-         </Button>
-      </children>
+   <VBox id="PlayerAbilitiesContainer" alignment="TOP_CENTER" GridPane.columnIndex="3" GridPane.rowIndex="2">
+      <Label id="PlayerAbilityTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
+             text="Player Abilities" textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="24.0"/>
+         </font>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         </padding>
+         <VBox.margin>
+            <Insets top="20.0"/>
+         </VBox.margin>
+      </Label>
+      <Button id="PlayerAbilityAdd" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="200.0"
+              mnemonicParsing="false" styleClass="PlayerAbilityButtons" text="Add OneTo Total" textAlignment="CENTER"
+              textOverrun="CLIP">
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         </VBox.margin>
+         <font>
+            <Font size="18.0"/>
+         </font>
+      </Button>
+      <Button id="PlayerAbilityTakeAway" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
+              minWidth="200.0" mnemonicParsing="false" styleClass="PlayerAbilityButtons" text="Take One From Total"
+              textAlignment="CENTER" textOverrun="CLIP">
+         <font>
+            <Font size="18.0"/>
+         </font>
+         <VBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         </VBox.margin>
+      </Button>
+      <Button id="PlayerAbilityReRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
+              minWidth="200.0" mnemonicParsing="false" styleClass="PlayerAbilityButtons" text="Re-Roll Last Roll"
+              textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+         <VBox.margin>
+            <Insets bottom="40.0" left="20.0" right="20.0" top="20.0"/>
+         </VBox.margin>
+         <font>
+            <Font size="18.0"/>
+         </font>
+      </Button>
    </VBox>
    <Region fx:id="CombatRightTwo" GridPane.columnIndex="4" GridPane.rowIndex="2" />
    <Region fx:id="CombatFooterLeft" prefHeight="100.0" prefWidth="100.0" GridPane.rowIndex="3" />
