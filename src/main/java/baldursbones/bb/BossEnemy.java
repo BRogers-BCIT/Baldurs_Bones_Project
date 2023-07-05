@@ -49,7 +49,7 @@ public class BossEnemy extends Enemy {
      */
     @Override
     public void getRoll() {
-        // Determine the base total (Low Roll = 19, High Roll = 20)
+        // Determine the base total (Low Roll = 19, High Roll = 20).
         enemyTotal = DIFFICULTY;
         Random rand = new Random();
         int rollVariance = rand.nextInt(0, 2);

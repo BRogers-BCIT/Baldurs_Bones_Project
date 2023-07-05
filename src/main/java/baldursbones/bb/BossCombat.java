@@ -49,7 +49,7 @@ public class BossCombat extends Combat {
         System.out.println("Enter to continue");
         scan.nextLine();
 
-        // Call the combat loop method
+        // Call the combat loop method.
         combatLoop();
 
         // Find the final outcome of the combat and return it (-2 = loss, +2 = win).

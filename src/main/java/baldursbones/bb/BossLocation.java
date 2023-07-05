@@ -8,30 +8,30 @@ import java.util.Scanner;
  */
 public class BossLocation extends Location {
 
-    // Non-combat location type that surrounds the boss location
+    // Non-combat location value that surrounds the boss location.
     private static final int EXPLORE_LOCATION = 411;
 
-    // Found version of non-combat locations
+    // Found version of non-combat locations.
     private static final int EXPLORE_LOCATION_FOUND = 412;
 
-    // Boss fight location = 500
+    // Boss fight location = 500.
 
-    /** Creates a new location object and assigns it a location area and type.
-     * @param newLocationType an integer representing the location's area and type.
+    /** Creates a new location object and assigns it a location value.
+     * @param newLocationType an integer representing the location's value.
      */
     public BossLocation(final int newLocationType) {
         super(newLocationType);
     }
 
-    /** Gets the description of the boss location based on its location type.
+    /** Gets the description of the boss location based on its location value.
      * @return a boolean indicating if the current location is a combat location
      */
     public boolean getDescription() {
-        // Non-combat location types
+        // Non-combat location values.
         if (locationType == EXPLORE_LOCATION || locationType == EXPLORE_LOCATION_FOUND) {
             exploreLocation();
             return false;
-        // Boss fight encounter
+        // Boss fight encounter.
         } else {
             return fightLocation();
         }

@@ -33,7 +33,7 @@ public class TutorialEnemy extends Enemy {
         // Player wins if player is greater.
         if (playerRoll > enemyTotal) {
             win();
-            // If enemy is tied or greater than player loses
+            // If enemy is tied or greater than player loses.
         } else {
             lose();
         }

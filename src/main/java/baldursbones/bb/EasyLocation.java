@@ -23,18 +23,18 @@ public class EasyLocation extends Location {
     // Combat location: found and beaten.
     private static final int FIGHT_LOCATION_BEATEN = 123;
 
-    /** Creates a new location object and assigns it a location area and type.
-     * @param newLocationType an integer representing the location's area and type.
+    /** Creates a new location object and assigns it a location value.
+     * @param newLocationType an integer representing the location's value.
      */
     public EasyLocation(final int newLocationType) {
         super(newLocationType);
     }
 
-    /** Gets the description of the easy location based on its location type.
+    /** Gets the description of the easy location based on its location value.
      * @return a boolean indicating if the current location is a combat location
      */
     public boolean getDescription() {
-        // Non-combat location types.
+        // Non-combat location values.
         if (locationType == EXPLORE_LOCATION || locationType == EXPLORE_LOCATION_FOUND) {
             exploreLocation();
             return false;
@@ -44,12 +44,12 @@ public class EasyLocation extends Location {
     }
 
     /** Prints the text for an easy location fight encounter then prints based on location value.
-     * Location type options: first encounter, returning encounter, or beaten encounter.
+     * Location value options: first encounter, returning encounter, or beaten encounter.
      * @return a boolean value indicating if a fight can be started at this location
      */
     protected boolean fightLocation() {
         System.out.println("Easy Location: combat description");
-        // First encounter at the location
+        // First encounter at the location.
         if (locationType == FIGHT_LOCATION) {
             System.out.println("Easy Location: First encounter combat description.");
             return true;

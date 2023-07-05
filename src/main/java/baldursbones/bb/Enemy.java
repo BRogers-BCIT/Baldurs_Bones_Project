@@ -29,7 +29,7 @@ public abstract class Enemy {
         // Player wins if player is greater.
         if (playerRoll > enemyTotal) {
             return 1;
-        // If enemy is tied or greater than player loses
+        // If enemy is tied or greater than player loses.
         } else {
             return -1;
         }
@@ -39,7 +39,7 @@ public abstract class Enemy {
      */
     public void getRoll() {
         Random rand = new Random();
-        // Generate a 0 or 1 and add it to the total. (High roll or Low roll)
+        // Generate a 0 or 1 and add it to the total. (High roll or Low roll).
         int rollVariance = rand.nextInt(0, 2);
         enemyTotal += rollVariance;
         // Display the enemy total to the player.

@@ -6,24 +6,24 @@ package baldursbones.bb;
  */
 public abstract class Location {
 
-    /** An integer value used to track the area and type of the location.
+    /** An integer value used to track the value of the location.
      */
     protected int locationType;
 
-    /** Creates a new location object and assigns it a location area and type.
-     * @param newLocationType an integer representing the location's area and type.
+    /** Creates a new location object and assigns it a location value.
+     * @param newLocationType an integer representing the location's value.
      */
     public Location(final int newLocationType) {
         locationType = newLocationType;
     }
 
-    /** Gets the description of the location based on its location type.
+    /** Gets the description of the location based on its location value.
      * @return a boolean indicating if the current location is a combat location
      */
     public abstract boolean getDescription();
 
     /** Prints the text for a location fight encounter then prints based on location value.
-     * Location type options: first encounter, returning encounter, or beaten encounter.
+     * Location value options: first encounter, returning encounter, or beaten encounter.
      * @return a boolean value indicating if a fight can be started at this location
      */
     protected abstract boolean fightLocation();
