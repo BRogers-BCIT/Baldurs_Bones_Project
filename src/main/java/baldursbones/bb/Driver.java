@@ -4,13 +4,11 @@ import java.util.Scanner;
 
 /** Game Driver.
  * @author Braden Rogers
- * @version 2023-TermProject
- * Note: Diver method contains only caller and loop methods.
- *      No tests are possible.
+ * @version Baldur's Bones v1.1
  */
 public class Driver {
 
-    // Factor dividing different areas of the game map
+    // Factor for dividing different areas of the game map
     private static final int LOCATION_DIVIDER = 100;
 
     // Location divided * location multiplier gives you location area range
@@ -32,73 +30,117 @@ public class Driver {
 
     // 100 * 1 = Easy(100-199)
     private static final int BOSS_FIGHT = 500;
+
+    // Stores the player object for the current game.
     private final Player playerCharacter;
+
+    // Stores the map object for the current game.
     private final Map gameMaps;
+
+    // Stores a movement object used for the player movement methods.
     private final Movement movementDriver;
+
+    // Stores the location object of the current location.
     private Location currentLocation;
-    private int currentLocationType;
+
+    // Records the value of the current location to be checked.
+    private int currentLocationValue;
+
+    // Records if a location has an available fight.
     private boolean isFightLocation;
+
+    // Contains an enemy object to be used in a combat
     private Enemy currentEnemy;
+
+    // Contains the object for a currently running combat.
     private Combat currentCombat;
+
+    // Used to pass the outcome of a combat from a combat to a player object.
     private int outcome;
+
+    // Used to track whether the game has ended.
     private int gameState;
 
     /** Creates a game driver object and sets starting values.
      */
     public Driver() {
+        // Set the game to be running then make new player, map, and movement objects.
         gameState = 1;
         playerCharacter = new Player();
         gameMaps = new Map();
         movementDriver = new Movement();
     }
-    /** Starts the game and calls the game loop.
+
+    /** Starts the game by calling the tutorial then beginning the run game loop.
      */
     public void startGame() {
         tutorial();
         gameLoop();
     }
+
     private void gameLoop() {
+
+        // While loop to run the game while the game is not won or lost.
         while (gameState != 0) {
+
+            // Start by displaying the map and letting the player move.
             gameMaps.displayMap();
             playerCharacter.setLocation(movementDriver.playerMove(playerCharacter.getLocation()));
+
+            // Update the player location, call the location handler, and update the map.
             gameMaps.setPlayerLocation(playerCharacter.getLocation());
             locationHandler();
             gameMaps.updateMap(playerCharacter.getLocation());
+
+            // If the location is a fight location.
             if (isFightLocation) {
+
+                // Prompt user to continue and call the combat.
                 Scanner scan = new Scanner(System.in);
                 System.out.println("Enter to continue \n");
                 scan.nextLine();
                 combatHandler();
+
+                // Get the outcome from the combat and call the outcome handler.
                 outcome = currentCombat.startCombat();
                 outcomeHandler();
             }
         }
     }
 
-    // Get the location value and area of the current player location then call the appropriate methods.
+    // Get the location value of the current player location then call the appropriate methods.
     private void locationHandler() {
+
         // Location value getter and setter.
-        currentLocationType = gameMaps.getLocation();
+        currentLocationValue = gameMaps.getLocation();
 
         // if current location / 100 == 0 then create tutorial location with the current location value.
-        if (currentLocationType / LOCATION_DIVIDER == TUTORIAL_LOCATION_MULTIPLIER) {
-            currentLocation = new TutorialLocation(currentLocationType);
+        if (currentLocationValue / LOCATION_DIVIDER == TUTORIAL_LOCATION_MULTIPLIER) {
+            currentLocation = new TutorialLocation(currentLocationValue);
             isFightLocation = currentLocation.getDescription();
         }
-        if ((currentLocationType / LOCATION_DIVIDER) == EASY_LOCATION_MULTIPLIER) {
-            currentLocation = new EasyLocation(currentLocationType);
+
+        // if current location / 100 == 1 then create easy location with the current location value.
+        if ((currentLocationValue / LOCATION_DIVIDER) == EASY_LOCATION_MULTIPLIER) {
+            currentLocation = new EasyLocation(currentLocationValue);
             isFightLocation = currentLocation.getDescription();
         }
-        if ((currentLocationType / LOCATION_DIVIDER) == MEDIUM_LOCATION_MULTIPLIER) {
-            currentLocation = new MediumLocation(currentLocationType);
+
+        // if current location / 100 == 2 then create medium location with the current location value.
+        if ((currentLocationValue / LOCATION_DIVIDER) == MEDIUM_LOCATION_MULTIPLIER) {
+            currentLocation = new MediumLocation(currentLocationValue);
             isFightLocation = currentLocation.getDescription();
         }
-        if ((currentLocationType / LOCATION_DIVIDER) == HARD_LOCATION_MULTIPLIER) {
-            currentLocation = new HardLocation(currentLocationType);
+
+        // if current location / 100 == 3 then create hard location with the current location value.
+        if ((currentLocationValue / LOCATION_DIVIDER) == HARD_LOCATION_MULTIPLIER) {
+            currentLocation = new HardLocation(currentLocationValue);
             isFightLocation = currentLocation.getDescription();
         }
-        if (currentLocationType > (LOCATION_DIVIDER * BOSS_LOCATION_MULTIPLIER)) {
-            currentLocation = new BossLocation(currentLocationType);
+
+        // if current location / 100 >= 4 then create boss location with the current location value.
+        if (currentLocationValue > (LOCATION_DIVIDER * BOSS_LOCATION_MULTIPLIER)) {
+            currentLocation = new BossLocation(currentLocationValue);
             isFightLocation = currentLocation.getDescription();
         }
     }
@@ -107,22 +149,22 @@ public class Driver {
     private void combatHandler() {
 
         // Create a boss enemy and call a boss fight.
-        if ((currentLocationType == BOSS_FIGHT)) {
+        if ((currentLocationValue == BOSS_FIGHT)) {
             currentEnemy = new BossEnemy();
             currentCombat = new BossCombat(playerCharacter, (BossEnemy) currentEnemy);
 
         } else {
 
             // if current location / 100 == 1 then create an easy enemy.
-            if ((currentLocationType / LOCATION_DIVIDER) == EASY_LOCATION_MULTIPLIER) {
+            if ((currentLocationValue / LOCATION_DIVIDER) == EASY_LOCATION_MULTIPLIER) {
                 currentEnemy = new EasyEnemy();
             }
             // if current location / 100 == 2 then create a medium enemy.
-            if ((currentLocationType / LOCATION_DIVIDER) == MEDIUM_LOCATION_MULTIPLIER) {
+            if ((currentLocationValue / LOCATION_DIVIDER) == MEDIUM_LOCATION_MULTIPLIER) {
                 currentEnemy = new MediumEnemy();
             }
             // if current location / 100 == 3 then create a hard enemy.
-            if ((currentLocationType / LOCATION_DIVIDER) == HARD_LOCATION_MULTIPLIER) {
+            if ((currentLocationValue / LOCATION_DIVIDER) == HARD_LOCATION_MULTIPLIER) {
                 currentEnemy = new HardEnemy();
             }
 
