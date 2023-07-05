@@ -2,26 +2,39 @@ package baldursbones.bb;
 
 import java.util.Scanner;
 
-/** Medium Location.
+/** Medium Location Implementation.
  * @author Braden Rogers
- * @version 2023-TermProject
+ * @version Baldur's Bones v1.1
  */
 public class MediumLocation extends Location {
+
+    // Explore location: not been encountered yet.
     private static final int EXPLORE_LOCATION = 211;
+
+    // Explore location: already encountered.
     private static final int EXPLORE_LOCATION_FOUND = 212;
+
+    // Combat location: not been encountered yet.
     private static final int FIGHT_LOCATION = 221;
+
+    // Combat location: found but not beaten.
     private static final int FIGHT_LOCATION_FOUND = 222;
 
-    /** Initializes a new medium location object.
-     * @param newLocationType an integer representing what location type it is and if it has been explored
+    // Combat location: found and beaten.
+    private static final int FIGHT_LOCATION_BEATEN = 223;
+
+    /** Creates a new location object and assigns it a location area and type.
+     * @param newLocationType an integer representing the location's area and type.
      */
     public MediumLocation(final int newLocationType) {
         super(newLocationType);
     }
+
     /** Gets the description of the medium location based on its location type.
-     * @return a boolean determining whether to make a new medium enemy object
+     * @return a boolean indicating if the current location is a combat location
      */
     public boolean getDescription() {
+        // Non-combat location types.
         if (locationType == EXPLORE_LOCATION || locationType == EXPLORE_LOCATION_FOUND) {
             exploreLocation();
             return false;
@@ -29,55 +42,46 @@ public class MediumLocation extends Location {
             return fightLocation();
         }
     }
-    /** Prints the text for a medium fight encounter or explored fight location.
-     * @return a boolean indicating there is an enemy to fight at this location
+
+    /** Prints the text for a medium location fight encounter then prints based on location value.
+     * Location type options: first encounter, returning encounter, or beaten encounter.
+     * @return a boolean value indicating if a fight can be started at this location
      */
     protected boolean fightLocation() {
-        System.out.println("\n\n");
-        System.out.println("You decide to enter one of the many cities inn's "
-                + "in hopes of finding a game to prove yourself.");
-        System.out.println("As you walk through the tavern you cannot help but notice a "
-                + "group of individuals carrying weapons and armor.");
-        if (locationType == FIGHT_LOCATION || locationType == FIGHT_LOCATION_FOUND) {
-            System.out.println("They might be adventures or they might be mercenaries "
-                    + "but they will make a good tale all the same.");
-            System.out.println("As you approach the table one of the beacons to you jovially. ");
-            System.out.println("'You there, you look like you enjoy a bit of fun.");
-            System.out.println("Come now my friends here tire me wounding their pride, humor me with a game.");
-            if (locationType == FIGHT_LOCATION_FOUND) {
-                System.out.println("As you approach the table a familiar face looks up at you.");
-                System.out.println("Ahh my friend, back again so soon. Keen on another game to regain your honor?");
-            }
+        System.out.println("Medium Location: combat description");
+        // First encounter at the location
+        if (locationType == FIGHT_LOCATION) {
+            System.out.println("Medium Location: First encounter combat description.");
             return true;
+            // Returning encounter at the location (lost first fight).
+        } else if (locationType == FIGHT_LOCATION_FOUND) {
+            System.out.println("Medium Location: Returning combat description.");
+            return true;
+            // Beaten the fight at this location.
+        } else if (locationType == FIGHT_LOCATION_BEATEN) {
+            System.out.println("Medium Location: Beaten combat description.");
+            return false;
         } else {
-            System.out.println("The individuals who were once sat at the table "
-                    + "are now engrossed in conversation with the innkeeper.");
-            System.out.println("They appears engaged whatever business they are in town for."
-                    + " It is unlikely you will find a game here.");
-            Scanner scan = new Scanner(System.in);
-            System.out.println("Enter to continue");
-            scan.nextLine();
             return false;
         }
     }
-    /** Prints the text for a medium exploration location or explored medium location.
+
+    /** Prints the base text for a medium exploration location then prints text based on the location value.
+     * Either print first visit text description or the location return text description.
      */
     protected void exploreLocation() {
-        System.out.println("\n\n");
-        System.out.println("As you walk through the residential areas of town you take a moment "
-                + "to enjoy the quiet joys of city living.");
+        System.out.println("Medium Location: location description");
+        // First encounter at this location.
         if (locationType == EXPLORE_LOCATION) {
-            System.out.println("You take in the sights and smells of the town.");
-            System.out.println("Fresh baked bread, roasting meat on splits for sale, the quiet thrum of conversation.");
-            System.out.println("Nevertheless there are certainly no games of Bones to be played here."
-                    + " It is time to move onwards.");
+            System.out.println("Medium Location: First visit description.");
+            // Returning to encountered location.
         } else {
-            System.out.println("While you would love to sit an enjoy the life of the city folk, "
-                    + "you have a goal to accomplish and crew to find.");
-            System.out.println("You must move onwards if you wish to become a captain.");
+            System.out.println("Medium Location: Location return description.");
         }
+        // Prompt user to continue.
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter to continue");
         scan.nextLine();
     }
+
 }

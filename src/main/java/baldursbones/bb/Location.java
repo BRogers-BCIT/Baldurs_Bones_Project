@@ -1,29 +1,35 @@
 package baldursbones.bb;
 
-/** Location.
+/** Location Abstract Class.
  * @author Braden Rogers
- * @version 2023-TermProject
- * Note: Abstract class has no tests
+ * @version Baldur's Bones v1.1
  */
 public abstract class Location {
-    /** integer to track the type value of the location.
+
+    /** An integer value used to track the area and type of the location.
      */
     protected int locationType;
-    /** Initializes a new location object.
-     * @param newLocationType an integer representing what location type it is and if it has been explored
+
+    /** Creates a new location object and assigns it a location area and type.
+     * @param newLocationType an integer representing the location's area and type.
      */
     public Location(final int newLocationType) {
         locationType = newLocationType;
     }
+
     /** Gets the description of the location based on its location type.
-     * @return a boolean determining whether to make a new enemy object
+     * @return a boolean indicating if the current location is a combat location
      */
     public abstract boolean getDescription();
-    /** Prints the text for a fight encounter in the location type.
-     * @return if the player encounters an enemy at the location
+
+    /** Prints the text for a location fight encounter then prints based on location value.
+     * Location type options: first encounter, returning encounter, or beaten encounter.
+     * @return a boolean value indicating if a fight can be started at this location
      */
     protected abstract boolean fightLocation();
-    /** Prints the text for an exploration encounter in the location type.
+
+    /** Prints the base text for an exploration location then prints based on location value.
+     * Either first visit text description or the location return text description.
      */
     protected abstract void exploreLocation();
 }
