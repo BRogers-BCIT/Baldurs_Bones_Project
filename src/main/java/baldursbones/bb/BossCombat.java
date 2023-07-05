@@ -2,11 +2,12 @@ package baldursbones.bb;
 
 import java.util.Scanner;
 
-/** Boss Fight Combat Extention.
+/** Boss Fight Combat Extension.
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
 public class BossCombat extends Combat {
+
     // Constant: maximum number of rounds of combat against boss.
     private static final int MAX_ROUNDS = 3;
 
@@ -58,8 +59,10 @@ public class BossCombat extends Combat {
 
     // Begins a while loop to repeat combat rounds in a best-of-three.
     private void combatLoop() {
+
         // While less than 3 rounds have been player and neither the player has won two rounds.
         while (rounds < MAX_ROUNDS && roundsWon < 2 && roundsLost < 2) {
+
             // Inform player of current round status.
             System.out.println("Start new round. Current round: " + (rounds + 1) + ".");
             System.out.println("Rounds won: " + roundsWon + ".");
@@ -106,4 +109,5 @@ public class BossCombat extends Combat {
         }
         // If neither the boss nor the player has won 2 rounds then do not set the outcome.
     }
+
 }

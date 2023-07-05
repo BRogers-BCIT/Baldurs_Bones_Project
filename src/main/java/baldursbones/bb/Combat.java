@@ -237,4 +237,5 @@ public class Combat {
            System.out.println("Subtracted 1.");
        }
    }
+
 }
