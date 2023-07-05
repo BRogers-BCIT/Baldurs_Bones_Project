@@ -1,34 +1,33 @@
 package baldursbones.bb;
 
-/** Hard Enemy.
+/** Hard Enemy Implementation.
  * @author Braden Rogers
- * @version 2023-TermProject
+ * @version Baldur's Bones v1.1
  */
 public class HardEnemy extends Enemy {
+
+    // Define the static difficulty of the enemy.
+    // Final roll will be either (DIFFICULTY) or (DIFFICULTY + 1) based on high/low roll generation.
     private static final int DIFFICULTY = 18;
 
-    /** Initializes a Hard Enemy Object.
+    /** Create a Hard difficulty implementation of the Enemy Abstract.
      */
     public HardEnemy() {
         super();
-        enemyRoll = DIFFICULTY;
+        // Set the starting total of enemy to its difficulty.
+        enemyTotal = DIFFICULTY;
     }
-    /** Defines the enemy behavior if the player wins.
+
+    /** Define the enemy behavior (Game end text) if the player loses.
      */
     protected void win() {
-        System.out.println("Congratulations! You successfully beat one of the merchants in Balur's Bones.");
-        System.out.println("'Well then color me surprised, "
-                + "been a long time since i've been beaten in a game of Bones.'");
-        System.out.println("'I know when i'm outmatched. You read me like a book and played like a fiddle.'");
-        System.out.println("'You're a fine judge of character, I will give you that. Make a fine merchant you would.'");
+        System.out.println("Hard combat win.");
     }
-    /** Defines the enemy behavior if the player loses.
+
+    /** Define the enemy behavior (Game end text) if the player loses.
      */
     protected void lose() {
-        System.out.println("Curses! You unfortunately lost to one of the merchants in Balur's Bones.");
-        System.out.println("'Well played my fine fellow, you certainly gave me a run for my money there.'");
-        System.out.println("'Nevertheless a man in my field of work becomes a bit of an expert at reading people.");
-        System.out.println("'Regardless you provided me with a fine distraction and a bit of mirth,"
-                + " I thank you for that.");
+        System.out.println("Hard combat loss.");
     }
+
 }

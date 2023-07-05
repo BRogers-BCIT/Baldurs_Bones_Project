@@ -1,32 +1,33 @@
 package baldursbones.bb;
 
-/** Easy Enemy.
+/** Easy Enemy Implementation.
  * @author Braden Rogers
- * @version 2023-TermProject
+ * @version Baldur's Bones v1.1
  */
 public class EasyEnemy extends Enemy {
+
+    // Define the static difficulty of the enemy.
+    // Final roll will be either (DIFFICULTY) or (DIFFICULTY + 1) based on high/low roll generation.
     private static final int DIFFICULTY = 15;
 
-    /** Initializes an Easy Enemy Object.
+    /** Create an Easy difficulty implementation of the Enemy Abstract.
      */
     public EasyEnemy() {
         super();
-        enemyRoll = DIFFICULTY;
+        // Set the starting total of enemy to its difficulty.
+        enemyTotal = DIFFICULTY;
     }
-    /** Defines the enemy behavior if the player wins.
+
+    /** Define the enemy behavior (Game end text) if the player wins.
      */
     protected void win() {
-        System.out.println("Congratulations! You successfully beat one of the port dwellers in Balur's Bones.");
-        System.out.println("'Well, I'll be. Its been a long time since ive played someone outside these lot.'");
-        System.out.println("'Guess i'm getting rusty. Either way, you played well. You would make a fine sailor.'");
+        System.out.println("Easy combat win.");
     }
-    /** Defines the enemy behavior if the player loses.
+
+    /** Define the enemy behavior (Game end text) if the player loses.
      */
     protected void lose() {
-        System.out.println("Curses! You unfortunately lost to one of the port dwellers in Balur's Bones.");
-        System.out.println("'Ah well, happens to us all sometimes friend."
-                + " With experience like mine you get a sense for these things.'");
-        System.out.println("'Nevertheless you played a good game and lifted my spirits."
-                + " I thank you for the distraction.'");
+        System.out.println("Easy combat loss.");
     }
+
 }

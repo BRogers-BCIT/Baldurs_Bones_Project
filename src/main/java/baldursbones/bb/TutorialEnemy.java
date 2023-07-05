@@ -2,68 +2,62 @@ package baldursbones.bb;
 
 import java.util.Scanner;
 
-/** Tutorial Enemy.
+/** Tutorial Enemy Implementation.
  * @author Braden Rogers
- * @version 2023-TermProject
+ * @version Baldur's Bones v1.1
  */
 public class TutorialEnemy extends Enemy {
+
+    // Define the static difficulty of the enemy.
+    // Final roll will be either (DIFFICULTY) or (DIFFICULTY + 1) based on high/low roll generation.
     private static final int DIFFICULTY = 14;
 
-    /** Initializes an Easy Enemy Object.
+    /** Create a Tutorial difficulty implementation of the Enemy Abstract.
      */
     public TutorialEnemy() {
         super();
-        enemyRoll = DIFFICULTY;
+        // Set the starting total of enemy to its difficulty.
+        enemyTotal = DIFFICULTY;
     }
-    /** Compares the users roll to the enemy's roll.
-     * Also displays explanation of game mechanics to player.
-     * @param playerRoll an integer representing the users end roll value
-     * @return an integer representing the outcome of the game
+
+    /** Generates a "total" value for the enemy and compares the value to the passed player "total".
+     * Regardless of outcome return a 0 (Tutorial win or loss does not affect player).
+     * @param playerRoll an integer value representing the users end total
+     * @return an integer representing the outcome of the game (0 = finished tutorial)
      */
     @Override
     public int compareRoll(final int playerRoll) {
+        // Set the enemy roll based on enemy difficulty.
         getRoll();
-        if (playerRoll > enemyRoll) {
+        // Compare enemy and player rolls.
+        // Player wins if player is greater.
+        if (playerRoll > enemyTotal) {
             win();
+            // If enemy is tied or greater than player loses
         } else {
             lose();
         }
+        // Regardless of outcome return 0.
         return 0;
     }
-    /** Defines the enemy behavior if the player wins.
+
+    /** Define the enemy behavior (Game end text) if the player loses.
      */
     protected void win() {
-        System.out.println("\nAh, well done my friend. You know your stuff and are ready to begin.");
+        System.out.println("Tutorial loss.");
         tutorialEnd();
     }
-    /** Defines the enemy behavior if the player loses.
+    /** Define the enemy behavior (Game end text) if the player loses.
      */
     protected void lose() {
-        System.out.println("\nAh, a shame, but a good showing altogether, you are ready to begin.");
+        System.out.println("Tutorial Win.");
         tutorialEnd();
     }
 
     /** Displays the game text for when tutorial finishes regardless of win or lose.
      */
     protected void tutorialEnd() {
-        System.out.println("This here is a talisman of renown, the more well known and respected you are,"
-                + " the more powerful it is.");
-        System.out.println("It will allow you to shape luck to your will and influence the dice.");
-        System.out.println("As a beginner it will allow you to re-roll a die one time, "
-                + "removing the previous roll and adding a new one.");
-        System.out.println("As you become more well-known you will earn more talents with it "
-                + "and the ability to use it more.");
-        System.out.println("To earn the respect to crew a ship you will need to beat the famous adventurer Volo.");
-        System.out.println("He often resides in the Yawning Portal, a tavern in the north east of the city.");
-        System.out.println("To play him you will need to earn some renown.");
-        System.out.println("Every time you beat someone in battle you will gain reputation, earn enough and "
-                + "you will gain renown.");
-        System.out.println("The higher your renown the more respected people you can play and the better your "
-                + "talisman will become.\n");
-        System.out.println("Be careful however, lose and you will lose credibility.");
-        System.out.println("Lose to often and you will become too disgraced to ever be a captain in Waterdeep.");
-        System.out.println("I wish you the best of luck, I have always held you as a good "
-                + "friend and close companion. Farewell...");
+        System.out.println("Tutorial end and game description.");
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter to continue");
         scan.nextLine();
