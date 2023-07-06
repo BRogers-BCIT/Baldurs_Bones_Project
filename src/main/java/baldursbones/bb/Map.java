@@ -1,6 +1,8 @@
 package baldursbones.bb;
 
-/** Map.
+/**
+ * Game Map & Player Map.
+ *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
@@ -36,22 +38,22 @@ public class Map {
     // Constant: Starting value of the game map of location values.
     private static final int[][] STARTING_MAP =
             {{311, 311, 321, 321, 321, 411, 500},
-            {221, 311, 311, 321, 321, 411, 411},
-            {211, 221, 221, 221, 321, 321, 321},
-            {121, 211, 211, 211, 221, 321, 321},
-            {121, 121, 121, 211, 221, 311, 321},
-            {111, 111, 121, 211, 221, 311, 311},
-            {0, 111, 121, 121, 211, 221, 311}};
+                    {221, 311, 311, 321, 321, 411, 411},
+                    {211, 221, 221, 221, 321, 321, 321},
+                    {121, 211, 211, 211, 221, 321, 321},
+                    {121, 121, 121, 211, 221, 311, 321},
+                    {111, 111, 121, 211, 221, 311, 311},
+                    {0, 111, 121, 121, 211, 221, 311}};
 
     // Constant: Starting value of the players visual map.
     private static final String[][] STARTING_MAP_PLAYER =
             {{"?", "?", "?", "?", "?", "?", "X"},
-            {"?", "?", "?", "?", "?", "?", "?"},
-            {"?", "?", "?", "?", "?", "?", "?"},
-            {"?", "?", "?", "?", "?", "?", "?"},
-            {"?", "?", "?", "?", "?", "?", "?"},
-            {"?", "?", "?", "?", "?", "?", "?"},
-            {"0", "?", "?", "?", "?", "?", "?"}};
+                    {"?", "?", "?", "?", "?", "?", "?"},
+                    {"?", "?", "?", "?", "?", "?", "?"},
+                    {"?", "?", "?", "?", "?", "?", "?"},
+                    {"?", "?", "?", "?", "?", "?", "?"},
+                    {"?", "?", "?", "?", "?", "?", "?"},
+                    {"0", "?", "?", "?", "?", "?", "?"}};
 
     // Variable: Records the X,Y values of the players last location.
     private int[] lastPlayerLocation;
@@ -62,7 +64,8 @@ public class Map {
     // Variable: Stored variable of the player map to be updated.
     private final String[][] playerMapArray;
 
-    /** Initializes a map object and sets the game map and player map to their starting values.
+    /**
+     * Initializes a map object and sets the game map and player map to their starting values.
      */
     public Map() {
         lastPlayerLocation = new int[2];
@@ -71,14 +74,18 @@ public class Map {
         playerMapArray = STARTING_MAP_PLAYER;
     }
 
-    /** Sets the last player location to the location passed to the map object.
+    /**
+     * Sets the last player location to the location passed to the map object.
+     *
      * @param currentPlayerLocation A tuple representing the current location of the player
      */
     public void setPlayerLocation(final int[] currentPlayerLocation) {
         lastPlayerLocation = currentPlayerLocation;
     }
 
-    /** Takes the players location and updates the game and player map with found locations.
+    /**
+     * Takes the players location and updates the game and player map with found locations.
+     *
      * @param playerLocation A tuple representing the current location of the player
      */
     public void updateMap(final int[] playerLocation) {
@@ -95,7 +102,8 @@ public class Map {
         }
     }
 
-    /** Displays the game map to the player.
+    /**
+     * Prints the game map as a grid to display the game map to the player.
      */
     public void displayMap() {
         // For the row X.
@@ -105,7 +113,7 @@ public class Map {
                 // If X,Y is player location print player value.
                 if (x == lastPlayerLocation[0] && y == lastPlayerLocation[1]) {
                     System.out.print(" @ ");
-                // Otherwise print the player map value.
+                    // Otherwise print the player map value.
                 } else {
                     System.out.print(" " + playerMapArray[x][y] + " ");
                 }
@@ -115,14 +123,18 @@ public class Map {
         }
     }
 
-    /** Takes the player's current location and returns the location value of those coordinates.
+    /**
+     * Takes the player's current location and returns the location value of those coordinates.
+     *
      * @return a three digit integer representing the location value
      */
     public int getLocation() {
         return mapArray[lastPlayerLocation[0]][lastPlayerLocation[1]];
     }
 
-    /** Update the game map with the correct value for a beaten combat location and update the player map.
+    /**
+     * Update the game map with the correct value for a beaten combat location and update the player map.
+     *
      * @param playerLocation the X,Y coordinates of the location to be updated
      */
     public void beatBattle(final int[] playerLocation) {
@@ -136,7 +148,8 @@ public class Map {
         playerMapArray[playerLocation[0]][playerLocation[1]] = "#";
     }
 
-    /** Sets the tutorial locations value to be finished for future encounters.
+    /**
+     * Sets the tutorial locations value to be finished for future encounters.
      */
     public void beatTutorial() {
         mapArray[STARTING_Y][STARTING_X] = BEATEN_TUTORIAL;
