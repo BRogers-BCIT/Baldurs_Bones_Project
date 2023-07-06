@@ -1,0 +1,7 @@
+Hard location explore description.
+Hard location explore first encounter description.
+Hard location explore returning description.
+Hard location combat description.
+Hard location combat first encounter description.
+Hard location combat returning description.
+Hard location combat beaten description.

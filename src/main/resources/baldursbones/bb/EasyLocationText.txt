@@ -1,0 +1,7 @@
+Easy location explore description.
+Easy location explore first encounter description.
+Easy location explore returning description.
+Easy location combat description.
+Easy location combat first encounter description.
+Easy location combat returning description.
+Easy location combat beaten description.

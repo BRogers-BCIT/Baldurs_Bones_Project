@@ -1,0 +1,7 @@
+Medium location explore description.
+Medium location explore first encounter description.
+Medium location explore returning description.
+Medium location combat description.
+Medium location combat first encounter description.
+Medium location combat returning description.
+Medium location combat beaten description.
