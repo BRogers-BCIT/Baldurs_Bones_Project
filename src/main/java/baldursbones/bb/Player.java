@@ -173,9 +173,10 @@ public class Player {
             winBattle();
         }
 
-        // After the outcome check if the health of the player is not 0 and prompt user to continue.
+        // After the outcome check if the health of the player is not 0.
         if (health > 0) {
             Scanner scan = new Scanner(System.in);
+            // prompt user to continue. ** Replace with button press. **
             System.out.println("Enter to continue");
             scan.nextLine();
         }
