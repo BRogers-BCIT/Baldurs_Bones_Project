@@ -19,7 +19,7 @@ public class BossLocation extends Location {
     private static final int EXPLORE_LOCATION_FOUND = 412;
 
     // Text file: contains all dialogue to be printed by the boss location class.
-    private final File bossLocationText = new File("boss.text");
+    private final File bossLocationText = new File("src/main/resources/baldursbones/bb/BossLocationText.txt");
 
     // Constant: Boss fight location value = 500.
 
