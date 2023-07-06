@@ -92,7 +92,7 @@ public class BossCombat extends Combat {
             super.playerChoose();
             // Get the bosses total for the round and compare it to the players total.
             // Return +1 = player win and -1 = player loss.
-            outcome = enemy.compareRoll(playerTotal);
+            outcome = enemy.compareTotal(playerTotal);
             // Based on the returned outcome value increment the associated counter and call associated method.
             if (outcome > 0) {
                 roundsWon += 1;

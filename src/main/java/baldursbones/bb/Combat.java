@@ -191,7 +191,7 @@ public class Combat {
      * Compare against player roll and set the outcome (true = player wins, false = player loses)
      */
    protected void finishGame() {
-       outcome = enemy.compareRoll(playerTotal);
+       outcome = enemy.compareTotal(playerTotal);
    }
 
     /** Generate a new roll value between 1-6.

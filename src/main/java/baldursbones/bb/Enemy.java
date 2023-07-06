@@ -22,7 +22,7 @@ public abstract class Enemy {
      * @param playerRoll an integer value representing the users end total
      * @return an integer representing the outcome of the game (1 = player win, -1 = player loss)
      */
-    public int compareRoll(final int playerRoll) {
+    public int compareTotal(final int playerRoll) {
         // Set the enemy total based on enemy difficulty.
         getTotal();
         // Compare enemy and player totals.

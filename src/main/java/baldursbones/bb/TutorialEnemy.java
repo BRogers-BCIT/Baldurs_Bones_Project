@@ -25,14 +25,13 @@ public class TutorialEnemy extends Enemy {
      * @return an integer representing the outcome of the game (0 = finished tutorial)
      */
     @Override
-    public int compareRoll(final int playerRoll) {
-        // Set the enemy roll based on enemy difficulty.
-        getRoll();
-        // Compare enemy and player rolls.
-        // Player wins if player is greater.
+    public int compareTotal(final int playerRoll) {
+        // Set the enemy total based on enemy difficulty.
+        getTotal();
+        // Compare enemy and player totals.
+        // If the player total is higher, then the player wins, otherwise the enemy wins.
         if (playerRoll > enemyTotal) {
             win();
-            // If enemy is tied or greater than player loses.
         } else {
             lose();
         }

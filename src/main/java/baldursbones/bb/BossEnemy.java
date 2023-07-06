@@ -43,7 +43,7 @@ public class BossEnemy extends Enemy {
      * @return an integer representing the outcome of the game (1 = player win, -1 = player loss)
      */
     @Override
-    public int compareRoll(final int playerTotal) {
+    public int compareTotal(final int playerTotal) {
         // Get the bosses total.
         getTotal();
         // Print the bosses total for the player. ** Update simple print line. **
