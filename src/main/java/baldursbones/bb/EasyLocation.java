@@ -46,7 +46,7 @@ public class EasyLocation extends Location {
      */
     public boolean getDescription() {
         // Non-combat location values.
-        if (locationType == EXPLORE_LOCATION || locationType == EXPLORE_LOCATION_FOUND) {
+        if (locationValue == EXPLORE_LOCATION || locationValue == EXPLORE_LOCATION_FOUND) {
             exploreLocation();
             return false;
         } else {
@@ -72,16 +72,16 @@ public class EasyLocation extends Location {
             // Print the text to user.
             System.out.println(fileReader.nextLine());
             // First encounter at the location.
-            if (locationType == FIGHT_LOCATION) {
+            if (locationValue == FIGHT_LOCATION) {
                 System.out.println(fileReader.nextLine());
                 return true;
                 // Returning encounter at the location (lost first fight).
-            } else if (locationType == FIGHT_LOCATION_FOUND) {
+            } else if (locationValue == FIGHT_LOCATION_FOUND) {
                 fileReader.nextLine();
                 System.out.println(fileReader.nextLine());
                 return true;
                 // Beaten the fight at this location.
-            } else if (locationType == FIGHT_LOCATION_BEATEN) {
+            } else if (locationValue == FIGHT_LOCATION_BEATEN) {
                 fileReader.nextLine();
                 fileReader.nextLine();
                 System.out.println(fileReader.nextLine());
@@ -107,7 +107,7 @@ public class EasyLocation extends Location {
             // Print the "explore location" text to user.
             System.out.println(fileReader.nextLine());
             // First encounter at this location.
-            if (locationType == EXPLORE_LOCATION) {
+            if (locationValue == EXPLORE_LOCATION) {
                 System.out.println(fileReader.nextLine());
                 // Returning to encountered location.
             } else {

@@ -8,13 +8,13 @@ public abstract class Location {
 
     /** Variable: An integer value used to track the value of the location.
      */
-    protected int locationType;
+    protected int locationValue;
 
     /** Creates a new location object and assigns it a location value.
      * @param newLocationType an integer representing the location's value.
      */
     public Location(final int newLocationType) {
-        locationType = newLocationType;
+        locationValue = newLocationType;
     }
 
     /** Gets the description of the location based on its location value.

@@ -34,11 +34,11 @@ public class TutorialLocation extends Location {
      * @return a boolean indicating if the current location is a combat location
      */
     public boolean getDescription() {
-        if (locationType == RETURNED_TUTORIAL) {
-            return fightLocation();
-        } else {
+        if (locationValue == RETURNED_TUTORIAL) {
             exploreLocation();
             return false;
+        } else {
+            return fightLocation();
         }
     }
 

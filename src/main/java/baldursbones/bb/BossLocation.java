@@ -37,7 +37,7 @@ public class BossLocation extends Location {
      */
     public boolean getDescription() {
         // Check Non-combat location encounters and call handler.
-        if (locationType == EXPLORE_LOCATION || locationType == EXPLORE_LOCATION_FOUND) {
+        if (locationValue == EXPLORE_LOCATION || locationValue == EXPLORE_LOCATION_FOUND) {
             exploreLocation();
             return false;
             // Otherwise call the boss fight encounter handler.
@@ -75,7 +75,7 @@ public class BossLocation extends Location {
             // Create a new scanner for the text file and skip the first section.
             Scanner fileReader = new Scanner(bossLocationText);
             fileReader.nextLine();
-            if (locationType == EXPLORE_LOCATION) {
+            if (locationValue == EXPLORE_LOCATION) {
                 // If the location has not been visited, then print the second text line for new locations.
                 System.out.println(fileReader.nextLine());
             } else {
