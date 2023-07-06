@@ -1,8 +1,12 @@
 package baldursbones.bb;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-/** Game Driver.
+/**
+ * Game Driver.
+ *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
@@ -61,7 +65,11 @@ public class Driver {
     // Variable: Used to track whether the game has ended. (gameState != 0)
     private int gameState;
 
-    /** Creates a game driver object and sets starting values.
+    // Text file: contains all dialogue to be printed by the driver class.
+    private final File gameText = new File("src/main/resources/baldursbones/bb/GameText.txt");
+
+    /**
+     * Creates a game driver object and sets starting values.
      */
     public Driver() {
         // Set the game to be running then make new player, map, and movement objects.
@@ -71,7 +79,8 @@ public class Driver {
         movementDriver = new Movement();
     }
 
-    /** Starts the game by calling the tutorial then beginning the run game loop.
+    /**
+     * Starts the game by calling the tutorial then beginning the gameplay loop.
      */
     public void startGame() {
         tutorial();
@@ -95,7 +104,7 @@ public class Driver {
             // If the location is a fight location.
             if (isFightLocation) {
 
-                // Prompt user to continue and call the combat.
+                // Prompt user to continue and call the combat. ** Replace with button press. **
                 Scanner scan = new Scanner(System.in);
                 System.out.println("Enter to continue \n");
                 scan.nextLine();
@@ -186,7 +195,7 @@ public class Driver {
                 currentEnemy.win();
                 gameMaps.beatBattle(playerCharacter.getLocation());
 
-            // -1 is returned by losing to a regular enemy: get the lose battle text.
+                // -1 is returned by losing to a regular enemy: get the lose battle text.
             } else if (outcome == -1) {
                 currentEnemy.lose();
             }
@@ -218,19 +227,39 @@ public class Driver {
 
     // Defines the game behaviors and text to be printed on game victory.
     private void win() {
-        System.out.println("Game Win Text.");
+        // Try to read the win-game text from the Driver text file.
+        try {
+            Scanner fileReader = new Scanner(gameText);
+            // Print the text to user.
+            System.out.println(fileReader.nextLine());
+        } catch (FileNotFoundException e) {
+            // Catch any errors with reading the text file.
+            throw new RuntimeException(e);
+        }
         // Define game state as being finished
         gameState = 0;
     }
 
     // Defines the game behaviors and text to be printed on game loss.
     private void lose() {
-        System.out.println("Game Win Text.");
+        // Try to read the lose-game text from the Driver text file.
+        try {
+            Scanner fileReader = new Scanner(gameText);
+            // Skip to correct print line.
+            fileReader.nextLine();
+            // Print the text to user.
+            System.out.println(fileReader.nextLine());
+        } catch (FileNotFoundException e) {
+            // Catch any errors with reading the text file.
+            throw new RuntimeException(e);
+        }
         // Define game state as being finished
         gameState = 0;
     }
 
-    /** Game launcher method.
+    /**
+     * Game launcher method.
+     *
      * @param args No passed arguments
      */
     public static void main(final String[] args) {
