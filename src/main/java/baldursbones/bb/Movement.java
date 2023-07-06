@@ -2,7 +2,9 @@ package baldursbones.bb;
 
 import java.util.Scanner;
 
-/** Movement.
+/**
+ * Movement.
+ *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
@@ -30,21 +32,26 @@ public class Movement {
     // Constant: Integer value representing a player choice to move right.
     private static final int MOVE_RIGHT = 4;
 
-    /** Variable: The X,Y coordinates of the new location.
+    /**
+     * Variable: The X,Y coordinates of the new location.
      */
     protected int[] location;
 
-    /** Variable: The integer value used to save the players movement choice.
+    /**
+     * Variable: The integer value used to save the players movement choice.
      */
     protected int playerChoice;
 
-    /** Initializes a movement object and sets the player coordinates to their starting values.
+    /**
+     * Initializes a movement object and sets the player coordinates to their starting values.
      */
     public Movement() {
         location = START_LOCATION;
     }
 
-    /** Creates loop to let players choose a movement option until they enter a valid movement.
+    /**
+     * Creates a loop to let players choose movement options until they enter a valid movement.
+     *
      * @param currentLocation the X,Y coordinates of the current player location
      * @return the X,Y coordinates of the new player location
      */
@@ -68,7 +75,9 @@ public class Movement {
         return location;
     }
 
-    /** Calls the movement method related to the player choice value.
+    /**
+     * Calls the movement method related to the players choice value.
+     *
      * @return the X,Y coordinates of the new player location
      */
     private int[] playerMoveDirector() {
@@ -88,14 +97,16 @@ public class Movement {
             // Call the move right method.
             return moveRight();
 
-        // If no valid movement was passed then reset the player choice and return their current location.
+            // If no valid movement was passed then reset the player choice and return their current location.
         } else {
-            System.out.println("That is an invalid choice.");
+            System.out.println("Invalid Movement. Invalid Choice.");
             return START_LOCATION;
         }
     }
 
-    /** Checks if an upward move is possible and either updates player coordinates or returns current ones.
+    /**
+     * Checks if an upward move is possible and either updates player coordinates or returns the current ones.
+     *
      * @return the updated X,Y coordinates of the players locations
      */
     private int[] moveUp() {
@@ -103,14 +114,16 @@ public class Movement {
         if (location[0] - 1 < MAP_LOWER_BOUNDARY) {
             cantMove();
 
-        // Otherwise update the player location and return the new value.
+            // Otherwise update the player location and return the new value.
         } else {
             location[0] = location[0] - 1;
         }
         return location;
     }
 
-    /** Checks if a downward move is possible and either updates player coordinates or returns current ones.
+    /**
+     * Checks if a downward move is possible and either updates player coordinates or returns the current ones.
+     *
      * @return the updated X,Y coordinates of the players locations
      */
     private int[] moveDown() {
@@ -118,14 +131,16 @@ public class Movement {
         if (location[0] + 1 >= MAP_UPPER_BOUNDARY) {
             cantMove();
 
-        // Otherwise update the player location and return the new value.
+            // Otherwise update the player location and return the new value.
         } else {
             location[0] = location[0] + 1;
         }
         return location;
     }
 
-    /** Checks if a left move is possible and either updates player coordinates or returns current ones.
+    /**
+     * Checks if a left move is possible and either updates player coordinates or returns the current ones.
+     *
      * @return the updated X,Y coordinates of the players locations
      */
     private int[] moveLeft() {
@@ -133,14 +148,16 @@ public class Movement {
         if (location[1] - 1 < MAP_LOWER_BOUNDARY) {
             cantMove();
 
-        // Otherwise update the player location and return the new value.
+            // Otherwise update the player location and return the new value.
         } else {
             location[1] = location[1] - 1;
         }
         return location;
     }
 
-    /** Checks if a right move is possible and either updates player coordinates or returns current ones.
+    /**
+     * Checks if a right move is possible and either updates player coordinates or returns the current ones.
+     *
      * @return the updated X,Y coordinates of the players locations
      */
     private int[] moveRight() {
@@ -148,18 +165,19 @@ public class Movement {
         if (location[1] + 1 >= MAP_UPPER_BOUNDARY) {
             cantMove();
 
-        // Otherwise update the player location and return the new value.
+            // Otherwise update the player location and return the new value.
         } else {
             location[1] = location[1] + 1;
         }
         return location;
     }
 
-    /** Informs the player of an invalid movement and resets the player movement choice.
+    /**
+     * Informs the player of an invalid movement and resets the player movement choice.
      */
     protected void cantMove() {
         playerChoice = 0;
-        System.out.println("Invalid move.");
+        System.out.println("Invalid movement. Out of Bounds.");
     }
 
 }
