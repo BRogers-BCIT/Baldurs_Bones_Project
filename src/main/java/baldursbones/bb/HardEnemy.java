@@ -1,5 +1,9 @@
 package baldursbones.bb;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 /** Hard Enemy Implementation.
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
@@ -9,6 +13,9 @@ public class HardEnemy extends Enemy {
     // Constant: Defines the static difficulty of the enemy.
     private static final int DIFFICULTY = 18;
 
+    // Text file: contains all dialogue to be printed by the hard enemy class.
+    private final File hardEnemyText = new File("src/main/resources/baldursbones/bb/HardEnemyText.txt");
+
     /** Create a Hard difficulty implementation of the Enemy Abstract.
      */
     public HardEnemy() {
@@ -17,16 +24,38 @@ public class HardEnemy extends Enemy {
         enemyTotal = DIFFICULTY;
     }
 
-    /** Define the enemy behavior (Game end text) if the player loses.
+    /**
+     * Define the enemy behavior (Game end text) if the player wins.
+     *
+     * @throws RuntimeException if text file is missing
      */
     protected void win() {
-        System.out.println("Hard combat win.");
+        // Try to read the start fight text from the MediumEnemy text file.
+        try {
+            // Create a new scanner for the text file and print the first section.
+            Scanner fileReader = new Scanner(hardEnemyText);
+            System.out.println(fileReader.nextLine());
+        } catch (FileNotFoundException e) {
+            // Catch any errors with reading the text file.
+            throw new RuntimeException(e);
+        }
     }
 
-    /** Define the enemy behavior (Game end text) if the player loses.
+    /**
+     * Define the enemy behavior (Game end text) if the player loses.
+     *
+     * @throws RuntimeException if text file is missing
      */
     protected void lose() {
-        System.out.println("Hard combat loss.");
+        // Try to read the start fight text from the MediumEnemy text file.
+        try {
+            // Create a new scanner for the text file and print the second section.
+            Scanner fileReader = new Scanner(hardEnemyText);
+            fileReader.nextLine();
+            System.out.println(fileReader.nextLine());
+        } catch (FileNotFoundException e) {
+            // Catch any errors with reading the text file.
+            throw new RuntimeException(e);
+        }
     }
-
 }

@@ -8,7 +8,7 @@ import java.util.Random;
  */
 public abstract class Enemy {
 
-    /** Variable: Value of the enemies roll calculated at the end of combat.
+    /** Variable: Value of the enemies total calculated at the end of combat.
      */
     protected int enemyTotal;
 
@@ -23,9 +23,9 @@ public abstract class Enemy {
      * @return an integer representing the outcome of the game (1 = player win, -1 = player loss)
      */
     public int compareRoll(final int playerRoll) {
-        // Set the enemy roll based on enemy difficulty.
-        getRoll();
-        // Compare enemy and player rolls.
+        // Set the enemy total based on enemy difficulty.
+        getTotal();
+        // Compare enemy and player totals.
         // Player wins if player is greater.
         if (playerRoll > enemyTotal) {
             return 1;
@@ -37,12 +37,13 @@ public abstract class Enemy {
 
     /** Set the enemies end total based on its difficulty.
      */
-    public void getRoll() {
+    public void getTotal() {
         Random rand = new Random();
-        // Generate a 0 or 1 and add it to the total. (High roll or Low roll).
+        // Generate a 0 or 1 and add it to the total.
+        // This adds variance to enemies by creating a High roll and a Low roll value.
         int rollVariance = rand.nextInt(0, 2);
         enemyTotal += rollVariance;
-        // Display the enemy total to the player.
+        // Display the enemy total to the player. ** Update simple print line. **
         System.out.println("Enemy Total: " + enemyTotal + ".");
     }
 
