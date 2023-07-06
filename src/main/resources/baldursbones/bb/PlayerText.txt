@@ -1,0 +1,7 @@
+Player Level Up Message.
+Player LeveL Up. Level 2 Message.
+Player Level Up. Level 3 Message.
+Player Win fight Message.
+Player Level 3 Fight Boss Message.
+Player Lose Fight Message
+Player Lose Boss Message
