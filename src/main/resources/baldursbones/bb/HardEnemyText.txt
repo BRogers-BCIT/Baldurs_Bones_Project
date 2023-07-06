@@ -1,0 +1,2 @@
+Hard enemy win combat text.
+Hard enemy lose combat text.

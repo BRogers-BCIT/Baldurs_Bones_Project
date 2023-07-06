@@ -1,0 +1,2 @@
+Easy enemy win combat text.
+Easy enemy lose combat text.

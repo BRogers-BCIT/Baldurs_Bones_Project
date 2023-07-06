@@ -1,0 +1,2 @@
+Medium enemy win combat text.
+Medium enemy lose combat text.
