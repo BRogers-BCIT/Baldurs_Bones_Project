@@ -8,19 +8,19 @@ import java.util.Scanner;
  */
 public class HardLocation extends Location {
 
-    // Explore location: not been encountered yet.
+    // Constant: Explore location value - not been encountered yet.
     private static final int EXPLORE_LOCATION = 311;
 
-    // Explore location: already encountered.
+    // Constant: Explore location value - already encountered.
     private static final int EXPLORE_LOCATION_FOUND = 312;
 
-    // Combat location: not been encountered yet.
+    // Constant: Combat location value - not been encountered yet.
     private static final int FIGHT_LOCATION = 321;
 
-    // Combat location: found but not beaten.
+    // Constant: Combat location value - found but not beaten.
     private static final int FIGHT_LOCATION_FOUND = 322;
 
-    // Combat location: found and beaten.
+    // Constant: Combat location value - found and beaten.
     private static final int FIGHT_LOCATION_BEATEN = 323;
 
     /** Creates a new location object and assigns it a location value.

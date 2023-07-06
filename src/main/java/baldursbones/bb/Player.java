@@ -8,76 +8,76 @@ import java.util.Scanner;
  */
 public class Player {
 
-    // Starting value for the players health stat.
+    // Constant: Starting value for the players health stat.
     private static final int START_HEALTH = 3;
 
-    // Starting value for the players experience stat.
+    // Constant: Starting value for the players experience stat.
     private static final int START_EXP = 0;
 
-    // Starting value for the players level stat.
+    // Constant: Starting value for the players level stat.
     private static final int START_LEVEL = 1;
 
-    // Starting value for the players re-roll ability.
+    // Constant: Starting value for the players re-roll ability.
     private static final int START_RE_ROLL = 1;
 
-    // Starting value for the players add ability.
+    // Constant: Starting value for the players add ability.
     private static final int START_ADD = 0;
 
-    // Starting value for the players take-away ability.
+    // Constant: Starting value for the players take-away ability.
     private static final int START_TAKEAWAY = 0;
 
-    // Starting value for the players X,Y location tuple.
+    // Constant: Starting value for the players X,Y location tuple.
     private static final int[] START_LOCATION = {6, 0};
 
-    // Integer value represented in level 1.
+    // Constant: Integer value represented in level 1.
     private static final int LEVEL_1 = 1;
 
-    // Integer value represented in level 1.
+    // Constant: Integer value represented in level 1.
     private static final int LEVEL_2 = 2;
 
-    // Integer value represented in level 1.
+    // Constant: Integer value represented in level 1.
     private static final int LEVEL_3 = 3;
 
-    // Experience value need to level up at level 1.
+    // Constant: Experience value need to level up at level 1.
     private static final int LEVEL_1_EXP_THRESHOLD = 3;
 
-    // Experience value need to level up at level 2.
+    // Constant: Experience value need to level up at level 2.
     private static final int LEVEL_2_EXP_THRESHOLD = 5;
 
-    // Integer value represented in winning a battle.
+    // Constant: Integer value represented in winning a battle.
     private static final int WIN_BATTLE = 1;
 
-    // Integer value represented in losing a battle.
+    // Constant: Integer value represented in losing a battle.
     private static final int LOSE_BATTLE = -1;
 
-    // Integer value represented in losing to a boss.
+    // Constant: Integer value represented in losing to a boss.
     private static final int LOSE_TO_BOSS = -2;
 
-    /** The recorded value of the players health stat.
+    /** Variable: The recorded value of the players health stat.
      */
     protected int health;
 
-    /** The recorded value of the players experience stat.
+    /** Variable: The recorded value of the players experience stat.
      */
     protected int exp;
 
-    /** The recorded value of the players level stat.
+    /** Variable: The recorded value of the players level stat.
      */
     protected int level;
 
-    /** The recorded value of the players re-roll ability uses.
+    /** Variable: The recorded value of the players re-roll ability uses.
      */
     protected int abilityReRoll;
 
-    /** The recorded value of the players add ability uses.
+    /** Variable: The recorded value of the players add ability uses.
      */
     protected int abilityAdd;
 
-    /** The recorded value of the players take-away ability uses.
+    /** Variable: The recorded value of the players take-away ability uses.
      */
     protected int abilityTakeAway;
 
-    /** The recorded value of the X,Y coordinates of the players position.
+    /** Variable: The recorded value of the X,Y coordinates of the players position.
      */
     protected int[] location;
 
@@ -147,7 +147,7 @@ public class Player {
             winBattle();
         }
 
-        // After the outcome check if the health of the player is not 0 and prompt player to continue.
+        // After the outcome check if the health of the player is not 0 and prompt user to continue.
         if (health > 0) {
             Scanner scan = new Scanner(System.in);
             System.out.println("Enter to continue");

@@ -9,32 +9,32 @@ import java.util.Scanner;
 
 public class Movement {
 
-    // Starting location of the player character.
+    // Constant: Starting location of the player character.
     private static final int[] START_LOCATION = {7, 0};
 
-    // Minimum valid value of a player coordinate.
+    // Constant: Minimum valid value of a player coordinate.
     private static final int MAP_LOWER_BOUNDARY = 0;
 
-    // Maximum valid value of a player coordinate.
+    // Constant: Maximum valid value of a player coordinate.
     private static final int MAP_UPPER_BOUNDARY = 7;
 
-    // Integer value representing a player choice to move upwards.
+    // Constant: Integer value representing a player choice to move upwards.
     private static final int MOVE_UP = 1;
 
-    // Integer value representing a player choice to move downwards.
+    // Constant: Integer value representing a player choice to move downwards.
     private static final int MOVE_DOWN = 2;
 
-    // Integer value representing a player choice to move left.
+    // Constant: Integer value representing a player choice to move left.
     private static final int MOVE_LEFT = 3;
 
-    // Integer value representing a player choice to move right.
+    // Constant: Integer value representing a player choice to move right.
     private static final int MOVE_RIGHT = 4;
 
-    /** The X,Y coordinates of the new location.
+    /** Variable: The X,Y coordinates of the new location.
      */
     protected int[] location;
 
-    /** The integer value used to save the players movement choice.
+    /** Variable: The integer value used to save the players movement choice.
      */
     protected int playerChoice;
 

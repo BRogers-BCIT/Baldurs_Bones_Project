@@ -8,19 +8,19 @@ import java.util.Scanner;
  */
 public class EasyLocation extends Location {
 
-    // Explore location: not been encountered yet.
+    // Constant: Explore location value - not been encountered yet.
     private static final int EXPLORE_LOCATION = 111;
 
-    // Explore location: already encountered.
+    // Constant: Explore location value - already encountered.
     private static final int EXPLORE_LOCATION_FOUND = 112;
 
-    // Combat location: not been encountered yet.
+    // Constant: Combat location value - not been encountered yet.
     private static final int FIGHT_LOCATION = 121;
 
-    // Combat location: found but not beaten.
+    // Constant: Combat location value - found but not beaten.
     private static final int FIGHT_LOCATION_FOUND = 122;
 
-    // Combat location: found and beaten.
+    // Constant: Combat location value - found and beaten.
     private static final int FIGHT_LOCATION_BEATEN = 123;
 
     /** Creates a new location object and assigns it a location value.

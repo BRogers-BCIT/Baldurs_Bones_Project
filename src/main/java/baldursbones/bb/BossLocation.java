@@ -8,13 +8,13 @@ import java.util.Scanner;
  */
 public class BossLocation extends Location {
 
-    // Non-combat location value that surrounds the boss location.
+    // Constant: Non-combat location value that surrounds the boss location.
     private static final int EXPLORE_LOCATION = 411;
 
-    // Found version of non-combat locations.
+    // Constant: Found value of non-combat locations.
     private static final int EXPLORE_LOCATION_FOUND = 412;
 
-    // Boss fight location = 500.
+    // Constant: Boss fight location value = 500.
 
     /** Creates a new location object and assigns it a location value.
      * @param newLocationType an integer representing the location's value.

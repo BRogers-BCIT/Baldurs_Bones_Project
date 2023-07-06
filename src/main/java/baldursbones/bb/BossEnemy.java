@@ -8,8 +8,7 @@ import java.util.Random;
  */
 public class BossEnemy extends Enemy {
 
-    // Define the static difficulty of the enemy.
-    // Final roll will be either (DIFFICULTY) or (DIFFICULTY + 1) based on high/low roll generation.
+    // Constant: Defines the static difficulty of the enemy.
     private static final int DIFFICULTY = 19;
 
     /** Variable: An integer representing the number of rounds the boss lost vs won.

@@ -6,8 +6,7 @@ package baldursbones.bb;
  */
 public class EasyEnemy extends Enemy {
 
-    // Define the static difficulty of the enemy.
-    // Final roll will be either (DIFFICULTY) or (DIFFICULTY + 1) based on high/low roll generation.
+    // Constant: Defines the static difficulty of the enemy.
     private static final int DIFFICULTY = 15;
 
     /** Create an Easy difficulty implementation of the Enemy Abstract.

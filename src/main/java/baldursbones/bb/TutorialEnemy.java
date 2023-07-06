@@ -8,8 +8,7 @@ import java.util.Scanner;
  */
 public class TutorialEnemy extends Enemy {
 
-    // Define the static difficulty of the enemy.
-    // Final roll will be either (DIFFICULTY) or (DIFFICULTY + 1) based on high/low roll generation.
+    // Constant: Defines the static difficulty of the enemy.
     private static final int DIFFICULTY = 14;
 
     /** Create a Tutorial difficulty implementation of the Enemy Abstract.

@@ -58,11 +58,11 @@ public class Combat {
     */
    protected int lastRoll;
 
-   /** The value that records what the player choose to do.
+   /** Variable: The value that records what the player choose to do.
     */
    protected int playerChoice;
 
-   /** The value used to record the outcome of the combat (-1 = player loses, 1 = player wins).
+   /** Variable: The value used to record the outcome of the combat (-1 = player loses, 1 = player wins).
     */
    protected int outcome;
 

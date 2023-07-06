@@ -8,57 +8,57 @@ import java.util.Scanner;
  */
 public class Driver {
 
-    // Factor for dividing different areas of the game map
+    // Constant: Factor for dividing different areas of the game map
     private static final int LOCATION_DIVIDER = 100;
 
-    // Location divided * location multiplier gives you location area range
+    // Equation: Location divided * location multiplier gives you location area range
 
-    // 100 * 0 = Tutorial (000-099)
+    // Constant: 100 * 0 = Tutorial value range (000-099)
     private static final int TUTORIAL_LOCATION_MULTIPLIER = 0;
 
-    // 100 * 1 = Easy (100-199)
+    // Constant: 100 * 1 = Easy value range (100-199)
     private static final int EASY_LOCATION_MULTIPLIER = 1;
 
-    // 100 * 2 = Medium (200-299)
+    // Constant: 100 * 2 = Medium value range (200-299)
     private static final int MEDIUM_LOCATION_MULTIPLIER = 2;
 
-    // 100 * 1 = Hard (300-399)
+    // Constant: 100 * 3 = Hard value range (300-399)
     private static final int HARD_LOCATION_MULTIPLIER = 3;
 
-    // 100 * 1 = Easy(100-199)
+    // Constant: 100 * 4 = Boss Explore Locations value range (400-499)
     private static final int BOSS_LOCATION_MULTIPLIER = 4;
 
-    // 100 * 1 = Easy(100-199)
+    // Constant: 100 * 5 = Boss Fight value (500)
     private static final int BOSS_FIGHT = 500;
 
-    // Stores the player object for the current game.
+    // Object: Stores the player object for the current game.
     private final Player playerCharacter;
 
-    // Stores the map object for the current game.
+    // Object: Stores the map object for the current game.
     private final Map gameMaps;
 
-    // Stores a movement object used for the player movement methods.
+    // Object: Stores a movement object used for the player movement methods.
     private final Movement movementDriver;
 
-    // Stores the location object of the current location.
+    // Object: Stores the location object of the current location.
     private Location currentLocation;
 
-    // Records the value of the current location to be checked.
+    // Variable: Records the value of the current location to be checked.
     private int currentLocationValue;
 
-    // Records if a location has an available fight.
+    // Variable: Records if a location has an available fight.
     private boolean isFightLocation;
 
-    // Contains an enemy object to be used in a combat
+    // Object:  Contains an enemy object to be used in a combat
     private Enemy currentEnemy;
 
-    // Contains the object for a currently running combat.
+    // Object:  Contains the object for a currently running combat.
     private Combat currentCombat;
 
-    // Used to pass the outcome of a combat from a combat to a player object.
+    // Variable: Used to pass the outcome of a combat from a combat to a player object.
     private int outcome;
 
-    // Used to track whether the game has ended.
+    // Variable: Used to track whether the game has ended. (gameState != 0)
     private int gameState;
 
     /** Creates a game driver object and sets starting values.

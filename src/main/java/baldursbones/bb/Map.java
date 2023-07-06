@@ -6,34 +6,34 @@ package baldursbones.bb;
  */
 public class Map {
 
-    // Define the starting X position of a character in a new game.
+    // Constant: Define the starting X position of a character in a new game.
     private static final int STARTING_X = 0;
 
-    // Define the starting Y position of a character in a new game.
+    // Constant: Define the starting Y position of a character in a new game.
     private static final int STARTING_Y = 6;
 
-    // Define the location value of the tutorial square when beaten.
+    // Constant: Define the location value of the tutorial square when beaten.
     private static final int BEATEN_TUTORIAL = 1;
 
-    // Factor for dividing different areas of the game map.
+    // Constant: Factor for dividing different areas of the game map.
     private static final int LOCATION_DIVIDER = 100;
 
-    // The 2 ending digits of a locations value indicating a new explore location.
+    // Constant: The 2 ending digits of a locations value indicating a new explore location.
     private static final int NEW_EXPLORE_LOCATION = 11;
 
-    // The 2 ending digits of a locations value indicating a found explore location.
+    // Constant: The 2 ending digits of a locations value indicating a found explore location.
     private static final int EXPLORE_LOCATION = 12;
 
-    // The 2 ending digits of a locations value indicating a new combat location.
+    // Constant: The 2 ending digits of a locations value indicating a new combat location.
     private static final int NEW_COMBAT_LOCATION = 21;
 
-    // The 2 ending digits of a locations value indicating an unbeaten combat location.
+    // Constant: The 2 ending digits of a locations value indicating an unbeaten combat location.
     private static final int COMBAT_LOCATION = 22;
 
-    // The 2 ending digits of a locations value indicating a beaten combat location.
+    // Constant: The 2 ending digits of a locations value indicating a beaten combat location.
     private static final int BEATEN_LOCATION = 23;
 
-    // Starting value of the game map of location values.
+    // Constant: Starting value of the game map of location values.
     private static final int[][] STARTING_MAP =
             {{311, 311, 321, 321, 321, 411, 500},
             {221, 311, 311, 321, 321, 411, 411},
@@ -43,7 +43,7 @@ public class Map {
             {111, 111, 121, 211, 221, 311, 311},
             {0, 111, 121, 121, 211, 221, 311}};
 
-    // Starting value of the players visual map.
+    // Constant: Starting value of the players visual map.
     private static final String[][] STARTING_MAP_PLAYER =
             {{"?", "?", "?", "?", "?", "?", "X"},
             {"?", "?", "?", "?", "?", "?", "?"},
@@ -53,13 +53,13 @@ public class Map {
             {"?", "?", "?", "?", "?", "?", "?"},
             {"0", "?", "?", "?", "?", "?", "?"}};
 
-    // Records the X,Y values of the players last location.
+    // Variable: Records the X,Y values of the players last location.
     private int[] lastPlayerLocation;
 
-    // Stored variable of the game map to be updated.
+    // Variable: Stored variable of the game map to be updated.
     private final int[][] mapArray;
 
-    // Stored variable of the player map to be updated.
+    // Variable: Stored variable of the player map to be updated.
     private final String[][] playerMapArray;
 
     /** Initializes a map object and sets the game map and player map to their starting values.

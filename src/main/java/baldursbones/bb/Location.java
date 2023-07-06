@@ -6,7 +6,7 @@ package baldursbones.bb;
  */
 public abstract class Location {
 
-    /** An integer value used to track the value of the location.
+    /** Variable: An integer value used to track the value of the location.
      */
     protected int locationType;
 
