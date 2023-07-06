@@ -194,7 +194,7 @@ public class Player {
         abilityReRoll += 1;
         abilityAdd += 1;
         abilityTakeAway += 1;
-
+        // Try to read the level-up text from the Player text file.
         try {
             // Create a new scanner for the text file and level up the first section.
             Scanner fileReader = new Scanner(playerText);
@@ -225,6 +225,7 @@ public class Player {
     private void winBattle() {
         // Increase experience and check for level up.
         exp += 1;
+        // Try to read the win-battle text from the Player text file.
         try {
             // Create a new scanner for the text file and print the first section.
             Scanner fileReader = new Scanner(playerText);
@@ -252,6 +253,7 @@ public class Player {
     }
 
     private void loseBattle(final int outcome) {
+        // Try to read the lose-battle text from the Player text file.
         try {
             // Create a new scanner for the text file and print the first section.
             Scanner fileReader = new Scanner(playerText);
