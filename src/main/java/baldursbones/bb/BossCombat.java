@@ -55,7 +55,7 @@ public class BossCombat extends Combat {
     @Override
     public int startCombat() {
         Scanner scan = new Scanner(System.in);
-        // Initialize a scanner to read the boss-fight text file.
+        // Initialize a scanner to read the BossCombat text file.
         try {
             Scanner textReader = new Scanner(bossCombatText);
             // Print the beginning of boss fight text from the boss fight text file.

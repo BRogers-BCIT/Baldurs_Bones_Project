@@ -52,7 +52,7 @@ public class BossLocation extends Location {
      * @return a boolean value indicating to start a fight at the location
      */
     protected boolean fightLocation() {
-        // Try to read the start fight text from the BossEnemy text file.
+        // Try to read the start fight text from the BossLocation text file.
         try {
             // Create a new scanner for the text file and print the first section.
             Scanner fileReader = new Scanner(bossLocationText);
@@ -70,7 +70,7 @@ public class BossLocation extends Location {
      * @throws RuntimeException if text file is missing
      */
     protected void exploreLocation() {
-        // Try to read the "explore location" text from the BossEnemy text file.
+        // Try to read the "explore location" text from the BossLocation text file.
         try {
             // Create a new scanner for the text file and skip the first section.
             Scanner fileReader = new Scanner(bossLocationText);
