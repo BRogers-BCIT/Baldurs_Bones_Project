@@ -1,0 +1,4 @@
+Win round text. Boss Enemy.
+Lose round text. Boss Enemy.
+Win combat text. Boss Enemy.
+Lose combat text. Boss Enemy.
