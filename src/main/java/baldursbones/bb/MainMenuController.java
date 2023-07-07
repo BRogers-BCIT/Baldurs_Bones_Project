@@ -28,10 +28,8 @@ public class MainMenuController {
         // Load the settings menu FXML document.
         root = FXMLLoader.load(getClass().getResource("SettingsMenu.fxml"));
 
-        MainMenuGrid.setConstraints(root, 2, 0);
+        MainMenuGrid.setConstraints(root, 0, 2);
 
         MainMenuGrid.getChildren().add(root);
-        stage.show();
-
     }
 }
