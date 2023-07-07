@@ -15,15 +15,15 @@
 
 <GridPane id="MainMenu" fx:id="MainMenuGrid" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.MainMenuController">
    <columnConstraints>
-      <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints valignment="TOP" vgrow="ALWAYS" />
       <RowConstraints vgrow="ALWAYS" />
-      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" valignment="CENTER" vgrow="SOMETIMES" />
       <RowConstraints vgrow="SOMETIMES" />
    </rowConstraints>
-   <HBox id="MainMenuContentContainer" prefHeight="100.0">
+   <HBox id="MainMenuContentContainer" prefHeight="100.0" GridPane.hgrow="ALWAYS">
       <Region fx:id="MainMenuHeaderLeft" prefWidth="100.0" />
       <Region fx:id="MainMenuHeaderCenter" prefWidth="500.0" />
       <Region fx:id="MainMenuHeaderRight" prefHeight="100.0" prefWidth="100.0" />
