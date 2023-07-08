@@ -79,7 +79,7 @@
             </HBox.margin>
          </Button>
          <Region minWidth="50.0" HBox.hgrow="ALWAYS" />
-         <Button id="CloseInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="GameInfoButton" text="Close Game Info" textAlignment="CENTER" textOverrun="CLIP">
+         <Button id="CloseInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" styleClass="GameInfoButton" text="Close Game Info" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
             </HBox.margin>
