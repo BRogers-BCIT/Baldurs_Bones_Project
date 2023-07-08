@@ -70,7 +70,7 @@ public class MainMenuController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NewGameMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the main menu layout to the class.
-        SettingsMenuController controller = loader.getController();
+        NewGameController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 0, 2);
