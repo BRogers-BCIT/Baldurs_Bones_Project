@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fillHeight="false" maxWidth="350.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SettingsMenuController">
+<HBox fx:id="settingsMenu" fillHeight="false" maxWidth="350.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SettingsMenuController">
    <Region fx:id="SettingsMenuRight" prefWidth="50.0" />
    <VBox id="SettingsMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
       <Region fx:id="SettingsHeader" prefHeight="50.0" />

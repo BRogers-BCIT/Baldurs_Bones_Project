@@ -24,10 +24,10 @@ public class SettingsMenuController {
     @FXML
     public void closeSettings() {
         // Set main menu buttons to be clickable.
-        container.lookup("openSettingsButton").setDisable(false);
-        container.lookup("newGameButton").setDisable(false);
-        container.lookup("savedGamesButton").setDisable(false);
-        container.lookup("gameInfoButton").setDisable(false);
+        container.lookup("#openSettingsButton").setDisable(false);
+        container.lookup("#newGameButton").setDisable(false);
+        container.lookup("#savedGamesButton").setDisable(false);
+        container.lookup("#gameInfoButton").setDisable(false);
         // Remove the settings menu from the main menu window.
         container.getChildren().remove(settingsMenu);
     }
