@@ -6,7 +6,6 @@ module baldursbones.bb {
     requires org.controlsfx.controls;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
 
     opens baldursbones.bb to javafx.fxml;
     exports baldursbones.bb;
