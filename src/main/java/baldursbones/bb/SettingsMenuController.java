@@ -1,42 +1,42 @@
 package baldursbones.bb;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.geometry.Rectangle2D;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 
-import java.io.IOException;
-
+/**
+ * Settings Menu Controller.
+ *
+ * @author Braden Rogers
+ * @version Baldur's Bones v1.1
+ */
 public class SettingsMenuController {
 
-    private Stage stage;
+    // The parent element the settings menu is displayed in.
+    private GridPane container;
 
-    private Scene scene;
-
-    private Parent root;
-
+    // The layout element for the settings menu.
     @FXML
-    public void closeSettings(ActionEvent event) throws IOException {
-        // Load the main menu FXML document.
-        root = FXMLLoader.load(getClass().getResource("MainMenu.fxml"));
-        // Get the stage by tracing the source of the click event -> scene -> stage.
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        // Get the size of the users screen.
-        Rectangle2D userScreen = Screen.getPrimary().getBounds();
-        // Load the scene with the correct size and width.
-        Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - 70);
-        // Set the name of the window, pass the scene to the stage, and display the window.
-        stage.setTitle("Baldur's Bones");
-        stage.setScene(scene);
-        // Center stage to the middle of the screen and prevent resizing.
-        stage.centerOnScreen();
-        stage.setResizable(false);
-        // Display the window.
-        stage.show();
+    private HBox settingsMenu;
+
+    /** Removes the settings menu layout from the main menu and makes the buttons clickable again.
+     */
+    @FXML
+    public void closeSettings() {
+        // Set main menu buttons to be clickable.
+        container.lookup("openSettingsButton").setDisable(false);
+        container.lookup("newGameButton").setDisable(false);
+        container.lookup("savedGamesButton").setDisable(false);
+        container.lookup("gameInfoButton").setDisable(false);
+        // Remove the settings menu from the main menu window.
+        container.getChildren().remove(settingsMenu);
+    }
+
+    /** Takes the parent element that the layout will be displayed in and saves it.
+     *
+     * @param parentGrid The parent element of the settings menu layout.
+     */
+    public void getContainerElement(final GridPane parentGrid) {
+        container = parentGrid;
     }
 }
