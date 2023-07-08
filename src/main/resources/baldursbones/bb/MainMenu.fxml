@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<GridPane id="MainMenu" fx:id="MainMenuGrid" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.MainMenuController">
+<GridPane id="MainMenu" fx:id="mainMenuGrid" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.MainMenuController">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
    </columnConstraints>
@@ -28,7 +28,7 @@
       <Region fx:id="MainMenuHeaderCenter" prefWidth="500.0" />
       <Region fx:id="MainMenuHeaderRight" prefHeight="100.0" prefWidth="100.0" />
    </HBox>
-   <Button id="SettingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettings" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER" textOverrun="CLIP" GridPane.halignment="RIGHT">
+   <Button id="SettingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER" textOverrun="CLIP" GridPane.halignment="RIGHT">
       <graphic>
          <ImageView id="SettingsIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
             <viewport>
@@ -55,7 +55,7 @@
    <VBox id="MainMenuFooterContainer" alignment="CENTER" GridPane.rowIndex="3">
       <HBox id="MainMenuButtonContainer" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity">
          <Region fx:id="MainMenuFooterLeft" HBox.hgrow="ALWAYS" />
-         <Button id="NewGameButton" fx:id="newGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="New Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="NewGameButton" fx:id="newGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openNewGameMenu" prefWidth="110.0" styleClass="MMOptions" text="New Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="30.0" top="30.0" />
             </HBox.margin>
@@ -64,7 +64,7 @@
             </padding>
          </Button>
          <Region HBox.hgrow="ALWAYS" />
-         <Button id="LoadSaveButton" fx:id="saveMenuButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="Load Saves" HBox.hgrow="NEVER">
+         <Button id="LoadSaveButton" fx:id="savedGamesButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSaveGameMenu" prefWidth="110.0" styleClass="MMOptions" text="Load Saves" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="30.0" top="30.0" />
             </HBox.margin>
@@ -73,7 +73,7 @@
             </padding>
          </Button>
          <Region HBox.hgrow="ALWAYS" />
-         <Button id="GameRulesButton" fx:id="gameInfoButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefWidth="110.0" styleClass="MMOptions" text="Game Rules" HBox.hgrow="NEVER">
+         <Button id="GameRulesButton" fx:id="gameInfoButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openGameInfoMenu" prefWidth="110.0" styleClass="MMOptions" text="Game Rules" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="30.0" top="30.0" />
             </HBox.margin>
