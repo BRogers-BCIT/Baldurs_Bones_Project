@@ -45,7 +45,8 @@ public class SaveMenuController {
         container.getChildren().remove(saveGameMenu);
     }
 
-    /** Opens the Game Location window (main window for gameplay) in place of the current scene.
+    /**
+     * Opens the Game Location window (main window for gameplay) in place of the current scene.
      *
      * @param event the event object created by clicking the load game button
      * @throws IOException if the FXML document being loaded does not exist
@@ -73,7 +74,7 @@ public class SaveMenuController {
     /**
      * Takes the parent element that the layout will be displayed in and saves it.
      *
-     * @param parentGrid The parent element of the settings menu layout.
+     * @param parentGrid The parent element of the settings menu layout
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;

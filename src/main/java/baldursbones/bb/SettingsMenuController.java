@@ -26,7 +26,8 @@ public class SettingsMenuController {
     @FXML
     private HBox settingsMenu;
 
-    /** Removes the settings menu layout from the main menu and makes the buttons clickable again.
+    /**
+     * Removes the settings menu layout from the main menu and makes the buttons clickable again.
      */
     @FXML
     public void closeSettings() {
@@ -39,9 +40,10 @@ public class SettingsMenuController {
         container.getChildren().remove(settingsMenu);
     }
 
-    /** Load the save menu document, remove the settings menu scene and display the load saves menu.
+    /**
+     * Load the save menu document, remove the settings menu scene and display the load saves menu.
      *
-     * @throws IOException if the fxml file being loaded does not exist.
+     * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openSaveMenu() throws IOException {
@@ -57,9 +59,10 @@ public class SettingsMenuController {
         container.getChildren().remove(settingsMenu);
     }
 
-    /** Load the game info document, remove the settings menu scene and display the game info menu.
+    /**
+     * Load the game info document, remove the settings menu scene and display the game info menu.
      *
-     * @throws IOException if the fxml file being loaded does not exist.
+     * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openGameInfoMenu() throws IOException {
@@ -75,9 +78,10 @@ public class SettingsMenuController {
         container.getChildren().remove(settingsMenu);
     }
 
-    /** Load the game info document, remove the settings menu scene and display the game info menu.
+    /**
+     * Load the game info document, remove the settings menu scene and display the game info menu.
      *
-     * @throws IOException if the fxml file being loaded does not exist.
+     * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openQuitGamePopUp() throws IOException {
@@ -97,10 +101,10 @@ public class SettingsMenuController {
     }
 
 
-
-    /** Takes the parent element that the layout will be displayed in and saves it. Disables settings button on menu.
+    /**
+     * Takes the parent element that the layout will be displayed in and saves it. Disables settings button on menu.
      *
-     * @param parentGrid The parent element of the settings menu layout.
+     * @param parentGrid The parent element of the settings menu layout
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;

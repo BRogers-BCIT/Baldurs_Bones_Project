@@ -19,7 +19,8 @@ public class GameInfoController {
     @FXML
     private HBox gameInfoMenu;
 
-    /** Removes the settings menu layout from the main menu and makes the buttons clickable again.
+    /**
+     * Removes the settings menu layout from the main menu and makes the buttons clickable again.
      */
     @FXML
     public void closeGameInfoMenu() {
@@ -31,9 +32,10 @@ public class GameInfoController {
         container.getChildren().remove(gameInfoMenu);
     }
 
-    /** Takes the parent element that the layout will be displayed in and saves it.
+    /**
+     * Takes the parent element that the layout will be displayed in and saves it.
      *
-     * @param parentGrid The parent element of the settings menu layout.
+     * @param parentGrid The parent element of the settings menu layout
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;

@@ -6,6 +6,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -42,9 +43,10 @@ public class MainMenuController implements Initializable {
     private Button gameInfoButton;
 
 
-    /** Load the settings menu document, display it in the center of the screen, and disable all main menu buttons.
+    /**
+     * Load the settings menu document, display it in the center of the screen, and disable all main menu buttons.
      *
-     * @throws IOException if the fxml file being loaded does not exist.
+     * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openSettingsMenu() throws IOException {
@@ -61,9 +63,10 @@ public class MainMenuController implements Initializable {
         openSettingsButton.setDisable(true);
     }
 
-    /** Load the new game menu document, display it in the center of the screen, and disable all main menu buttons.
+    /**
+     * Load the new game menu document, display it in the center of the screen, and disable all main menu buttons.
      *
-     * @throws IOException if the fxml file being loaded does not exist.
+     * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openNewGameMenu() throws IOException {
@@ -79,9 +82,10 @@ public class MainMenuController implements Initializable {
         disableMenuButtons();
     }
 
-    /** Load the saved games menu document, display it in the center of the screen, and disable all main menu buttons.
+    /**
+     * Load the saved games menu document, display it in the center of the screen, and disable all main menu buttons.
      *
-     * @throws IOException if the fxml file being loaded does not exist.
+     * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openSaveGameMenu() throws IOException {
@@ -97,9 +101,10 @@ public class MainMenuController implements Initializable {
         disableMenuButtons();
     }
 
-    /** Load the game info menu document, display it in the center of the screen, and disable all main menu buttons.
+    /**
+     * Load the game info menu document, display it in the center of the screen, and disable all main menu buttons.
      *
-     * @throws IOException if the fxml file being loaded does not exist.
+     * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openGameInfoMenu() throws IOException {
