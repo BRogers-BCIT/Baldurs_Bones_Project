@@ -33,11 +33,12 @@ public class GameCombatController {
     }
 
     /**
-     * Takes the parent element that the layout will be displayed in and saves it.
+     * Takes the parent element that the layout will be displayed in and saves it. Also re-enables settings menu.
      *
      * @param parentGrid The parent element of the character info menu layout
      */
     public void getContainerElement(final GridPane parentGrid) {
+        container.lookup("#settingsButton").setDisable(false);
         container = parentGrid;
     }
 

@@ -46,6 +46,21 @@ public class LocationMenuController implements Initializable {
     @FXML
     private Button openSettingsButton;
 
+    // Movement button for north.
+    @FXML
+    private Button moveNorthButton;
+
+    // Movement button for south.
+    @FXML
+    private Button moveSouthButton;
+
+    // Movement button for east.
+    @FXML
+    private Button moveEastButton;
+
+    // Movement button for west.
+    @FXML
+    private Button moveWestButton;
 
     /**
      * Load the settings menu document, display it in the center of the screen, and disable all location menu buttons.
@@ -131,6 +146,7 @@ public class LocationMenuController implements Initializable {
      */
     @FXML
     public void openGameCombatMenu() throws IOException {
+        disableMenuButtons();
         // Load the game info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CombatMenu.fxml"));
         root = loader.load();
@@ -140,23 +156,26 @@ public class LocationMenuController implements Initializable {
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 2);
         locationMenuGrid.getChildren().add(root);
-        disableMenuButtons();
     }
 
     // Disables the location menu buttons while a different menu is open.
     private void disableMenuButtons() {
+        openSettingsButton.setDisable(true);
         startFightButton.setDisable(true);
         viewCharacterButton.setDisable(true);
         viewMapButton.setDisable(true);
         endGameButton.setDisable(true);
     }
 
-    /** Set the settings button to be enabled when first opening a combat menu.
+    /** Set the movement buttons to be disabled when first opening a location menu.
      * @param url N/A
      * @param resourceBundle N/A
      */
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        openSettingsButton.setDisable(false);
+        moveNorthButton.setDisable(true);
+        moveSouthButton.setDisable(true);
+        moveEastButton.setDisable(true);
+        moveWestButton.setDisable(true);
     }
 }

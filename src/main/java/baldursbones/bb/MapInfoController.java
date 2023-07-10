@@ -29,6 +29,7 @@ public class MapInfoController {
         container.lookup("#locationViewStats").setDisable(false);
         container.lookup("#locationViewMap").setDisable(false);
         container.lookup("#endGameTest").setDisable(false);
+        container.lookup("#settingsButton").setDisable(false);
         // Remove the map info menu from the location menu window.
         container.getChildren().remove(mapInfoBox);
     }
