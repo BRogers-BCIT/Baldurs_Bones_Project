@@ -1,7 +1,9 @@
 package baldursbones.bb;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
@@ -81,10 +83,11 @@ public class SettingsMenuController {
     /**
      * Load the game info document, remove the settings menu scene and display the game info menu.
      *
+     * @param event the event object created by clicking the button that called this method
      * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
-    public void openQuitGamePopUp() throws IOException {
+    public void openQuitGamePopUp(final ActionEvent event) throws IOException {
         // Create the stage for the pop-up and set the stage values (window type, resizing, centering, and title).
         Stage popup = new Stage();
         popup.initModality(Modality.APPLICATION_MODAL);
@@ -94,6 +97,10 @@ public class SettingsMenuController {
         // Load the quit game pop-up FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("QuitMenu.fxml"));
         Parent root = loader.load();
+        // Get the controller for the new pop-up to pass the current stage to.
+        QuitPopupController controller = loader.getController();
+        // Get the current stage from the event and pass it to the quit-pop.
+        controller.getMainStage((Stage) ((Node) event.getSource()).getScene().getWindow());
         Scene popupDisplay = new Scene(root);
         // Load the pop-up scene into the stage and display it. Will pause game until window is closed.
         popup.setScene(popupDisplay);
