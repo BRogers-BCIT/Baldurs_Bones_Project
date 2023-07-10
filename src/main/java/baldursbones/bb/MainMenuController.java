@@ -58,6 +58,7 @@ public class MainMenuController implements Initializable {
         GridPane.setConstraints(root, 0, 2);
         mainMenuGrid.getChildren().add(root);
         disableMenuButtons();
+        openSettingsButton.setDisable(true);
     }
 
     /** Load the new game menu document, display it in the center of the screen, and disable all main menu buttons.

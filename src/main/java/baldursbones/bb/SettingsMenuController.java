@@ -104,6 +104,5 @@ public class SettingsMenuController {
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;
-        container.lookup("#openSettingsButton").setDisable(false);
     }
 }
