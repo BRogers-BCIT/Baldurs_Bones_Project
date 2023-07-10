@@ -28,7 +28,7 @@ public class SaveMenuController {
     // The parent element the settings menu is displayed in.
     private GridPane container;
 
-    // The layout element for the settings menu.
+    // The layout element for the save game menu.
     @FXML
     private HBox saveGameMenu;
 
