@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane fx:id="characterInfoGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.CharacterInfoController">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="100.0" />
       <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="100.0" />
@@ -143,7 +143,7 @@
    <Region fx:id="CharacterFooterLeft" prefHeight="50.0" prefWidth="50.0" GridPane.rowIndex="3" />
    <Region fx:id="CharacterFooterCenterOne" GridPane.columnIndex="1" GridPane.rowIndex="3" />
    <Region fx:id="CharacterFooterCenterTwo" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-   <Button id="CloseCharacterButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" text="Close" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3">
+   <Button id="CloseCharacterButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" text="Close" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3">
       <font>
          <Font size="24.0" />
       </font>
