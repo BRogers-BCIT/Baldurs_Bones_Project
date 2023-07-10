@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Region?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<HBox fx:id="saveGameMenu" alignment="CENTER" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SaveMenuController">
+<HBox fx:id="saveGameMenu" alignment="CENTER" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SaveMenuController">
    <Region fx:id="SaveMenuLeft" prefWidth="50.0" />
    <VBox id="SaveMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
       <Region fx:id="SaveMenuHeader" minHeight="30.0" />
@@ -93,7 +87,7 @@
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <Button id="LoadSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SaveMenuButton" text="Load Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="LoadSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openGameWindow" styleClass="SaveMenuButton" text="Load Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" left="100.0" right="50.0" top="10.0" />
             </HBox.margin>
