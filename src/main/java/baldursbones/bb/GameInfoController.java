@@ -5,14 +5,14 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 /**
- * Settings Menu Controller.
+ * Game Info Menu Controller.
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
 public class GameInfoController {
 
-    // The parent element the settings menu is displayed in.
+    // The parent element the game info menu is displayed in.
     private GridPane container;
 
     // The layout element for the game info menu.
@@ -20,7 +20,7 @@ public class GameInfoController {
     private HBox gameInfoMenu;
 
     /**
-     * Removes the settings menu layout from the main menu and makes the buttons clickable again.
+     * Removes the game info menu layout from the main menu and makes the main menu buttons clickable again.
      */
     @FXML
     public void closeGameInfoMenu() {

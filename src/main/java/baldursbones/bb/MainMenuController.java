@@ -19,7 +19,7 @@ import java.util.ResourceBundle;
  */
 public class MainMenuController implements Initializable {
 
-    // Save an FXML file to be loaded into the scene.
+    // Contains the FXML file to be loaded into the scene.
     private Parent root;
 
     // The layout object for the main menu that new menus are loaded into.

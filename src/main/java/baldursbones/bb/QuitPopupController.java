@@ -20,6 +20,7 @@ import java.util.Objects;
  * @version Baldur's Bones v1.1
  */
 public class QuitPopupController {
+
     // Define the amount of pixels to leave of the top of the screen for the anchor bar.
     private static final int ANCHOR_BAR_SIZE = 70;
 

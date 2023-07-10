@@ -16,24 +16,25 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * Settings Menu Controller.
+ * Saved Games Menu Controller.
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
 public class SaveMenuController {
+
     // Define the amount of pixels to leave of the top of the screen for the anchor bar.
     private static final int ANCHOR_BAR_SIZE = 70;
 
-    // The parent element the settings menu is displayed in.
+    // The parent element the saved games menu is displayed in.
     private GridPane container;
 
-    // The layout element for the save game menu.
+    // The layout element for the saved games menu.
     @FXML
     private HBox saveGameMenu;
 
     /**
-     * Removes the settings menu layout from the main menu and makes the buttons clickable again.
+     * Removes the saved games menu layout from the main menu and makes the main menu buttons clickable again.
      */
     @FXML
     public void closeSaveMenu() {

@@ -33,7 +33,7 @@ public class SettingsMenuController {
      */
     @FXML
     public void closeSettings() {
-        // Set main menu buttons to be clickable.
+        // Set main menu buttons and the settings button to be clickable.
         container.lookup("#openSettingsButton").setDisable(false);
         container.lookup("#newGameButton").setDisable(false);
         container.lookup("#savedGamesButton").setDisable(false);
@@ -43,13 +43,13 @@ public class SettingsMenuController {
     }
 
     /**
-     * Load the save menu document, remove the settings menu scene and display the load saves menu.
+     * Load the saved games menu document, remove the settings menu scene and display the load saves menu.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openSaveMenu() throws IOException {
-        // Load the new game menu FXML document into a root object.
+        // Load the saved games menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
         Parent root = loader.load();
         // Get the controller for the new menu and pass the main menu layout to the class.
@@ -68,7 +68,7 @@ public class SettingsMenuController {
      */
     @FXML
     public void openGameInfoMenu() throws IOException {
-        // Load the new game menu FXML document into a root object.
+        // Load the game info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
         Parent root = loader.load();
         // Get the controller for the new menu and pass the main menu layout to the class.
@@ -81,7 +81,7 @@ public class SettingsMenuController {
     }
 
     /**
-     * Load the game info document, remove the settings menu scene and display the game info menu.
+     * Load the quit game pop-up document, remove the settings menu scene and display the quit game pop-up.
      *
      * @param event the event object created by clicking the button that called this method
      * @throws IOException if the fxml file being loaded does not exist

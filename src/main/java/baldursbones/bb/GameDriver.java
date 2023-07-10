@@ -55,7 +55,7 @@ public class GameDriver extends Application {
         });
     }
 
-    // Open the quit pop-up menu
+    // Open the quit pop-up menu to catch users when quitting and give them a chance to cancel or return to main menu.
     private void openQuitPopup(final Stage currentStage) {
         try {
             // Create the stage for the pop-up and set the stage values (window type, resizing, centering, and title).

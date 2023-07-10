@@ -34,7 +34,7 @@ public class NewGameController {
     private HBox newGameMenu;
 
     /**
-     * Removes the new game menu layout from the main menu and makes the buttons clickable again.
+     * Removes the new game menu layout from the main menu and makes the main menu buttons clickable again.
      */
     @FXML
     public void closeNewGameMenu() {
