@@ -28,7 +28,7 @@ public class CharacterInfoController {
         container.lookup("#locationViewStats").setDisable(false);
         container.lookup("#locationViewMap").setDisable(false);
         container.lookup("#endGameTest").setDisable(false);
-        container.lookup("#settingsButton").setDisable(false);
+        container.lookup("#openSettingsButton").setDisable(false);
         // Remove the character info menu from the location menu window.
         container.getChildren().remove(characterInfoGrid);
     }

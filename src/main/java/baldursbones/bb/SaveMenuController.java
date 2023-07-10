@@ -38,7 +38,7 @@ public class SaveMenuController {
      */
     @FXML
     public void closeSaveMenu() {
-        container.lookup("#settingsButton").setDisable(false);
+        container.lookup("#openSettingsButton").setDisable(false);
         // If the current container is the main menu, enable main menu buttons.
         if (container.getId().equals("mainMenuGrid")) {
             container.lookup("#newGameButton").setDisable(false);

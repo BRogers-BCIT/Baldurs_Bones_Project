@@ -24,7 +24,7 @@ public class GameInfoController {
      */
     @FXML
     public void closeGameInfoMenu() {
-        container.lookup("#settingsButton").setDisable(false);
+        container.lookup("#openSettingsButton").setDisable(false);
         // If the current container is the main menu, enable main menu buttons.
         if (container.getId().equals("mainMenuGrid")) {
             container.lookup("#newGameButton").setDisable(false);

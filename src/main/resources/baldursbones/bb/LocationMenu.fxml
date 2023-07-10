@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="locationMenuGrid" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.LocationMenuController">
+<GridPane id="locationMenuGrid" fx:id="locationMenuGrid" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.LocationMenuController">
    <columnConstraints>
       <ColumnConstraints hgrow="NEVER" />
       <ColumnConstraints hgrow="NEVER" />
@@ -33,7 +33,7 @@
    <Region fx:id="LocationHeaderMiddleOne" GridPane.columnIndex="1" />
    <Region fx:id="LocationHeaderMiddleTwo" GridPane.columnIndex="2" />
    <Region fx:id="LocationHeaderRight" GridPane.columnIndex="3" />
-   <Button id="settingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+   <Button id="openSettingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
       <GridPane.margin>
          <Insets right="20.0" top="20.0" />
       </GridPane.margin>

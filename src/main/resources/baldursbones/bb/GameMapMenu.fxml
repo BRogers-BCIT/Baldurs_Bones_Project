@@ -27,6 +27,7 @@
             </Label>
             <Region id="GameMapTitleRight" fx:id="MapTitleRight" HBox.hgrow="ALWAYS" />
         </HBox>
+         <Button id="CloseMap" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" text="Close Map" textAlignment="CENTER" textOverrun="CLIP" />
         <GridPane id="GameMapGrid" VBox.vgrow="NEVER">
             <columnConstraints>
                 <ColumnConstraints fx:id="LegendColumn" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
@@ -72,11 +73,6 @@
             <VBox.margin>
                 <Insets />
             </VBox.margin>
-            <Button id="CloseMap" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" text="Close Map" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
-                <HBox.margin>
-                    <Insets bottom="30.0" top="10.0" />
-                </HBox.margin>
-            </Button>
         </HBox>
         <Region fx:id="MapFooterArea" prefHeight="50.0" />
     </VBox>

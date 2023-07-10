@@ -38,8 +38,8 @@ public class GameCombatController {
      * @param parentGrid The parent element of the character info menu layout
      */
     public void getContainerElement(final GridPane parentGrid) {
-        container.lookup("#settingsButton").setDisable(false);
         container = parentGrid;
+        container.lookup("#openSettingsButton").setDisable(false);
     }
 
 }
