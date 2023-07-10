@@ -29,16 +29,25 @@ public class SettingsMenuController {
     private HBox settingsMenu;
 
     /**
-     * Removes the settings menu layout from the main menu and makes the buttons clickable again.
+     * Removes the settings menu layout from the current menu and makes the buttons clickable again.
      */
     @FXML
     public void closeSettings() {
-        // Set main menu buttons and the settings button to be clickable.
+        // Set the settings button to be clickable.
         container.lookup("#openSettingsButton").setDisable(false);
-        container.lookup("#newGameButton").setDisable(false);
-        container.lookup("#savedGamesButton").setDisable(false);
-        container.lookup("#gameInfoButton").setDisable(false);
-        // Remove the settings menu from the main menu window.
+        // If the current container is the main menu, enable main menu buttons.
+        if (container.getId().equals("mainMenuGrid")) {
+            container.lookup("#newGameButton").setDisable(false);
+            container.lookup("#savedGamesButton").setDisable(false);
+            container.lookup("#gameInfoButton").setDisable(false);
+        } else {
+            // Set location menu buttons to be clickable.
+            container.lookup("#locationFightButton").setDisable(false);
+            container.lookup("#locationViewStats").setDisable(false);
+            container.lookup("#locationViewMap").setDisable(false);
+            container.lookup("#endGameTest").setDisable(false);
+        }
+        // Remove the settings menu from the current menu window.
         container.getChildren().remove(settingsMenu);
     }
 
@@ -52,7 +61,7 @@ public class SettingsMenuController {
         // Load the saved games menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
         Parent root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
+        // Get the controller for the new menu and pass the current menu layout to the class.
         SaveMenuController controller = loader.getController();
         controller.getContainerElement(container);
         // Define where to display the new menu and add it to the layout.
@@ -71,7 +80,7 @@ public class SettingsMenuController {
         // Load the game info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
         Parent root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
+        // Get the controller for the new menu and pass the current menu layout to the class.
         GameInfoController controller = loader.getController();
         controller.getContainerElement(container);
         // Define where to display the new menu and add it to the layout.
