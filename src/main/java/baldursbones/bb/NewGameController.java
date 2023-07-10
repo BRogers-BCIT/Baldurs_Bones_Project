@@ -35,16 +35,40 @@ public class NewGameController {
 
     /**
      * Removes the new game menu layout from the main menu and makes the main menu buttons clickable again.
+     *
+     * @param event the event object created by clicking the load game button
+     * @throws IOException if the FXML document being loaded does not exist
      */
     @FXML
-    public void closeNewGameMenu() {
-        // Set main menu buttons to be clickable.
-        container.lookup("#newGameButton").setDisable(false);
-        container.lookup("#savedGamesButton").setDisable(false);
-        container.lookup("#gameInfoButton").setDisable(false);
-        container.lookup("#settingsButton").setDisable(false);
-        // Remove the new game menu from the main menu window.
-        container.getChildren().remove(newGameMenu);
+    public void closeNewGameMenu(final ActionEvent event) throws IOException {
+        // If the current container is the main menu, allow the menu to be closed.
+        if (container.getId().equals("mainMenuGrid")) {
+            // Set main menu buttons to be clickable.
+            container.lookup("#newGameButton").setDisable(false);
+            container.lookup("#savedGamesButton").setDisable(false);
+            container.lookup("#gameInfoButton").setDisable(false);
+            container.lookup("#settingsButton").setDisable(false);
+            // Remove the new game menu from the main menu window.
+            container.getChildren().remove(newGameMenu);
+        } else {
+            // Return to main menu
+            // Load the Main Menu FXML document.
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
+            // Get the stage by tracing the source of the click event -> scene -> stage.
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            // Get the size of the users screen to set the size and with of the game window.
+            Rectangle2D userScreen = Screen.getPrimary().getBounds();
+            // Create a scene with the loaded Game Location menu document.
+            // Load the scene with the correct size and width found above.
+            Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - ANCHOR_BAR_SIZE);
+            stage.setScene(scene);
+            // Center stage to the middle of the screen, prevent resizing, and set title.
+            stage.centerOnScreen();
+            stage.setResizable(false);
+            stage.setTitle("Baldur's Bones");
+            // Display the window.
+            stage.show();
+        }
     }
 
     /**
