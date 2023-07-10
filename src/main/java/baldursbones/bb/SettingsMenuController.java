@@ -75,25 +75,26 @@ public class SettingsMenuController {
         container.getChildren().remove(settingsMenu);
     }
 
-//    /** Load the game info document, remove the settings menu scene and display the game info menu.
-//     *
-//     * @throws IOException if the fxml file being loaded does not exist.
-//     */
-//    @FXML
-//    public void openQuitGamePopUp() throws IOException {
-//        // Create the stage for the pop-up and set the stage values (resizing & centering).
-//        Stage popup = new Stage();
-//        popup.initModality(Modality.APPLICATION_MODAL);
-//        popup.setResizable(false);
-//        popup.centerOnScreen();
-//        // Load the quit game pop-up FXML document into a root object.
-//        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
-//        Parent root = loader.load();
-//        Scene popupDisplay = new Scene(root);
-//        // Load the pop-up scene into the stage and display it. Will pause game until window is closed.
-//        popup.setScene(popupDisplay);
-//        popup.showAndWait();
-//    }
+    /** Load the game info document, remove the settings menu scene and display the game info menu.
+     *
+     * @throws IOException if the fxml file being loaded does not exist.
+     */
+    @FXML
+    public void openQuitGamePopUp() throws IOException {
+        // Create the stage for the pop-up and set the stage values (window type, resizing, centering, and title).
+        Stage popup = new Stage();
+        popup.initModality(Modality.APPLICATION_MODAL);
+        popup.setResizable(false);
+        popup.centerOnScreen();
+        popup.setTitle("Quit");
+        // Load the quit game pop-up FXML document into a root object.
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("QuitMenu.fxml"));
+        Parent root = loader.load();
+        Scene popupDisplay = new Scene(root);
+        // Load the pop-up scene into the stage and display it. Will pause game until window is closed.
+        popup.setScene(popupDisplay);
+        popup.showAndWait();
+    }
 
 
 
