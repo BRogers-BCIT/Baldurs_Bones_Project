@@ -1,8 +1,12 @@
 package baldursbones.bb;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+
+import java.io.IOException;
 
 /**
  * Settings Menu Controller.
@@ -29,6 +33,42 @@ public class SettingsMenuController {
         container.lookup("#savedGamesButton").setDisable(false);
         container.lookup("#gameInfoButton").setDisable(false);
         // Remove the settings menu from the main menu window.
+        container.getChildren().remove(settingsMenu);
+    }
+
+    /** Load the save menu document, remove the settings menu scene and display the load saves menu.
+     *
+     * @throws IOException if the fxml file being loaded does not exist.
+     */
+    @FXML
+    public void openSaveMenu() throws IOException {
+        // Load the new game menu FXML document into a root object.
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
+        Parent root = loader.load();
+        // Get the controller for the new menu and pass the main menu layout to the class.
+        NewGameController controller = loader.getController();
+        controller.getContainerElement(container);
+        // Define where to display the new menu and add it to the layout.
+        GridPane.setConstraints(root, 0, 2);
+        container.getChildren().add(root);
+        container.getChildren().remove(settingsMenu);
+    }
+
+    /** Load the game info document, remove the settings menu scene and display the game info menu.
+     *
+     * @throws IOException if the fxml file being loaded does not exist.
+     */
+    @FXML
+    public void openGameInfoMenu() throws IOException {
+        // Load the new game menu FXML document into a root object.
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
+        Parent root = loader.load();
+        // Get the controller for the new menu and pass the main menu layout to the class.
+        NewGameController controller = loader.getController();
+        controller.getContainerElement(container);
+        // Define where to display the new menu and add it to the layout.
+        GridPane.setConstraints(root, 0, 2);
+        container.getChildren().add(root);
         container.getChildren().remove(settingsMenu);
     }
 
