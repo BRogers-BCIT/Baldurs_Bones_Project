@@ -61,7 +61,7 @@ public class LocationMenuController implements Initializable {
         SettingsMenuController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 2, 2);
         locationMenuGrid.getChildren().add(root);
         disableMenuButtons();
         openSettingsButton.setDisable(true);
@@ -81,7 +81,7 @@ public class LocationMenuController implements Initializable {
         CharacterInfoController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 2, 2);
         locationMenuGrid.getChildren().add(root);
         disableMenuButtons();
     }
@@ -100,7 +100,7 @@ public class LocationMenuController implements Initializable {
         MapInfoController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 2, 2);
         locationMenuGrid.getChildren().add(root);
         disableMenuButtons();
     }
@@ -119,7 +119,7 @@ public class LocationMenuController implements Initializable {
         EndGameController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 2, 2);
         locationMenuGrid.getChildren().add(root);
         disableMenuButtons();
     }
@@ -138,7 +138,7 @@ public class LocationMenuController implements Initializable {
         GameCombatController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 2, 2);
         locationMenuGrid.getChildren().add(root);
         disableMenuButtons();
     }
