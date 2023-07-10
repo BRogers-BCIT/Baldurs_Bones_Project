@@ -151,7 +151,12 @@ public class LocationMenuController implements Initializable {
         endGameButton.setDisable(true);
     }
 
+    /** Set the settings button to be enabled when first opening a combat menu.
+     * @param url N/A
+     * @param resourceBundle N/A
+     */
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
+        openSettingsButton.setDisable(false);
     }
 }
