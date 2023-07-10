@@ -71,9 +71,8 @@ public class QuitPopupController {
     public void quitGame(final ActionEvent event) {
         // Close the main window.
         parentStage.close();
-        // Get the current window from the event and close it as well.
-        Stage currentPopup = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        currentPopup.close();
+        // Pass the event to cancel quit to close the pop-up.
+        cancelQuit(event);
     }
 
     /**
