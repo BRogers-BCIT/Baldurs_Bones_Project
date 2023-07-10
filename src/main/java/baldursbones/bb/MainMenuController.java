@@ -26,15 +26,15 @@ public class MainMenuController implements Initializable {
     @FXML
     private GridPane mainMenuGrid;
 
-    // Settings button that calls the open settings method.
+    // Menu button that calls the open settings method.
     @FXML
     private Button openSettingsButton;
 
-    // Settings button that calls the open new game method.
+    // Menu button that calls the open new game method.
     @FXML
     private Button newGameButton;
 
-    // Settings button that calls the open saved games method.
+    // Menu button that calls the open saved games method.
     @FXML
     private Button savedGamesButton;
 
