@@ -19,22 +19,22 @@
    <columnConstraints>
       <ColumnConstraints hgrow="NEVER" />
       <ColumnConstraints hgrow="NEVER" />
-      <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
+      <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" />
       <ColumnConstraints hgrow="NEVER" />
    </columnConstraints>
    <rowConstraints>
       <RowConstraints vgrow="NEVER" />
       <RowConstraints vgrow="NEVER" />
-      <RowConstraints vgrow="NEVER" />
+      <RowConstraints vgrow="ALWAYS" />
       <RowConstraints valignment="TOP" vgrow="NEVER" />
       <RowConstraints valignment="TOP" vgrow="NEVER" />
    </rowConstraints>
-   <Region fx:id="LocationHeaderLeft" prefHeight="100.0" prefWidth="100.0" />
+   <Region fx:id="LocationHeaderLeft" />
    <Region fx:id="LocationHeaderMiddleOne" GridPane.columnIndex="1" />
    <Region fx:id="LocationHeaderMiddleTwo" GridPane.columnIndex="2" />
    <Button id="SettingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
       <GridPane.margin>
-         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         <Insets right="30.0" top="30.0" />
       </GridPane.margin>
       <graphic>
          <ImageView id="SettingsIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
@@ -51,7 +51,7 @@
          <Cursor fx:constant="DEFAULT" />
       </cursor>
    </Button>
-   <Region fx:id="LocationHeaderRight" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="3" />
+   <Region fx:id="LocationHeaderRight" GridPane.columnIndex="3" />
    <Region fx:id="LocationLeftOne" GridPane.rowIndex="1" />
    <GridPane id="LocationMoveGrid" GridPane.columnIndex="1" GridPane.rowIndex="1">
       <columnConstraints>
@@ -96,17 +96,17 @@
    <VBox id="LocationButtonContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
       <Button id="locationViewStats" fx:id="viewCharacterButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openCharacterInfo" styleClass="LocationButtons" text="View Character" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </Button>
       <Button id="locationViewMap" fx:id="viewMapButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openMapInfo" styleClass="LocationButtons" text="View Map" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
          <VBox.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </Button>
       <Button id="endGameTest" fx:id="endGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openEndGameMenu" styleClass="LocationButtons" text="End Game (Test)" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </Button>
    </VBox>
@@ -119,10 +119,10 @@
             <Font size="24.0" />
          </font>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="10.0" left="20.0" right="20.0" />
          </padding>
          <VBox.margin>
-            <Insets top="20.0" />
+            <Insets />
          </VBox.margin>
       </Label>
       <Label id="CharacterDisplayHealth" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Health : " textAlignment="CENTER" textOverrun="CLIP">
@@ -133,7 +133,7 @@
             <Font size="18.0" />
          </font>
          <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            <Insets left="20.0" right="20.0" top="10.0" />
          </padding>
       </Label>
       <Label id="CharacterDisplayLevel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Level : " textAlignment="CENTER" textOverrun="CLIP">
@@ -144,18 +144,18 @@
             <Font size="18.0" />
          </font>
          <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            <Insets left="20.0" right="20.0" top="10.0" />
          </padding>
       </Label>
       <Label id="CharacterDisplayExp" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Experience : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
-            <Insets bottom="20.0" />
+            <Insets />
          </VBox.margin>
          <font>
             <Font size="18.0" />
          </font>
          <padding>
-            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+            <Insets left="20.0" right="20.0" top="10.0" />
          </padding>
       </Label>
    </VBox>
@@ -168,7 +168,7 @@
             <Insets />
          </VBox.margin>
          <padding>
-            <Insets bottom="20.0" top="20.0" />
+            <Insets bottom="20.0" />
          </padding>
       </Label>
       <TextArea id="LocationDescriptionTextBox" prefHeight="100.0" prefWidth="200.0" promptText="Area Description">
@@ -176,7 +176,7 @@
             <Font size="18.0" />
          </font>
          <VBox.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" />
+            <Insets left="20.0" right="20.0" />
          </VBox.margin>
       </TextArea>
    </VBox>
@@ -184,5 +184,5 @@
    <Region fx:id="LocationFooterLeft" prefHeight="100.0" prefWidth="100.0" GridPane.rowIndex="4" />
    <Region fx:id="LocationFooterMiddleOne" GridPane.columnIndex="1" GridPane.rowIndex="4" />
    <Region fx:id="LocationFooterMiddleTwo" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-   <Region fx:id="LocationFooterMiddleRight" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+   <Region fx:id="LocationFooterMiddleRight" GridPane.columnIndex="3" GridPane.rowIndex="4" />
 </GridPane>
