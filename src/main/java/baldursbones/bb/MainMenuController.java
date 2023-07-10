@@ -44,7 +44,7 @@ public class MainMenuController implements Initializable {
 
     /** Load the settings menu document, display it in the center of the screen, and disable all main menu buttons.
      *
-     * @throws IOException if the fxml file to load does not exist.
+     * @throws IOException if the fxml file being loaded does not exist.
      */
     @FXML
     public void openSettingsMenu() throws IOException {
@@ -62,7 +62,7 @@ public class MainMenuController implements Initializable {
 
     /** Load the new game menu document, display it in the center of the screen, and disable all main menu buttons.
      *
-     * @throws IOException if the fxml file to load does not exist.
+     * @throws IOException if the fxml file being loaded does not exist.
      */
     @FXML
     public void openNewGameMenu() throws IOException {
@@ -80,7 +80,7 @@ public class MainMenuController implements Initializable {
 
     /** Load the saved games menu document, display it in the center of the screen, and disable all main menu buttons.
      *
-     * @throws IOException if the fxml file to load does not exist.
+     * @throws IOException if the fxml file being loaded does not exist.
      */
     @FXML
     public void openSaveGameMenu() throws IOException {
@@ -98,7 +98,7 @@ public class MainMenuController implements Initializable {
 
     /** Load the game info menu document, display it in the center of the screen, and disable all main menu buttons.
      *
-     * @throws IOException if the fxml file to load does not exist.
+     * @throws IOException if the fxml file being loaded does not exist.
      */
     @FXML
     public void openGameInfoMenu() throws IOException {
