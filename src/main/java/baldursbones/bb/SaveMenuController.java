@@ -22,6 +22,8 @@ import java.util.Objects;
  * @version Baldur's Bones v1.1
  */
 public class SaveMenuController {
+    // Define the amount of pixels to leave of the top of the screen for the anchor bar.
+    private static final int ANCHOR_BAR_SIZE = 70;
 
     // The parent element the settings menu is displayed in.
     private GridPane container;
@@ -58,7 +60,7 @@ public class SaveMenuController {
         Rectangle2D userScreen = Screen.getPrimary().getBounds();
         // Create a scene with the loaded Game Location menu document.
         // Load the scene with the correct size and width found above.
-        Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - 70);
+        Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - ANCHOR_BAR_SIZE);
         stage.setScene(scene);
         // Center stage to the middle of the screen, prevent resizing, and set title.
         stage.centerOnScreen();
