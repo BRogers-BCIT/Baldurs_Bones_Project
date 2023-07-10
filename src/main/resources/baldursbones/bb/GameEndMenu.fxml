@@ -8,66 +8,57 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <Region fx:id="GameEndLeft" prefWidth="50.0"/>
+<HBox fx:id="endGameBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.EndGameController">
+   <Region fx:id="GameEndLeft" prefWidth="50.0" />
    <VBox id="GameEndWindow" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-      <Region fx:id="GameEndHeader" prefHeight="50.0" VBox.vgrow="ALWAYS"/>
+      <Region fx:id="GameEndHeader" prefHeight="50.0" VBox.vgrow="ALWAYS" />
       <HBox id="GameEndTitleContainer" alignment="CENTER" VBox.vgrow="NEVER">
-         <Region fx:id="EndTitleLeft" prefWidth="50.0" HBox.hgrow="ALWAYS"/>
-         <Label id="GameEndTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                text="Game End Text" textAlignment="CENTER" textOverrun="CLIP">
+         <Region fx:id="EndTitleLeft" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+         <Label id="GameEndTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game End Text" textAlignment="CENTER" textOverrun="CLIP">
             <padding>
-               <Insets bottom="20.0" top="20.0"/>
+               <Insets bottom="20.0" top="20.0" />
             </padding>
             <font>
-               <Font size="24.0"/>
+               <Font size="24.0" />
             </font>
          </Label>
-         <Region fx:id="EndTitleRight" prefWidth="50.0" HBox.hgrow="ALWAYS"/>
+         <Region fx:id="EndTitleRight" prefWidth="50.0" HBox.hgrow="ALWAYS" />
       </HBox>
       <HBox id="GameEndDescriptionContainer" alignment="CENTER">
-         <Region fx:id="EndDescriptionLeft" prefWidth="50.0" HBox.hgrow="ALWAYS"/>
-         <Label id="GameEndDescription" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                text="Game End Description" textAlignment="CENTER" textOverrun="CLIP">
+         <Region fx:id="EndDescriptionLeft" prefWidth="50.0" HBox.hgrow="ALWAYS" />
+         <Label id="GameEndDescription" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game End Description" textAlignment="CENTER" textOverrun="CLIP">
             <padding>
-               <Insets bottom="20.0" top="20.0"/>
+               <Insets bottom="20.0" top="20.0" />
             </padding>
          </Label>
-         <Region fx:id="EndDescriptionRight" prefWidth="50.0" HBox.hgrow="ALWAYS"/>
+         <Region fx:id="EndDescriptionRight" prefWidth="50.0" HBox.hgrow="ALWAYS" />
       </HBox>
       <HBox id="GameEndContinueContainer" alignment="CENTER" VBox.vgrow="NEVER">
          <VBox.margin>
-            <Insets/>
+            <Insets />
          </VBox.margin>
-         <Region HBox.hgrow="ALWAYS"/>
-         <Button id="GameEndLoad" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                 mnemonicParsing="false" styleClass="GameEndButtons" text="Load Save" textAlignment="CENTER"
-                 textOverrun="CLIP">
+         <Region HBox.hgrow="ALWAYS" />
+         <Button id="GameEndLoad" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openSaveMenu" styleClass="GameEndButtons" text="Load Save" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
-               <Insets bottom="20.0" top="20.0"/>
+               <Insets bottom="20.0" top="20.0" />
             </HBox.margin>
          </Button>
-         <Region HBox.hgrow="ALWAYS"/>
-         <Button id="GameEndNewGame" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                 mnemonicParsing="false" styleClass="GameEndButtons" text="New Game" textAlignment="CENTER"
-                 textOverrun="CLIP">
+         <Region HBox.hgrow="ALWAYS" />
+         <Button id="GameEndNewGame" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openNewGameMenu" styleClass="GameEndButtons" text="New Game" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
-               <Insets bottom="20.0" top="20.0"/>
+               <Insets bottom="20.0" top="20.0" />
             </HBox.margin>
          </Button>
-         <Region HBox.hgrow="ALWAYS"/>
+         <Region HBox.hgrow="ALWAYS" />
       </HBox>
       <HBox id="GameEndQuitContainer" alignment="CENTER">
-         <Button id="GameEndQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                 mnemonicParsing="false" styleClass="GameEndButtons" text="Quit" textAlignment="CENTER"
-                 textOverrun="CLIP">
+         <Button id="GameEndQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameCombatMenu" styleClass="GameEndButtons" text="Quit" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
-               <Insets bottom="10.0" top="10.0"/>
+               <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
          </Button>
       </HBox>
-      <Region fx:id="GameEndFooter" prefHeight="50.0" VBox.vgrow="ALWAYS"/>
+      <Region fx:id="GameEndFooter" prefHeight="50.0" VBox.vgrow="ALWAYS" />
    </VBox>
-   <Region fx:id="GameEndRight" prefWidth="50.0"/>
+   <Region fx:id="GameEndRight" prefWidth="50.0" />
 </HBox>
