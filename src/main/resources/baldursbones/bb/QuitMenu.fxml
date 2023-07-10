@@ -8,58 +8,50 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<HBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <Region fx:id="QuitMenuLeft" prefWidth="50.0"/>
-   <VBox id="QuitMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
-         minWidth="-Infinity">
-      <Region fx:id="QuitMenuHeader" prefHeight="50.0"/>
+<HBox xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.QuitPopupController">
+   <Region fx:id="QuitMenuLeft" prefWidth="50.0" />
+   <VBox id="QuitMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+      <Region fx:id="QuitMenuHeader" prefHeight="50.0" />
       <HBox id="QuitTitleContainer" alignment="CENTER">
          <VBox.margin>
-            <Insets/>
+            <Insets />
          </VBox.margin>
-         <Region fx:id="QuitTitleLeft" minWidth="30.0"/>
-         <Label id="QuitTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                text="Are you sure you want to quit?" textAlignment="CENTER" textOverrun="CLIP">
+         <Region fx:id="QuitTitleLeft" minWidth="30.0" />
+         <Label id="QuitTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Are you sure you want to quit?" textAlignment="CENTER" textOverrun="CLIP">
             <font>
-               <Font size="24.0"/>
+               <Font size="24.0" />
             </font>
             <HBox.margin>
-               <Insets/>
+               <Insets />
             </HBox.margin>
             <padding>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
             </padding>
          </Label>
-         <Region fx:id="QuitTitleRight" minWidth="30.0"/>
+         <Region fx:id="QuitTitleRight" minWidth="30.0" />
       </HBox>
       <HBox id="QuitButtonsContainer" alignment="CENTER" VBox.vgrow="ALWAYS">
-         <Region HBox.hgrow="ALWAYS"/>
-         <Button id="CancelQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                 mnemonicParsing="false" styleClass="QuitButton" text="Cancel Quit" textAlignment="CENTER"
-                 textOverrun="CLIP">
+         <Region HBox.hgrow="ALWAYS" />
+         <Button id="CancelQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#cancelQuit" styleClass="QuitButton" text="Cancel Quit" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
-               <Insets bottom="20.0" top="20.0"/>
+               <Insets bottom="20.0" top="20.0" />
             </HBox.margin>
          </Button>
-         <Region HBox.hgrow="ALWAYS"/>
-         <Button id="MenuQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false"
-                 styleClass="QuitButton" text="Return to Menu" textAlignment="CENTER" textOverrun="CLIP">
+         <Region HBox.hgrow="ALWAYS" />
+         <Button id="MenuQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#returnToMainMenu" styleClass="QuitButton" text="Return to Menu" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
-               <Insets bottom="20.0" top="20.0"/>
+               <Insets bottom="20.0" top="20.0" />
             </HBox.margin>
          </Button>
-         <Region HBox.hgrow="ALWAYS"/>
-         <Button id="DesktopQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                 mnemonicParsing="false" styleClass="QuitButton" text="Quit to Desktop" textAlignment="CENTER"
-                 textOverrun="CLIP">
+         <Region HBox.hgrow="ALWAYS" />
+         <Button id="DesktopQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#quitGame" styleClass="QuitButton" text="Quit to Desktop" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
-               <Insets bottom="20.0" top="20.0"/>
+               <Insets bottom="20.0" top="20.0" />
             </HBox.margin>
          </Button>
-         <Region HBox.hgrow="ALWAYS"/>
+         <Region HBox.hgrow="ALWAYS" />
       </HBox>
-      <Region fx:id="QuitMenuFooter" prefHeight="50.0"/>
+      <Region fx:id="QuitMenuFooter" prefHeight="50.0" />
    </VBox>
-   <Region fx:id="QuitMenuRight" prefWidth="50.0"/>
+   <Region fx:id="QuitMenuRight" prefWidth="50.0" />
 </HBox>
