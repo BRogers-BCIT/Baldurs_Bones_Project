@@ -64,8 +64,14 @@ public class SettingsMenuController {
         // Get the controller for the new menu and pass the current menu layout to the class.
         SaveMenuController controller = loader.getController();
         controller.getContainerElement(container);
-        // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        // If the current container is the main menu, load scene into correct grid position.
+        if (container.getId().equals("mainMenuGrid")) {
+            GridPane.setConstraints(root, 0, 2);
+        } else {
+            // Load scene into location menu position.
+            GridPane.setConstraints(root, 2, 2);
+        }
+        // Add new menu to the layout.
         container.getChildren().add(root);
         container.getChildren().remove(settingsMenu);
     }
@@ -83,8 +89,14 @@ public class SettingsMenuController {
         // Get the controller for the new menu and pass the current menu layout to the class.
         GameInfoController controller = loader.getController();
         controller.getContainerElement(container);
-        // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        // If the current container is the main menu, load scene into correct grid position.
+        if (container.getId().equals("mainMenuGrid")) {
+            GridPane.setConstraints(root, 0, 2);
+        } else {
+            // Load scene into location menu position.
+            GridPane.setConstraints(root, 2, 2);
+        }
+        // Add new menu to the layout.
         container.getChildren().add(root);
         container.getChildren().remove(settingsMenu);
     }
