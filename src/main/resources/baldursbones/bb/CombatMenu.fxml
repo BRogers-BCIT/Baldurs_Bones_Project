@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Rectangle2D?>
-<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.Region?>
@@ -33,25 +29,6 @@
    <Region fx:id="CombatHeaderMiddleOne" GridPane.columnIndex="1" />
    <Region fx:id="CombatHeaderMiddleTwo" GridPane.columnIndex="2" />
    <Region fx:id="CombatHeaderMiddleThree" GridPane.columnIndex="3" />
-   <Button id="SettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.columnIndex="4" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
-      <GridPane.margin>
-         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-      </GridPane.margin>
-      <graphic>
-         <ImageView id="SettingsIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-            <viewport>
-               <Rectangle2D />
-            </viewport>
-            <cursor>
-               <Cursor fx:constant="DEFAULT" />
-            </cursor>
-            <Image url="@settings icon.png" />
-         </ImageView>
-      </graphic>
-      <cursor>
-         <Cursor fx:constant="DEFAULT" />
-      </cursor>
-   </Button>
    <Region fx:id="CombatHeaderRight" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="4" />
    <Region fx:id="CombatLeftOne" GridPane.rowIndex="1" />
    <VBox id="CombatDescriptionContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
