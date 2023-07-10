@@ -98,11 +98,12 @@ public class SettingsMenuController {
 
 
 
-    /** Takes the parent element that the layout will be displayed in and saves it.
+    /** Takes the parent element that the layout will be displayed in and saves it. Disables settings button on menu.
      *
      * @param parentGrid The parent element of the settings menu layout.
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;
+        container.lookup("#openSettingsButton").setDisable(false);
     }
 }

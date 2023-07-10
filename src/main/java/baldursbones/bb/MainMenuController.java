@@ -119,7 +119,6 @@ public class MainMenuController implements Initializable {
         newGameButton.setDisable(true);
         savedGamesButton.setDisable(true);
         gameInfoButton.setDisable(true);
-        openSettingsButton.setDisable(true);
     }
 
     @Override

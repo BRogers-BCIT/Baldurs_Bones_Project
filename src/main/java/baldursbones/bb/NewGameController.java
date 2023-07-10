@@ -24,7 +24,6 @@ public class NewGameController {
     @FXML
     public void closeNewGameMenu() {
         // Set main menu buttons to be clickable.
-        container.lookup("#openSettingsButton").setDisable(false);
         container.lookup("#newGameButton").setDisable(false);
         container.lookup("#savedGamesButton").setDisable(false);
         container.lookup("#gameInfoButton").setDisable(false);
