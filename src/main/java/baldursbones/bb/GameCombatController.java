@@ -4,7 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 
 /**
- * Map Info Controller.
+ * Game Combat Controller.
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1

@@ -22,7 +22,7 @@ public class LocationMenuController implements Initializable {
     // Save an FXML file to be loaded into the scene.
     private Parent root;
 
-    // The layout object for the main menu that new menus are loaded into.
+    // The layout object for the location menu that new menus are loaded into.
     @FXML
     private GridPane locationMenuGrid;
 
@@ -48,7 +48,7 @@ public class LocationMenuController implements Initializable {
 
 
     /**
-     * Load the settings menu document, display it in the center of the screen, and disable all main menu buttons.
+     * Load the settings menu document, display it in the center of the screen, and disable all location menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -57,7 +57,7 @@ public class LocationMenuController implements Initializable {
         // Load the settings menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SettingsMenu.fxml"));
         root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
+        // Get the controller for the new menu and pass the location menu layout to the class.
         SettingsMenuController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
@@ -77,7 +77,7 @@ public class LocationMenuController implements Initializable {
         // Load the new game menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CharacterInfoMenu.fxml"));
         root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
+        // Get the controller for the new menu and pass the location menu layout to the class.
         CharacterInfoController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
@@ -96,7 +96,7 @@ public class LocationMenuController implements Initializable {
         // Load the saved games menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameMapMenu.fxml"));
         root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
+        // Get the controller for the new menu and pass the location menu layout to the class.
         MapInfoController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
@@ -115,7 +115,7 @@ public class LocationMenuController implements Initializable {
         // Load the game info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameEndMenu.fxml"));
         root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
+        // Get the controller for the new menu and pass the location menu layout to the class.
         EndGameController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
@@ -134,7 +134,7 @@ public class LocationMenuController implements Initializable {
         // Load the game info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CombatMenu.fxml"));
         root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
+        // Get the controller for the new menu and pass the location menu layout to the class.
         GameCombatController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
@@ -143,7 +143,7 @@ public class LocationMenuController implements Initializable {
         disableMenuButtons();
     }
 
-    // Disables the main menu buttons while a different menu is open.
+    // Disables the location menu buttons while a different menu is open.
     private void disableMenuButtons() {
         startFightButton.setDisable(true);
         viewCharacterButton.setDisable(true);

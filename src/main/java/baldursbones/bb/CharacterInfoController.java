@@ -11,10 +11,10 @@ import javafx.scene.layout.GridPane;
  */
 public class CharacterInfoController {
 
-    // The parent element the game info menu is displayed in.
+    // The parent element the character info menu is displayed in.
     private GridPane container;
 
-    // The layout element for the game info menu.
+    // The layout element for the character info menu.
     @FXML
     private GridPane characterInfoGrid;
 
@@ -28,7 +28,7 @@ public class CharacterInfoController {
         container.lookup("#locationViewStats").setDisable(false);
         container.lookup("#locationViewMap").setDisable(false);
         container.lookup("#endGameTest").setDisable(false);
-        // Remove the game info menu from the location menu window.
+        // Remove the character info menu from the location menu window.
         container.getChildren().remove(characterInfoGrid);
     }
 
