@@ -3,11 +3,13 @@ package baldursbones.bb;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -53,12 +55,16 @@ public class SaveMenuController {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LocationMenu.fxml")));
         // Get the stage by tracing the source of the click event -> scene -> stage.
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        // Get the size of the users screen to set the size and with of the game window.
+        Rectangle2D userScreen = Screen.getPrimary().getBounds();
         // Create a scene with the loaded Game Location menu document.
-        Scene scene = new Scene(root);
+        // Load the scene with the correct size and width found above.
+        Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - 70);
         stage.setScene(scene);
-        // Center stage to the middle of the screen and prevent resizing.
+        // Center stage to the middle of the screen, prevent resizing, and set title.
         stage.centerOnScreen();
         stage.setResizable(false);
+        stage.setTitle("Baldur's Bones");
         // Display the window.
         stage.show();
     }
