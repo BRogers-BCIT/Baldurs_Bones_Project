@@ -47,7 +47,7 @@ public class NewGameController {
             container.lookup("#newGameButton").setDisable(false);
             container.lookup("#savedGamesButton").setDisable(false);
             container.lookup("#gameInfoButton").setDisable(false);
-            container.lookup("#settingsButton").setDisable(false);
+            container.lookup("#openSettingsButton").setDisable(false);
             // Remove the new game menu from the main menu window.
             container.getChildren().remove(newGameMenu);
         } else {
