@@ -34,7 +34,7 @@ import java.util.Scanner;
  */
 public class SaveMenuController implements Initializable {
     // Static location of the save files to read from.
-    private static final File SAVE_FILES = new File("src/main/resources/baldursbones/bb/SavedGames.txt");
+    private static final File SAVE_FILES = new File("src/main/resources/baldursbones/bb/SaveFiles.txt");
 
     // Define the amount of pixels to leave of the top of the screen for the anchor bar.
     private static final int ANCHOR_BAR_SIZE = 70;
@@ -142,7 +142,7 @@ public class SaveMenuController implements Initializable {
         // Try to read the save files from the save files text document.
         try {
             Scanner readSaves = new Scanner(SAVE_FILES);
-            while (readSaves.hasNext()) {
+            while (readSaves.hasNextLine()) {
                 String fileName = readSaves.nextLine();
                 String characterName = readSaves.nextLine();
                 String saveTime = readSaves.nextLine();
