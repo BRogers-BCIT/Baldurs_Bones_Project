@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<HBox fx:id="saveGameMenu" alignment="CENTER" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SaveMenuController">
+<HBox fx:id="saveGameMenu" alignment="CENTER" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SaveMenuController">
    <Region fx:id="SaveMenuLeft" prefWidth="50.0" />
    <VBox id="SaveMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
       <Region fx:id="SaveMenuHeader" minHeight="30.0" />
@@ -36,11 +42,11 @@
          </Region>
       </HBox>
       <Region fx:id="SaveTitleBottom" minHeight="30.0" VBox.vgrow="ALWAYS" />
-      <TableView id="SavedFilesTable" fx:id="saves" focusTraversable="false" maxHeight="200.0" VBox.vgrow="NEVER">
+      <TableView id="SavedFilesTable" fx:id="saveFileTable" focusTraversable="false" maxHeight="200.0" VBox.vgrow="NEVER">
          <columns>
-            <TableColumn id="SavedTableFileName" fx:id="saveName" editable="false" maxWidth="-Infinity" minWidth="136.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="File Name" />
-            <TableColumn id="SavedTableCharacterName" fx:id="characterName" editable="false" maxWidth="-Infinity" minWidth="136.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="Character" />
-            <TableColumn id="SavedTableSaveTime" fx:id="saveTime" editable="false" maxWidth="-Infinity" minWidth="135.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="Save Time" />
+            <TableColumn id="SavedTableFileName" fx:id="nameColumn" editable="false" maxWidth="-Infinity" minWidth="136.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="File Name" />
+            <TableColumn id="SavedTableCharacterName" fx:id="characterColumn" editable="false" maxWidth="-Infinity" minWidth="136.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="Character" />
+            <TableColumn id="SavedTableSaveTime" fx:id="timeColumn" editable="false" maxWidth="-Infinity" minWidth="135.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="Save Time" />
          </columns>
          <VBox.margin>
             <Insets left="20.0" right="20.0" />
