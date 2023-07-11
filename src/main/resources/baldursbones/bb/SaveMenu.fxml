@@ -76,7 +76,7 @@
                <Insets bottom="10.0" right="10.0" top="10.0" />
             </HBox.margin>
          </Label>
-         <TextField id="SaveFileInputField" HBox.hgrow="NEVER">
+         <TextField id="SaveFileInputField" fx:id="saveNameField" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" right="50.0" top="10.0" />
             </HBox.margin>
@@ -93,7 +93,7 @@
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <Button id="LoadSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openGameWindow" styleClass="SaveMenuButton" text="Load Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="LoadSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#loadSaveFile" styleClass="SaveMenuButton" text="Load Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" left="100.0" right="50.0" top="10.0" />
             </HBox.margin>
