@@ -10,6 +10,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -20,6 +21,7 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -61,6 +63,10 @@ public class SaveMenuController implements Initializable {
     // The table column that contains the save file times.
     @FXML
     private TableColumn<SaveFile, String> timeColumn;
+
+    // Button that lets players create new saves. Disabled on main menu.
+    @FXML
+    private Button addNewSave;
 
     // An array of the save file information.
     private ObservableList<SaveFile> saveFiles;
@@ -120,6 +126,26 @@ public class SaveMenuController implements Initializable {
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;
+        // If the container is in the main menu, prevent a save.
+        if (container.getId().equals("mainMenuGrid")) {
+            addNewSave.setDisable(true);
+        }
+    }
+
+    public void addNewSaveFile() {
+        try {
+            // Open the "save files" file with a writer that appends saves to the end of the file.
+            FileWriter writeFile = new FileWriter(SAVE_FILES, true);
+            writeFile.write("Temp Name" + System.getProperty( "line.separator" ));
+            writeFile.write("Temp Char" + System.getProperty( "line.separator" ));
+            writeFile.write(java.time.LocalDate.now() + System.getProperty( "line.separator" ));
+            writeFile.write("Temp Location" + System.getProperty( "line.separator" ));
+            writeFile.close();
+            populateTable();
+        } catch (IOException e) {
+            // Catch any issues opening and writing in the file.
+            throw new RuntimeException(e);
+        }
     }
 
     // Populate the saved file table with the save file object info.
