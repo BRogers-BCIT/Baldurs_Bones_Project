@@ -128,6 +128,14 @@ public class MainMenuController implements Initializable {
         openSettingsButton.setDisable(true);
     }
 
+    /** Passes the main menu grid object to another controller.
+     *
+     * @return the grid pane object for the main menu layout
+     */
+    public GridPane getMainMenuGrid() {
+        return mainMenuGrid;
+    }
+
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
     }

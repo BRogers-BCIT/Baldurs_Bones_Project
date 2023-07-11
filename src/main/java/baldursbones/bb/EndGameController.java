@@ -13,7 +13,7 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
+
 
 /**
  * End Game Controller.
@@ -36,13 +36,17 @@ public class EndGameController {
     /**
      * Opens the Game Location window (main window for gameplay) in place of the current scene.
      *
-     * @param event the event object created by clicking the load game button
+     * @param event the event object created by clicking the quit button
      * @throws IOException if the FXML document being loaded does not exist
      */
     @FXML
     public void closeGameCombatMenu(final ActionEvent event) throws IOException {
-        // Load the Game Location menu FXML document.
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
+        // Load the new game menu FXML document into a root object.
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+        Parent root = mainLoader.load();
+        // Get the controller for the main menu and save the grid pane object from the layout.
+        MainMenuController controller = mainLoader.getController();
+        container = controller.getMainMenuGrid();
         // Get the stage by tracing the source of the click event -> scene -> stage.
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         // Get the size of the users screen to set the size and with of the game window.
@@ -60,22 +64,23 @@ public class EndGameController {
     }
 
     /**
-     * Load the save menu document, remove the end game menu scene and display the load saves menu.
+     * Open a new main menu scene and open the saved games menu within the scene.
      *
+     * @param event the event object created by clicking the load game button
      * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
-    public void openSaveMenu() throws IOException {
+    public void openSaveMenu(final ActionEvent event) throws IOException {
+        closeGameCombatMenu(event);
         // Load the new game menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
         Parent root = loader.load();
-        // Get the controller for the new menu and pass the current menu layout to the class.
+        // Get the controller for the new menu and pass the main menu layout to the class.
         SaveMenuController controller = loader.getController();
         controller.getContainerElement(container);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 2, 2);
+        GridPane.setConstraints(root, 0, 2);
         container.getChildren().add(root);
-        container.getChildren().remove(endGameBox);
     }
 
     /**
