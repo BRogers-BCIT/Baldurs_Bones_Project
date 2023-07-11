@@ -24,6 +24,10 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.Scanner;
@@ -152,12 +156,56 @@ public class SaveMenuController implements Initializable {
                 writeFile.close();
                 // Get the new save file information and populate the table.
                 getSavedInfo();
-                populateTable();
             } catch (IOException e) {
                 // Catch any issues opening and writing in the file.
                 throw new RuntimeException(e);
             }
         }
+    }
+
+    /**
+     * Finds the selected row, deletes that row from the saved files text document, and updates the save files table.
+     * ** Need to implement way to find the saved game info file and delete it as well **
+     *
+     * @throws IOException if the files to be read or written to cannot be found
+     */
+    public void deleteSaveFile() throws IOException {
+        // Get the save file row that is currently selected and save the file name.
+        SaveFile saveFile = saveFileTable.getSelectionModel().getSelectedItem();
+        String deleteFileName = saveFile.getFileName();
+        // Open a scanner to read the old saves file
+        Scanner readSaves = new Scanner(SAVE_FILES);
+        // Create a new file to replace the old saves file and open it in a writer.
+        File newSaves = new File("SaveFiles.txt");
+        FileWriter writeSaves = new FileWriter(newSaves, false);
+        // Iterate through save file
+        while (readSaves.hasNextLine()) {
+            // Get the next file name
+            String currentLine = readSaves.nextLine();
+            // If you find the file name, skip writing that section and record the current line.
+            if (currentLine.equals(deleteFileName)) {
+                for (int i = 1; i < 4; i++) {
+                   readSaves.nextLine();
+                }
+            } else {
+                // Write the file name
+                writeSaves.write(currentLine + System.getProperty("line.separator"));
+                // If it is not the file to delete then write it to the new save file.
+                for (int i = 1; i < 4; i++) {
+                    currentLine = readSaves.nextLine();
+                    writeSaves.write(currentLine + System.getProperty("line.separator"));
+                }
+            }
+        }
+        // Close the reader and the writer.
+        readSaves.close();
+        writeSaves.close();
+        // Replace the old saves file with the new saves file.
+        Path newSave = Paths.get("SaveFiles.txt");
+        Path oldSave = Paths.get("src/main/resources/baldursbones/bb");
+        Files.move(newSave, oldSave.resolve(newSave.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+        // Update the table
+        getSavedInfo();
     }
 
     /**
@@ -167,7 +215,7 @@ public class SaveMenuController implements Initializable {
      * ** Needs a game method to pass the info from the save game info file to. **
      *
      * @param event the event object created by clicking the load game button
-     * @throws IOException if the FXML document being loaded does not exist
+     * @throws IOException if the text document being loaded does not exist
      */
     public void loadSaveFile(final ActionEvent event) throws IOException {
         // Get the save file row that is currently selected.
@@ -207,6 +255,7 @@ public class SaveMenuController implements Initializable {
             // Catch any errors reading the text file
             throw new RuntimeException(e);
         }
+        populateTable();
     }
 
     /**
@@ -220,6 +269,5 @@ public class SaveMenuController implements Initializable {
         saveFiles = FXCollections.observableArrayList();
         // Try to read the save files from the save files text document and update the saves table
         getSavedInfo();
-        populateTable();
     }
 }

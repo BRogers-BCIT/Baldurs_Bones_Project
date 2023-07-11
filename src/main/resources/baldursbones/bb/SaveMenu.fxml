@@ -105,7 +105,7 @@
             </HBox.margin>
          </Button>
          <Region HBox.hgrow="ALWAYS" />
-         <Button id="DeleteSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="SaveMenuButton" text="Delete Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="DeleteSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#deleteSaveFile" styleClass="SaveMenuButton" text="Delete Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" left="60.0" right="70.0" top="10.0" />
             </HBox.margin>
