@@ -10,9 +10,9 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -64,9 +64,9 @@ public class SaveMenuController implements Initializable {
     @FXML
     private TableColumn<SaveFile, String> timeColumn;
 
-    // Button that lets players create new saves. Disabled on main menu.
+    // The text field for the user to enter the save name into.
     @FXML
-    private Button addNewSave;
+    private TextField saveNameField;
 
     // An array of the save file information.
     private ObservableList<SaveFile> saveFiles;
@@ -126,26 +126,58 @@ public class SaveMenuController implements Initializable {
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;
+    }
+
+    /**
+     * Writes a new set of save file information to the bottom of the save file document.
+     * Will not create a new save on the main menu.
+     * ** Needs code to get game the info and make a new save info file. **
+     * ** Needs FXMl document area to if display saving is unavailable **
+     *
+     * @throws RuntimeException if the saved files text document cannot be opened
+     */
+    public void addNewSaveFile() {
         // If the container is in the main menu, prevent a save.
         if (container.getId().equals("mainMenuGrid")) {
-            addNewSave.setDisable(true);
+            // ** TEMP CHECK **
+            System.out.println("No Saving Here. TEMP");
+        } else {
+            try {
+                // Open the "save files" file with a writer that appends saves to the end of the file.
+                FileWriter writeFile = new FileWriter(SAVE_FILES, true);
+                writeFile.write(saveNameField.getText() + System.getProperty("line.separator"));
+                writeFile.write("Temp Char" + System.getProperty("line.separator"));
+                writeFile.write(java.time.LocalDate.now() + System.getProperty("line.separator"));
+                writeFile.write("Temp Location" + System.getProperty("line.separator"));
+                writeFile.close();
+                // Get the new save file information and populate the table.
+                getSavedInfo();
+                populateTable();
+            } catch (IOException e) {
+                // Catch any issues opening and writing in the file.
+                throw new RuntimeException(e);
+            }
         }
     }
 
-    public void addNewSaveFile() {
-        try {
-            // Open the "save files" file with a writer that appends saves to the end of the file.
-            FileWriter writeFile = new FileWriter(SAVE_FILES, true);
-            writeFile.write("Temp Name" + System.getProperty( "line.separator" ));
-            writeFile.write("Temp Char" + System.getProperty( "line.separator" ));
-            writeFile.write(java.time.LocalDate.now() + System.getProperty( "line.separator" ));
-            writeFile.write("Temp Location" + System.getProperty( "line.separator" ));
-            writeFile.close();
-            populateTable();
-        } catch (IOException e) {
-            // Catch any issues opening and writing in the file.
-            throw new RuntimeException(e);
-        }
+    /**
+     * Opens the SaveFile object and reads its data to be passed to the game.
+     * Then it opens the Game Location window (main window for gameplay) in place of the current scene.
+     * ** Needs a save game info files to read from using the get data file. **
+     * ** Needs a game method to pass the info from the save game info file to. **
+     *
+     * @param event the event object created by clicking the load game button
+     * @throws IOException if the FXML document being loaded does not exist
+     */
+    public void loadSaveFile(final ActionEvent event) throws IOException {
+        // Get the save file row that is currently selected.
+        SaveFile saveFile = saveFileTable.getSelectionModel().getSelectedItem();
+        // ** TEMP ** Print the save file data.
+        System.out.println(saveFile.getFileName());
+        System.out.println(saveFile.getCharacterName());
+        System.out.println(saveFile.getSaveTime());
+        System.out.println(saveFile.getDataFile());
+        openGameWindow(event);
     }
 
     // Populate the saved file table with the save file object info.
@@ -156,18 +188,14 @@ public class SaveMenuController implements Initializable {
         saveFileTable.setItems(saveFiles);
     }
 
-    /**
-     * When the saved files menu is opened create an array of objects representing the save file data in memory.
-     *
-     * @param url            N/A
-     * @param resourceBundle N/A
-     */
-    @Override
-    public void initialize(final URL url, final ResourceBundle resourceBundle) {
-        saveFiles = FXCollections.observableArrayList();
-        // Try to read the save files from the save files text document.
+    // Creates an array of objects representing the save file data in memory.
+    private void getSavedInfo() {
         try {
             Scanner readSaves = new Scanner(SAVE_FILES);
+            // Clear any old save file info from the save file array.
+            saveFiles.clear();
+            // For each set of 4 lines (save info length),
+            // Record those lines to an object and add it to the save file array.
             while (readSaves.hasNextLine()) {
                 String fileName = readSaves.nextLine();
                 String characterName = readSaves.nextLine();
@@ -179,6 +207,19 @@ public class SaveMenuController implements Initializable {
             // Catch any errors reading the text file
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * When the saved files menu is opened, get the saved data and update the table.
+     *
+     * @param url            N/A
+     * @param resourceBundle N/A
+     */
+    @Override
+    public void initialize(final URL url, final ResourceBundle resourceBundle) {
+        saveFiles = FXCollections.observableArrayList();
+        // Try to read the save files from the save files text document and update the saves table
+        getSavedInfo();
         populateTable();
     }
 }
