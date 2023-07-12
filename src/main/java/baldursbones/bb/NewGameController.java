@@ -91,7 +91,7 @@ public class NewGameController {
     public void openGameWindow(final ActionEvent event) throws IOException {
         // Load the Game Location menu FXML document.
         // Load the saved games menu FXML document into a root object.
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LocationMenu.fxml"));
         Parent root = loader.load();
         // Get the stage by tracing the source of the click event -> scene -> stage.
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
