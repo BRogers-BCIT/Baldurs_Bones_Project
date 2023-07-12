@@ -165,6 +165,7 @@ public class SaveMenuController implements Initializable {
                     }
                 }
             }
+            readSaves.close();
         }
         return enableSave;
     }
@@ -186,14 +187,18 @@ public class SaveMenuController implements Initializable {
                 writeFile.write(saveNameField.getText() + System.getProperty("line.separator"));
                 writeFile.write("Temp Char" + System.getProperty("line.separator"));
                 writeFile.write(java.time.LocalDate.now() + System.getProperty("line.separator"));
-                writeFile.write("Temp Location" + System.getProperty("line.separator"));
+                // Define the file name as saveFileName + Info.txt.
+                writeFile.write(saveNameField.getText() + "Info.txt" + System.getProperty("line.separator"));
                 writeFile.close();
+                // Create the associated info file.
+                createInfoFile(saveNameField.getText());
                 // Get the new save file information and populate the table.
                 getSavedInfo();
             } catch (IOException e) {
                 // Catch any issues opening and writing in the file.
                 throw new RuntimeException(e);
             }
+
         }
     }
 
@@ -206,23 +211,31 @@ public class SaveMenuController implements Initializable {
     public void deleteSaveFile() throws IOException {
         // Get the save file row that is currently selected and save the file name.
         SaveFile saveFile = saveFileTable.getSelectionModel().getSelectedItem();
-        String deleteFileName = saveFile.getFileName();
-        // Open a scanner to read the old saves file
-        Scanner readSaves = new Scanner(SAVE_FILES);
-        // Create a new file to replace the old saves file and open it in a writer.
-        File newSaves = new File("SaveFiles.txt");
-        FileWriter writeSaves = new FileWriter(newSaves, false);
-        // Call the file updater method.
-        updateSavesFile(writeSaves, readSaves, deleteFileName);
-        // Close the reader and the writer.
-        readSaves.close();
-        writeSaves.close();
-        // Replace the old saves file with the new saves file.
-        Path newSave = Paths.get("SaveFiles.txt");
-        Path oldSave = Paths.get("src/main/resources/baldursbones/bb");
-        Files.move(newSave, oldSave.resolve(newSave.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-        // Update the table
-        getSavedInfo();
+        if (saveFile != null) {
+            String deleteFileName = saveFile.getFileName();
+            // Call the method to delete the associated info file
+            deleteInfoFile(deleteFileName);
+            // Open a scanner to read the old saves file.
+            Scanner readSaves = new Scanner(SAVE_FILES);
+            // Create a new file to replace the old saves file and open it in a writer.
+            File newSaves = new File("SaveFiles.txt");
+            FileWriter writeSaves = new FileWriter(newSaves, false);
+            // Call the file updater method.
+            updateSavesFile(writeSaves, readSaves, deleteFileName);
+            // Close the reader and the writer.
+            readSaves.close();
+            writeSaves.close();
+            // Replace the old saves file with the new saves file.
+            Path newSave = Paths.get("SaveFiles.txt");
+            Path oldSave = Paths.get("src/main/resources/baldursbones/bb");
+            Files.move(newSave, oldSave.resolve(newSave.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+            // Update the table with the new saves text document.
+            getSavedInfo();
+        } else {
+            // ** TEMP OUTPUT ** Put warning element into display window later.
+            // Display a warning to terminal if the user attempts to delete a file without selecting one.
+            System.out.println("Warning: Deleting file without file selected.");
+        }
     }
 
     // Reads through the old save file and creates a new one with all the saves except for the deleted one.
@@ -238,7 +251,7 @@ public class SaveMenuController implements Initializable {
                     readSaves.nextLine();
                 }
             } else {
-                // Write the file name
+                // Write the file name to the file.
                 writeSaves.write(currentLine + System.getProperty("line.separator"));
                 // If it is not the file to delete then write it to the new save file.
                 for (int i = 1; i < SAVE_FILE_LINES; i++) {
@@ -261,19 +274,29 @@ public class SaveMenuController implements Initializable {
     public void loadSaveFile(final ActionEvent event) throws IOException {
         // Get the save file row that is currently selected.
         SaveFile saveFile = saveFileTable.getSelectionModel().getSelectedItem();
-        // ** TEMP ** Print the save file data.
-        System.out.println(saveFile.getFileName());
-        System.out.println(saveFile.getCharacterName());
-        System.out.println(saveFile.getSaveTime());
-        System.out.println(saveFile.getDataFile());
+        // Get the matching info file name and load it into a file object.
+        String fileName = saveFile.getDataFile();
+        File infoFile = new File("src/main/resources/baldursbones/bb/" + fileName);
+        // Open the info file in a scanner for reading.
+        Scanner infoReader = new Scanner(infoFile);
+        // For each info element in the info file print it to screen for testing.
+        for (int infoElement = 1; infoElement <= 10; infoElement++) {
+            // ** TEMP ** Print the save file data instead of passing it.
+            System.out.println(infoReader.nextLine());
+        }
+        // Close the file reader
+        infoReader.close();
+        // Call the method to open a new game
         openGameWindow(event);
     }
 
     // Populate the saved file table with the save file object info.
     private void populateTable() {
+        // Set the columns to read from an associated field in the saved file object class.
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("fileName"));
         characterColumn.setCellValueFactory(new PropertyValueFactory<>("characterName"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("saveTime"));
+        // Update the table with the save files array of objects.
         saveFileTable.setItems(saveFiles);
     }
 
@@ -292,11 +315,58 @@ public class SaveMenuController implements Initializable {
                 String saveFile = readSaves.nextLine();
                 saveFiles.add(new SaveFile(fileName, characterName, saveTime, saveFile));
             }
+            // Close the file reader
+            readSaves.close();
         } catch (FileNotFoundException e) {
             // Catch any errors reading the text file
             throw new RuntimeException(e);
         }
+        // Update the save files array and the save files table with the new saves.
         populateTable();
+    }
+
+    // Takes a save file name from a new save and makes an associated save info file.
+    private void createInfoFile(final String infoFileName) {
+        // Add the ending and extension to the file name;
+        String fileNameFormatted = infoFileName + "Info.txt";
+        // Define the file location
+        File infoFile = new File("src/main/resources/baldursbones/bb/" + fileNameFormatted);
+        try {
+            // Tries to create a file with the file name.
+            System.out.println("Created Info File: " + infoFile.createNewFile());
+        } catch (IOException e) {
+            // Catches any  errors creating the file.
+            throw new RuntimeException(e);
+        }
+        try {
+            // Create a writer object to fill the file with character info.
+            FileWriter writeFileInfo = new FileWriter(infoFile);
+            // Get values from the getContainerValues method.
+            // Write the values into the text file, one line per value.
+            writeFileInfo.write("Character Name" + System.getProperty("line.separator"));
+            writeFileInfo.write("Player Level" + System.getProperty("line.separator"));
+            writeFileInfo.write("Player Experience" + System.getProperty("line.separator"));
+            writeFileInfo.write("Player Health" + System.getProperty("line.separator"));
+            writeFileInfo.write("Player Location" + System.getProperty("line.separator"));
+            writeFileInfo.write("Player Add Ability" + System.getProperty("line.separator"));
+            writeFileInfo.write("Player Subtract Ability" + System.getProperty("line.separator"));
+            writeFileInfo.write("Player Re-Roll Ability" + System.getProperty("line.separator"));
+            writeFileInfo.write("Player Map" + System.getProperty("line.separator"));
+            writeFileInfo.write("Game Map" + System.getProperty("line.separator"));
+            writeFileInfo.close();
+        } catch (IOException e) {
+            // Catches any errors writing the info file.
+            throw new RuntimeException(e);
+        }
+    }
+
+    // Takes a save file name and deletes the associated info file.
+    private void deleteInfoFile(final String infoFileName) {
+        // Add the ending and extension to the file name.
+        String fileNameFormatted = "src/main/resources/baldursbones/bb/" + infoFileName + "Info.txt";
+        // Find the file and delete it if able.
+        File deleteFile = new File(fileNameFormatted);
+        System.out.println("Deleted File: " + deleteFile.delete());
     }
 
     /**
@@ -307,6 +377,7 @@ public class SaveMenuController implements Initializable {
      */
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
+        // Define the data type of the array of save file classes.
         saveFiles = FXCollections.observableArrayList();
         // Try to read the save files from the save files text document and update the saves table
         getSavedInfo();
