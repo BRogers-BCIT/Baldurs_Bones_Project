@@ -39,40 +39,43 @@ import java.util.Scanner;
  * @version Baldur's Bones v1.1
  */
 public class SaveMenuController implements Initializable {
-    // Static location of the save files to read from.
+    // Text File: The number of lines in the text file per save.
+    private static final int SAVE_FILE_LINES = 4;
+
+    // Text File: Static location of the save files to read from.
     private static final File SAVE_FILES = new File("src/main/resources/baldursbones/bb/SaveFiles.txt");
 
-    // Define the amount of pixels to leave of the top of the screen for the anchor bar.
+    // Constant: Define the amount of pixels to leave of the top of the screen for the anchor bar.
     private static final int ANCHOR_BAR_SIZE = 70;
 
-    // The parent element the saved games menu is displayed in.
+    // FXML Element: The parent element the saved games menu is displayed in.
     private GridPane container;
 
-    // The layout element for the saved games menu.
+    // FXML Element: The layout element for the saved games menu.
     @FXML
     private HBox saveGameMenu;
 
-    // The table that the save files are contained in.
+    // FXML Element: The table that the save files are contained in.
     @FXML
     private TableView<SaveFile> saveFileTable;
 
-    // The table column that contains the save file names.
+    // FXML Element: The table column that contains the save file names.
     @FXML
     private TableColumn<SaveFile, String> nameColumn;
 
-    // The table column that contains the save file character names.
+    // FXML Element: The table column that contains the save file character names.
     @FXML
     private TableColumn<SaveFile, String> characterColumn;
 
-    // The table column that contains the save file times.
+    // FXML Element: The table column that contains the save file times.
     @FXML
     private TableColumn<SaveFile, String> timeColumn;
 
-    // The text field for the user to enter the save name into.
+    // FXML Element: The text field for the user to enter the save name into.
     @FXML
     private TextField saveNameField;
 
-    // An array of the save file information.
+    // Array Variable: An array of the save file information.
     private ObservableList<SaveFile> saveFiles;
 
     /**
@@ -132,20 +135,51 @@ public class SaveMenuController implements Initializable {
         container = parentGrid;
     }
 
+    private boolean saveFileChecker() throws FileNotFoundException {
+        // Determines if saving is possible.
+        boolean enableSave = true;
+        // If the container is in the main menu, prevent a save.
+        if (container.getId().equals("mainMenuGrid")) {
+            // ** TEMP OUTPUT **
+            enableSave = false;
+            System.out.println("No Saving Here. TEMP");
+        } else {
+            // Find the name of the new save file and open the save files document.
+            String newSaveName = saveNameField.getText();
+            Scanner readSaves = new Scanner(SAVE_FILES);
+            // Iterate through the save file.
+            while (readSaves.hasNextLine()) {
+                // Get the next file name
+                String currentLine = readSaves.nextLine();
+                // If you find a matching file name, set enable save to false and break the loop.
+                if (currentLine.equals(newSaveName)) {
+                    // ** TEMP OUTPUT **
+                    // ** Possible set to overwrite by passing the name to the delete method. **
+                    enableSave = false;
+                    System.out.println("Save File Already Exists. TEMP");
+                    break;
+                } else {
+                    // If the save name does not match the new save name, then skip the lines for that save file.
+                    for (int i = 1; i < SAVE_FILE_LINES; i++) {
+                        readSaves.nextLine();
+                    }
+                }
+            }
+        }
+        return enableSave;
+    }
     /**
      * Writes a new set of save file information to the bottom of the save file document.
      * Will not create a new save on the main menu.
      * ** Needs code to get game the info and make a new save info file. **
      * ** Needs FXMl document area to if display saving is unavailable **
      *
+     * @throws FileNotFoundException if the saved files text document cannot be opened by the valid save checker
      * @throws RuntimeException if the saved files text document cannot be opened
      */
-    public void addNewSaveFile() {
-        // If the container is in the main menu, prevent a save.
-        if (container.getId().equals("mainMenuGrid")) {
-            // ** TEMP CHECK **
-            System.out.println("No Saving Here. TEMP");
-        } else {
+    public void addNewSaveFile() throws FileNotFoundException {
+        // Check that the container is not the main menu and the save file name is not repeated.
+        if (saveFileChecker()) {
             try {
                 // Open the "save files" file with a writer that appends saves to the end of the file.
                 FileWriter writeFile = new FileWriter(SAVE_FILES, true);
@@ -178,25 +212,8 @@ public class SaveMenuController implements Initializable {
         // Create a new file to replace the old saves file and open it in a writer.
         File newSaves = new File("SaveFiles.txt");
         FileWriter writeSaves = new FileWriter(newSaves, false);
-        // Iterate through save file
-        while (readSaves.hasNextLine()) {
-            // Get the next file name
-            String currentLine = readSaves.nextLine();
-            // If you find the file name, skip writing that section and record the current line.
-            if (currentLine.equals(deleteFileName)) {
-                for (int i = 1; i < 4; i++) {
-                   readSaves.nextLine();
-                }
-            } else {
-                // Write the file name
-                writeSaves.write(currentLine + System.getProperty("line.separator"));
-                // If it is not the file to delete then write it to the new save file.
-                for (int i = 1; i < 4; i++) {
-                    currentLine = readSaves.nextLine();
-                    writeSaves.write(currentLine + System.getProperty("line.separator"));
-                }
-            }
-        }
+        // Call the file updater method.
+        updateSavesFile(writeSaves, readSaves, deleteFileName);
         // Close the reader and the writer.
         readSaves.close();
         writeSaves.close();
@@ -206,6 +223,30 @@ public class SaveMenuController implements Initializable {
         Files.move(newSave, oldSave.resolve(newSave.getFileName()), StandardCopyOption.REPLACE_EXISTING);
         // Update the table
         getSavedInfo();
+    }
+
+    // Reads through the old save file and creates a new one with all the saves except for the deleted one.
+    private void updateSavesFile(final FileWriter writeSaves, final Scanner readSaves, final String deleteFileName)
+            throws IOException {
+        // Iterate through the save file.
+        while (readSaves.hasNextLine()) {
+            // Get the next file name
+            String currentLine = readSaves.nextLine();
+            // If you find the file name, skip writing that section and record the current line.
+            if (currentLine.equals(deleteFileName)) {
+                for (int i = 1; i < SAVE_FILE_LINES; i++) {
+                    readSaves.nextLine();
+                }
+            } else {
+                // Write the file name
+                writeSaves.write(currentLine + System.getProperty("line.separator"));
+                // If it is not the file to delete then write it to the new save file.
+                for (int i = 1; i < SAVE_FILE_LINES; i++) {
+                    currentLine = readSaves.nextLine();
+                    writeSaves.write(currentLine + System.getProperty("line.separator"));
+                }
+            }
+        }
     }
 
     /**
