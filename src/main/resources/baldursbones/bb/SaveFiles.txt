@@ -1,12 +1,12 @@
 File 1
 Wilfred
 2023-07-11
-Wilfred.txt
+WilfredInfo.txt
 File 2
-Mickey
+Delete File
 2013-08-22
-Micky.txt
-Temp Name
+DeleteFileInfo.txt
+TestLoader
 Temp Char
-2023-07-11
-Temp Location
+2023-07-12
+TestLoaderInfo.txt
