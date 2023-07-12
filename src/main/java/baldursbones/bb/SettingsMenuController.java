@@ -75,13 +75,13 @@ public class SettingsMenuController implements Initializable {
     public void closeSettings() {
         // Set the settings button to be clickable.
         container.lookup("#openSettingsButton").setDisable(false);
-        // If the current container is the main menu, enable main menu buttons.
+        // If: the current container is the main menu, enable main menu buttons.
         if (container.getId().equals("mainMenuGrid")) {
             container.lookup("#newGameButton").setDisable(false);
             container.lookup("#savedGamesButton").setDisable(false);
             container.lookup("#gameInfoButton").setDisable(false);
         } else {
-            // Set location menu buttons to be clickable.
+            // Else: Set location menu buttons to be clickable.
             container.lookup("#locationFightButton").setDisable(false);
             container.lookup("#locationViewStats").setDisable(false);
             container.lookup("#locationViewMap").setDisable(false);
@@ -174,28 +174,27 @@ public class SettingsMenuController implements Initializable {
      */
     @FXML
     public void toggleSoundSettings() {
-        // Swap the visibility of the sound settings menu and regular settings menu.
+        // Visibility setters for regular menu and sound settings menu
+        boolean soundSettingsVisibility;
+        boolean settingsVisibility;
+        // Set the visibility values for each menu.
         if (!soundSettingsOpen) {
-            closeMenuButton.setVisible(false);
-            openSaveMenuButton.setVisible(false);
-            openGameInfobutton.setVisible(false);
-            openSoundSettingsButton.setVisible(false);
-            quitGamebutton.setVisible(false);
-            musicCheckbox.setVisible(true);
-            effectsCheckbox.setVisible(true);
-            closeSoundSettingsButton.setVisible(true);
-            soundSettingsOpen = true;
+            settingsVisibility = false;
+            soundSettingsVisibility = true;
         } else {
-            closeMenuButton.setVisible(true);
-            openSaveMenuButton.setVisible(true);
-            openGameInfobutton.setVisible(true);
-            openSoundSettingsButton.setVisible(true);
-            quitGamebutton.setVisible(true);
-            musicCheckbox.setVisible(false);
-            effectsCheckbox.setVisible(false);
-            closeSoundSettingsButton.setVisible(false);
-            soundSettingsOpen = false;
+            settingsVisibility = true;
+            soundSettingsVisibility = false;
         }
+        // Update menu visibility based on visibility setter values.
+        closeMenuButton.setVisible(settingsVisibility);
+        openSaveMenuButton.setVisible(settingsVisibility);
+        openGameInfobutton.setVisible(settingsVisibility);
+        openSoundSettingsButton.setVisible(settingsVisibility);
+        quitGamebutton.setVisible(settingsVisibility);
+        musicCheckbox.setVisible(soundSettingsVisibility);
+        effectsCheckbox.setVisible(soundSettingsVisibility);
+        closeSoundSettingsButton.setVisible(soundSettingsVisibility);
+        soundSettingsOpen = soundSettingsVisibility;
     }
 
     /**
