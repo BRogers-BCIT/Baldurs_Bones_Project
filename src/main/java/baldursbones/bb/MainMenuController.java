@@ -19,32 +19,33 @@ import java.util.ResourceBundle;
  */
 public class MainMenuController implements Initializable {
 
-    // Contains the FXML file to be loaded into the scene.
+    // Variable: Contains a loaded FXML file to be passed to the stage.
     private Parent root;
 
-    // The layout object for the main menu that new menus are loaded into.
+    // FXML Element: The layout object for the main menu that new scenes are loaded into.
     @FXML
     private GridPane mainMenuGrid;
 
-    // Menu button that calls the open settings method.
+    // FXML Element: Menu button that calls the open settings menu method.
     @FXML
     private Button openSettingsButton;
 
-    // Menu button that calls the open new game method.
+    // FXML Element: Menu button that calls the open new game menu method.
     @FXML
     private Button newGameButton;
 
-    // Menu button that calls the open saved games method.
+    // FXML Element: Menu button that calls the open saved games menu method.
     @FXML
     private Button savedGamesButton;
 
-    // Settings button that calls the open game info method.
+    // FXML Element: Settings button that calls the open game info menu method.
     @FXML
     private Button gameInfoButton;
 
 
     /**
-     * Load the settings menu document, display it in the center of the screen, and disable all main menu buttons.
+     * Load the settings menu document and pass the parent container to its controller.
+     * Displays the scene it in the center of the grid (0, 2) and disables the background main menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -53,18 +54,19 @@ public class MainMenuController implements Initializable {
         // Load the settings menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SettingsMenu.fxml"));
         root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
+        // Get the controller for the new menu and pass the parent layout element to the class.
         SettingsMenuController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 0, 2);
         mainMenuGrid.getChildren().add(root);
+        // Disable the menu buttons in the background
         disableMenuButtons();
-        openSettingsButton.setDisable(true);
     }
 
     /**
-     * Load the new game menu document, display it in the center of the screen, and disable all main menu buttons.
+     * Load the game info menu document and pass the parent container to its controller.
+     * Displays the scene it in the center of the grid (0, 2) and disables the background main menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -73,17 +75,19 @@ public class MainMenuController implements Initializable {
         // Load the new game menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NewGameMenu.fxml"));
         root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
-        NewGameController controller = loader.getController();
+        // Get the controller for the new menu and pass the parent layout element to the class.
+        SettingsMenuController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 0, 2);
         mainMenuGrid.getChildren().add(root);
+        // Disable the menu buttons in the background
         disableMenuButtons();
     }
 
     /**
-     * Load the saved games menu document, display it in the center of the screen, and disable all main menu buttons.
+     * Load the saved games menu document and pass the parent container to its controller.
+     * Displays the scene it in the center of the grid (0, 2) and disables the background main menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -92,17 +96,19 @@ public class MainMenuController implements Initializable {
         // Load the saved games menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
         root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
-        SaveMenuController controller = loader.getController();
+        // Get the controller for the new menu and pass the parent layout element to the class.
+        SettingsMenuController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 0, 2);
         mainMenuGrid.getChildren().add(root);
+        // Disable the menu buttons in the background
         disableMenuButtons();
     }
 
     /**
-     * Load the game info menu document, display it in the center of the screen, and disable all main menu buttons.
+     * Load the game info menu document and pass the parent container to its controller.
+     * Displays the scene it in the center of the grid (0, 2) and disables the background main menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -111,16 +117,17 @@ public class MainMenuController implements Initializable {
         // Load the game info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
         root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
-        GameInfoController controller = loader.getController();
+        // Get the controller for the new menu and pass the parent layout element to the class.
+        SettingsMenuController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 0, 2);
         mainMenuGrid.getChildren().add(root);
+        // Disable the menu buttons in the background
         disableMenuButtons();
     }
 
-    // Disables the main menu buttons while a different menu is open.
+    // Disables the main menu background buttons while a menu scene is open in the main scene.
     private void disableMenuButtons() {
         newGameButton.setDisable(true);
         savedGamesButton.setDisable(true);
@@ -128,7 +135,9 @@ public class MainMenuController implements Initializable {
         openSettingsButton.setDisable(true);
     }
 
-    /** Passes the main menu grid object to another controller.
+    /**
+     * Passes the main menu parent container object to a controller class.
+     * Method is invoked to find the menu ID of a scene's parent container.
      *
      * @return the grid pane object for the main menu layout
      */
@@ -136,7 +145,9 @@ public class MainMenuController implements Initializable {
         return mainMenuGrid;
     }
 
+    // Invoked when a main menu is created to set any initial values.
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
     }
+
 }
