@@ -46,7 +46,7 @@ public class SettingsMenuController implements Initializable {
 
     // FXML Element: The settings menu button to open the game info menu.
     @FXML
-    private Button openGameInfobutton;
+    private Button openGameInfoButton;
 
     // FXML Element: The settings menu button to open the sound settings on the menu.
     @FXML
@@ -58,7 +58,7 @@ public class SettingsMenuController implements Initializable {
 
     // FXML Element: The settings menu button to close the quit the game.
     @FXML
-    private Button quitGamebutton;
+    private Button quitGameButton;
 
     // FXML Element: The settings menu checkbox to control the music settings.
     @FXML
@@ -188,9 +188,9 @@ public class SettingsMenuController implements Initializable {
         // Update menu visibility based on visibility setter values.
         closeMenuButton.setVisible(settingsVisibility);
         openSaveMenuButton.setVisible(settingsVisibility);
-        openGameInfobutton.setVisible(settingsVisibility);
+        openGameInfoButton.setVisible(settingsVisibility);
         openSoundSettingsButton.setVisible(settingsVisibility);
-        quitGamebutton.setVisible(settingsVisibility);
+        quitGameButton.setVisible(settingsVisibility);
         musicCheckbox.setVisible(soundSettingsVisibility);
         effectsCheckbox.setVisible(soundSettingsVisibility);
         closeSoundSettingsButton.setVisible(soundSettingsVisibility);
