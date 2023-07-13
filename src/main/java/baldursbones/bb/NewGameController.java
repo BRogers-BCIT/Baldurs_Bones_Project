@@ -127,7 +127,7 @@ public class NewGameController {
     // Fix: Replace print methods with calls to variable setter methods to pass the name and skip tutorial values.
     private boolean getGameStartInfo(final FXMLLoader loader) {
         // Get controller of Game Location window.
-        LocationMenuController gameDriverController =  loader.getController();
+        LocationMenuController gameDriverController = loader.getController();
 
         if (characterName.getText().equals("")) {
             // Limitations: Null character name error prints to terminal instead of displaying in game window.
