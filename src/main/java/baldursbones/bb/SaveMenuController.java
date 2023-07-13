@@ -84,6 +84,36 @@ public class SaveMenuController implements Initializable {
     @FXML
     private Label saveOutput;
 
+    // Variable (Character Stats): The name of the character being saved into a Save Info File.
+    private String charName = "Temp Name";
+
+    // Variable (Character Stats): The level of the character being saved into a Save Info File.
+    private String charLevel = "Temp Level";
+
+    // Variable (Character Stats): The experience of the character being saved into a Save Info File.
+    private String charExp = "Temp Exp";
+
+    // Variable (Character Stats): The health of the character being saved into a Save Info File.
+    private String charHealth = "Temp Health";
+
+    // Variable (Character Stats): The location of the character being saved into a Save Info File.
+    private String charLocation = "Temp Location";
+
+    // Variable (Character Ability): The number of uses the player has of the "Add" ability.
+    private String charAbilityAdd = "Temp Ability Add";
+
+    // Variable (Character Ability): The number of uses the player has of the "Take Away" ability.
+    private String charAbilityTakeAway = "Temp Ability Take-Away";
+
+    // Variable (Character Ability): The number of uses the player has of the "Re-Roll" ability.
+    private String charAbilityReRoll = "Temp Ability Re-Roll";
+
+    // Variable (Maps): The 2D array used by the game to track locations.
+    private String gameMap = "Temp Game Map";
+
+    // Variable (Maps): The 2D array used by the game to display the player map.
+    private String playerMap = "Temp Player Map";
+
     /**
      * Removes the Saved Games menu layout from the current menu and makes the buttons clickable again.
      */
@@ -320,7 +350,7 @@ public class SaveMenuController implements Initializable {
      * Limitations: There is no Location Menu controller to pass the game info to, that loads a new game.
      * Waiting For: A setGameValues method to pass the file to that will assign the file info to the game variables.
      * Fix: Replace the print loop with a method call in the open game window method that passes the info file.
-     *      Open game window method will need to be updated to accept a File type parameter.
+     * Open game window method will need to be updated to accept a File type parameter.
      *
      * @param event the event object created by clicking the load game button
      * @throws IOException if the text document being loaded does not exist
@@ -367,16 +397,16 @@ public class SaveMenuController implements Initializable {
             // Write the values into the text file, one line per value.
             // ** TEMP INPUT ** There is no container controller to pass data to the controller.
             // Temp strings are used instead of game values.
-            writeFileInfo.write("Character Name" + System.getProperty("line.separator"));
-            writeFileInfo.write("Player Level" + System.getProperty("line.separator"));
-            writeFileInfo.write("Player Experience" + System.getProperty("line.separator"));
-            writeFileInfo.write("Player Health" + System.getProperty("line.separator"));
-            writeFileInfo.write("Player Location" + System.getProperty("line.separator"));
-            writeFileInfo.write("Player Add Ability" + System.getProperty("line.separator"));
-            writeFileInfo.write("Player Subtract Ability" + System.getProperty("line.separator"));
-            writeFileInfo.write("Player Re-Roll Ability" + System.getProperty("line.separator"));
-            writeFileInfo.write("Player Map" + System.getProperty("line.separator"));
-            writeFileInfo.write("Game Map" + System.getProperty("line.separator"));
+            writeFileInfo.write(charName + System.getProperty("line.separator"));
+            writeFileInfo.write(charLevel + System.getProperty("line.separator"));
+            writeFileInfo.write(charExp + System.getProperty("line.separator"));
+            writeFileInfo.write(charHealth + System.getProperty("line.separator"));
+            writeFileInfo.write(charLocation + System.getProperty("line.separator"));
+            writeFileInfo.write(charAbilityAdd + System.getProperty("line.separator"));
+            writeFileInfo.write(charAbilityTakeAway + System.getProperty("line.separator"));
+            writeFileInfo.write(charAbilityReRoll + System.getProperty("line.separator"));
+            writeFileInfo.write(gameMap + System.getProperty("line.separator"));
+            writeFileInfo.write(playerMap + System.getProperty("line.separator"));
             // Close the writer.
             writeFileInfo.close();
         } catch (IOException e) {
@@ -394,6 +424,49 @@ public class SaveMenuController implements Initializable {
         saveOutput.setVisible(true);
         saveOutput.setStyle("-fx-background-color: black");
         saveOutput.setText("Deleted File: " + deleteFile.delete());
+    }
+
+    /**
+     * Receive the current characters stats as strings and saves them to the character stat variables.
+     *
+     * @param name     the characters name as a string
+     * @param level    the characters level as a one digit string (1-9)
+     * @param exp      the characters experience as a one digit string (1-9)
+     * @param health   the characters health as a one digit string (1-9)
+     * @param location the characters location as two numbers seperated by a comma (X,Y)
+     */
+    public void setCharacterStats(final String name, final String level, final String exp,
+                                  final String health, final String location) {
+        this.charName = name;
+        this.charLevel = level;
+        this.charExp = exp;
+        this.charHealth = health;
+        this.charLocation = location;
+    }
+
+    /**
+     * Receive the current characters ability uses as strings and saves them to the character stat variables.
+     *
+     * @param abilityAdd      The number of uses of the Add ability the character has as one digit string
+     * @param abilityTakeAway The number of uses of the Take-Away ability the character has as one digit string
+     * @param abilityReRoll   The number of uses of the Re-Roll ability the character has as one digit string
+     */
+    public void setCharacterAbilities(final String abilityAdd, final String abilityTakeAway,
+                                      final String abilityReRoll) {
+        this.charAbilityAdd = abilityAdd;
+        this.charAbilityTakeAway = abilityTakeAway;
+        this.charAbilityReRoll = abilityReRoll;
+    }
+
+    /**
+     * Receives the current values of the game map and player map as strings and saves them to the map variables.
+     *
+     * @param gameMapString   A string version of the 2D array in format (111 112 113 114 ...)
+     * @param playerMapString A string version of the 2D array in format (# # @ @ ! ...)
+     */
+    public void setGameMaps(final String gameMapString, final String playerMapString) {
+        this.gameMap = gameMapString;
+        this.playerMap = playerMapString;
     }
 
     /**
