@@ -21,28 +21,30 @@ import java.util.Objects;
  */
 public class QuitPopupController {
 
-    // Define the amount of pixels to leave of the top of the screen for the anchor bar.
+    // Constant: Define the amount of pixels to leave of the top of the screen for the anchor bar.
+    // Used when creating a new container class scene (Main Menu / Location Menu)
     private static final int ANCHOR_BAR_SIZE = 70;
 
-    // The parent scene that the quit pop-up was called from.
+    // The parent stage that the quit pop-up was called by. Used to close the parent window if needed.
     private Stage parentStage;
 
     /**
-     * Closes the quit page pop-up menu.
+     * Closes the Quit Game pop-up menu.
      *
      * @param event the event object created by clicking the cancel quit button
      */
     @FXML
     public void cancelQuit(final ActionEvent event) {
-        // Get the current window from the event and close it.
+        // Get the stage by tracing the source of the click event. Event -> Scene -> Stage.
         Stage currentPopup = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        // Invoke the close method on the Quit Game pop-up menu.
         currentPopup.close();
     }
 
     /**
-     * Opens a new main menu window and closes the pop-up.
+     * Opens a new Main Menu window and closes the Quit Game pop-up.
      *
-     * @param event the event object created by clicking the return to menu button
+     * @param event the event object created by clicking the load game FXML button
      * @throws IOException if the FXML document being loaded does not exist
      */
     @FXML
@@ -50,36 +52,39 @@ public class QuitPopupController {
         // Get the Main Menu FXML file and load it into root.
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
         // Get the size of the users screen to set the size and with of the game window.
+        // Get the size of the users screen to determine the size and with of the new game stage.
         Rectangle2D userScreen = Screen.getPrimary().getBounds();
-        // Load the scene with the correct size and width found above.
+        // Load the scene with the size and width found above.
+        // (Height - Size of anchor bar allows anchor bar to display)
         Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - ANCHOR_BAR_SIZE);
-        // Set the name of the window and pass the scene to the stage.
-        parentStage.setTitle("Baldur's Bones");
+        // Set the new scene in the stage object, center the stage, prevent resizing, and set the window title.
         parentStage.setScene(scene);
-        // Prevent the user from changing the screen size and centers the window on screen.
         parentStage.centerOnScreen();
         parentStage.setResizable(false);
-        // Pass the event to cancel quit to close the pop-up.
+        parentStage.setTitle("Baldur's Bones");
+        // Display the window.
+        parentStage.show();
+        // Call method to close the pop-up.
         cancelQuit(event);
     }
 
     /**
-     * Closes the main game window and the quit game pop-up.
+     * Closes the main game window by closing its stage object. Calls method to close the Quit Game pop-up.
      *
      * @param event the event object created by clicking the quit game button
      */
     @FXML
     public void quitGame(final ActionEvent event) {
-        // Close the main window.
+        // Invoke the close method on the main window stage to close the main window.
         parentStage.close();
-        // Pass the event to cancel quit to close the pop-up.
+        // Call method to close the pop-up.
         cancelQuit(event);
     }
 
     /**
-     * Gets the stage object of the main window to close it if needed.
+     * Gets the stage object of the window that called this class. Used to close the parent window if needed.
      *
-     * @param mainStage the stage object of the current main window
+     * @param mainStage the stage object for the current main window
      */
     public void getMainStage(final Stage mainStage) {
         parentStage = mainStage;
