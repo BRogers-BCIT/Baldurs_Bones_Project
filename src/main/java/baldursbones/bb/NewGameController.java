@@ -26,53 +26,58 @@ import java.util.Objects;
 public class NewGameController {
 
     // Constant: Define the amount of pixels to leave of the top of the screen for the anchor bar.
+    // Used when creating a new container class scene (Main Menu / Location Menu)
     private static final int ANCHOR_BAR_SIZE = 70;
 
-    // FXML Element: The parent element the new game menu is displayed in.
+    // FXML Element: The parent element that the new game menu is displayed in.
     private GridPane container;
 
     // FXML Element: The layout element for the new game menu.
     @FXML
     private HBox newGameMenu;
 
-    //FXML Element: The text field for the user to enter their character name.
+    //FXML Element: The text field used to get the character name string from the user.
     @FXML
     private TextField characterName;
 
-    //FXML Element: The checkbox that allows players to disable the tutorial.
+    //FXML Element: A checkbox that allows players to skip the tutorial in a new game.
+    // Boolean value is passed to game driver class to signify the tutorial is to be skipped.
+    // Passing method needs to be implemented.
     @FXML
     private CheckBox disableTutorial;
 
     /**
-     * Removes the new game menu layout from the main menu and makes the main menu buttons clickable again.
+     * Removes the game info menu layout from its parent layout element.
+     * Queries the ID of the parent object to find its container menu type and re-enables the correct menu buttons.
      *
-     * @param event the event object created by clicking the load game button
+     * @param event the event object created by clicking the load game FXML button
      * @throws IOException if the FXML document being loaded does not exist
      */
     @FXML
     public void closeNewGameMenu(final ActionEvent event) throws IOException {
         // If the current container is the main menu, allow the menu to be closed.
         if (container.getId().equals("mainMenuGrid")) {
-            // Set main menu buttons to be clickable.
+            // If: The current container is the main menu, enable main menu buttons.
             container.lookup("#newGameButton").setDisable(false);
             container.lookup("#savedGamesButton").setDisable(false);
             container.lookup("#gameInfoButton").setDisable(false);
             container.lookup("#openSettingsButton").setDisable(false);
-            // Remove the new game menu from the main menu window.
+            // Remove the game info menu from its parent menu object.
             container.getChildren().remove(newGameMenu);
         } else {
-            // Return to main menu
-            // Load the Main Menu FXML document.
+            // Else: A new main menu should be created.
+            // Invoked when a play ends a game -> Selects new game -> Closes new game menu.
+            // Load the game info menu FXML document into a root object.
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
-            // Get the stage by tracing the source of the click event -> scene -> stage.
+            // Get the stage by tracing the source of the click event. Event -> Scene -> Stage.
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            // Get the size of the users screen to set the size and with of the game window.
+            // Get the size of the users screen to determine the size and with of the new game stage.
             Rectangle2D userScreen = Screen.getPrimary().getBounds();
-            // Create a scene with the loaded Game Location menu document.
-            // Load the scene with the correct size and width found above.
+            // Load the scene with the size and width found above.
+            // (Height - Size of anchor bar allows anchor bar to display)
             Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - ANCHOR_BAR_SIZE);
+            // Set the new scene in the stage object, center the stage, prevent resizing, and set the window title.
             stage.setScene(scene);
-            // Center stage to the middle of the screen, prevent resizing, and set title.
             stage.centerOnScreen();
             stage.setResizable(false);
             stage.setTitle("Baldur's Bones");
@@ -90,20 +95,20 @@ public class NewGameController {
     @FXML
     public void openGameWindow(final ActionEvent event) throws IOException {
         // Load the Game Location menu FXML document.
-        // Load the saved games menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LocationMenu.fxml"));
         Parent root = loader.load();
-        // Get the stage by tracing the source of the click event -> scene -> stage.
+        // Get the stage by tracing the source of the click event. Event -> Scene -> Stage.
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        // Pass game info (character name and tutorial enabled) from window to game method.
+        // Call a check to see if the user has entered a character name.
+        // If they have, pass the character and tutorial skip boolean variable to the game controller.
         if (getGameStartInfo(loader)) {
-            // Get the size of the users screen to set the size and with of the game window.
+            // Get the size of the users screen to determine the size and with of the new game stage.
             Rectangle2D userScreen = Screen.getPrimary().getBounds();
-            // Create a scene with the loaded Game Location menu document.
-            // Load the scene with the correct size and width found above.
+            // Load the scene with the size and width found above.
+            // (Height - Size of anchor bar allows anchor bar to display)
             Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - ANCHOR_BAR_SIZE);
+            // Set the new scene in the stage object, center the stage, prevent resizing, and set the window title.
             stage.setScene(scene);
-            // Center stage to the middle of the screen, prevent resizing, and set title.
             stage.centerOnScreen();
             stage.setResizable(false);
             stage.setTitle("Baldur's Bones");
@@ -112,28 +117,36 @@ public class NewGameController {
         }
     }
 
-    // Gets the character name from the text field and if the tutorial is disabled from the checkbox.
-    // Takes the controller for the new game window and passes the values to the controller.
-    // Prevents new game from being started without a character name.
-    // Limitations: ** CURRENTLY PRINTS FOR TESTING AND DOES NOT PASS VALUES **.
+    // Gets the character name from the text field and the selection value from the skip tutorial checkbox.
+    // Checks for a non-empty character name to prevent a new game from being started without a character name.
+    // Takes the loader object for the new game window to finds its controller.
+    // Passes the character name string and the skip tutorial boolean variable.
+
+    // Limitations: Currently prints values instead of passing to the game method. ** Prints for testing. **
+    // Waiting For: Game driver class is created and methods are made to accept game values.
+    // Fix: Replace print methods with calls to variable setter methods to pass the name and skip tutorial values.
     private boolean getGameStartInfo(final FXMLLoader loader) {
-        boolean startNewGame = true;
+        // Get controller of Game Location window.
+        LocationMenuController gameDriverController =  loader.getController();
+
         if (characterName.getText().equals("")) {
-            startNewGame = false;
-            // ** TEMP PRINT INSTEAD OF VISUAL OUTPUT **
+            // Limitations: Null character name error prints to terminal instead of displaying in game window.
+            // Waiting For: FXML Element in the New Game window to update if name value is empty.
+            // Fix: Replace print methods with update to FXML element.
             System.out.println("No Character Name. Invalid Start.");
+            return false;
         } else {
             // ** TEMP PRINT INSTEAD OF PASS VARIABLE STATUS **
             System.out.println("Character Name: " + characterName.getText() + ".");
             System.out.println("Tutorial Disabled: " + disableTutorial.isSelected() + ".");
+            return true;
         }
-        return startNewGame;
     }
 
     /**
-     * Takes the parent element that the layout will be displayed in and saves it.
+     * Takes the parent layout element that scene will be displayed in and saves it to a variable.
      *
-     * @param parentGrid The parent element of the settings menu layout
+     * @param parentGrid The parent layout element of the New Game scene
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;

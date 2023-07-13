@@ -114,7 +114,7 @@ public class MainMenuController implements Initializable {
      */
     @FXML
     public void openGameInfoMenu() throws IOException {
-        // Load the Game Info info menu FXML document into a root object.
+        // Load the Game Info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the parent layout element to the class.
