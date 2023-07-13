@@ -89,6 +89,18 @@
          </Button>
       </HBox>
       <Region minHeight="30.0" />
+      <HBox fx:id="outputContainer" alignment="CENTER" VBox.vgrow="NEVER">
+         <children>
+            <Region HBox.hgrow="ALWAYS" />
+            <Label fx:id="saveOutput" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Save Output" textAlignment="CENTER" textOverrun="CLIP" visible="false">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Region HBox.hgrow="ALWAYS" />
+         </children>
+      </HBox>
+      <Region minHeight="30.0" />
       <HBox id="SaveMenuButtonsContainer" alignment="CENTER" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets />
