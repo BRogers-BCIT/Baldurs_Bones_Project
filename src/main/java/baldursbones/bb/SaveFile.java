@@ -20,11 +20,11 @@ public class SaveFile {
     private String dataFile;
 
     /**
-     * Creates a save file object that contains all the values needed to display and open a save file.
+     * Creates a Save File object that contains all the values needed to display and open a save file.
      *
-     * @param fileName      the name of the save file object
-     * @param characterName the character name being played in the save file
-     * @param saveTime      the time that the save file was created / updated
+     * @param fileName      the name of the Save File object
+     * @param characterName the character name being played in the Save File
+     * @param saveTime      the time that the Save File was created / updated
      * @param dataFile      the name of the file with the character data
      */
     public SaveFile(final String fileName, final String characterName, final String saveTime, final String dataFile) {
@@ -35,16 +35,16 @@ public class SaveFile {
     }
 
     /**
-     * Returns a string with the file name value of the save file object.
+     * Returns a string with the file name value of the Save File object.
      *
-     * @return a string with the file name value of this save file object
+     * @return a string with the file name value of this Save File object
      */
     public String getFileName() {
         return fileName;
     }
 
     /**
-     * Sets the value of the file name property of this save file object to a passed string.
+     * Sets the value of the file name property of this Save File object to a passed string.
      *
      * @param fileName the new string to set the file name value to
      */
@@ -53,16 +53,16 @@ public class SaveFile {
     }
 
     /**
-     * Returns a string with the character name value of the save file object.
+     * Returns a string with the character name value of the Save File object.
      *
-     * @return a string with the character name value of this save file object
+     * @return a string with the character name value of this Save File object
      */
     public String getCharacterName() {
         return characterName;
     }
 
     /**
-     * Sets the value of the character name property of this save file object to a passed string.
+     * Sets the value of the character name property of this Save File object to a passed string.
      *
      * @param characterName the new string to set the character name value to
      */
@@ -71,16 +71,16 @@ public class SaveFile {
     }
 
     /**
-     * Returns a string with the save time value of the save file object.
+     * Returns a string with the save time value of the Save File object.
      *
-     * @return a string with the save time value of this save file object
+     * @return a string with the save time value of this Save File object
      */
     public String getSaveTime() {
         return saveTime;
     }
 
     /**
-     * Sets the value of the save time property of this save file object to a passed string.
+     * Sets the value of the save time property of this Save File object to a passed string.
      *
      * @param saveTime the new string to set the save time value to
      */
@@ -89,9 +89,9 @@ public class SaveFile {
     }
 
     /**
-     * Returns a string with the datafile value of the save file object.
+     * Returns a string with the datafile value of the Save File object.
      *
-     * @return a string with the data file value of this save file object
+     * @return a string with the data file value of this Save File object
      */
     public String getDataFile() {
         return dataFile;

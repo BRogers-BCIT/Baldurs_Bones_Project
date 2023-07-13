@@ -28,12 +28,12 @@ public class GameCombatController {
         container.lookup("#locationViewStats").setDisable(false);
         container.lookup("#locationViewMap").setDisable(false);
         container.lookup("#endGameTest").setDisable(false);
-        // Remove the game info menu from the location menu window.
+        // Remove the Game Info menu from the location menu window.
         container.getChildren().remove(gameCombatGrid);
     }
 
     /**
-     * Takes the parent element that the layout will be displayed in and saves it. Also re-enables settings menu.
+     * Takes the parent element that the layout will be displayed in and saves it. Also re-enables Settings Menu.
      *
      * @param parentGrid The parent element of the character info menu layout
      */

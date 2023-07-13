@@ -26,56 +26,56 @@ import java.util.ResourceBundle;
  */
 public class SettingsMenuController implements Initializable {
 
-    // Variable: Records if the sound settings menu is opened or closed
+    // Variable: Records if the sound Settings Menu is currently opened or closed.
     private boolean soundSettingsOpen;
 
-    // FXML Element: The parent element the settings menu is displayed in.
+    // FXML Element: The parent element the Settings Menu is displayed in.
     private GridPane container;
 
-    // FXML Element: The layout element for the settings menu.
+    // FXML Element: The layout element for the Settings Menu.
     @FXML
     private HBox settingsMenu;
 
-    // FXML Element: The settings menu button to close the settings menu.
+    // FXML Element: Settings button that calls the close Settings Menu method.
     @FXML
     private Button closeMenuButton;
 
-    // FXML Element: The settings menu button to open the save game menu.
+    // FXML Element: Settings button that calls the open the Save Games menu method.
     @FXML
     private Button openSaveMenuButton;
 
-    // FXML Element: The settings menu button to open the game info menu.
+    // FXML Element: Settings button that calls the open the Game Info menu method.
     @FXML
     private Button openGameInfoButton;
 
-    // FXML Element: The settings menu button to open the sound settings on the menu.
+    // FXML Element: Settings button that calls the open sound settings method.
     @FXML
     private Button openSoundSettingsButton;
 
-    // FXML Element: The settings menu button to close the sound settings on the menu.
+    // FXML Element: Settings button that calls the close sound settings method.
     @FXML
     private Button closeSoundSettingsButton;
 
-    // FXML Element: The settings menu button to close the quit the game.
+    // FXML Element: Settings button that calls the Quit Game method.
     @FXML
     private Button quitGameButton;
 
-    // FXML Element: The settings menu checkbox to control the music settings.
+    // FXML Element: Settings checkbox to control the music settings.
     @FXML
     private CheckBox musicCheckbox;
 
-    // FXML Element: The settings menu checkbox to control the sound effects settings.
+    // FXML Element: Settings checkbox to control the sound effects settings.
     @FXML
     private CheckBox effectsCheckbox;
 
     /**
-     * Removes the settings menu layout from the current menu and makes the buttons clickable again.
+     * Removes the Settings Menu layout from the current menu and makes the buttons clickable again.
      */
     @FXML
     public void closeSettings() {
         // Set the settings button to be clickable.
         container.lookup("#openSettingsButton").setDisable(false);
-        // If: the current container is the main menu, enable main menu buttons.
+        // If: the current container is the Main Menu, enable main menu buttons.
         if (container.getId().equals("mainMenuGrid")) {
             container.lookup("#newGameButton").setDisable(false);
             container.lookup("#savedGamesButton").setDisable(false);
@@ -87,24 +87,24 @@ public class SettingsMenuController implements Initializable {
             container.lookup("#locationViewMap").setDisable(false);
             container.lookup("#endGameTest").setDisable(false);
         }
-        // Remove the settings menu from the current menu window.
+        // Remove the Settings Menu from the current menu window.
         container.getChildren().remove(settingsMenu);
     }
 
     /**
-     * Load the saved games menu document, remove the settings menu scene and display the load saves menu.
+     * Load the Saved Games menu document, remove the Settings Menu scene and display the load saves menu.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openSaveMenu() throws IOException {
-        // Load the saved games menu FXML document into a root object.
+        // Load the Saved Games  menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
         Parent root = loader.load();
         // Get the controller for the new menu and pass the current menu layout to the class.
         SaveMenuController controller = loader.getController();
         controller.getContainerElement(container);
-        // If the current container is the main menu, load scene into correct grid position.
+        // If the current container is the Main Menu, load scene into correct grid position.
         if (container.getId().equals("mainMenuGrid")) {
             GridPane.setConstraints(root, 0, 2);
         } else {
@@ -117,19 +117,19 @@ public class SettingsMenuController implements Initializable {
     }
 
     /**
-     * Load the game info document, remove the settings menu scene and display the game info menu.
+     * Load the Game Info document, remove the Settings Menu scene and display the game info menu.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openGameInfoMenu() throws IOException {
-        // Load the game info menu FXML document into a root object.
+        // Load the Game Info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
         Parent root = loader.load();
         // Get the controller for the new menu and pass the current menu layout to the class.
         GameInfoController controller = loader.getController();
         controller.getContainerElement(container);
-        // If the current container is the main menu, load scene into correct grid position.
+        // If the current container is the Main Menu, load scene into correct grid position.
         if (container.getId().equals("mainMenuGrid")) {
             GridPane.setConstraints(root, 0, 2);
         } else {
@@ -142,7 +142,7 @@ public class SettingsMenuController implements Initializable {
     }
 
     /**
-     * Load the quit game pop-up document, remove the settings menu scene and display the quit game pop-up.
+     * Load the quit game pop-up document, remove the Settings Menu scene and display the quit game pop-up.
      *
      * @param event the event object created by clicking the button that called this method
      * @throws IOException if the fxml file being loaded does not exist
@@ -155,12 +155,12 @@ public class SettingsMenuController implements Initializable {
         popup.setResizable(false);
         popup.centerOnScreen();
         popup.setTitle("Quit");
-        // Load the quit game pop-up FXML document into a root object.
+        // Load the Quit Game pop-up FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("QuitMenu.fxml"));
         Parent root = loader.load();
         // Get the controller for the new pop-up to pass the current stage to.
         QuitPopupController controller = loader.getController();
-        // Get the current stage from the event and pass it to the quit-pop.
+        // Get the current stage from the event and pass it to the Quit Game pop-up.
         controller.getMainStage((Stage) ((Node) event.getSource()).getScene().getWindow());
         Scene popupDisplay = new Scene(root);
         // Load the pop-up scene into the stage and display it. Will pause game until window is closed.
@@ -169,12 +169,12 @@ public class SettingsMenuController implements Initializable {
     }
 
     /**
-     * Update the visibility of buttons whenever the user open / closes the sound settings menu.
+     * Update the visibility of buttons whenever the user open / closes the sound Settings Menu.
      * ** Layout changes may also be needed in the future. **
      */
     @FXML
     public void toggleSoundSettings() {
-        // Visibility setters for regular menu and sound settings menu
+        // Visibility setters for regular menu and sound Settings Menu
         boolean soundSettingsVisibility;
         boolean settingsVisibility;
         // Set the visibility values for each menu.
@@ -212,14 +212,14 @@ public class SettingsMenuController implements Initializable {
     /**
      * Takes the parent element that the layout will be displayed in and saves it. Disables settings button on menu.
      *
-     * @param parentGrid The parent element of the settings menu layout
+     * @param parentGrid The parent element of the Settings Menu layout
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;
     }
 
     /**
-     * When the settings menu is first opened, set the sound settings variable to be false.
+     * When the Settings Menu is first opened, set the sound settings variable to be false.
      *
      * @param url            N/A
      * @param resourceBundle N/A

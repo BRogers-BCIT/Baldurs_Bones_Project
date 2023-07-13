@@ -21,67 +21,67 @@ import java.util.Scanner;
  */
 public class GameInfoController implements Initializable {
 
-    // Text File: Static location of the "game info" text file to read from.
+    // Text File: Static location of the "Game Info" text file to read from.
     private static final File GAME_INFO_TEXT = new File("src/main/resources/baldursbones/bb/GameInfoText.txt");
 
     // Constant: The number of "pages" in the text file, used to wrap final page into first page.
-    // Update whenever game info document is updated to match the new length.
+    // Update whenever Game Info document is updated to match the new length.
     private static final int FINAL_PAGE_VALUE = 3;
 
-    // Variable: Tracks which "page" of the game information document is currently being displayed.
+    // Variable: Tracks which "page" of the Game Info document is currently being displayed.
     private int currentInfoPage;
 
-    // FXML Element: The parent container element that the game info scene is displayed in.
+    // FXML Element: The parent container element that the Game Info scene is displayed in.
     private GridPane container;
 
-    // FXML Element: The layout element for the game info menu.
+    // FXML Element: The layout element for the Game Info menu.
     @FXML
     private HBox gameInfoMenu;
 
-    // FXML Element: The title (Label) of the game info page. Used to display current page and total page numbers.
+    // FXML Element: The title (Label) of the Game Info page. Used to display current page and total page numbers.
     // Format: Game Info Page: X / Y    (X = Current, Y = Total)
     @FXML
     private Label gameInfoTitle;
 
-    // FXML Element: The label of the first text area for the game info page.
+    // FXML Element: The label of the first text area for the Game Info page.
     // Used to note what game element the text area provides information about.
     @FXML
     private Label infoTitleOne;
 
-    // FXML Element: The label of the second text area for the game info page.
+    // FXML Element: The label of the second text area for the Game Info page.
     // Used to note what game element the text area provides information about.
     @FXML
     private Label infoTitleTwo;
 
-    // FXML Element: The label of the third text area for the game info page.
+    // FXML Element: The label of the third text area for the Game Info page.
     // Used to note what game element the text area provides information about.
     @FXML
     private Label infoTitleThree;
 
-    // FXML Element: The first text area for the game info page.
+    // FXML Element: The first text area for the Game Info page.
     // Used to note display information about the game element defined in its label.
     @FXML
     private TextArea infoAreaOne;
 
-    // FXML Element: The second text area for the game info page.
+    // FXML Element: The second text area for the Game Info page.
     // Used to note display information about the game element defined in its label.
     @FXML
     private TextArea infoAreaTwo;
 
-    // FXML Element: The third text area for the game info page.
+    // FXML Element: The third text area for the Game Info page.
     // Used to note display information about the game element defined in its label.
     @FXML
     private TextArea infoAreaThree;
 
     /**
-     * Removes the game info menu layout from its parent layout element.
+     * Removes the Game Info menu layout from its parent layout element.
      * Queries the ID of the parent object to find its container menu type and re-enables the correct menu buttons.
      */
     @FXML
     public void closeGameInfoMenu() {
-        // Regardless of container type, re-enable the settings button.
+        // Regardless of container type, re-enable the Settings Menu button.
         container.lookup("#openSettingsButton").setDisable(false);
-        // If: The current container is the main menu, enable main menu buttons.
+        // If: The current container is the Main Menu, enable Main Menu buttons.
         if (container.getId().equals("mainMenuGrid")) {
             container.lookup("#newGameButton").setDisable(false);
             container.lookup("#savedGamesButton").setDisable(false);
@@ -93,7 +93,7 @@ public class GameInfoController implements Initializable {
             container.lookup("#locationViewMap").setDisable(false);
             container.lookup("#endGameTest").setDisable(false);
         }
-        // Remove the game info menu from its parent menu object.
+        // Remove the Game Info menu from its parent menu object.
         container.getChildren().remove(gameInfoMenu);
     }
 
@@ -127,7 +127,7 @@ public class GameInfoController implements Initializable {
         populateFileInfo();
     }
 
-    // Takes a scanner object and moves the read line to the correct line of the game info text document.
+    // Takes a scanner object and moves the read line to the correct line of the Game Info text document.
     // Correct line for the current page = current page value * 7.
     // Equation: 1 (Page Number) + 2 (First Title and Info) + 2 (Second Title and Info) + 2 (Third Title and Info).
     private void skipToCorrectInfo(final Scanner fileReader) {
@@ -148,10 +148,10 @@ public class GameInfoController implements Initializable {
     }
 
 
-    // Populates the labels and text areas on the game info menu.
+    // Populates the labels and text areas on the Game Info menu.
     // Calls method to find the correct area in the text document then reads the next 7 lines to find the correct info.
     private void populateFileInfo() {
-        // Try to read the correct page from the game info the text file.
+        // Try to read the correct page from the Game Info the text file.
         try {
             // Try to open the file in a scanner.
             Scanner fileReader = new Scanner(GAME_INFO_TEXT);

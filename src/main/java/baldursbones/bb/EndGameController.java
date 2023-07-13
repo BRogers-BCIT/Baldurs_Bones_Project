@@ -26,10 +26,10 @@ public class EndGameController {
     // Define the amount of pixels to leave of the top of the screen for the anchor bar.
     private static final int ANCHOR_BAR_SIZE = 70;
 
-    // The parent element the end game menu is displayed in.
+    // The parent element the End Game menu is displayed in.
     private GridPane container;
 
-    // The layout element for the end game menu.
+    // The layout element for the End Game menu.
     @FXML
     private HBox endGameBox;
 
@@ -41,17 +41,17 @@ public class EndGameController {
      */
     @FXML
     public void closeGameCombatMenu(final ActionEvent event) throws IOException {
-        // Load the new game menu FXML document into a root object.
+        // Load the New Game menu FXML document into a root object.
         FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
         Parent root = mainLoader.load();
-        // Get the controller for the main menu and save the grid pane object from the layout.
+        // Get the controller for the Main Menu and save the grid pane object from the layout.
         MainMenuController controller = mainLoader.getController();
         container = controller.getMainMenuGrid();
         // Get the stage by tracing the source of the click event -> scene -> stage.
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         // Get the size of the users screen to set the size and with of the game window.
         Rectangle2D userScreen = Screen.getPrimary().getBounds();
-        // Create a scene with the loaded main menu document.
+        // Create a scene with the loaded Main Menu document.
         // Load the scene with the correct size and width found above.
         Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - ANCHOR_BAR_SIZE);
         stage.setScene(scene);
@@ -64,7 +64,7 @@ public class EndGameController {
     }
 
     /**
-     * Open a new main menu scene and open the saved games menu within the scene.
+     * Open a new Main Menu scene and open the Saved Games menu within the scene.
      *
      * @param event the event object created by clicking the load game button
      * @throws IOException if the fxml file being loaded does not exist
@@ -72,10 +72,10 @@ public class EndGameController {
     @FXML
     public void openSaveMenu(final ActionEvent event) throws IOException {
         closeGameCombatMenu(event);
-        // Load the new game menu FXML document into a root object.
+        // Load the New Game menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
         Parent root = loader.load();
-        // Get the controller for the new menu and pass the main menu layout to the class.
+        // Get the controller for the new menu and pass the Main Menu layout to the class.
         SaveMenuController controller = loader.getController();
         controller.getContainerElement(container);
         // Define where to display the new menu and add it to the layout.
@@ -84,13 +84,13 @@ public class EndGameController {
     }
 
     /**
-     * Load the new game menu document, remove the end game menu scene and display the new game menu.
+     * Load the New Game menu document, remove the End Game menu scene and display the new game menu.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openNewGameMenu() throws IOException {
-        // Load the new game menu FXML document into a root object.
+        // Load the New Game menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NewGameMenu.fxml"));
         Parent root = loader.load();
         // Get the controller for the new menu and pass the current menu layout to the class.

@@ -38,7 +38,7 @@ public class LocationMenuController implements Initializable {
     @FXML
     private Button viewMapButton;
 
-    // Menu button that calls the end game method for testing.
+    // Menu button that calls the End Game method for testing.
     @FXML
     private Button endGameButton;
 
@@ -63,13 +63,13 @@ public class LocationMenuController implements Initializable {
     private Button moveWestButton;
 
     /**
-     * Load the settings menu document, display it in the center of the screen, and disable all location menu buttons.
+     * Load the Settings Menu document, display it in the center of the screen, and disable all location menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
     @FXML
     public void openSettingsMenu() throws IOException {
-        // Load the settings menu FXML document into a root object.
+        // Load the Settings Menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SettingsMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
@@ -89,7 +89,7 @@ public class LocationMenuController implements Initializable {
      */
     @FXML
     public void openCharacterInfo() throws IOException {
-        // Load the new game menu FXML document into a root object.
+        // Load the New Game menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CharacterInfoMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
@@ -108,7 +108,7 @@ public class LocationMenuController implements Initializable {
      */
     @FXML
     public void openMapInfo() throws IOException {
-        // Load the saved games menu FXML document into a root object.
+        // Load the Saved Games menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameMapMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
@@ -127,7 +127,7 @@ public class LocationMenuController implements Initializable {
      */
     @FXML
     public void openEndGameMenu() throws IOException {
-        // Load the game info menu FXML document into a root object.
+        // Load the Game Info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameEndMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
@@ -147,7 +147,7 @@ public class LocationMenuController implements Initializable {
     @FXML
     public void openGameCombatMenu() throws IOException {
         disableMenuButtons();
-        // Load the game info menu FXML document into a root object.
+        // Load the Game Info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CombatMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.

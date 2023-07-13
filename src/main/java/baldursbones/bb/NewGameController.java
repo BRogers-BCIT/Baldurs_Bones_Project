@@ -29,10 +29,10 @@ public class NewGameController {
     // Used when creating a new container class scene (Main Menu / Location Menu)
     private static final int ANCHOR_BAR_SIZE = 70;
 
-    // FXML Element: The parent element that the new game menu is displayed in.
+    // FXML Element: The parent element that the New Game menu is displayed in.
     private GridPane container;
 
-    // FXML Element: The layout element for the new game menu.
+    // FXML Element: The layout element for the New Game menu.
     @FXML
     private HBox newGameMenu;
 
@@ -47,7 +47,7 @@ public class NewGameController {
     private CheckBox disableTutorial;
 
     /**
-     * Removes the game info menu layout from its parent layout element.
+     * Removes the Game Info menu layout from its parent layout element.
      * Queries the ID of the parent object to find its container menu type and re-enables the correct menu buttons.
      *
      * @param event the event object created by clicking the load game FXML button
@@ -55,19 +55,19 @@ public class NewGameController {
      */
     @FXML
     public void closeNewGameMenu(final ActionEvent event) throws IOException {
-        // If the current container is the main menu, allow the menu to be closed.
+        // If the current container is the Main Menu, allow the menu to be closed.
         if (container.getId().equals("mainMenuGrid")) {
-            // If: The current container is the main menu, enable main menu buttons.
+            // If: The current container is the Main Menu, enable Main Menu buttons.
             container.lookup("#newGameButton").setDisable(false);
             container.lookup("#savedGamesButton").setDisable(false);
             container.lookup("#gameInfoButton").setDisable(false);
             container.lookup("#openSettingsButton").setDisable(false);
-            // Remove the game info menu from its parent menu object.
+            // Remove the Game Info menu from its parent menu object.
             container.getChildren().remove(newGameMenu);
         } else {
-            // Else: A new main menu should be created.
+            // Else: A new Main Menu should be created.
             // Invoked when a play ends a game -> Selects new game -> Closes new game menu.
-            // Load the game info menu FXML document into a root object.
+            // Load the Game Info menu FXML document into a root object.
             Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
             // Get the stage by tracing the source of the click event. Event -> Scene -> Stage.
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -119,7 +119,7 @@ public class NewGameController {
 
     // Gets the character name from the text field and the selection value from the skip tutorial checkbox.
     // Checks for a non-empty character name to prevent a new game from being started without a character name.
-    // Takes the loader object for the new game window to finds its controller.
+    // Takes the loader object for the New Game window to finds its controller.
     // Passes the character name string and the skip tutorial boolean variable.
 
     // Limitations: Currently prints values instead of passing to the game method. ** Prints for testing. **

@@ -48,7 +48,7 @@ public class GameDriver extends Application {
         // Display the window.
         stage.show();
 
-        // Catch manual window close, cancel it, and call the quit pop-up menu.
+        // Catch manual window close, cancel it, and call the Quit Game pop-up menu.
         stage.setOnCloseRequest(e -> {
             e.consume();
             openQuitPopup(stage);
@@ -57,7 +57,7 @@ public class GameDriver extends Application {
     }
 
     // Open the quit pop-up menu to catch users when quitting.
-    // Allows users to cancel the close, return to main menu, or close the game.
+    // Allows users to cancel the close, return to Main Menu, or close the game.
     private void openQuitPopup(final Stage currentStage) {
         try {
             // Create the stage for the pop-up and set its values (pop-up window, resizing, centering, and title).
@@ -71,7 +71,7 @@ public class GameDriver extends Application {
             Parent root = loader.load();
             // Get the controller for the new pop-up.
             QuitPopupController controller = loader.getController();
-            // Pass the current stage object to the quit pop-up to allow it to close the window if needed.
+            // Pass the current stage object to the Quit Game pop-up to allow it to close the window if needed.
             controller.getMainStage(currentStage);
             // Get the scene from the loaded root.
             Scene popupDisplay = new Scene(root);

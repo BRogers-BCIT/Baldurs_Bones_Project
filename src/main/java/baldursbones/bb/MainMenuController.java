@@ -22,30 +22,30 @@ public class MainMenuController implements Initializable {
     // Variable: Contains a loaded FXML file to be passed to the stage.
     private Parent root;
 
-    // FXML Element: The layout object for the main menu that new scenes are loaded into.
+    // FXML Element: The layout object for the Main Menu that new scenes are loaded into.
     @FXML
     private GridPane mainMenuGrid;
 
-    // FXML Element: Menu button that calls the open settings menu method.
+    // FXML Element: Menu button that calls the open Settings Menu method.
     @FXML
     private Button openSettingsButton;
 
-    // FXML Element: Menu button that calls the open new game menu method.
+    // FXML Element: Menu button that calls the open New Game menu method.
     @FXML
     private Button newGameButton;
 
-    // FXML Element: Menu button that calls the open saved games menu method.
+    // FXML Element: Menu button that calls the open Saved Games menu method.
     @FXML
     private Button savedGamesButton;
 
-    // FXML Element: Settings button that calls the open game info menu method.
+    // FXML Element: Settings button that calls the open Game Info menu method.
     @FXML
     private Button gameInfoButton;
 
 
     /**
-     * Load the settings menu document and pass the parent container to its controller.
-     * Displays the scene it in the center of the grid (0, 2) and disables the background main menu buttons.
+     * Load the Settings Menu document and pass the parent container to its controller.
+     * Displays the scene it in the center of the grid (0, 2) and disables the background Main Menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -65,8 +65,8 @@ public class MainMenuController implements Initializable {
     }
 
     /**
-     * Load the game info menu document and pass the parent container to its controller.
-     * Displays the scene it in the center of the grid (0, 2) and disables the background main menu buttons.
+     * Load the Game Info menu document and pass the parent container to its controller.
+     * Displays the scene it in the center of the grid (0, 2) and disables the background Main Menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -86,8 +86,8 @@ public class MainMenuController implements Initializable {
     }
 
     /**
-     * Load the saved games menu document and pass the parent container to its controller.
-     * Displays the scene it in the center of the grid (0, 2) and disables the background main menu buttons.
+     * Load the Saved Games menu document and pass the parent container to its controller.
+     * Displays the scene it in the center of the grid (0, 2) and disables the background Main Menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -107,8 +107,8 @@ public class MainMenuController implements Initializable {
     }
 
     /**
-     * Load the game info menu document and pass the parent container to its controller.
-     * Displays the scene it in the center of the grid (0, 2) and disables the background main menu buttons.
+     * Load the Game Info menu document and pass the parent container to its controller.
+     * Displays the scene it in the center of the grid (0, 2) and disables the background Main Menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -127,7 +127,7 @@ public class MainMenuController implements Initializable {
         disableMenuButtons();
     }
 
-    // Disables the main menu background buttons while a menu scene is open in the main scene.
+    // Disables the Main Menu background buttons while a menu scene is open in the main scene.
     private void disableMenuButtons() {
         newGameButton.setDisable(true);
         savedGamesButton.setDisable(true);
@@ -136,16 +136,16 @@ public class MainMenuController implements Initializable {
     }
 
     /**
-     * Passes the main menu parent container object to a controller class.
+     * Passes the Main Menu parent container object to a controller class.
      * Method is invoked to find the menu ID of a scene's parent container.
      *
-     * @return the grid pane object for the main menu layout
+     * @return the grid pane object for the Main Menu layout
      */
     public GridPane getMainMenuGrid() {
         return mainMenuGrid;
     }
 
-    // Invoked when a main menu is created to set any initial values.
+    // Invoked when a Main Menu is created to set any initial values.
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
     }

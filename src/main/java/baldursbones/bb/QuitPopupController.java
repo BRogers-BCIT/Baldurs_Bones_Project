@@ -25,7 +25,7 @@ public class QuitPopupController {
     // Used when creating a new container class scene (Main Menu / Location Menu)
     private static final int ANCHOR_BAR_SIZE = 70;
 
-    // The parent stage that the quit pop-up was called by. Used to close the parent window if needed.
+    // The parent stage that the Quit Game pop-up was called by. Used to close the parent window if needed.
     private Stage parentStage;
 
     /**
@@ -52,7 +52,7 @@ public class QuitPopupController {
         // Get the Main Menu FXML file and load it into root.
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
         // Get the size of the users screen to set the size and with of the game window.
-        // Get the size of the users screen to determine the size and with of the new game stage.
+        // Get the size of the users screen to determine the size and with of the New Game stage.
         Rectangle2D userScreen = Screen.getPrimary().getBounds();
         // Load the scene with the size and width found above.
         // (Height - Size of anchor bar allows anchor bar to display)
@@ -71,7 +71,7 @@ public class QuitPopupController {
     /**
      * Closes the main game window by closing its stage object. Calls method to close the Quit Game pop-up.
      *
-     * @param event the event object created by clicking the quit game button
+     * @param event the event object created by clicking the Quit Game button
      */
     @FXML
     public void quitGame(final ActionEvent event) {
