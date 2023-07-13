@@ -76,7 +76,7 @@ public class MainMenuController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NewGameMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the parent layout element to the class.
-        SettingsMenuController controller = loader.getController();
+        NewGameController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 0, 2);
@@ -97,7 +97,7 @@ public class MainMenuController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the parent layout element to the class.
-        SettingsMenuController controller = loader.getController();
+        SaveMenuController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 0, 2);
@@ -118,7 +118,7 @@ public class MainMenuController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the parent layout element to the class.
-        SettingsMenuController controller = loader.getController();
+        GameInfoController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 0, 2);
