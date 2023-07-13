@@ -8,6 +8,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
@@ -39,6 +40,10 @@ public class NewGameController {
     //FXML Element: The text field used to get the character name string from the user.
     @FXML
     private TextField characterName;
+
+    //FXML Element: A label used to display any errors to the user when starting a new game.
+    @FXML
+    private Label errorOutput;
 
     //FXML Element: A checkbox that allows players to skip the tutorial in a new game.
     // Boolean value is passed to game driver class to signify the tutorial is to be skipped.
@@ -130,10 +135,8 @@ public class NewGameController {
         LocationMenuController gameDriverController = loader.getController();
 
         if (characterName.getText().equals("")) {
-            // Limitations: Null character name error prints to terminal instead of displaying in game window.
-            // Waiting For: FXML Element in the New Game window to update if name value is empty.
-            // Fix: Replace print methods with update to FXML element.
-            System.out.println("No Character Name. Invalid Start.");
+            errorOutput.setVisible(true);
+            errorOutput.setText("No Character Name.");
             return false;
         } else {
             // ** TEMP PRINT INSTEAD OF PASS VARIABLE STATUS **
