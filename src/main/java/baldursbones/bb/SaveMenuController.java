@@ -39,10 +39,11 @@ import java.util.Scanner;
  * @version Baldur's Bones v1.1
  */
 public class SaveMenuController implements Initializable {
-    // Text File: The number of lines in the text file per save.
+
+    // Constant: The number of lines in the text file per save.
     private static final int SAVE_FILE_LINES = 4;
 
-    // Text File: Static location of the Save Files to read from.
+    // Text File: Static location of the Save Files document to read from.
     private static final File SAVE_FILES = new File("src/main/resources/baldursbones/bb/SaveFiles.txt");
 
     // Constant: Define the amount of pixels to leave of the top of the screen for the anchor bar.
@@ -71,7 +72,7 @@ public class SaveMenuController implements Initializable {
     @FXML
     private TableColumn<SaveFile, String> timeColumn;
 
-    // FXML Element: The text field for the user to enter the save name into.
+    // FXML Element: The text field for the user to enter the Save File name into.
     @FXML
     private TextField saveNameField;
 
@@ -83,6 +84,7 @@ public class SaveMenuController implements Initializable {
      */
     @FXML
     public void closeSaveMenu() {
+        // Set the settings button to be clickable.
         container.lookup("#openSettingsButton").setDisable(false);
         // If the current container is the Main Menu, enable Main Menu buttons.
         if (container.getId().equals("mainMenuGrid")) {
@@ -90,13 +92,13 @@ public class SaveMenuController implements Initializable {
             container.lookup("#savedGamesButton").setDisable(false);
             container.lookup("#gameInfoButton").setDisable(false);
         } else {
-            // Set location menu buttons to be clickable.
+            // Else: Set location menu buttons to be clickable.
             container.lookup("#locationFightButton").setDisable(false);
             container.lookup("#locationViewStats").setDisable(false);
             container.lookup("#locationViewMap").setDisable(false);
             container.lookup("#endGameTest").setDisable(false);
         }
-        // Remove the Settings Menu from the Main Menu window.
+        // Remove the Saved Games menu from the current menu window.
         container.getChildren().remove(saveGameMenu);
     }
 
@@ -110,15 +112,15 @@ public class SaveMenuController implements Initializable {
     public void openGameWindow(final ActionEvent event) throws IOException {
         // Load the Game Location menu FXML document.
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("LocationMenu.fxml")));
-        // Get the stage by tracing the source of the click event -> scene -> stage.
+        // Get the stage by tracing the source of the click event. Event -> Scene -> Stage.
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        // Get the size of the users screen to set the size and with of the game window.
+        // Get the size of the users screen to determine the size and with of the new game stage.
         Rectangle2D userScreen = Screen.getPrimary().getBounds();
-        // Create a scene with the loaded Game Location menu document.
-        // Load the scene with the correct size and width found above.
+        // Load the scene with the size and width found above.
+        // (Height - Size of anchor bar allows anchor bar to display)
         Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - ANCHOR_BAR_SIZE);
+        // Set the new scene in the stage object, center the stage, prevent resizing, and set the window title.
         stage.setScene(scene);
-        // Center stage to the middle of the screen, prevent resizing, and set title.
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.setTitle("Baldur's Bones");
@@ -126,173 +128,9 @@ public class SaveMenuController implements Initializable {
         stage.show();
     }
 
-    /**
-     * Takes the parent element that the layout will be displayed in and saves it.
-     *
-     * @param parentGrid The parent element of the Settings Menu layout
-     */
-    public void getContainerElement(final GridPane parentGrid) {
-        container = parentGrid;
-    }
-
-    private boolean saveFileChecker() throws FileNotFoundException {
-        // Determines if saving is possible.
-        boolean enableSave = true;
-        // If the container is in the Main Menu, prevent a save.
-        if (container.getId().equals("mainMenuGrid")) {
-            // ** TEMP OUTPUT **
-            enableSave = false;
-            System.out.println("No Saving Here. TEMP");
-        } else {
-            // Find the name of the new Save File and open the saved files document.
-            String newSaveName = saveNameField.getText();
-            Scanner readSaves = new Scanner(SAVE_FILES);
-            // Iterate through the Save File.
-            while (readSaves.hasNextLine()) {
-                // Get the next file name
-                String currentLine = readSaves.nextLine();
-                // If you find a matching file name, set enable save to false and break the loop.
-                if (currentLine.equals(newSaveName)) {
-                    // ** TEMP OUTPUT **
-                    // ** Possible set to overwrite by passing the name to the delete method. **
-                    enableSave = false;
-                    System.out.println("Save File Already Exists. TEMP");
-                    break;
-                } else {
-                    // If the save name does not match the new save name, then skip the lines for that Save File.
-                    for (int i = 1; i < SAVE_FILE_LINES; i++) {
-                        readSaves.nextLine();
-                    }
-                }
-            }
-            readSaves.close();
-        }
-        return enableSave;
-    }
-    /**
-     * Writes a new set of Save File information to the bottom of the Save File document.
-     * Will not create a new save on the Main Menu.
-     * ** Needs code to get game the info and make a new Save Info file. **
-     * ** Needs FXMl document area to if display saving is unavailable **
-     *
-     * @throws FileNotFoundException if the saved files text document cannot be opened by the valid save checker
-     * @throws RuntimeException if the saved files text document cannot be opened
-     */
-    public void addNewSaveFile() throws FileNotFoundException {
-        // Check that the container is not the Main Menu and the Save File name is not repeated.
-        if (saveFileChecker()) {
-            try {
-                // Open the "Save Files" file with a writer that appends saves to the end of the file.
-                FileWriter writeFile = new FileWriter(SAVE_FILES, true);
-                writeFile.write(saveNameField.getText() + System.getProperty("line.separator"));
-                writeFile.write("Temp Char" + System.getProperty("line.separator"));
-                writeFile.write(java.time.LocalDate.now() + System.getProperty("line.separator"));
-                // Define the file name as saveFileName + Info.txt.
-                writeFile.write(saveNameField.getText() + "Info.txt" + System.getProperty("line.separator"));
-                writeFile.close();
-                // Create the associated info file.
-                createInfoFile(saveNameField.getText());
-                // Get the new Save File information and populate the table.
-                getSavedInfo();
-            } catch (IOException e) {
-                // Catch any issues opening and writing in the file.
-                throw new RuntimeException(e);
-            }
-
-        }
-    }
-
-    /**
-     * Finds the selected row, deletes that row from the saved files text document, and updates the Save Files table.
-     * ** Need to implement way to find the Saved Games info file and delete it as well **
-     *
-     * @throws IOException if the files to be read or written to cannot be found
-     */
-    public void deleteSaveFile() throws IOException {
-        // Get the Save File row that is currently selected and save the file name.
-        SaveFile saveFile = saveFileTable.getSelectionModel().getSelectedItem();
-        if (saveFile != null) {
-            String deleteFileName = saveFile.getFileName();
-            // Call the method to delete the associated info file
-            deleteInfoFile(deleteFileName);
-            // Open a scanner to read the old saves file.
-            Scanner readSaves = new Scanner(SAVE_FILES);
-            // Create a new file to replace the old saves file and open it in a writer.
-            File newSaves = new File("SaveFiles.txt");
-            FileWriter writeSaves = new FileWriter(newSaves, false);
-            // Call the file updater method.
-            updateSavesFile(writeSaves, readSaves, deleteFileName);
-            // Close the reader and the writer.
-            readSaves.close();
-            writeSaves.close();
-            // Replace the old saves file with the new saves file.
-            Path newSave = Paths.get("SaveFiles.txt");
-            Path oldSave = Paths.get("src/main/resources/baldursbones/bb");
-            Files.move(newSave, oldSave.resolve(newSave.getFileName()), StandardCopyOption.REPLACE_EXISTING);
-            // Update the table with the new saves text document.
-            getSavedInfo();
-        } else {
-            // ** TEMP OUTPUT ** Put warning element into display window later.
-            // Display a warning to terminal if the user attempts to delete a file without selecting one.
-            System.out.println("Warning: Deleting file without file selected.");
-        }
-    }
-
-    // Reads through the old Save File and creates a new one with all the saves except for the deleted one.
-    private void updateSavesFile(final FileWriter writeSaves, final Scanner readSaves, final String deleteFileName)
-            throws IOException {
-        // Iterate through the Save File.
-        while (readSaves.hasNextLine()) {
-            // Get the next file name
-            String currentLine = readSaves.nextLine();
-            // If you find the file name, skip writing that section and record the current line.
-            if (currentLine.equals(deleteFileName)) {
-                for (int i = 1; i < SAVE_FILE_LINES; i++) {
-                    readSaves.nextLine();
-                }
-            } else {
-                // Write the file name to the file.
-                writeSaves.write(currentLine + System.getProperty("line.separator"));
-                // If it is not the file to delete then write it to the new Save File.
-                for (int i = 1; i < SAVE_FILE_LINES; i++) {
-                    currentLine = readSaves.nextLine();
-                    writeSaves.write(currentLine + System.getProperty("line.separator"));
-                }
-            }
-        }
-    }
-
-    /**
-     * Opens the SaveFile object and reads its data to be passed to the game.
-     * Then it opens the Game Location window (main window for gameplay) in place of the current scene.
-     * ** Needs a Save Game info files to read from using the get data file. **
-     * ** Needs a game method to pass the info from the Save Game info file to. **
-     *
-     * @param event the event object created by clicking the load game button
-     * @throws IOException if the text document being loaded does not exist
-     */
-    public void loadSaveFile(final ActionEvent event) throws IOException {
-        // Get the Save File row that is currently selected.
-        SaveFile saveFile = saveFileTable.getSelectionModel().getSelectedItem();
-        // Get the matching info file name and load it into a file object.
-        String fileName = saveFile.getDataFile();
-        File infoFile = new File("src/main/resources/baldursbones/bb/" + fileName);
-        // Open the info file in a scanner for reading.
-        Scanner infoReader = new Scanner(infoFile);
-        // For each info element in the info file print it to screen for testing.
-        for (int infoElement = 1; infoElement <= 10; infoElement++) {
-            // ** TEMP ** Print the Save File data instead of passing it.
-            System.out.println(infoReader.nextLine());
-        }
-        // Close the file reader
-        infoReader.close();
-        // Call the method to open a New Game
-        openGameWindow(event);
-    }
-
-    // Populate the saved file table with the Save File object info.
+    // Populate the Saved File table with the Save File object info.
     private void populateTable() {
-        // Set the columns to read from an associated field in the saved file object class.
+        // Set the columns to read from an associated field in the Save File object class.
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("fileName"));
         characterColumn.setCellValueFactory(new PropertyValueFactory<>("characterName"));
         timeColumn.setCellValueFactory(new PropertyValueFactory<>("saveTime"));
@@ -303,12 +141,13 @@ public class SaveMenuController implements Initializable {
     // Creates an array of objects representing the Save File data in memory.
     private void getSavedInfo() {
         try {
+            // Try to read the Saved Files document.
             Scanner readSaves = new Scanner(SAVE_FILES);
             // Clear any old Save File info from the Save File array.
             saveFiles.clear();
-            // For each set of 4 lines (Save Info length),
-            // Record those lines to an object and add it to the Save File array.
+            // For each set of 4 lines (Save Info length = File Name, Character Name, Save Tile, Info File Location).
             while (readSaves.hasNextLine()) {
+                // Record those lines to an object and add it to the Save File array.
                 String fileName = readSaves.nextLine();
                 String characterName = readSaves.nextLine();
                 String saveTime = readSaves.nextLine();
@@ -325,14 +164,187 @@ public class SaveMenuController implements Initializable {
         populateTable();
     }
 
-    // Takes a Save File name from a new save and makes an associated Save Info file.
+    /**
+     * Checks for valid save and writes a new set of Save File information to the bottom of the Save File document.
+     * Limitations: there is nowhere to pull the character name information from to populate into the document.
+     * Currently, uses a temp string to record character name.
+     * Waiting For: Game Location controller to be created with getCharacterName method to call from.
+     * Fix: Implement a setter and getter method for the character name in the Game Location controller.
+     *
+     * @throws FileNotFoundException if the Saved Files text document cannot be opened by the valid save checker
+     * @throws RuntimeException      if the Saved Files text document cannot be opened
+     */
+    public void addNewSaveFile() throws FileNotFoundException {
+        // Check that the container is not the Main Menu and the Save File name is not null or repeated.
+        if (saveFileChecker()) {
+            try {
+                // Open the "Save Files" file with a writer and append the new save information to the end of the file.
+                FileWriter writeFile = new FileWriter(SAVE_FILES, true);
+                writeFile.write(saveNameField.getText() + System.getProperty("line.separator"));
+                writeFile.write("Temp Char" + System.getProperty("line.separator"));
+                writeFile.write(java.time.LocalDate.now() + System.getProperty("line.separator"));
+                // Define the file name as "saveFileName" + Info.txt.
+                writeFile.write(saveNameField.getText() + "Info.txt" + System.getProperty("line.separator"));
+                // Close the file reader.
+                writeFile.close();
+                // Create the associated info file, update Saved Files information, and populate the Save Files table.
+                createInfoFile(saveNameField.getText());
+                getSavedInfo();
+            } catch (IOException e) {
+                // Catch any issues opening and writing in the file.
+                throw new RuntimeException(e);
+            }
+        }
+    }
+
+    // Determine if it is possible for the user to create a new save.
+    // Limitations: Invalid save name / location error prints to terminal instead of displaying in game window.
+    // Waiting For: FXML Element in the Saved Games window to update if the save attempt is invalid.
+    // Fix: Replace print methods with update to FXML element.
+    private boolean saveFileChecker() throws FileNotFoundException {
+        // Determines if saving is currently possible.
+        boolean enableSave = true;
+        // If the container is in the Main Menu, prevent a save.
+        if (container.getId().equals("mainMenuGrid")) {
+            enableSave = false;
+            // ** TEMP OUTPUT **
+            System.out.println("No Saving Here. TEMP");
+        } else if (saveNameField.getText().equals("")) {
+            enableSave = false;
+            // ** TEMP OUTPUT **
+            System.out.println("No Save File Name. TEMP");
+        } else {
+            // Create a scanner to check the Save File names.
+            Scanner readSaves = new Scanner(SAVE_FILES);
+            // Iterate through the Save File and get the next file name.
+            while (readSaves.hasNextLine()) {
+                String currentLine = readSaves.nextLine();
+                // If you find a name that matches the current file name, set enable save to false and break the loop.
+                if (currentLine.equals(saveNameField.getText())) {
+                    enableSave = false;
+                    // ** TEMP OUTPUT **
+                    System.out.println("Save File Already Exists. TEMP");
+                    break;
+                } else {
+                    // If the Save File name does not match the new Save File name:
+                    // Skip the lines associated with that Save File.
+                    for (int i = 1; i < SAVE_FILE_LINES; i++) {
+                        readSaves.nextLine();
+                    }
+                }
+                // Close the file reader.
+                readSaves.close();
+            }
+        }
+        // Return a boolean value indicating if it is a valid save.
+        return enableSave;
+    }
+
+    /**
+     * Finds the selected row, delete that row from the Saved Files document, and update the Save Files table.
+     *
+     * @throws IOException if the files to be read or written to cannot be found
+     */
+    public void deleteSaveFile() throws IOException {
+        // Get the Save File row that is currently selected.
+        SaveFile saveFile = saveFileTable.getSelectionModel().getSelectedItem();
+        // If a file is selected then save the file name and start the deletion process.
+        if (saveFile != null) {
+            String deleteFileName = saveFile.getFileName();
+            // Call the method to delete the associated Save Info file
+            deleteInfoFile(deleteFileName);
+            // Open a scanner to read the old Save Files file.
+            Scanner readSaves = new Scanner(SAVE_FILES);
+            // Create a new file to replace the old Saved Files document and open it in a writer.
+            File newSaves = new File("SaveFiles.txt");
+            FileWriter writeSaves = new FileWriter(newSaves, false);
+            // Call the file updater create a copy of the Saved Files document without the selected save information.
+            updateSavesFile(writeSaves, readSaves, deleteFileName);
+            // Close the reader and the writer.
+            readSaves.close();
+            writeSaves.close();
+            // Replace the old Saved Files document with the updated copy.
+            // Finds the new file name and the old files path then moves the old file into that folder.
+            // StandardCopyOption.REPLACE_EXISTING removes the old file and replaces it with the new one.
+            Path newSave = Paths.get("SaveFiles.txt");
+            Path oldSave = Paths.get("src/main/resources/baldursbones/bb");
+            Files.move(newSave, oldSave.resolve(newSave.getFileName()), StandardCopyOption.REPLACE_EXISTING);
+            // Update the table with the new Saved Files document.
+            getSavedInfo();
+        } else {
+            // ** TEMP OUTPUT ** Put warning element into display window later.
+            // Display a warning to terminal if the user attempts to delete a file without selecting one.
+            System.out.println("Warning: Deleting file without file selected.");
+        }
+    }
+
+    // Reads through the old Save File and creates a copy of it.
+    // Copy is created without the save information for the selected file name.
+    private void updateSavesFile(final FileWriter writeSaves, final Scanner readSaves, final String deleteFileName)
+            throws IOException {
+        // Iterate through the Save File.
+        while (readSaves.hasNextLine()) {
+            // Get the next file name
+            String currentLine = readSaves.nextLine();
+            // If: current line matches the selected file name, skip writing that section and move to the next file.
+            if (currentLine.equals(deleteFileName)) {
+                for (int i = 1; i < SAVE_FILE_LINES; i++) {
+                    readSaves.nextLine();
+                }
+            } else {
+                // Else: Write the file name to the file.
+                writeSaves.write(currentLine + System.getProperty("line.separator"));
+                // Write the rest of the save info into the new Save File document.
+                for (int i = 1; i < SAVE_FILE_LINES; i++) {
+                    currentLine = readSaves.nextLine();
+                    writeSaves.write(currentLine + System.getProperty("line.separator"));
+                }
+            }
+        }
+    }
+
+    /**
+     * Opens the SaveFile document and reads the game data to be passed to the Location Menu.
+     * Then it opens the Game Location window (main window for gameplay) in place of the current scene.
+     * Limitations: There is no Location Menu controller to pass the game info to, that loads a new game.
+     * Waiting For: A setGameValues method to pass the file to that will assign the file info to the game variables.
+     * Fix: Replace the print loop with a method call in the open game window method that passes the info file.
+     *      Open game window method will need to be updated to accept a File type parameter.
+     *
+     * @param event the event object created by clicking the load game button
+     * @throws IOException if the text document being loaded does not exist
+     */
+    public void loadSaveFile(final ActionEvent event) throws IOException {
+        // Get the Save File row that is currently selected.
+        SaveFile saveFile = saveFileTable.getSelectionModel().getSelectedItem();
+        // Get the document assosiated with that Save File and load it into a file object.
+        String fileName = saveFile.getDataFile();
+        File infoFile = new File("src/main/resources/baldursbones/bb/" + fileName);
+        // Open the info file in a scanner for reading.
+        Scanner infoReader = new Scanner(infoFile);
+        // ** Replace with method to pass the game information file to the Location Menu. **
+        // ** Location Menu will have a method to read the file and assign the values to variables. **
+        for (int infoElement = 1; infoElement <= 10; infoElement++) {
+            // ** TEMP OUTPUT ** For each line of the info file: print the line to the terminal for testing.
+            System.out.println(infoReader.nextLine());
+        }
+        // Close the file reader.
+        infoReader.close();
+        // Call the method to open a Location Menu window.
+        openGameWindow(event);
+    }
+
+    // Takes a Save File name from the new save method and makes an associated Save Info file.
+    // Limitations: There is no way for the controller to get the game information to write into the information file.
+    // Waiting For: Location menu being able to call a method in this class that takes the game information as strings.
+    // Fix: Write test strings into the save file test file reading and writing.
     private void createInfoFile(final String infoFileName) {
-        // Add the ending and extension to the file name;
+        // Add the ending "Info" and extension ".txt" to the file name.
         String fileNameFormatted = infoFileName + "Info.txt";
-        // Define the file location
+        // Define the location for the new file.
         File infoFile = new File("src/main/resources/baldursbones/bb/" + fileNameFormatted);
         try {
-            // Tries to create a file with the file name.
+            // Try to create a file with the assigned file name.
             System.out.println("Created Info File: " + infoFile.createNewFile());
         } catch (IOException e) {
             // Catches any  errors creating the file.
@@ -341,8 +353,9 @@ public class SaveMenuController implements Initializable {
         try {
             // Create a writer object to fill the file with character info.
             FileWriter writeFileInfo = new FileWriter(infoFile);
-            // Get values from the getContainerValues method.
             // Write the values into the text file, one line per value.
+            // ** TEMP INPUT ** There is no container controller to pass data to the controller.
+            // Temp strings are used instead of game values.
             writeFileInfo.write("Character Name" + System.getProperty("line.separator"));
             writeFileInfo.write("Player Level" + System.getProperty("line.separator"));
             writeFileInfo.write("Player Experience" + System.getProperty("line.separator"));
@@ -353,6 +366,7 @@ public class SaveMenuController implements Initializable {
             writeFileInfo.write("Player Re-Roll Ability" + System.getProperty("line.separator"));
             writeFileInfo.write("Player Map" + System.getProperty("line.separator"));
             writeFileInfo.write("Game Map" + System.getProperty("line.separator"));
+            // Close the writer.
             writeFileInfo.close();
         } catch (IOException e) {
             // Catches any errors writing the info file.
@@ -360,17 +374,26 @@ public class SaveMenuController implements Initializable {
         }
     }
 
-    // Takes a Save File name and deletes the associated info file.
+    // Takes a Save File name, formats it and looks for the file, then deletes the associated info file if able.
     private void deleteInfoFile(final String infoFileName) {
-        // Add the ending and extension to the file name.
+        // Add the ending "Info" and extension ".txt" to the file name.
         String fileNameFormatted = "src/main/resources/baldursbones/bb/" + infoFileName + "Info.txt";
-        // Find the file and delete it if able.
+        // Look for a file with a matching name in the resources folder and delete it if able.
         File deleteFile = new File(fileNameFormatted);
         System.out.println("Deleted File: " + deleteFile.delete());
     }
 
     /**
-     * When the saved files menu is opened, get the saved data and update the table.
+     * Takes the parent element that the layout will be displayed in and saves it.
+     *
+     * @param parentGrid The parent element of the Settings Menu layout
+     */
+    public void getContainerElement(final GridPane parentGrid) {
+        container = parentGrid;
+    }
+
+    /**
+     * When the Saved Games menu is opened, get the saved data and update the table.
      *
      * @param url            N/A
      * @param resourceBundle N/A
@@ -379,7 +402,7 @@ public class SaveMenuController implements Initializable {
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
         // Define the data type of the array of Save File classes.
         saveFiles = FXCollections.observableArrayList();
-        // Try to read the Save Files from the Save Files text document and update the saves table
+        // Try to read the Save Files from the Save Files document and update the Save Files table.
         getSavedInfo();
     }
 }
