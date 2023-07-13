@@ -10,6 +10,7 @@ import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -78,6 +79,10 @@ public class SaveMenuController implements Initializable {
 
     // Array Variable: An array of the Save File information.
     private ObservableList<SaveFile> saveFiles;
+
+    //FXML Element: A label used to display any messages to the user when creating or deleting a save.
+    @FXML
+    private Label saveOutput;
 
     /**
      * Removes the Saved Games menu layout from the current menu and makes the buttons clickable again.
@@ -189,6 +194,9 @@ public class SaveMenuController implements Initializable {
                 writeFile.close();
                 // Create the associated info file, update Saved Files information, and populate the Save Files table.
                 createInfoFile(saveNameField.getText());
+                saveOutput.setVisible(true);
+                saveOutput.setStyle("-fx-background-color: black");
+                saveOutput.setText("Saved File: " + saveNameField.getText() + ".");
                 getSavedInfo();
             } catch (IOException e) {
                 // Catch any issues opening and writing in the file.
@@ -207,12 +215,14 @@ public class SaveMenuController implements Initializable {
         // If the container is in the Main Menu, prevent a save.
         if (container.getId().equals("mainMenuGrid")) {
             enableSave = false;
-            // ** TEMP OUTPUT **
-            System.out.println("No Saving Here. TEMP");
+            saveOutput.setVisible(true);
+            saveOutput.setStyle("-fx-background-color: red");
+            saveOutput.setText("Cannot Save On Main Menu");
         } else if (saveNameField.getText().equals("")) {
             enableSave = false;
-            // ** TEMP OUTPUT **
-            System.out.println("No Save File Name. TEMP");
+            saveOutput.setVisible(true);
+            saveOutput.setStyle("-fx-background-color: red");
+            saveOutput.setText("Un-Named Save File.");
         } else {
             // Create a scanner to check the Save File names.
             Scanner readSaves = new Scanner(SAVE_FILES);
@@ -222,8 +232,9 @@ public class SaveMenuController implements Initializable {
                 // If you find a name that matches the current file name, set enable save to false and break the loop.
                 if (currentLine.equals(saveNameField.getText())) {
                     enableSave = false;
-                    // ** TEMP OUTPUT **
-                    System.out.println("Save File Already Exists. TEMP");
+                    saveOutput.setVisible(true);
+                    saveOutput.setStyle("-fx-background-color: red");
+                    saveOutput.setText("Save File Already Exists With That Name");
                     break;
                 } else {
                     // If the Save File name does not match the new Save File name:
@@ -272,9 +283,9 @@ public class SaveMenuController implements Initializable {
             // Update the table with the new Saved Files document.
             getSavedInfo();
         } else {
-            // ** TEMP OUTPUT ** Put warning element into display window later.
-            // Display a warning to terminal if the user attempts to delete a file without selecting one.
-            System.out.println("Warning: Deleting file without file selected.");
+            saveOutput.setVisible(true);
+            saveOutput.setStyle("-fx-background-color: red");
+            saveOutput.setText("No File Selected.");
         }
     }
 
@@ -380,7 +391,9 @@ public class SaveMenuController implements Initializable {
         String fileNameFormatted = "src/main/resources/baldursbones/bb/" + infoFileName + "Info.txt";
         // Look for a file with a matching name in the resources folder and delete it if able.
         File deleteFile = new File(fileNameFormatted);
-        System.out.println("Deleted File: " + deleteFile.delete());
+        saveOutput.setVisible(true);
+        saveOutput.setStyle("-fx-background-color: black");
+        saveOutput.setText("Deleted File: " + deleteFile.delete());
     }
 
     /**
