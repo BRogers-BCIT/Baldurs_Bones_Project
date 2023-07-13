@@ -177,7 +177,7 @@ public class GameInfoController implements Initializable {
     /**
      * Takes the parent layout element that scene will be displayed in and saves it to a variable.
      *
-     * @param parentGrid The parent layout element of the settings menu scene
+     * @param parentGrid The parent layout element of the Game Info scene
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;
