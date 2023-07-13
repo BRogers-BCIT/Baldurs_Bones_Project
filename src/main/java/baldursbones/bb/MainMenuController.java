@@ -51,7 +51,7 @@ public class MainMenuController implements Initializable {
      */
     @FXML
     public void openSettingsMenu() throws IOException {
-        // Load the settings menu FXML document into a root object.
+        // Load the Settings Menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SettingsMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the parent layout element to the class.
@@ -72,7 +72,7 @@ public class MainMenuController implements Initializable {
      */
     @FXML
     public void openNewGameMenu() throws IOException {
-        // Load the new game menu FXML document into a root object.
+        // Load the New Game menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("NewGameMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the parent layout element to the class.
@@ -93,7 +93,7 @@ public class MainMenuController implements Initializable {
      */
     @FXML
     public void openSaveGameMenu() throws IOException {
-        // Load the saved games menu FXML document into a root object.
+        // Load the Saved Games menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the parent layout element to the class.
@@ -114,7 +114,7 @@ public class MainMenuController implements Initializable {
      */
     @FXML
     public void openGameInfoMenu() throws IOException {
-        // Load the game info menu FXML document into a root object.
+        // Load the Game Info info menu FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
         root = loader.load();
         // Get the controller for the new menu and pass the parent layout element to the class.
