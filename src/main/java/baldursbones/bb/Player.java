@@ -58,6 +58,11 @@ public class Player {
     private static final int LOSE_TO_BOSS = -2;
 
     /**
+     * Variable: A string that represents the characters name in game.
+     */
+    protected String name;
+
+    /**
      * Variable: The recorded value of the players health stat.
      */
     protected int health;
@@ -337,5 +342,23 @@ public class Player {
             System.out.println("Cannot use Take-Away. No uses.");
             return false;
         }
+    }
+
+    /**
+     * Set the player characters name to a new string value.
+     *
+     * @param name a string to change the player characters name too.
+     */
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    /**
+     * Return the string value of the player characters name.
+     *
+     * @return a string that represents the player characters name
+     */
+    public String getName() {
+        return name;
     }
 }
