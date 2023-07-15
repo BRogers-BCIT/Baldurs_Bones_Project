@@ -19,48 +19,66 @@ import java.util.ResourceBundle;
  */
 public class LocationMenuController implements Initializable {
 
-    // Save an FXML file to be loaded into the scene.
+    // Variable: Save an FXML file to be loaded into the scene.
     private Parent root;
 
-    // The layout object for the location menu that new menus are loaded into.
+    // FXML Element: The layout object for the Location Menu that new menus are loaded into.
     @FXML
     private GridPane locationMenuGrid;
 
-    // Menu button that calls the open fight menu method.
+    // FXML Element: Menu button that calls the Start Fight method.
     @FXML
     private Button startFightButton;
 
-    // Menu button that calls the view character menu method.
+    // FXML Element: Menu button that calls the View Character method.
     @FXML
     private Button viewCharacterButton;
 
-    // Menu button that calls the view map menu method.
+    // FXML Element: Menu button that calls the View Map method.
     @FXML
     private Button viewMapButton;
 
-    // Menu button that calls the End Game method for testing.
+    // FXML Element: Menu button that calls the End Game method for testing.
     @FXML
     private Button endGameButton;
 
-    // Menu button that calls the open settings method.
+    // FXML Element: Menu button that calls the open Settings Menu method.
     @FXML
     private Button openSettingsButton;
 
-    // Movement button for north.
+    // FXML Element: Movement button for north. Calls move player method.
     @FXML
     private Button moveNorthButton;
 
-    // Movement button for south.
+    // FXML Element: Movement button for south. Calls move player method.
     @FXML
     private Button moveSouthButton;
 
-    // Movement button for east.
+    // FXML Element: Movement button for east. Calls move player method.
     @FXML
     private Button moveEastButton;
 
-    // Movement button for west.
+    // FXML Element: Movement button for west. Calls move player method.
     @FXML
     private Button moveWestButton;
+
+    // Game Object: The game object for the Player Character fields and methods.
+    private Player playerCharacter;
+
+    // Game Object: The game object for the Map (Player and Game) fields and methods.
+    private Map gameMaps;
+
+    // Game Object: The game object for Movement fields and methods.
+    private Movement playerMovement;
+
+    // Game Object: The current Location object for the players position.
+    private Location currentLocation;
+
+    // Game Object: The current Enemy object for the players position.
+    private Enemy currentEnemy;
+
+    // Variable: Used to indicate if the tutorial should be skipped when starting a new game.
+    private boolean skipTutorial;
 
     /**
      * Load the Settings Menu document, display it in the center of the screen, and disable all location menu buttons.
@@ -167,6 +185,16 @@ public class LocationMenuController implements Initializable {
         endGameButton.setDisable(true);
     }
 
+    /** When a new game is created get the character name and the skip tutorial value from the new game controller.
+     *
+     * @param characterName a string representing the character name for this run
+     * @param disableTutorial a boolean value determining if the tutorial section should be skipped
+     */
+    public void getGameInfo(final String characterName, final boolean disableTutorial) {
+        playerCharacter.setName(characterName);
+        skipTutorial = disableTutorial;
+    }
+
     /** Set the movement buttons to be disabled when first opening a location menu.
      * @param url N/A
      * @param resourceBundle N/A
@@ -177,5 +205,8 @@ public class LocationMenuController implements Initializable {
         moveSouthButton.setDisable(true);
         moveEastButton.setDisable(true);
         moveWestButton.setDisable(true);
+        playerCharacter = new Player();
+        gameMaps = new Map();
+        playerMovement = new Movement();
     }
 }
