@@ -10,6 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
@@ -147,27 +148,46 @@
          </padding>
       </Label>
    </VBox>
-   <VBox id="LocationDescriptionContainer" alignment="CENTER" GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER">
-      <Label id="LocationDescriptionTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Location Name" textAlignment="CENTER" textOverrun="CLIP">
-         <font>
-            <Font size="24.0" />
-         </font>
-         <VBox.margin>
-            <Insets />
-         </VBox.margin>
-         <padding>
-            <Insets bottom="20.0" />
-         </padding>
-      </Label>
-      <TextArea id="LocationDescriptionTextBox" prefHeight="50.0" prefWidth="150.0" promptText="Area Description">
-         <font>
-            <Font size="18.0" />
-         </font>
-         <VBox.margin>
-            <Insets left="20.0" right="20.0" />
-         </VBox.margin>
-      </TextArea>
-   </VBox>
+   <HBox GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER">
+      <children>
+         <VBox id="LocationDescriptionContainer" alignment="CENTER">
+            <Label id="LocationDescriptionTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Location Name" textAlignment="CENTER" textOverrun="CLIP">
+               <font>
+                  <Font size="24.0" />
+               </font>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="20.0" />
+               </padding>
+            </Label>
+            <TextArea id="LocationDescriptionTextBox" prefHeight="50.0" prefWidth="150.0" promptText="Area Description">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets left="20.0" right="20.0" />
+               </VBox.margin>
+            </TextArea>
+         </VBox>
+         <GridPane fx:id="locationMenuMap" alignment="CENTER">
+           <columnConstraints>
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" />
+             <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" />
+               <ColumnConstraints hgrow="SOMETIMES" minWidth="30.0" />
+           </columnConstraints>
+           <rowConstraints>
+             <RowConstraints minHeight="30.0" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="30.0" vgrow="SOMETIMES" />
+             <RowConstraints minHeight="30.0" vgrow="SOMETIMES" />
+           </rowConstraints>
+            <HBox.margin>
+               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            </HBox.margin>
+         </GridPane>
+      </children>
+   </HBox>
    <Region fx:id="LocationRightThree" GridPane.columnIndex="3" GridPane.rowIndex="3" />
    <Region fx:id="LocationFooterLeft" prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="4" />
    <Region fx:id="LocationFooterMiddleOne" GridPane.columnIndex="1" GridPane.rowIndex="4" />

@@ -38,7 +38,7 @@
             </Label>
             <Region id="GameMapTitleRight" fx:id="MapTitleRight" HBox.hgrow="ALWAYS" />
         </HBox>
-        <GridPane id="GameMapGrid" alignment="CENTER" VBox.vgrow="NEVER">
+        <GridPane id="GameMapGrid" fx:id="mapInfoGrid" alignment="CENTER" VBox.vgrow="NEVER">
             <columnConstraints>
                 <ColumnConstraints fx:id="LegendColumn" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
                 <ColumnConstraints hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
