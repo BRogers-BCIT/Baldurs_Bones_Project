@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
+
 /**
  * Map Info Controller.
  *
@@ -12,12 +13,19 @@ import javafx.scene.layout.HBox;
  */
 public class MapInfoController {
 
-    // The parent element the map info menu is displayed in.
+    // FXML Element: The parent element the map info menu is displayed in.
     private GridPane container;
 
-    // The layout element for the map info menu.
+    // FXML Element: The layout element for the map info menu.
     @FXML
     private HBox mapInfoBox;
+
+    // FXML Element: A grid pane object used to display a 7x7 view of the player map.
+    @FXML
+    private GridPane mapInfoGrid;
+
+    // Object: The game maps object with the current game information.
+    private Map currentMaps;
 
     /**
      * Removes the map info menu layout from the location menu and makes the buttons clickable again.
@@ -39,8 +47,12 @@ public class MapInfoController {
      *
      * @param parentGrid The parent element of the character info menu layout
      */
-    public void getContainerElement(final GridPane parentGrid) {
+    public void getContainerElements(final GridPane parentGrid, final Map gameMaps) {
         container = parentGrid;
+        currentMaps = gameMaps;
     }
 
+    public void displayMap() {
+        currentMaps.displayMap(mapInfoGrid);
+    }
 }

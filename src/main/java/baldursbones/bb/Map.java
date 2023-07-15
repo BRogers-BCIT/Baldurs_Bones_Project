@@ -1,5 +1,8 @@
 package baldursbones.bb;
 
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+
 /**
  * Game Map & Player Map.
  *
@@ -13,6 +16,9 @@ public class Map {
 
     // Constant: Define the starting Y position of a character in a new game.
     private static final int STARTING_Y = 6;
+
+    // Constant: Define the size of the game map grid.
+    private static final int MAP_SIZE = 7;
 
     // Constant: Define the location value of the tutorial square when beaten.
     private static final int BEATEN_TUTORIAL = 1;
@@ -47,7 +53,7 @@ public class Map {
 
     // Constant: Starting value of the players visual map.
     private static final String[][] STARTING_MAP_PLAYER =
-            {{"?", "?", "?", "?", "?", "?", "X"},
+            {{"?", "?", "?", "?", "?", "?", "!"},
                     {"?", "?", "?", "?", "?", "?", "?"},
                     {"?", "?", "?", "?", "?", "?", "?"},
                     {"?", "?", "?", "?", "?", "?", "?"},
@@ -97,29 +103,58 @@ public class Map {
 
         // If the current location is an unbeaten combat location, set it to be found.
         if (mapArray[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_COMBAT_LOCATION) {
-            playerMapArray[playerLocation[0]][playerLocation[1]] = "!";
+            playerMapArray[playerLocation[0]][playerLocation[1]] = "$";
             mapArray[playerLocation[0]][playerLocation[1]] = COMBAT_LOCATION;
         }
     }
 
     /**
-     * Prints the game map as a grid to display the game map to the player.
+     * Updates the Map Info grid with the current player map.
+     *
+     * @param mapDisplay the grid pane object to update with the map icons
      */
-    public void displayMap() {
-        // For the row X.
-        for (int x = 0; x < mapArray.length; x++) {
-            // For column Y.
-            for (int y = 0; y < mapArray.length; y++) {
-                // If X,Y is player location print player value.
-                if (x == lastPlayerLocation[0] && y == lastPlayerLocation[1]) {
-                    System.out.print(" @ ");
-                    // Otherwise print the player map value.
-                } else {
-                    System.out.print(" " + playerMapArray[x][y] + " ");
-                }
+    public void displayMap(final GridPane mapDisplay) {
+        // Iterate through the columns for each row. Row 1 (1-7), Row 2 (1-7) ...
+        for (int row = 0; row < MAP_SIZE; row++) {
+            for (int column = 0; column < MAP_SIZE; column++) {
+                // ** TEMP OUTPUT ** Replace with images eventually.
+                // Get the ascii icon used to represent space types and load it into a label to display.
+                Label currentLocationIcon = new Label(playerMapArray[row][column]);
+                // Load the icon into the correct spot of the map grid and update the map.
+                // Maps work column row so the order is switched.
+                GridPane.setConstraints(currentLocationIcon, column, row);
+                mapDisplay.getChildren().add(currentLocationIcon);
             }
-            // Print a new line.
-            System.out.println();
+        }
+    }
+
+    /**
+     * Updates the Location Menu min-map with the current player map.
+     *
+     * @param miniMapDisplay the grid pane object to update with the map icons
+     */
+    public void displayMiniMap(final GridPane miniMapDisplay) {
+        // Used to track which row of the grid to update because grid is smaller than map.
+        int showRow = 0;
+        for (int row = lastPlayerLocation[0] + 1; row >= lastPlayerLocation[0] - 1; row--) {
+            // Used to track which column of the grid to update because grid is smaller than map.
+            int showColumn = 0;
+            for (int column = lastPlayerLocation[1] + 1; column >= lastPlayerLocation[1] - 1; column--) {
+                // Set label to out of map icon
+                Label currentLocationIcon = new Label("X");
+                // If the location is inside the map array then update the label to its icon.
+                if (row >= 0 && row < MAP_SIZE && column >= 0 && column < MAP_SIZE) {
+                    currentLocationIcon = new Label(playerMapArray[row][column]);
+                }
+                // Load the icon into the correct spot of the map grid and update the map.
+                // Maps work column row so the order is switched.
+                GridPane.setConstraints(currentLocationIcon, showRow, showColumn);
+                miniMapDisplay.getChildren().add(currentLocationIcon);
+                // Increment column to update.
+                showColumn += 1;
+            }
+            // Increment row to update.
+            showRow += 1;
         }
     }
 

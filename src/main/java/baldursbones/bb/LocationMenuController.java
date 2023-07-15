@@ -26,6 +26,10 @@ public class LocationMenuController implements Initializable {
     @FXML
     private GridPane locationMenuGrid;
 
+    // FXML Element: A grid pane object used to display a 3x3 view of the player map.
+    @FXML
+    private GridPane locationMenuMap;
+
     // FXML Element: Menu button that calls the Start Fight method.
     @FXML
     private Button startFightButton;
@@ -131,7 +135,8 @@ public class LocationMenuController implements Initializable {
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
         MapInfoController controller = loader.getController();
-        controller.getContainerElement(locationMenuGrid);
+        controller.getContainerElements(locationMenuGrid, gameMaps);
+        controller.displayMap();
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 2);
         locationMenuGrid.getChildren().add(root);
@@ -208,5 +213,6 @@ public class LocationMenuController implements Initializable {
         playerCharacter = new Player();
         gameMaps = new Map();
         playerMovement = new Movement();
+        gameMaps.displayMiniMap(locationMenuMap);
     }
 }
