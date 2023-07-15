@@ -46,12 +46,16 @@ public class MapInfoController {
      * Takes the parent element that the layout will be displayed in and saves it.
      *
      * @param parentGrid The parent element of the character info menu layout
+     * @param gameMaps The map object that contains the methods to update the map grid pane.
      */
     public void getContainerElements(final GridPane parentGrid, final Map gameMaps) {
         container = parentGrid;
         currentMaps = gameMaps;
     }
 
+    /**
+     * Method call used to display / update the map info in the map grid pane.
+     */
     public void displayMap() {
         currentMaps.displayMap(mapInfoGrid);
     }
