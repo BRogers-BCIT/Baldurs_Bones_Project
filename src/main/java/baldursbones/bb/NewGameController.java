@@ -30,6 +30,10 @@ public class NewGameController {
     // Used when creating a new container class scene (Main Menu / Location Menu)
     private static final int ANCHOR_BAR_SIZE = 70;
 
+    // Constant: Define the max number of characters in a player character name.
+    // Prevent issues with displaying player name in game dialogue.
+    private static final int MAX_NAME_LENGTH = 12;
+
     // FXML Element: The parent element that the New Game menu is displayed in.
     private GridPane container;
 
@@ -126,10 +130,6 @@ public class NewGameController {
     // Checks for a non-empty character name to prevent a new game from being started without a character name.
     // Takes the loader object for the New Game window to finds its controller.
     // Passes the character name string and the skip tutorial boolean variable.
-
-    // Limitations: Currently prints values instead of passing to the game method. ** Prints for testing. **
-    // Waiting For: Game driver class is created and methods are made to accept game values.
-    // Fix: Replace print methods with calls to variable setter methods to pass the name and skip tutorial values.
     private boolean getGameStartInfo(final FXMLLoader loader) {
         // Get controller of Game Location window.
         LocationMenuController gameDriverController = loader.getController();
@@ -138,10 +138,13 @@ public class NewGameController {
             errorOutput.setVisible(true);
             errorOutput.setText("No Character Name.");
             return false;
+        } else if (characterName.getText().length() > MAX_NAME_LENGTH) {
+            errorOutput.setVisible(true);
+            errorOutput.setText("Character Name Too Long. (Max 12 Characters).");
+            return false;
         } else {
-            // ** TEMP PRINT INSTEAD OF PASS VARIABLE STATUS **
-            System.out.println("Character Name: " + characterName.getText() + ".");
-            System.out.println("Tutorial Disabled: " + disableTutorial.isSelected() + ".");
+            // pass the start game values to the Location Menu controller.
+            gameDriverController.getGameInfo(characterName.getText(), disableTutorial.isSelected());
             return true;
         }
     }
