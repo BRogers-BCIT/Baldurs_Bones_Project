@@ -35,6 +35,7 @@ import java.util.Scanner;
 
 /**
  * Saved Games Menu Controller.
+ * Save Function Driver.
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1

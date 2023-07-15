@@ -20,7 +20,7 @@ import java.util.ResourceBundle;
 
 /**
  * Settings Menu Controller.
- *
+ * Game Settings Driver
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */

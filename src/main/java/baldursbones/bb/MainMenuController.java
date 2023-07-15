@@ -13,7 +13,7 @@ import java.util.ResourceBundle;
 
 /**
  * Main Menu Controller.
- *
+ * Start Game Driver.
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
