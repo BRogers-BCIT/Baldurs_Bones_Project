@@ -136,10 +136,10 @@ public class LocationMenuController implements Initializable {
         // Get the controller for the new menu and pass the location menu layout to the class.
         MapInfoController controller = loader.getController();
         controller.getContainerElements(locationMenuGrid, gameMaps);
-        controller.displayMap();
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 2);
         locationMenuGrid.getChildren().add(root);
+        controller.displayMap();
         disableMenuButtons();
     }
 
