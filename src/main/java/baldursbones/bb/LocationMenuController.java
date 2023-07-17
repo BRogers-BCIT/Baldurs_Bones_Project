@@ -9,11 +9,13 @@ import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 /**
  * Location Menu Controller.
  * Main Game Driver.
+ *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
@@ -83,6 +85,53 @@ public class LocationMenuController implements Initializable {
 
     // Variable: Used to indicate if the tutorial should be skipped when starting a new game.
     private boolean skipTutorial;
+
+    // Variable: Used to record the current game state when waiting for the player to continue after text is displayed.
+    private String continueState;
+
+    /**
+     * Checks if the tutorial section is enabled and either starts the tutorial or skips it.
+     * If the tutorial is started then get the description and start a tutorial fight.
+     * If the tutorial is skipped then call the game start method.
+     */
+    public void gameStarter() {
+        // If: the tutorial is not being skipped.
+        if (!skipTutorial) {
+            // Disable the menu buttons, create a tutorial location, and call the tutorial start description.
+            disableMenuButtons();
+            currentLocation = new TutorialLocation(0, locationMenuGrid);
+            currentLocation.getDescription();
+            // Set the game to be waiting for the user to continue.
+            continueState = "tutorial fight";
+        } else {
+            // Else: call the method for after the tutorial is finished.
+            System.out.println("Skipped tutorial");
+        }
+    }
+
+    private void tutorialFight() {
+        // Define the enemy type for the current enemy.
+        currentEnemy = new TutorialEnemy();
+        // Open the combat menu and get the controller.
+        // The combat menu will contain the player and enemy objects.
+        GameCombatController combatController = openGameCombatMenu().getController();
+        // Begin the tutorial combat loop.
+        combatController.startCombat();
+        // When the combat is finished, close the combat menu. (Outcome is not used for tutorial.)
+        combatController.closeGameCombatMenu();
+        System.out.println("Tutorial Finished.");
+    }
+
+    /**
+     * Compares the continueState string to other strings and calls the appropriate method if there is a match.
+     * The continueState string is set whenever the game is waiting for the user to decide to continue.
+     */
+    @FXML
+    public void continueChecker() {
+        if (Objects.equals(continueState, "tutorial fight")) {
+            tutorialFight();
+        }
+    }
 
     /**
      * Load the Settings Menu document, display it in the center of the screen, and disable all location menu buttons.
@@ -166,20 +215,28 @@ public class LocationMenuController implements Initializable {
     /**
      * Load the game combat menu document, display it in the center of the screen. Call button disable method.
      *
-     * @throws IOException if the fxml file being loaded does not exist
+     * @return the FXML loader for the combat menu for the method that called this to use
+     * @throws RuntimeException if the fxml file being loaded does not exist
      */
     @FXML
-    public void openGameCombatMenu() throws IOException {
+    public FXMLLoader openGameCombatMenu() {
         disableMenuButtons();
-        // Load the Game Info menu FXML document into a root object.
+        // Define the FXML file to load.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CombatMenu.fxml"));
-        root = loader.load();
+        try {
+            // Try: Load the Game Info menu FXML document into a root object.
+            root = loader.load();
+        } catch (IOException e) {
+            // Catches any errors loading the Combat Menu FXML file.
+            throw new RuntimeException(e);
+        }
         // Get the controller for the new menu and pass the location menu layout to the class.
         GameCombatController controller = loader.getController();
-        controller.getContainerElement(locationMenuGrid);
+        controller.getContainerElement(locationMenuGrid, playerCharacter, currentEnemy);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 2);
         locationMenuGrid.getChildren().add(root);
+        return loader;
     }
 
     // Disables the location menu buttons while a different menu is open.
@@ -191,9 +248,10 @@ public class LocationMenuController implements Initializable {
         endGameButton.setDisable(true);
     }
 
-    /** When a new game is created get the character name and the skip tutorial value from the new game controller.
+    /**
+     * When a new game is created get the character name and the skip tutorial value from the new game controller.
      *
-     * @param characterName a string representing the character name for this run
+     * @param characterName   a string representing the character name for this run
      * @param disableTutorial a boolean value determining if the tutorial section should be skipped
      */
     public void getGameInfo(final String characterName, final boolean disableTutorial) {
@@ -201,8 +259,10 @@ public class LocationMenuController implements Initializable {
         skipTutorial = disableTutorial;
     }
 
-    /** Set the movement buttons to be disabled when first opening a location menu.
-     * @param url N/A
+    /**
+     * Set the movement buttons to be disabled when first opening a location menu.
+     *
+     * @param url            N/A
      * @param resourceBundle N/A
      */
     @Override
