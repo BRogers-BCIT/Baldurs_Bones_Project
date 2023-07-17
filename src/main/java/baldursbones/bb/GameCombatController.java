@@ -24,15 +24,57 @@ public class GameCombatController {
     // Game Object: The current Enemy object for the combat class.
     private Enemy enemy;
 
+    // Game Object: The current Combat object for the Game Combat menu.
+    private Combat currentCombat;
+
     /**
      * Create a new combat for the game combat menu and call the combat starter method.
      *
      * @param locationName a string used to represent the name of the location for the combat.
-     * @return an integer used to represent the outcome of the combat.
      */
-    public int combatStarter(final String locationName) {
-        Combat combat = new Combat(player, enemy, gameCombatGrid);
-        return combat.combatStarter(locationName);
+    public void combatStarter(final String locationName) {
+        currentCombat = new Combat(player, enemy, gameCombatGrid);
+        currentCombat.combatStarter(locationName);
+    }
+
+    /**
+     * When the player clicks the add roll button, call the combat method for adding a roll.
+     */
+    @FXML
+    public void playerRoll() {
+        currentCombat.playerRoll();
+    }
+
+    /**
+     * When the player clicks the Add ability button, call the combat method for  using an "Add" ability.
+     */
+    @FXML
+    public void playerAdd() {
+        currentCombat.playerAdd();
+    }
+
+    /**
+     * When the player clicks the Take-Away ability button, call the combat method for using a "Take Away" ability.
+     */
+    @FXML
+    public void playerTakeAway() {
+        currentCombat.playerTakeAway();
+    }
+
+    /**
+     * When the player clicks the Re-Roll ability button, call the combat method for  using a "Re-Roll" ability.
+     */
+    @FXML
+    public void playerReRoll() {
+        currentCombat.playerReRoll();
+    }
+
+    /**
+     * When the player clicks the hold total button, call the combat method for ending the game.
+     */
+    @FXML
+    public void playerHold() {
+        currentCombat.finishGame();
     }
 
     /**
