@@ -116,7 +116,7 @@ public class LocationMenuController implements Initializable {
         // The combat menu will contain the player and enemy objects.
         GameCombatController combatController = openGameCombatMenu().getController();
         // Begin the tutorial combat loop.
-        combatController.startCombat();
+        System.out.println(combatController.combatStarter("Tutorial: Into Fight"));
         // When the combat is finished, close the combat menu. (Outcome is not used for tutorial.)
         combatController.closeGameCombatMenu();
         System.out.println("Tutorial Finished.");
