@@ -59,7 +59,7 @@
       <GridPane.margin>
          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
       </GridPane.margin>
-      <Label id="CharacterDisplayName" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name Stats" textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="CharacterDisplayNameStats" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name Stats" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="24.0" />
          </font>
@@ -100,7 +100,7 @@
       <GridPane.margin>
          <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
       </GridPane.margin>
-      <Label id="CharacterDisplayName" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name Abilities" textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="CharacterDisplayNameAbilities" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name Abilities" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="24.0" />
          </font>
@@ -108,7 +108,7 @@
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </padding>
       </Label>
-      <Label id="CharacterDisplayHealth" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Add (+1) : " textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="CharacterDisplayAdd" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayAbilities" text="Add (+1) : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
@@ -116,7 +116,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label id="CharacterDisplayLevel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Take Away (-1) : " textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="CharacterDisplayTakeAway" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayAbilities" text="Take Away (-1) : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
@@ -124,7 +124,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label id="CharacterDisplayExp" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Re-Roll Last Die : " textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="CharacterDisplayReRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayAbilities" text="Re-Roll Last Die : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets />
          </VBox.margin>
