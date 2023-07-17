@@ -129,7 +129,7 @@ public class Map {
                 ImageView currentLocationIcon;
                 Image cellImage;
                 // If the current coordinates match the player coordinates then create a player image object.
-                if (lastPlayerLocation == currentCoordinates) {
+                if (lastPlayerLocation[0] == currentCoordinates[0] && lastPlayerLocation[1] == currentCoordinates[1]) {
                     cellImage = new Image(asciiToImage("@"), IMAGE_SIZE, IMAGE_SIZE, true, true);
                 } else {
                     // Otherwise create the image object for the location.
@@ -164,12 +164,11 @@ public class Map {
                 int[] currentCoordinates = {row, column};
                 Image cellImage = new Image(asciiToImage("/"), IMAGE_SIZE, IMAGE_SIZE, true, true);
                 ImageView currentLocationIcon = new ImageView();
-                // If the current coordinates match the player coordinates then create a player image object.
-                if (lastPlayerLocation == currentCoordinates) {
+                if (lastPlayerLocation[0] == currentCoordinates[0] && lastPlayerLocation[1] == currentCoordinates[1]) {
+                    // If the current coordinates match the player coordinates then create a player image object.
                     cellImage = new Image(asciiToImage("@"), IMAGE_SIZE, IMAGE_SIZE, true, true);
-                }
-                // Otherwise, if the location is within the map update the image object.
-                if (row >= 0 && row < MAP_SIZE && column >= 0 && column < MAP_SIZE) {
+                } else if (row >= 0 && row < MAP_SIZE && column >= 0 && column < MAP_SIZE) {
+                    // Otherwise, if the location is within the map update the image object.
                     cellImage = new Image(asciiToImage(playerMapArray[row][column]),
                             IMAGE_SIZE, IMAGE_SIZE, true, true);
                 }
