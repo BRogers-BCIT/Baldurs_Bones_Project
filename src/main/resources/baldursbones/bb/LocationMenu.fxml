@@ -162,7 +162,7 @@
                   <Insets bottom="20.0" />
                </padding>
             </Label>
-            <TextArea id="GameTextArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="200.0" promptText="Area Description">
+            <TextArea id="GameTextArea" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#continueChecker" prefHeight="100.0" prefWidth="200.0" promptText="Area Description" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
