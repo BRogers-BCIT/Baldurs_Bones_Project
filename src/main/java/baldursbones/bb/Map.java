@@ -1,8 +1,10 @@
 package baldursbones.bb;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 
+import java.io.InputStream;
 import java.util.Objects;
 
 /**
@@ -12,6 +14,9 @@ import java.util.Objects;
  * @version Baldur's Bones v1.1
  */
 public class Map {
+
+    // Constant: The number of pixels devoted to an image square in the map during testing.
+    private static final int IMAGE_SIZE = 30;
 
     // Constant: Define the starting X position of a character in a new game.
     private static final int STARTING_X = 0;
@@ -122,16 +127,22 @@ public class Map {
                 // Find the current coordinates being updated and define the image object.
                 int[] currentCoordinates = {row, column};
                 ImageView currentLocationIcon;
+                Image cellImage;
                 // If the current coordinates match the player coordinates then create a player image object.
                 if (lastPlayerLocation == currentCoordinates) {
-                    currentLocationIcon = new ImageView(asciiToImage("@"));
+                    cellImage = new Image(asciiToImage("@"), IMAGE_SIZE, IMAGE_SIZE, true, true);
                 } else {
                     // Otherwise create the image object for the location.
-                    currentLocationIcon = new ImageView(asciiToImage(playerMapArray[row][column]));
+                    cellImage = new Image(asciiToImage(playerMapArray[row][column]),
+                            IMAGE_SIZE, IMAGE_SIZE, true, true);
                 }
+                // Load the image into the image view to be displayed.
+                currentLocationIcon = new ImageView();
+                currentLocationIcon.setImage(cellImage);
                 // Load the icon into the correct spot of the map grid and update the map.
                 // Maps work column row so the order is switched.
-                GridPane.setConstraints(currentLocationIcon, column, row);
+                // Display row and columns are increased by 1 to allow for map grid markings.
+                GridPane.setConstraints(currentLocationIcon, column + 1, row + 1);
                 mapDisplay.getChildren().add(currentLocationIcon);
             }
         }
@@ -151,15 +162,19 @@ public class Map {
             for (int column = lastPlayerLocation[1] + 1; column >= lastPlayerLocation[1] - 1; column--) {
                 // Find the current coordinates being updated and define the image object for out of bounds locations.
                 int[] currentCoordinates = {row, column};
-                ImageView currentLocationIcon = new ImageView(asciiToImage("/"));
+                Image cellImage = new Image(asciiToImage("/"), IMAGE_SIZE, IMAGE_SIZE, true, true);
+                ImageView currentLocationIcon = new ImageView();
                 // If the current coordinates match the player coordinates then create a player image object.
                 if (lastPlayerLocation == currentCoordinates) {
-                    currentLocationIcon = new ImageView(asciiToImage("@"));
+                    cellImage = new Image(asciiToImage("@"), IMAGE_SIZE, IMAGE_SIZE, true, true);
                 }
                 // Otherwise, if the location is within the map update the image object.
                 if (row >= 0 && row < MAP_SIZE && column >= 0 && column < MAP_SIZE) {
-                    currentLocationIcon = new ImageView(asciiToImage(playerMapArray[row][column]));
+                    cellImage = new Image(asciiToImage(playerMapArray[row][column]),
+                            IMAGE_SIZE, IMAGE_SIZE, true, true);
                 }
+                // Load the correct image into the image view to be displayed.
+                currentLocationIcon.setImage(cellImage);
                 // Load the icon into the correct spot of the map grid and update the map.
                 // Maps work column row so the order is switched.
                 GridPane.setConstraints(currentLocationIcon, showRow, showColumn);
@@ -204,22 +219,24 @@ public class Map {
         mapArray[STARTING_Y][STARTING_X] = BEATEN_TUTORIAL;
     }
 
-    private String asciiToImage(final String playerMapAscii) {
+    private InputStream asciiToImage(final String playerMapAscii) {
+        String fileName;
         if (Objects.equals(playerMapAscii, "0")) {
-            return "src/main/resources/baldursbones/bb/tempTutorialImage.png";
+            fileName = "tempStartImage.png";
         } else if (Objects.equals(playerMapAscii, "X")) {
-            return "src/main/resources/baldursbones/bb/tempBossImage.png";
+            fileName = "tempBossImage.png";
         } else if (Objects.equals(playerMapAscii, "?")) {
-            return "src/main/resources/baldursbones/bb/tempUndiscoveredImage.png";
+            fileName = "tempNewImage.png";
         } else if (Objects.equals(playerMapAscii, "!")) {
-            return "src/main/resources/baldursbones/bb/tempEnemyImage.png";
+            fileName = "tempEnemyImage.png";
         } else if (Objects.equals(playerMapAscii, "#")) {
-            return "src/main/resources/baldursbones/bb/tempFoundImage.png";
+            fileName = "tempFoundImage.png";
         } else if (Objects.equals(playerMapAscii, "@")) {
-            return "src/main/resources/baldursbones/bb/tempPlayerImage.png";
+            fileName = "tempPlayerImage.png";
         } else {
-            return "src/main/resources/baldursbones/bb/tempBoundsImage.png";
+            fileName = "tempBoundsImage.png";
         }
+        return getClass().getResourceAsStream(fileName);
     }
 }
 
