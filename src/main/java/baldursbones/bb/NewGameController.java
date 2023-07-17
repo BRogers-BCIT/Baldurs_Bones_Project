@@ -123,6 +123,9 @@ public class NewGameController {
             stage.setTitle("Baldur's Bones");
             // Display the window.
             stage.show();
+            // Get controller of Game Location window.
+            LocationMenuController gameDriverController = loader.getController();
+            gameDriverController.gameStarter();
         }
     }
 
