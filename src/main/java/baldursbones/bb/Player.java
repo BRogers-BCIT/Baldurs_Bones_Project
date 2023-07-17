@@ -61,6 +61,11 @@ public class Player {
     private static final int LOSE_TO_BOSS = -2;
 
     /**
+     * Variable: An integer that represents the outcome of the last fight the player object was in.
+     */
+    protected int lastOutcome;
+
+    /**
      * Variable: A string that represents the characters name in game.
      */
     protected String name;
@@ -398,5 +403,23 @@ public class Player {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Get the player's outcome value of their last fight.
+     *
+     * @return an integer that represents the outcome of the player objects last fight
+     */
+    public int getLastOutcome() {
+        return lastOutcome;
+    }
+
+    /**
+     * Set the player outcome name to a new int value.
+     *
+     * @param lastOutcome an integer to change the player's outcome value to.
+     */
+    public void setLastOutcome(final int lastOutcome) {
+        this.lastOutcome = lastOutcome;
     }
 }
