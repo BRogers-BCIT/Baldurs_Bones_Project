@@ -1,5 +1,8 @@
 package baldursbones.bb;
 
+import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -65,17 +68,17 @@ public class Player {
     /**
      * Variable: The recorded value of the players health stat.
      */
-    protected int health;
+    protected int statHealth;
 
     /**
      * Variable: The recorded value of the players experience stat.
      */
-    protected int exp;
+    protected int statExp;
 
     /**
      * Variable: The recorded value of the players level stat.
      */
-    protected int level;
+    protected int statLevel;
 
     /**
      * Variable: The recorded value of the players re-roll ability uses.
@@ -104,9 +107,9 @@ public class Player {
      * Initializes a new player character and sets their stats, abilities, and location to the starting values.
      */
     public Player() {
-        health = START_HEALTH;
-        exp = START_EXP;
-        level = START_LEVEL;
+        statHealth = START_HEALTH;
+        statExp = START_EXP;
+        statLevel = START_LEVEL;
         abilityReRoll = START_RE_ROLL;
         abilityAdd = START_ADD;
         abilityTakeAway = START_TAKEAWAY;
@@ -136,8 +139,8 @@ public class Player {
      *
      * @return an integer value representing the current value of the player characters level stat.
      */
-    public int getLevel() {
-        return level;
+    public int getStatLevel() {
+        return statLevel;
     }
 
     /**
@@ -145,22 +148,60 @@ public class Player {
      *
      * @return an integer value representing the current value of the player characters health stat.
      */
-    public int getHealth() {
-        return health;
+    public int getStatHealth() {
+        return statHealth;
     }
 
     /**
-     * Prints the current value of the players stats and available uses of abilities.
+     * Finds the character info labels from the grid pane and calls helper functions to populate the Player Info menu.
+     *
+     * @param characterInfoMenu the grid pane object containing the labels to be updated
      */
-    public void getStats() {
-        System.out.println("Health: " + health);
-        System.out.println("Level: " + level);
-        System.out.println("Exp: " + exp);
-        System.out.println("Re-Roll uses: " + abilityReRoll);
-        if (level >= 2) {
-            System.out.println("Add uses: " + abilityAdd);
-            System.out.println("Take-away uses: " + abilityTakeAway);
+    public void displayStats(final GridPane characterInfoMenu) {
+        // Get the assosiated label for each part of the character info menu.
+        Label characterName = (Label) characterInfoMenu.lookup("#CharacterNameTitle");
+        Label characterDescription = (Label) characterInfoMenu.lookup("#CharacterDescriptionTitle");
+        Label characterNameStats = (Label) characterInfoMenu.lookup("#CharacterDisplayNameStats");
+        Label characterNameAbilities = (Label) characterInfoMenu.lookup("#CharacterDisplayNameAbilities");
+        Label characterHealth = (Label) characterInfoMenu.lookup("#CharacterDisplayHealth");
+        Label characterLevel = (Label) characterInfoMenu.lookup("#CharacterDisplayLevel");
+        Label characterExp = (Label) characterInfoMenu.lookup("#CharacterDisplayExp");
+        Label characterAdd = (Label) characterInfoMenu.lookup("#CharacterDisplayAdd");
+        Label characterTakeAway = (Label) characterInfoMenu.lookup("#CharacterDisplayTakeAway");
+        Label characterReRoll = (Label) characterInfoMenu.lookup("#CharacterDisplayReRoll");
+        // Call helper functions to populate the menu.
+        updateTitles(characterName, characterDescription, characterNameStats, characterNameAbilities);
+        updateStats(characterHealth, characterLevel, characterExp);
+        updateAbilities(characterAdd, characterTakeAway, characterReRoll);
+    }
+
+    // Update the title labels on the Player Info menu with the correct information.
+    private void updateTitles(final Label nameTitle, final Label descriptionTitle,
+                              final Label statsTitle, final Label abilitiesTitle) {
+        nameTitle.setText(name);
+        if (statLevel == 1) {
+            descriptionTitle.setText("Deck Hand");
+        } else if (statLevel == 2) {
+            descriptionTitle.setText("Skipper");
+        } else {
+            descriptionTitle.setText("First Mate");
         }
+        statsTitle.setText(name + " Current Stats: ");
+        abilitiesTitle.setText(name + "Ability Uses:");
+    }
+
+    // Update the stats labels on the Player Info menu with the correct information.
+    private void updateStats(final Label health, final Label level, final Label exp) {
+        health.setText("Credibility: " + statHealth);
+        level.setText("Renown: " + statLevel);
+        exp.setText("Reputation: " + statExp);
+    }
+
+    // Update the ability labels on the Player Info menu with the correct information.
+    private void updateAbilities(final Label add, final Label takeAway, final Label reRoll) {
+        add.setText("Add Uses: " + abilityAdd);
+        takeAway.setText("Take Away Uses: " + abilityTakeAway);
+        reRoll.setText("Re-Roll Uses: " + abilityReRoll);
     }
 
     /**
@@ -179,7 +220,7 @@ public class Player {
         }
 
         // After the outcome check if the health of the player is not 0.
-        if (health > 0) {
+        if (statHealth > 0) {
             Scanner scan = new Scanner(System.in);
             // prompt user to continue. ** Replace with button press. **
             System.out.println("Enter to continue");
@@ -194,8 +235,8 @@ public class Player {
      */
     private void levelUp() {
         // Increase the players stats.
-        level += 1;
-        health += 1;
+        statLevel += 1;
+        statHealth += 1;
         abilityReRoll += 1;
         abilityAdd += 1;
         abilityTakeAway += 1;
@@ -205,10 +246,10 @@ public class Player {
             Scanner fileReader = new Scanner(playerText);
             // Print the level up message and the message related to the level.
             System.out.println(fileReader.nextLine());
-            if (level == LEVEL_2) {
+            if (statLevel == LEVEL_2) {
                 System.out.println(fileReader.nextLine());
             }
-            if (level == LEVEL_3) {
+            if (statLevel == LEVEL_3) {
                 fileReader.nextLine();
                 System.out.println(fileReader.nextLine());
             }
@@ -216,9 +257,6 @@ public class Player {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
         }
-
-        // Print the players new stats for them.
-        getStats();
     }
 
     /**
@@ -229,7 +267,7 @@ public class Player {
      */
     private void winBattle() {
         // Increase experience and check for level up.
-        exp += 1;
+        statExp += 1;
         // Try to read the win-battle text from the Player text file.
         try {
             // Create a new scanner for the text file and print the first section.
@@ -238,18 +276,18 @@ public class Player {
             fileReader.nextLine();
             fileReader.nextLine();
             System.out.println(fileReader.nextLine());
-            if ((level == LEVEL_1 && exp == LEVEL_1_EXP_THRESHOLD)
-                    || (level == LEVEL_2 && exp == LEVEL_2_EXP_THRESHOLD)) {
-                exp = 0;
+            if ((statLevel == LEVEL_1 && statExp == LEVEL_1_EXP_THRESHOLD)
+                    || (statLevel == LEVEL_2 && statExp == LEVEL_2_EXP_THRESHOLD)) {
+                statExp = 0;
                 levelUp();
                 // If the player is level 3 tell them to fight the boss.
-            } else if (level == LEVEL_3 && exp >= 1) {
+            } else if (statLevel == LEVEL_3 && statExp >= 1) {
                 System.out.println(fileReader.nextLine());
                 // If not leveling up or level 3 then print stats and experience needed to level up.
             } else {
-                System.out.println("Level: " + level);
-                System.out.println("Experience: " + exp);
-                System.out.println("You need " + ((2 * level + 1) - exp) + " experience to level up.");
+                System.out.println("Level: " + statLevel);
+                System.out.println("Experience: " + statExp);
+                System.out.println("You need " + ((2 * statLevel + 1) - statExp) + " experience to level up.");
             }
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
@@ -267,18 +305,18 @@ public class Player {
             }
             // Lose battle.
             if (outcome == LOSE_BATTLE) {
-                health -= 1;
-                if (health >= 1) {
+                statHealth -= 1;
+                if (statHealth >= 1) {
                     System.out.println(fileReader.nextLine());
-                    System.out.println(health + " remaining.");
+                    System.out.println(statHealth + " remaining.");
                 }
                 // Lose to boss.
             } else if (outcome == LOSE_TO_BOSS) {
-                health -= 2;
-                if (health >= 1) {
+                statHealth -= 2;
+                if (statHealth >= 1) {
                     fileReader.nextLine();
                     System.out.println(fileReader.nextLine());
-                    System.out.println(health + " remaining.");
+                    System.out.println(statHealth + " remaining.");
                 }
             }
         } catch (FileNotFoundException e) {
