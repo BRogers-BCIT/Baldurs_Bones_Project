@@ -1,5 +1,8 @@
 package baldursbones.bb;
 
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -19,13 +22,18 @@ public class TutorialLocation extends Location {
     private final File tutorialLocationText
             = new File("src/main/resources/baldursbones/bb/TutorialLocationText.txt");
 
+    // FXML Element: The parent element the map info menu is displayed in.
+    private final GridPane container;
+
     /**
      * Creates a new location object and assigns it a location value.
      *
-     * @param newLocationType an integer representing the location's value.
+     * @param newLocationType An integer representing the location's value.
+     * @param locationGrid    The parent element of the character info menu layout
      */
-    public TutorialLocation(final int newLocationType) {
+    public TutorialLocation(final int newLocationType, final GridPane locationGrid) {
         super(newLocationType);
+        container = locationGrid;
     }
 
     /**
@@ -49,19 +57,16 @@ public class TutorialLocation extends Location {
      * @throws RuntimeException if text file is missing
      */
     protected boolean fightLocation() {
-        Scanner scan = new Scanner(System.in);
         // Try to read the start tutorial text from the TutorialLocation text file.
         try {
             Scanner fileReader = new Scanner(tutorialLocationText);
             // Print the text to user.
-            System.out.println(fileReader.nextLine());
+            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
+            descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
         }
-        // Prompt the user to continue. ** Replace with button press. **
-        System.out.println("Enter to continue");
-        scan.nextLine();
         return true;
     }
 
@@ -77,15 +82,11 @@ public class TutorialLocation extends Location {
             // Skip the first line of text.
             fileReader.nextLine();
             // Print the text to user.
-            System.out.println(fileReader.nextLine());
+            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
+            descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
         }
-        // Prompt the user to continue. ** Replace with button press. **
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter to continue");
-        scan.nextLine();
     }
-
 }
