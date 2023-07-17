@@ -18,6 +18,9 @@ public class CharacterInfoController {
     @FXML
     private GridPane characterInfoGrid;
 
+    // Object: The game player object with the current game information.
+    private Player currentPlayer;
+
     /**
      * Removes the character info menu layout from the location menu and makes the buttons clickable again.
      */
@@ -37,9 +40,17 @@ public class CharacterInfoController {
      * Takes the parent element that the layout will be displayed in and saves it.
      *
      * @param parentGrid The parent element of the character info menu layout
+     * @param playerCharacter The player object that contains the methods to update the player info menu.
      */
-    public void getContainerElement(final GridPane parentGrid) {
+    public void getContainerElements(final GridPane parentGrid, final Player playerCharacter) {
         container = parentGrid;
+        currentPlayer = playerCharacter;
     }
 
+    /**
+     * Method call used to display / update the player info in the player info menu.
+     */
+    public void displayCharacter() {
+        currentPlayer.displayStats(characterInfoGrid);
+    }
 }
