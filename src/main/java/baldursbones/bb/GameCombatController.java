@@ -75,6 +75,7 @@ public class GameCombatController {
     @FXML
     public void playerHold() {
         currentCombat.finishGame();
+        closeGameCombatMenu();
     }
 
     /**
