@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -68,6 +69,10 @@ public class LocationMenuController implements Initializable {
     @FXML
     private Button moveWestButton;
 
+    // FXML Element: The text area that displays location area descriptions.
+    @FXML
+    private TextArea locationDescription;
+
     // Game Object: The game object for the Player Character fields and methods.
     private Player playerCharacter;
 
@@ -90,36 +95,37 @@ public class LocationMenuController implements Initializable {
     private String continueState;
 
     /**
-     * Checks if the tutorial section is enabled and either starts the tutorial or skips it.
-     * If the tutorial is started then get the description and start a tutorial fight.
-     * If the tutorial is skipped then call the game start method.
+     * Checks if the tutorial section is enabled and either: starts the tutorial or skips the tutorial.
+     * If not skip tutorial: get the description for starting the tutorial and wait for the user to continue.
+     * If skip tutorial: call the display a message about skipping the tutorial and call the movement method.
      */
     public void gameStarter() {
         // If: the tutorial is not being skipped.
         if (!skipTutorial) {
-            // Disable the menu buttons, create a tutorial location, and call the tutorial start description.
+            // Disable the menu buttons.
             disableMenuButtons();
+            // Create a tutorial location, and call method to display the tutorial start description.
             currentLocation = new TutorialLocation(0, locationMenuGrid);
             currentLocation.getDescription();
             // Set the game to be waiting for the user to continue.
             continueState = "tutorial fight";
         } else {
-            // Else: call the method for after the tutorial is finished.
-            System.out.println("Skipped tutorial");
+            // Else: display the game start movement message and set the game to wait for the user to continue.
+            locationDescription.setText("Start of Game Movement Message.");
+            continueState = "start movement";
         }
     }
 
     private void tutorialFight() {
         // Define the enemy type for the current enemy.
-        currentEnemy = new TutorialEnemy();
+        currentEnemy = new TutorialEnemy(locationMenuGrid);
         // Open the combat menu and get the controller.
         // The combat menu will contain the player and enemy objects.
         GameCombatController combatController = openGameCombatMenu().getController();
         // Begin the tutorial combat loop.
         combatController.combatStarter("Tutorial: Into Fight");
-        // When the combat is finished, close the combat menu. (Outcome is not used for tutorial.)
-        combatController.closeGameCombatMenu();
-        System.out.println("Tutorial Finished. Outcome: " + playerCharacter.getLastOutcome());
+        // Set the tutorial fight to be over, display the start movement text and wait for the user to continue.
+        continueState = "end tutorial";
     }
 
     /**
@@ -130,6 +136,12 @@ public class LocationMenuController implements Initializable {
     public void continueChecker() {
         if (Objects.equals(continueState, "tutorial fight")) {
             tutorialFight();
+        } else if (Objects.equals(continueState, "start movement")) {
+            System.out.println("Start game movement method.");
+        } else if (Objects.equals(continueState, "end tutorial")) {
+            // Display the game start movement message and set the game to wait for the user to continue.
+            locationDescription.setText("Start of Game Movement Message.");
+            continueState = "start movement";
         }
     }
 
