@@ -22,13 +22,13 @@ public class TutorialEnemy extends Enemy {
     private final File tutorialEnemyText
             = new File("src/main/resources/baldursbones/bb/TutorialEnemyText.txt");
 
-    // FXML Element: The parent element the map info menu is displayed in.
+    // FXML Element: The parent element the enemy object is being used by.
     private final GridPane container;
 
     /**
      * Create a Tutorial difficulty implementation of the Enemy Abstract.
      *
-     * @param parentElement The parent element of the character info menu layout
+     * @param parentElement The layout of the controller using this enemy object
      */
     public TutorialEnemy(final GridPane parentElement) {
         super();
@@ -84,7 +84,7 @@ public class TutorialEnemy extends Enemy {
      * @throws RuntimeException if text file is missing
      */
     protected void lose() {
-        // Try to read the lose tutorial combat text from the TutorialEnemy text file.
+        // Try to read the lose tutorial combat text from the Tutorial Enemy text file.
         try {
             Scanner fileReader = new Scanner(tutorialEnemyText);
             // Skip the first line of text.

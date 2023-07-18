@@ -1,5 +1,8 @@
 package baldursbones.bb;
 
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -18,13 +21,19 @@ public class EasyEnemy extends Enemy {
     // Text file: contains all dialogue to be printed by the easy enemy class.
     private final File easyEnemyText = new File("src/main/resources/baldursbones/bb/EasyEnemyText.txt");
 
+    // FXML Element: The parent element the enemy object is being used by.
+    private final GridPane container;
+
     /**
      * Create an Easy difficulty implementation of the Enemy Abstract.
+     *
+     * @param parentElement The layout of the controller using this enemy object
      */
-    public EasyEnemy() {
+    public EasyEnemy(final GridPane parentElement) {
         super();
         // Set the starting total of enemy to its difficulty.
         enemyTotal = DIFFICULTY;
+        container = parentElement;
     }
 
     /**
@@ -33,11 +42,12 @@ public class EasyEnemy extends Enemy {
      * @throws RuntimeException if text file is missing
      */
     protected void win() {
-        // Try to read the start fight text from the EasyEnemy text file.
+        // Try to read the start fight text from the Easy Enemy text file.
         try {
-            // Create a new scanner for the text file and print the first section.
             Scanner fileReader = new Scanner(easyEnemyText);
-            System.out.println(fileReader.nextLine());
+            // Print the text to the text area in the location window user.
+            TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
+            descriptionArea.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
@@ -50,12 +60,14 @@ public class EasyEnemy extends Enemy {
      * @throws RuntimeException if text file is missing
      */
     protected void lose() {
-        // Try to read the start fight text from the EasyEnemy text file.
+        // Try to read the start fight text from the Easy Enemy text file.
         try {
-            // Create a new scanner for the text file and print the second section.
             Scanner fileReader = new Scanner(easyEnemyText);
+            // Skip the first line of text.
             fileReader.nextLine();
-            System.out.println(fileReader.nextLine());
+            // Print the text to the text area in the location window user.
+            TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
+            descriptionArea.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
