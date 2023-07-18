@@ -43,8 +43,6 @@ public abstract class Enemy {
         // This adds variance to enemies by creating a High roll and a Low roll value.
         int rollVariance = rand.nextInt(0, 2);
         enemyTotal += rollVariance;
-        // Display the enemy total to the player. ** Update simple print line. **
-        System.out.println("Enemy Total: " + enemyTotal + ".");
     }
 
     /** Define the enemy behavior (Game end text) if the player wins.
