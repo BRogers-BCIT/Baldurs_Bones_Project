@@ -46,7 +46,9 @@ public class MediumEnemy extends Enemy {
         try {
             // Create a new scanner for the text file and print the first section.
             Scanner fileReader = new Scanner(mediumEnemyText);
-            System.out.println(fileReader.nextLine());
+            // Print the text to the text area in the location window user.
+            TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
+            descriptionArea.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);

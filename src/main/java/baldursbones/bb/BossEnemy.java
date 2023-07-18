@@ -1,5 +1,8 @@
 package baldursbones.bb;
 
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Random;
@@ -25,13 +28,19 @@ public class BossEnemy extends Enemy {
     // Text file: contains all dialogue to be printed by the boss enemy class.
     private final File bossEnemyText = new File("src/main/resources/baldursbones/bb/BossEnemyText.txt");
 
+    // FXML Element: The parent element the enemy object is being used by.
+    private final GridPane container;
+
     /**
      * Create a Boss Enemy implementation of the Enemy Abstract.
+     *
+     * @param parentElement The layout of the controller using this enemy object
      */
-    public BossEnemy() {
+    public BossEnemy(final GridPane parentElement) {
         super();
         enemyTotal = DIFFICULTY;
         roundOutcomeCount = 0;
+        container = parentElement;
     }
 
     /**
@@ -44,10 +53,12 @@ public class BossEnemy extends Enemy {
      */
     @Override
     public int compareTotal(final int playerTotal) {
+        // Define the text area to write information into.
+        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
         // Get the bosses total.
         getTotal();
         // Print the bosses total for the player. ** Update simple print line. **
-        System.out.println("Boss total: " + enemyTotal + ".");
+        descriptionBox.setText("Boss total: " + enemyTotal + ".");
         // Compare the player total to the boss total.
         // If player total is greater, then increase the outcome counter and return a positive value.
         if (playerTotal > enemyTotal) {
@@ -81,11 +92,13 @@ public class BossEnemy extends Enemy {
      * @throws RuntimeException if text file is missing
      */
     protected void winRound() {
+        // Define the text area to write information into.
+        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
         // Try to read the win-round text from the BossEnemy text file.
         try {
             Scanner fileReader = new Scanner(bossEnemyText);
             // Print the text to user.
-            System.out.println(fileReader.nextLine());
+            descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
@@ -98,13 +111,15 @@ public class BossEnemy extends Enemy {
      * @throws RuntimeException if text file is missing
      */
     protected void loseRound() {
+        // Define the text area to write information into.
+        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
         // Try to read the lose-round text from the BossEnemy text file.
         try {
             Scanner fileReader = new Scanner(bossEnemyText);
             // Skip the first text section.
             fileReader.nextLine();
             // Print the text to user.
-            System.out.println(fileReader.nextLine());
+            descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
@@ -117,6 +132,8 @@ public class BossEnemy extends Enemy {
      * @throws RuntimeException if text file is missing
      */
     protected void win() {
+        // Define the text area to write information into.
+        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
         // Try to read the win-combat text from the BossEnemy text file.
         try {
             Scanner fileReader = new Scanner(bossEnemyText);
@@ -124,7 +141,7 @@ public class BossEnemy extends Enemy {
             fileReader.nextLine();
             fileReader.nextLine();
             // Print the text to the user.
-            System.out.println(fileReader.nextLine());
+            descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
@@ -137,6 +154,8 @@ public class BossEnemy extends Enemy {
      * @throws RuntimeException if text file is missing
      */
     protected void lose() {
+        // Define the text area to write information into.
+        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
         // Try to read the lose-combat text from the BossEnemy text file.
         try {
             Scanner fileReader = new Scanner(bossEnemyText);
@@ -145,7 +164,7 @@ public class BossEnemy extends Enemy {
             fileReader.nextLine();
             fileReader.nextLine();
             // Print the text to the user.
-            System.out.println(fileReader.nextLine());
+            descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
