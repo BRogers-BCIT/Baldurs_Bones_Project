@@ -1,6 +1,7 @@
 package baldursbones.bb;
 
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
 import java.io.File;
@@ -60,56 +61,41 @@ public class Player {
     // Constant: Integer value represented in losing to a boss.
     private static final int LOSE_TO_BOSS = -2;
 
-    /**
-     * Variable: An integer that represents the outcome of the last fight the player object was in.
-     */
-    protected int lastOutcome;
+    // Constant: Integer value representing the number of lines to print for the players stats.
+    private static final int NUMBER_OF_STATS = 6;
 
-    /**
-     * Variable: A string that represents the characters name in game.
-     */
-    protected String name;
+    // Variable: An integer that represents the outcome of the last fight the player object was in.
+    private int lastOutcome;
 
-    /**
-     * Variable: The recorded value of the players health stat.
-     */
-    protected int statHealth;
+    // Variable: A string that represents the characters name in game.
+    private String name;
 
-    /**
-     * Variable: The recorded value of the players experience stat.
-     */
-    protected int statExp;
+    // Variable: The recorded value of the players health stat.
+    private int statHealth;
 
-    /**
-     * Variable: The recorded value of the players level stat.
-     */
-    protected int statLevel;
+    // Variable: The recorded value of the players experience stat.
+    private int statExp;
 
-    /**
-     * Variable: The recorded value of the players re-roll ability uses.
-     */
-    protected int abilityReRoll;
+    // Variable: The recorded value of the players level stat.
+    private int statLevel;
 
-    /**
-     * Variable: The recorded value of the players add ability uses.
-     */
-    protected int abilityAdd;
+    // Variable: The recorded value of the players re-roll ability uses.
+    private int abilityReRoll;
 
-    /**
-     * Variable: The recorded value of the players take-away ability uses.
-     */
-    protected int abilityTakeAway;
+    // Variable: The recorded value of the players add ability uses.
+    private int abilityAdd;
 
-    /**
-     * Variable: The recorded value of the X,Y coordinates of the players position.
-     */
-    protected int[] location;
+    // Variable: The recorded value of the players take-away ability uses.
+    private int abilityTakeAway;
 
-    // Text file: contains all dialogue to be printed by the player class.
+    //Variable: The recorded value of the X,Y coordinates of the players position.
+    private int[] location;
+
+    // Text file: Contains all dialogue to be printed by the player class.
     private final File playerText = new File("src/main/resources/baldursbones/bb/PlayerText.txt");
 
     /**
-     * Initializes a new player character and sets their stats, abilities, and location to the starting values.
+     * Initializes a new player character and sets their stats, abilities, and location to the game start values.
      */
     public Player() {
         statHealth = START_HEALTH;
@@ -124,43 +110,107 @@ public class Player {
     /**
      * Gets and returns the current X,Y coordinates of the player character location.
      *
-     * @return an integer tuple representing the players X,Y coordinates
+     * @return An integer tuple representing the players X,Y coordinates
      */
     public int[] getLocation() {
         return location;
     }
 
     /**
-     * Sets the players X,Y coordinates to a new value.
+     * Gets and returns the current value of the player characters health stat.
      *
-     * @param newLocation an integer tuple representing the new X,Y coordinates
-     */
-    public void setLocation(final int[] newLocation) {
-        location = newLocation;
-    }
-
-    /**
-     * Gets the current value of the player characters level stat.
-     *
-     * @return an integer value representing the current value of the player characters level stat.
-     */
-    public int getStatLevel() {
-        return statLevel;
-    }
-
-    /**
-     * Gets the current value of the player characters health stat.
-     *
-     * @return an integer value representing the current value of the player characters health stat.
+     * @return An integer value representing the current value of the player characters health stat.
      */
     public int getStatHealth() {
         return statHealth;
     }
 
     /**
+     * Gets the current value of the player characters level stat.
+     *
+     * @return An integer value representing the current value of the player characters level stat.
+     */
+    public int getStatLevel() {
+        return statLevel;
+    }
+
+    /**
+     * Get and return the string value of the player characters name.
+     *
+     * @return A string that represents the player characters name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Get and return the outcome value of the player's last fight.
+     *
+     * @return An integer that represents the outcome of the player objects last fight
+     */
+    public int getLastOutcome() {
+        return lastOutcome;
+    }
+
+    /**
+     * Get and return the integer value of the number of available uses of the "Add" ability.
+     *
+     * @return An integer that represents the number of available uses of the ability
+     */
+    public int getAbilityAdd() {
+        return abilityAdd;
+    }
+
+    /**
+     * Get and return the integer value of the number of available uses of the "Take-Away" ability.
+     *
+     * @return An integer that represents the number of available uses of the ability
+     */
+    public int getAbilityTakeAway() {
+        return abilityTakeAway;
+    }
+
+    /**
+     * Get and return the integer value of the number of available uses of the "Re-Roll" ability.
+     *
+     * @return An integer that represents the number of available uses of the ability
+     */
+    public int getAbilityReRoll() {
+        return abilityReRoll;
+    }
+
+    /**
+     * Sets the players X,Y coordinates to a new value.
+     *
+     * @param newLocation An integer tuple representing the new X,Y coordinates
+     */
+    public void setLocation(final int[] newLocation) {
+        location = newLocation;
+    }
+
+    /**
+     * Set the player characters name to a new string value.
+     *
+     * @param name A string to change the player characters name too.
+     */
+    public void setName(final String name) {
+        this.name = name;
+    }
+
+    /**
+     * Set the player outcome name to a new int value.
+     *
+     * @param lastOutcome An integer to change the player's outcome value to.
+     */
+    public void setLastOutcome(final int lastOutcome) {
+        this.lastOutcome = lastOutcome;
+    }
+
+
+    /**
      * Finds the character info labels from the grid pane and calls helper functions to populate the Player Info menu.
      *
-     * @param characterInfoMenu the grid pane object containing the labels to be updated
+     * @param characterInfoMenu The grid pane object containing the labels to be updated
      */
     public void displayStats(final GridPane characterInfoMenu) {
         // Get the assosiated label for each part of the character info menu.
@@ -183,7 +233,9 @@ public class Player {
     // Update the title labels on the Player Info menu with the correct information.
     private void updateTitles(final Label nameTitle, final Label descriptionTitle,
                               final Label statsTitle, final Label abilitiesTitle) {
+        // Set the name of the character based on the saved name field of the player object.
         nameTitle.setText(name);
+        // Set the description of the character based on the player's level field.
         if (statLevel == 1) {
             descriptionTitle.setText("Deck Hand");
         } else if (statLevel == 2) {
@@ -191,12 +243,14 @@ public class Player {
         } else {
             descriptionTitle.setText("First Mate");
         }
-        statsTitle.setText(name + " Current Stats: ");
-        abilitiesTitle.setText(name + "Ability Uses:");
+        // Display the title for the stats and abilities using the players name.
+        statsTitle.setText(name + "'s Current Stats: ");
+        abilitiesTitle.setText(name + "'s Ability Uses:");
     }
 
     // Update the stats labels on the Player Info menu with the correct information.
     private void updateStats(final Label health, final Label level, final Label exp) {
+        // Display the information for the players stats using the values of the fields within the player object.
         health.setText("Credibility: " + statHealth);
         level.setText("Renown: " + statLevel);
         exp.setText("Reputation: " + statExp);
@@ -204,6 +258,7 @@ public class Player {
 
     // Update the ability labels on the Player Info menu with the correct information.
     private void updateAbilities(final Label add, final Label takeAway, final Label reRoll) {
+        // Display the information for the players abilities using the values of the fields within the player object.
         add.setText("Add Uses: " + abilityAdd);
         takeAway.setText("Take Away Uses: " + abilityTakeAway);
         reRoll.setText("Re-Roll Uses: " + abilityReRoll);
@@ -212,31 +267,22 @@ public class Player {
     /**
      * Takes an outcome value and calls the appropriate method to handle the outcome.
      *
-     * @param outcome an integer value representing the outcome of the combat
+     * @param outcome An integer value representing the outcome of the combat
      */
     public void finishBattle(final int outcome) {
-        // If outcome matches a "lose" outcome then call the loseBattle method.
         if (outcome == LOSE_BATTLE || outcome == LOSE_TO_BOSS) {
+            // If: outcome matches a "lose" outcome then call the loseBattle method.
             loseBattle(outcome);
-
-            // If outcome matches a "win" outcome then call the winBattle method.
         } else if (outcome == WIN_BATTLE) {
+            // Else: outcome matches a "win" outcome then call the winBattle method.
             winBattle();
-        }
-
-        // After the outcome check if the health of the player is not 0.
-        if (statHealth > 0) {
-            Scanner scan = new Scanner(System.in);
-            // prompt user to continue. ** Replace with button press. **
-            System.out.println("Enter to continue");
-            scan.nextLine();
         }
     }
 
     /**
      * Increase the players stats and print the message associated with their new level.
      *
-     * @throws RuntimeException if text file cannot be found
+     * @throws RuntimeException If text file cannot be found
      */
     private void levelUp() {
         // Increase the players stats.
@@ -303,9 +349,9 @@ public class Player {
     private void loseBattle(final int outcome) {
         // Try to read the lose-battle text from the Player text file.
         try {
-            // Create a new scanner for the text file and print the first section.
+            // Create a new scanner for the text file and skip the first section.
             Scanner fileReader = new Scanner(playerText);
-            for (int i = 1; i < 6; i++) {
+            for (int i = 1; i < NUMBER_OF_STATS; i++) {
                 fileReader.nextLine();
             }
             // Lose battle.
@@ -331,95 +377,62 @@ public class Player {
     }
 
     /**
-     * Use a charge of Re-Roll cheat if the player has a use available.
-     * If the player has no uses remaining then inform the player.
+     * Use a charge of Re-Roll ability if the player has a use available and inform the player of the remaining uses.
+     * If the player has no uses remaining then inform the player and do nothing instead.
      *
-     * @return a boolean indication if the ability could be used.
+     * @param descriptionArea The text area to display the result of the ability use in
+     * @return A boolean indication if the ability could be used.
      */
-    public boolean useReRoll() {
+    public boolean useReRoll(final TextArea descriptionArea) {
         // If a use is available take one away and tell the player the remaining uses.
         if (abilityReRoll >= 1) {
             abilityReRoll -= 1;
-            System.out.println(abilityTakeAway + " uses remaining of Re-Roll.");
+            descriptionArea.setText(abilityTakeAway + " uses remaining of Re-Roll.");
             return true;
             // If no uses are available inform the player.
         } else {
-            System.out.println("Cannot use Re-Roll. No uses.");
+            descriptionArea.setText("Cannot use Re-Roll. No uses.");
             return false;
         }
     }
 
     /**
-     * Use a charge of Add cheat if the player has a use available.
-     * If the player has no uses remaining then inform the player.
+     * Use a charge of Add ability if the player has a use available and inform the player of the remaining uses.
+     * If the player has no uses remaining then inform the player and do nothing instead.
      *
-     * @return a boolean indication if the ability could be used.
+     * @param descriptionArea The text area to display the result of the ability use in
+     * @return A boolean indication if the ability could be used.
      */
-    public boolean useAdd() {
+    public boolean useAdd(final TextArea descriptionArea) {
         // If a use is available take one away and tell the player the remaining uses.
         if (abilityAdd >= 1) {
             abilityAdd -= 1;
-            System.out.println(abilityAdd + " uses remaining of Add 1.");
+            descriptionArea.setText(abilityAdd + " uses remaining of Add 1.");
             return true;
             // If no uses are available inform the player.
         } else {
-            System.out.println("Cannot use Add. No uses.");
+            descriptionArea.setText("Cannot use Add. No uses.");
             return false;
         }
     }
 
     /**
-     * Use a charge of Take Away cheat if the player has a use available.
-     * If the player has no uses remaining then inform the player.
+     * Use a charge of Take Away ability if the player has a use available and inform the player of the remaining uses.
+     * If the player has no uses remaining then inform the player and do nothing instead.
      *
-     * @return a boolean indication if the ability could be used.
+     * @param descriptionArea The text area to display the result of the ability use in
+     * @return A boolean indication if the ability could be used.
      */
-    public boolean useTakeAway() {
+    public boolean useTakeAway(final TextArea descriptionArea) {
         // If a use is available take one away and tell the player the remaining uses.
         if (abilityTakeAway >= 1) {
             abilityTakeAway -= 1;
-            System.out.println(abilityTakeAway + " uses remaining of Take-Away.");
+            descriptionArea.setText(abilityTakeAway + " uses remaining of Take-Away.");
             return true;
             // If no uses are available inform the player.
         } else {
-            System.out.println("Cannot use Take-Away. No uses.");
+            descriptionArea.setText("Cannot use Take-Away. No uses.");
             return false;
         }
-    }
-
-    /**
-     * Set the player characters name to a new string value.
-     *
-     * @param name a string to change the player characters name too.
-     */
-    public void setName(final String name) {
-        this.name = name;
-    }
-
-    /**
-     * Return the string value of the player characters name.
-     *
-     * @return a string that represents the player characters name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * Get the player's outcome value of their last fight.
-     *
-     * @return an integer that represents the outcome of the player objects last fight
-     */
-    public int getLastOutcome() {
-        return lastOutcome;
-    }
-
-    /**
-     * Set the player outcome name to a new int value.
-     *
-     * @param lastOutcome an integer to change the player's outcome value to.
-     */
-    public void setLastOutcome(final int lastOutcome) {
-        this.lastOutcome = lastOutcome;
     }
 }

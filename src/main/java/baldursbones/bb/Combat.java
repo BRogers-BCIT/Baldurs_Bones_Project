@@ -9,7 +9,7 @@ import java.util.Random;
 
 
 /**
- * Combat.
+ * Combat Runner (Controller: Game Combat).
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
@@ -27,7 +27,8 @@ public class Combat {
     protected static final int TOTAL_BUST = 21;
 
     /**
-     * Constant: a ceiling value to stop player from rolling forever (No use of abilities can result in valid total).
+     * Constant: a ceiling value to stop player from taking the roll action indefinitely.
+     * (No use of abilities can result in valid total from this value).
      */
     protected static final int TOTAL_MAX = 30;
 
@@ -42,7 +43,7 @@ public class Combat {
     protected final Enemy enemy;
 
     /**
-     * Variable: The players current roll total.
+     * Variable: The players current total value of the player's rolls.
      */
     protected int playerTotal;
 
@@ -52,76 +53,74 @@ public class Combat {
     protected int lastRoll;
 
     /**
-     * Variable: The value that records what the player choose to do.
-     */
-    protected int playerChoice;
-
-    /**
-     * Variable: The value used to record the outcome of the combat (-1 = player loses, 1 = player wins).
+     * Variable: The value used to record the outcome of the combat.
+     * Regular: (-1 = player loses, 1 = player wins).
+     * Special: (-2 = lose to boss, 2 = win against boss, 0 = tutorial)
      */
     protected int outcome;
 
-    // The parent element the game combat menu is displayed in.
+    // The parent element the combat class is working for.
     private final GridPane container;
 
     /**
-     * Create a new combat and sets initial values.
-     * Takes a player character object and a new enemy object.
+     * Create a new combat by saving the character and enemy objects and setting the starting values of a fight.
+     * Receives the parent element (Game Combat menu) that the class will update the text area of.
      *
-     * @param player        the current player character object
-     * @param newEnemy      a new enemy object for the player to play against\
-     * @param parentElement The parent element the game combat menu is displayed in.
+     * @param player        The current player character object
+     * @param newEnemy      A new enemy object for the player to play against
+     * @param parentElement The parent element the game combat menu is displayed in
      */
     public Combat(final Player player, final Enemy newEnemy, final GridPane parentElement) {
         pc = player;
         enemy = newEnemy;
-        playerTotal = 0;
-        playerChoice = 1;
-        outcome = 0;
         container = parentElement;
+        playerTotal = 0;
+        outcome = 0;
     }
 
     /**
-     * Sets a name and description for the combat as well as populating the relevant player info.
+     * Sets a name and description for the combat, as well calling a method to populate the relevant player info.
+     * Starts the combat by calling the method to get starting rolls and display combat info.
      *
-     * @param combatName a string used to give a name description to the combat based on its location
+     * @param combatName        A string used to give a name description to the combat based on its location
+     * @param combatDescription A string used to give a description of the fight when starting.
      */
-    public void combatStarter(final String combatName) {
+    public void combatStarter(final String combatName, final String combatDescription) {
         // Set the title of the combat based on its location.
         Label fightTitle = (Label) container.lookup("#CombatDescriptionTitle");
         fightTitle.setText(combatName);
-        // Give a description of the combat based in its location.
+        // Give an initial description of the combat when starting based in its location.
         TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
-        fightDescription.setText("Start Combat");
-        // Update the display of the player's abilities.
+        fightDescription.setText(combatDescription);
+        // Update the Labels used to display the available uses of the player's abilities.
         updateAbilities();
-        // Start the combat by getting the starting rolls and displaying the roll info to the user.
+        // Start the combat by getting the starting rolls and updating the combat info display.
         runCombat();
     }
 
-    // Update the player abilities labels when loading the page or after a use.
+    // Update the player abilities labels when loading the page or after using an ability method.
     private void updateAbilities() {
-        // Update the Add ability tracker on the combat menu.
+        // Update the "Add" ability display on the combat menu.
         Label playerAddUses = (Label) container.lookup("#CombatInfoAdd");
-        playerAddUses.setText("(Ability) Add : " + pc.abilityAdd);
-        // Update the Take Away ability tracker on the combat menu.
+        playerAddUses.setText("(Ability) Add : " + pc.getAbilityAdd());
+        // Update the "Take-Away" ability display on the combat menu.
         Label playerTakeAwayUses = (Label) container.lookup("#CombatInfoTakeAway");
-        playerTakeAwayUses.setText("(Ability) Remove : " + pc.abilityTakeAway);
-        // Update the Re-Roll ability tracker on the combat menu.
+        playerTakeAwayUses.setText("(Ability) Remove : " + pc.getAbilityTakeAway());
+        // Update the "Re-Roll" ability display on the combat menu.
         Label playerReRollUses = (Label) container.lookup("#CombatInfoReRoll");
-        playerReRollUses.setText("(Ability) Re-Roll : " + pc.abilityReRoll);
+        playerReRollUses.setText("(Ability) Re-Roll : " + pc.getAbilityReRoll());
     }
 
     /**
-     * Print the player stats, get the starting rolls and call the game choice loop.
-     * When the loop ends call the combat end method and return the outcome.
+     * Get the starting rolls and update the game information display.
      */
     public void runCombat() {
         // Get the starting rolls for the player and call the game choice loop.
         startRoll();
-        // Print the starting total value and last roll value for the player.
+        // Display the value of the last roll by the player.
         Label playerStartTotal = (Label) container.lookup("#CombatInfoLastRoll");
         playerStartTotal.setText("Last Roll: " + lastRoll);
+        // Display the starting total value for the player.
         Label playerStartLastRoll = (Label) container.lookup("#CombatInfoPlayerTotal");
         playerStartLastRoll.setText("Current Total: " + playerTotal);
     }
@@ -134,27 +133,30 @@ public class Combat {
         playerTotal = 0;
         Random rand = new Random();
 
-        // Generate the first starting roll, print it and add it to the total.
+        // Generate the first starting roll and add it to the total.
         lastRoll = rand.nextInt(1, ROLL_MAX);
+        // Create the start rolls string and add the label name and the first value.
         StringBuilder startRolls = new StringBuilder();
         startRolls.append("Starting Rolls: ");
         startRolls.append(lastRoll);
         startRolls.append(", ");
         playerTotal += lastRoll;
 
-        // Generate the second starting roll, print it and add it to the total.
+        // Generate the second starting roll and add it to the total.
         lastRoll = rand.nextInt(1, ROLL_MAX);
+        // Add the second roll to the start rolls string.
         startRolls.append(lastRoll);
         startRolls.append(", ");
         playerTotal += lastRoll;
 
-        // Generate the final starting roll, print it, add it to the total, and save it as the last player roll.
+        // Generate the final starting roll, add it to the total, and save it as the last player roll.
         lastRoll = rand.nextInt(1, ROLL_MAX);
+        // Add the last roll to the start rolls string.
         startRolls.append(lastRoll);
         startRolls.append(".");
         playerTotal += lastRoll;
 
-        // Print the starting rolls string to the Game Combat menu.
+        // Update the starting rolls in the game info display.
         Label playerStartingRolls = (Label) container.lookup("#CombatInfoStartRolls");
         playerStartingRolls.setText(startRolls.toString());
     }
@@ -164,7 +166,7 @@ public class Combat {
      * Call the getRoll method from the enemy to get enemy roll.
      * Compare against player roll and set the outcome (true = player wins, false = player loses)
      */
-    protected void finishGame() {
+    protected void finishCombat() {
         // If the player ends with a total greater than 21, assign them to auto fail.
         if (playerTotal >= TOTAL_BUST) {
             TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
@@ -178,7 +180,7 @@ public class Combat {
 
     /**
      * Generate a new roll value between 1-6.
-     * Add it to total, set last roll to its value and inform player of roll.
+     * Add it to total, set last roll to its value, and inform player of roll.
      */
     @FXML
     protected void playerRoll() {
@@ -186,17 +188,16 @@ public class Combat {
         Random rand = new Random();
         lastRoll = rand.nextInt(1, ROLL_MAX);
         playerTotal += lastRoll;
-        // Inform the player about their new roll.
+        // Display the value of the players new roll.
         TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
         fightDescription.setText("Rolled: " + lastRoll + ".");
-        // Update the game info and abilities after each action.
+        // Update the game info display after each roll action.
         updateRollInfo();
-        updateAbilities();
-        // If the player total is over the max then set them to 0 and end the game.
+        // If the new player total exceeds the maximum then update the description and end the combat.
         if (playerTotal >= TOTAL_MAX) {
             fightDescription.setText("Rolled: " + lastRoll + ". Total is over max value, game ended.");
             playerTotal = 0;
-            finishGame();
+            finishCombat();
         }
     }
 
@@ -204,9 +205,11 @@ public class Combat {
      * Subtract the last roll value from player total and add a new roll to the player total.
      */
     protected void playerReRoll() {
-        // Call use Re-Roll method to check if the ability can be used.
-        if (pc.useReRoll()) {
-            // Save the roll being removed
+        // Define the text area to display the result of the action.
+        TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
+        // See if the player can use the ability and update the description if they cannot.
+        if (pc.useReRoll(fightDescription)) {
+            // Save the roll that is being removed as a temp variable.
             int temp = lastRoll;
             // Remove the last roll from the total.
             playerTotal -= lastRoll;
@@ -215,15 +218,17 @@ public class Combat {
             lastRoll = rand.nextInt(1, ROLL_MAX);
             playerTotal += lastRoll;
             // If the player can use their ability then inform them of the results.
-            TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
-            fightDescription.setText("Removed: " + temp + " and Added: " + lastRoll);
+            fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
+            // Display the removed roll value and the newly added roll value.
+            fightDescription.appendText("Removed: " + temp + " and Added: " + lastRoll);
+            // If the new player total exceeds the maximum then update the description and end the combat.
             if (playerTotal >= TOTAL_MAX) {
-                fightDescription.setText("Rolled: " + lastRoll + ". Total is over max value, game ended.");
+                fightDescription.appendText("\nRolled: " + lastRoll + ". Total is over max value, game ended.");
                 playerTotal = 0;
-                finishGame();
+                finishCombat();
             }
         }
-        // Update the game info and abilities after each action.
+        // Update the game info and ability displays after each ability action.
         updateRollInfo();
         updateAbilities();
     }
@@ -232,18 +237,22 @@ public class Combat {
      * Add one to the current total value.
      */
     protected void playerAdd() {
-        // If the player can use their ability then use it and add one to the total.
-        if (pc.useAdd()) {
+        // Define the text area to display the result of the action.
+        TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
+        // See if the player can use the ability and update the description if they cannot.
+        if (pc.useAdd(fightDescription)) {
+            // If the player can use their ability then add one to the total and update the description.
             playerTotal += 1;
-            TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
-            fightDescription.setText("Added 1");
+            fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
+            fightDescription.appendText("Added 1");
+            // If the new player total exceeds the maximum then update the description and end the combat.
             if (playerTotal >= TOTAL_MAX) {
-                fightDescription.setText("Rolled: " + lastRoll + ". Total is over max value, game ended.");
+                fightDescription.appendText("\nRolled: " + lastRoll + ". Total is over max value, game ended.");
                 playerTotal = 0;
-                finishGame();
+                finishCombat();
             }
         }
-        // Update the game info and abilities after each action.
+        // Update the game info and ability displays after each ability action.
         updateRollInfo();
         updateAbilities();
     }
@@ -252,21 +261,24 @@ public class Combat {
      * Subtract one from the current total value.
      */
     protected void playerTakeAway() {
-        // If the player can use their ability then use it and remove one from the total.
-        if (pc.useTakeAway()) {
+        // Define the text area to display the result of the action.
+        TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
+        // See if the player can use the ability and update the description if they cannot.
+        if (pc.useTakeAway(fightDescription)) {
+            // If the player can use their ability then remove one from the total and update the description.
             playerTotal -= 1;
-            TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
-            fightDescription.setText("Subtracted 1");
+            fightDescription.appendText("Subtracted 1");
         }
-        // Update the game info and abilities after each action.
+        // Update the game info and ability displays after each ability action.
         updateRollInfo();
         updateAbilities();
     }
 
     private void updateRollInfo() {
-        // Update the current total value and last roll value for the player on screen.
+        // Display the value of the last roll by the player.
         Label playerStartTotal = (Label) container.lookup("#CombatInfoLastRoll");
         playerStartTotal.setText("Last Roll: " + lastRoll);
+        // Display the starting total value for the player.
         Label playerStartLastRoll = (Label) container.lookup("#CombatInfoPlayerTotal");
         playerStartLastRoll.setText("Current Total: " + playerTotal);
     }
