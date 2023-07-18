@@ -1,5 +1,8 @@
 package baldursbones.bb;
 
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -19,13 +22,19 @@ public class TutorialEnemy extends Enemy {
     private final File tutorialEnemyText
             = new File("src/main/resources/baldursbones/bb/TutorialEnemyText.txt");
 
+    // FXML Element: The parent element the map info menu is displayed in.
+    private final GridPane container;
+
     /**
      * Create a Tutorial difficulty implementation of the Enemy Abstract.
+     *
+     * @param parentElement The parent element of the character info menu layout
      */
-    public TutorialEnemy() {
+    public TutorialEnemy(final GridPane parentElement) {
         super();
         // Set the starting total of enemy to its difficulty.
         enemyTotal = DIFFICULTY;
+        container = parentElement;
     }
 
     /**
@@ -59,8 +68,9 @@ public class TutorialEnemy extends Enemy {
         // Try to read the win tutorial combat text from the TutorialEnemy text file.
         try {
             Scanner fileReader = new Scanner(tutorialEnemyText);
-            // Print the text to user.
-            System.out.println(fileReader.nextLine());
+            // Print the text to the text area in the location window user.
+            TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
+            descriptionArea.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
@@ -79,8 +89,9 @@ public class TutorialEnemy extends Enemy {
             Scanner fileReader = new Scanner(tutorialEnemyText);
             // Skip the first line of text.
             fileReader.nextLine();
-            // Print the text to user.
-            System.out.println(fileReader.nextLine());
+            // Print the text to the text area in the location window user.
+            TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
+            descriptionArea.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
@@ -100,15 +111,12 @@ public class TutorialEnemy extends Enemy {
             // Skip the first two lines of text.
             fileReader.nextLine();
             fileReader.nextLine();
-            // Print the text to user.
-            System.out.println(fileReader.nextLine());
+            // Print the text to the text area in the location window user.
+            TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
+            descriptionArea.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
         }
-        // Prompt the user to continue. ** Replace with button press. **
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter to continue");
-        scan.nextLine();
     }
 }
