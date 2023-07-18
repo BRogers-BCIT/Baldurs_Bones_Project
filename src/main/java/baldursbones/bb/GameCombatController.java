@@ -30,11 +30,12 @@ public class GameCombatController {
     /**
      * Create a new combat for the game combat menu and call the combat starter method.
      *
-     * @param locationName a string used to represent the name of the location for the combat.
+     * @param locationName A string used to represent the name of the location for the combat.
+     * @param locationDescription A string used to provide a description of the event at the start of combat.
      */
-    public void combatStarter(final String locationName) {
+    public void combatStarter(final String locationName, final String locationDescription) {
         currentCombat = new Combat(player, enemy, gameCombatGrid);
-        currentCombat.combatStarter(locationName);
+        currentCombat.combatStarter(locationName, locationDescription);
     }
 
     /**
@@ -71,15 +72,16 @@ public class GameCombatController {
 
     /**
      * When the player clicks the hold total button, call the combat method for ending the game.
+     * Also closes the Game Combat menu.
      */
     @FXML
     public void playerHold() {
-        currentCombat.finishGame();
+        currentCombat.finishCombat();
         closeGameCombatMenu();
     }
 
     /**
-     * Removes the map info menu layout from the location menu and makes the buttons clickable again.
+     * Removes the map info menu layout from the Location Menu and makes the buttons clickable again.
      */
     @FXML
     public void closeGameCombatMenu() {
@@ -93,16 +95,17 @@ public class GameCombatController {
     }
 
     /**
-     * Takes the parent element that the layout will be displayed in and saves it. Also re-enables Settings Menu.
+     * Takes the parent element that the layout will be displayed in and saves it. Also disables the Settings Menu.
      *
      * @param parentGrid      The parent element of the character info menu layout
-     * @param playerCharacter the Player object to be used in the Combat for this Combat Menu
-     * @param currentEnemy    the Enemy object to be used in the Combat for this Combat Menu
+     * @param playerCharacter The Player object to be used in the Combat for this Combat Menu
+     * @param currentEnemy    The Enemy object to be used in the Combat for this Combat Menu
      */
     public void getContainerElement(final GridPane parentGrid, final Player playerCharacter, final Enemy currentEnemy) {
         container = parentGrid;
         player = playerCharacter;
         enemy = currentEnemy;
+        // Disable the settings button when the menu is opened.
         container.lookup("#openSettingsButton").setDisable(false);
     }
 
