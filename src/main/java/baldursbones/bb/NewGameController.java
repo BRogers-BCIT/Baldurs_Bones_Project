@@ -125,6 +125,7 @@ public class NewGameController {
             stage.show();
             // Get controller of Game Location window.
             LocationMenuController gameDriverController = loader.getController();
+            // Call the method to begin the game in the location menu controller.
             gameDriverController.gameStarter();
         }
     }
@@ -138,15 +139,18 @@ public class NewGameController {
         LocationMenuController gameDriverController = loader.getController();
 
         if (characterName.getText().equals("")) {
+            // If: character name is empty then prevent the game from starting and display an error.
             errorOutput.setVisible(true);
             errorOutput.setText("No Character Name.");
             return false;
         } else if (characterName.getText().length() > MAX_NAME_LENGTH) {
+            // If: character name is too long then prevent the game from starting and display an error.
             errorOutput.setVisible(true);
             errorOutput.setText("Character Name Too Long. (Max 12 Characters).");
             return false;
         } else {
-            // pass the start game values to the Location Menu controller.
+            // Else: Pass the start game values (name and skip tutorial) to the Location Menu controller.
+            // The controller will save these values to be used in the game.
             gameDriverController.getGameInfo(characterName.getText(), disableTutorial.isSelected());
             return true;
         }
