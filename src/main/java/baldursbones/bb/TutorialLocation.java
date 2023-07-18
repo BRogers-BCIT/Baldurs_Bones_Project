@@ -15,7 +15,7 @@ import java.util.Scanner;
  */
 public class TutorialLocation extends Location {
 
-    // Location value for returning to tutorial location.
+    // Constant: Location value for returning to tutorial location.
     private static final int RETURNED_TUTORIAL = 1;
 
     // Text file: contains all dialogue to be printed by the tutorial location class.
@@ -60,7 +60,7 @@ public class TutorialLocation extends Location {
         // Try to read the start tutorial text from the TutorialLocation text file.
         try {
             Scanner fileReader = new Scanner(tutorialLocationText);
-            // Print the text to user.
+            // Print the text to the text area in the location window user.
             TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
             descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
@@ -81,7 +81,7 @@ public class TutorialLocation extends Location {
             Scanner fileReader = new Scanner(tutorialLocationText);
             // Skip the first line of text.
             fileReader.nextLine();
-            // Print the text to user.
+            // Print the text to the text area in the location window user.
             TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
             descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
