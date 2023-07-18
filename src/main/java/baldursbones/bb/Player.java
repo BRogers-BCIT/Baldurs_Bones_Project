@@ -267,24 +267,21 @@ public class Player {
     /**
      * Takes an outcome value and calls the appropriate method to handle the outcome.
      *
+     * @param descriptionArea The text area to display the result of the combat in
      * @param outcome An integer value representing the outcome of the combat
      */
-    public void finishBattle(final int outcome) {
+    public void finishBattle(final int outcome, final TextArea descriptionArea) {
         if (outcome == LOSE_BATTLE || outcome == LOSE_TO_BOSS) {
             // If: outcome matches a "lose" outcome then call the loseBattle method.
-            loseBattle(outcome);
+            loseBattle(outcome, descriptionArea);
         } else if (outcome == WIN_BATTLE) {
             // Else: outcome matches a "win" outcome then call the winBattle method.
-            winBattle();
+            winBattle(descriptionArea);
         }
     }
 
-    /**
-     * Increase the players stats and print the message associated with their new level.
-     *
-     * @throws RuntimeException If text file cannot be found
-     */
-    private void levelUp() {
+    //
+    private void levelUp(final TextArea descriptionArea) {
         // Increase the players stats.
         statLevel += 1;
         statHealth += 1;
@@ -295,14 +292,16 @@ public class Player {
         try {
             // Create a new scanner for the text file and level up the first section.
             Scanner fileReader = new Scanner(playerText);
-            // Print the level up message and the message related to the level.
-            System.out.println(fileReader.nextLine());
+            // Display the level up message and the message related to the level.
+            descriptionArea.appendText(fileReader.nextLine());
             if (statLevel == LEVEL_2) {
-                System.out.println(fileReader.nextLine());
+                // Display the level 2 message.
+                descriptionArea.appendText(fileReader.nextLine());
             }
             if (statLevel == LEVEL_3) {
+                // Skip the level 2 message and display the level 3 message.
                 fileReader.nextLine();
-                System.out.println(fileReader.nextLine());
+                descriptionArea.appendText(fileReader.nextLine());
             }
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
@@ -310,13 +309,9 @@ public class Player {
         }
     }
 
-    /**
-     * Add 1 to player exp, check if a level up is needed and call one if it is.
-     * Otherwise, inform player to fight boss if they are level 3 or tell them experience needed to level up.
-     *
-     * @throws RuntimeException if text file cannot be found
-     */
-    private void winBattle() {
+    // Add 1 to player exp, check if a level up is needed and call one if it is.
+    // Otherwise, inform player to fight boss if they are level 3 or display the experience needed to level up.
+    private void winBattle(final TextArea descriptionArea) {
         // Increase experience and check for level up.
         statExp += 1;
         // Try to read the win-battle text from the Player text file.
@@ -326,19 +321,21 @@ public class Player {
             fileReader.nextLine();
             fileReader.nextLine();
             fileReader.nextLine();
-            System.out.println(fileReader.nextLine());
+            // Display the text for winning a combat.
+            descriptionArea.setText(fileReader.nextLine());
             if ((statLevel == LEVEL_1 && statExp == LEVEL_1_EXP_THRESHOLD)
                     || (statLevel == LEVEL_2 && statExp == LEVEL_2_EXP_THRESHOLD)) {
                 statExp = 0;
-                levelUp();
+                levelUp(descriptionArea);
                 // If the player is level 3 tell them to fight the boss.
             } else if (statLevel == LEVEL_3 && statExp >= 1) {
-                System.out.println(fileReader.nextLine());
+                descriptionArea.appendText(fileReader.nextLine());
                 // If not leveling up or level 3 then print stats and experience needed to level up.
             } else {
-                System.out.println("Level: " + statLevel);
-                System.out.println("Experience: " + statExp);
-                System.out.println("You need " + ((2 * statLevel + 1) - statExp) + " experience to level up.");
+                descriptionArea.appendText("Level: " + statLevel);
+                descriptionArea.appendText("\nExperience: " + statExp);
+                descriptionArea.appendText("\nYou need " + ((2 * statLevel + 1) - statExp)
+                        + " experience to level up.");
             }
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
@@ -346,7 +343,9 @@ public class Player {
         }
     }
 
-    private void loseBattle(final int outcome) {
+    // Remove 1 from player health or 2 if they lost to a boss and check if the player is still alive.
+    // If the player has not lost the game then display the lose battle message or lose to boss message.
+    private void loseBattle(final int outcome, final TextArea descriptionArea) {
         // Try to read the lose-battle text from the Player text file.
         try {
             // Create a new scanner for the text file and skip the first section.
@@ -358,16 +357,16 @@ public class Player {
             if (outcome == LOSE_BATTLE) {
                 statHealth -= 1;
                 if (statHealth >= 1) {
-                    System.out.println(fileReader.nextLine());
-                    System.out.println(statHealth + " remaining.");
+                    descriptionArea.setText(fileReader.nextLine());
+                    descriptionArea.appendText(statHealth + " remaining.");
                 }
                 // Lose to boss.
             } else if (outcome == LOSE_TO_BOSS) {
                 statHealth -= 2;
                 if (statHealth >= 1) {
                     fileReader.nextLine();
-                    System.out.println(fileReader.nextLine());
-                    System.out.println(statHealth + " remaining.");
+                    descriptionArea.setText(fileReader.nextLine());
+                    descriptionArea.appendText(statHealth + " remaining.");
                 }
             }
         } catch (FileNotFoundException e) {
