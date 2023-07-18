@@ -1,5 +1,8 @@
 package baldursbones.bb;
 
+import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
@@ -31,13 +34,18 @@ public class MediumLocation extends Location {
     private final File mediumLocationText
             = new File("src/main/resources/baldursbones/bb/MediumLocationText.txt");
 
+    // FXML Element: The parent element the location object will display information in.
+    private final GridPane container;
+
     /**
      * Creates a new location object and assigns it a location value.
      *
-     * @param newLocationType an integer representing the location's value.
+     * @param newLocationType An integer representing the location's value.
+     * @param locationGrid    The location menu layout element that uses this location object
      */
-    public MediumLocation(final int newLocationType) {
+    public MediumLocation(final int newLocationType, final GridPane locationGrid) {
         super(newLocationType);
+        container = locationGrid;
     }
 
     /**
@@ -63,29 +71,34 @@ public class MediumLocation extends Location {
      * @throws RuntimeException if text file is missing
      */
     protected boolean fightLocation() {
-        // Try to read the combat location text from the MediumLocation text file.
+        // Define the text area to write information into.
+        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
+        // Try to read the combat location text from the Medium Location text file.
         try {
             Scanner fileReader = new Scanner(mediumLocationText);
             // Skip the "explore location" text.
             fileReader.nextLine();
             fileReader.nextLine();
             fileReader.nextLine();
-            // Print the text to user.
-            System.out.println(fileReader.nextLine());
+            // Display the fight location text on screen.
+            descriptionBox.setText(fileReader.nextLine());
             // First encounter at the location.
             if (locationValue == FIGHT_LOCATION) {
-                System.out.println(fileReader.nextLine());
+                // Display the text in the text area element on screen.
+                descriptionBox.appendText(fileReader.nextLine());
                 return true;
                 // Returning encounter at the location (lost first fight).
             } else if (locationValue == FIGHT_LOCATION_FOUND) {
+                // Skip to correct text file line and display the text in the text area element on screen.
                 fileReader.nextLine();
-                System.out.println(fileReader.nextLine());
+                descriptionBox.appendText(fileReader.nextLine());
                 return true;
                 // Beaten the fight at this location.
             } else if (locationValue == FIGHT_LOCATION_BEATEN) {
+                // Skip to correct text file line and display it in the text area element on screen.
                 fileReader.nextLine();
                 fileReader.nextLine();
-                System.out.println(fileReader.nextLine());
+                descriptionBox.appendText(fileReader.nextLine());
                 return false;
             }
         } catch (FileNotFoundException e) {
@@ -102,27 +115,27 @@ public class MediumLocation extends Location {
      * @throws RuntimeException if text file is missing
      */
     protected void exploreLocation() {
-        // Try to read the "explore location" text from the MediumLocation text file.
+        // Define the text area to write information into.
+        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
+        // Try to read the "explore location" text from the Medium Location text file.
         try {
             Scanner fileReader = new Scanner(mediumLocationText);
-            // Print the "explore location" text to user.
-            System.out.println(fileReader.nextLine());
+            // Display the "explore location" text on screen.
+            descriptionBox.setText(fileReader.nextLine());
             // First encounter at this location.
             if (locationValue == EXPLORE_LOCATION) {
-                System.out.println(fileReader.nextLine());
+                // Append the additional explore location text.
+                descriptionBox.appendText(fileReader.nextLine());
                 // Returning to encountered location.
             } else {
+                // Skip to correct text file line and display it in the text area element on screen.
                 fileReader.nextLine();
-                System.out.println(fileReader.nextLine());
+                descriptionBox.appendText(fileReader.nextLine());
             }
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
         }
-        // Prompt the user to continue. ** Replace with button press. **
-        Scanner scan = new Scanner(System.in);
-        System.out.println("Enter to continue");
-        scan.nextLine();
     }
 
 }

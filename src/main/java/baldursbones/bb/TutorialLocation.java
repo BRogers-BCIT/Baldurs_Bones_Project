@@ -22,14 +22,14 @@ public class TutorialLocation extends Location {
     private final File tutorialLocationText
             = new File("src/main/resources/baldursbones/bb/TutorialLocationText.txt");
 
-    // FXML Element: The parent element the map info menu is displayed in.
+    // FXML Element: The parent element the location object will display information in.
     private final GridPane container;
 
     /**
      * Creates a new location object and assigns it a location value.
      *
      * @param newLocationType An integer representing the location's value.
-     * @param locationGrid    The parent element of the character info menu layout
+     * @param locationGrid    The location menu layout element that uses this location object
      */
     public TutorialLocation(final int newLocationType, final GridPane locationGrid) {
         super(newLocationType);
