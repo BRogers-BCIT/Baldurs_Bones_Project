@@ -167,14 +167,17 @@ public class Combat {
      * Compare against player roll and set the outcome (true = player wins, false = player loses)
      */
     protected void finishCombat() {
+        TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
+        fightDescription.setText("");
         // If the player ends with a total greater than 21, assign them to auto fail.
-        if (playerTotal >= TOTAL_BUST) {
-            TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
-            fightDescription.setText("Rolled: " + lastRoll + ". Total is over 21, you go bust.");
+        if (playerTotal > TOTAL_BUST) {
+            fightDescription.appendText("Rolled: " + lastRoll + ". Total is over 21, you go bust.");
             playerTotal = 0;
         }
         // Get the outcome of the combat and pass the outcome value to the player.
         outcome = enemy.compareTotal(playerTotal);
+        // Display the end roll comparison to the player.
+        fightDescription.appendText("You rolled: " + lastRoll + ". Your opponent rolled " + enemy.enemyTotal + ".");
         pc.setLastOutcome(outcome);
     }
 

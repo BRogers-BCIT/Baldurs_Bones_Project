@@ -27,10 +27,13 @@ public class GameCombatController {
     // Game Object: The current Combat object for the Game Combat menu.
     private Combat currentCombat;
 
+    // Variable: Tracks if the combat is over to close the combat menu when the text area is clicked.
+    private boolean endCombat;
+
     /**
      * Create a new combat for the game combat menu and call the combat starter method.
      *
-     * @param locationName A string used to represent the name of the location for the combat.
+     * @param locationName        A string used to represent the name of the location for the combat.
      * @param locationDescription A string used to provide a description of the event at the start of combat.
      */
     public void combatStarter(final String locationName, final String locationDescription) {
@@ -72,18 +75,32 @@ public class GameCombatController {
 
     /**
      * When the player clicks the hold total button, call the combat method for ending the game.
-     * Also closes the Game Combat menu.
+     * Also disables the game buttons and sets the menu to wait for user to continue through game results.
      */
     @FXML
     public void playerHold() {
         currentCombat.finishCombat();
-        closeGameCombatMenu();
+        gameCombatGrid.lookup("#GameActionRoll").setDisable(true);
+        gameCombatGrid.lookup("#GameActionHold").setDisable(true);
+        gameCombatGrid.lookup("#PlayerAbilityAdd").setDisable(true);
+        gameCombatGrid.lookup("#PlayerAbilityTakeAway").setDisable(true);
+        gameCombatGrid.lookup("#PlayerAbilityReRoll").setDisable(true);
+        endCombat = true;
+    }
+
+    /**
+     * Allows the player to close the combat and progress by clicking the text area when combat is finished.
+     */
+    @FXML
+    public void endCombat() {
+        if (endCombat) {
+            closeGameCombatMenu();
+        }
     }
 
     /**
      * Removes the map info menu layout from the Location Menu and makes the buttons clickable again.
      */
-    @FXML
     public void closeGameCombatMenu() {
         // Set location menu buttons to be clickable.
         container.lookup("#locationFightButton").setDisable(false);
@@ -105,6 +122,8 @@ public class GameCombatController {
         container = parentGrid;
         player = playerCharacter;
         enemy = currentEnemy;
+        // Set the combat to be in progress.
+        endCombat = false;
         // Disable the settings button when the menu is opened.
         container.lookup("#openSettingsButton").setDisable(false);
     }
