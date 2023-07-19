@@ -9,6 +9,7 @@ import java.util.Objects;
 
 /**
  * Game Map & Player Map.
+ * Controller: Location Menu
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1

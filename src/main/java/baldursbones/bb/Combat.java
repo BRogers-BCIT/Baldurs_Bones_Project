@@ -9,7 +9,8 @@ import java.util.Random;
 
 
 /**
- * Combat Runner (Controller: Game Combat).
+ * Combat Runner.
+ * Controller: Game Combat.
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1

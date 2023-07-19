@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 /**
  * Enemy Abstract Class.
+ * Controller: Game Combat
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1

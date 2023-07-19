@@ -9,6 +9,7 @@ import java.util.Scanner;
 
 /**
  * Location Abstract Class.
+ * Controller: Location Menu
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
