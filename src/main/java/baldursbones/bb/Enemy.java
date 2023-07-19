@@ -16,24 +16,20 @@ import java.util.Scanner;
  */
 public abstract class Enemy {
     /**
-     * Constant: Record the value representing the enemy's total at the end of combat.
+     * Variable: Record the value representing the enemy's total at the end of combat.
      */
     protected int enemyTotal;
-
-    /**
-     * Implementation Constant: Define the number value used to determine an enemies total at the end of combat.
-     */
-    protected int enemyDifficulty;
-
-    /**
-     * Implementation Constant: The file object for the text file used for the implementation Enemy type.
-     */
-    protected File enemyFile;
 
     /**
      * Variable: The layout element of the controller that created the Enemy object.
      */
     protected GridPane container;
+
+    // Implementation Constant: Define the number value used to determine an enemies total at the end of combat.
+    private final int enemyDifficulty;
+
+    // Implementation Constant: The file object for the text file used for the implementation Enemy type.
+    private final File enemyFile;
 
     /**
      * Receives and Sets the field values for the Enemy class. Receives the values from implementations of abstract.
@@ -71,6 +67,8 @@ public abstract class Enemy {
      * Set the total value for the Enemy based on the difficulty value passed to the constructor.
      */
     public void getTotal() {
+        // Set total to Enemy base difficulty.
+        enemyTotal = enemyDifficulty;
         Random rand = new Random();
         // Generates either a 0 or a 1 and adds it to the total value.
         // Creates variance Combat outcomes by creating a High roll value and a Low roll value.

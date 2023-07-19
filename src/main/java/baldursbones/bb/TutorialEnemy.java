@@ -65,7 +65,7 @@ public class TutorialEnemy extends Enemy {
     protected void tutorialFinish() {
         // Try to read the finish Tutorial description from the Tutorial Enemy text file.
         try {
-            Scanner fileReader = new Scanner(enemyFile);
+            Scanner fileReader = new Scanner(TUTORIAL_FILE);
             // Skip the first two lines of text.
             fileReader.nextLine();
             fileReader.nextLine();
