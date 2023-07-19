@@ -15,103 +15,61 @@ import java.util.Scanner;
  */
 public class TutorialEnemy extends Enemy {
 
-    // Constant: Defines the static difficulty of the enemy.
+    // Constant: Defines the static difficulty value of the Enemy.
     private static final int DIFFICULTY = 14;
 
-    // Text file: contains all dialogue to be printed by the tutorial enemy class.
-    private final File tutorialEnemyText
+    // Text file: Contains all dialogue to be printed by the Tutorial Enemy class.
+    private static final File TUTORIAL_FILE
             = new File("src/main/resources/baldursbones/bb/TutorialEnemyText.txt");
 
-    // FXML Element: The parent element the enemy object is being used by.
-    private final GridPane container;
 
     /**
-     * Create a Tutorial difficulty implementation of the Enemy Abstract.
+     * Create a Tutorial type Enemy object and pass the difficulty value, text file, and parent FXML element to super.
      *
-     * @param parentElement The layout of the controller using this enemy object
+     * @param parentElement The layout of the controller using this Enemy object
      */
     public TutorialEnemy(final GridPane parentElement) {
-        super();
-        // Set the starting total of enemy to its difficulty.
-        enemyTotal = DIFFICULTY;
-        container = parentElement;
+        super(DIFFICULTY, TUTORIAL_FILE, parentElement);
     }
 
     /**
-     * Generates a "total" value for the enemy and compares the value to the passed player "total".
-     * Regardless of outcome return a 0 (Tutorial win or loss does not affect player).
+     * Generates a "total" value for the Enemy and compares the value to the passed Player "total".
+     * Override: Always returns an outcome of 0 & call Tutorial end description.
+     * Tutorial combat does not impact the Player so the end result is not saved.
      *
-     * @param playerRoll an integer value representing the users end total
-     * @return an integer representing the outcome of the game (0 = finished tutorial)
+     * @param playerRoll An integer value representing the end total value for the Player
+     * @return An integer representing the outcome of the combat (0 = finished Tutorial)
      */
     @Override
     public int compareTotal(final int playerRoll) {
-        // Set the enemy total based on enemy difficulty.
+        // Set the Enemy total based on Enemy difficulty.
         getTotal();
-        // Compare enemy and player totals.
-        // If the player total is higher, then the player wins, otherwise the enemy wins.
+        // Compare Enemy and Player totals and return the result.
         if (playerRoll > enemyTotal) {
+            // If: The Player total is higher than the Enemy total, the Player wins.
             win();
         } else {
+            // Else: The Enemy total is equal to or grater than the Player total.
             lose();
         }
-        // Regardless of outcome return 0.
+        tutorialFinish();
+        // Regardless of outcome return 0. (Tutorial fight does not affect Player).
         return 0;
     }
 
     /**
-     * Define the enemy behavior (Game end text) if the player loses.
+     * Displays the description for finishing the Tutorial.
      *
-     * @throws RuntimeException if text file is missing
+     * @throws RuntimeException If the text document being loaded does not exist
      */
-    protected void win() {
-        // Try to read the win tutorial combat text from the TutorialEnemy text file.
+    protected void tutorialFinish() {
+        // Try to read the finish Tutorial description from the Tutorial Enemy text file.
         try {
-            Scanner fileReader = new Scanner(tutorialEnemyText);
-            // Print the text to the text area in the location window user.
-            TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
-            descriptionArea.setText(fileReader.nextLine());
-        } catch (FileNotFoundException e) {
-            // Catch any errors with reading the text file.
-            throw new RuntimeException(e);
-        }
-        tutorialEnd();
-    }
-
-    /**
-     * Define the enemy behavior (Game end text) if the player loses.
-     *
-     * @throws RuntimeException if text file is missing
-     */
-    protected void lose() {
-        // Try to read the lose tutorial combat text from the Tutorial Enemy text file.
-        try {
-            Scanner fileReader = new Scanner(tutorialEnemyText);
-            // Skip the first line of text.
-            fileReader.nextLine();
-            // Print the text to the text area in the location window user.
-            TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
-            descriptionArea.setText(fileReader.nextLine());
-        } catch (FileNotFoundException e) {
-            // Catch any errors with reading the text file.
-            throw new RuntimeException(e);
-        }
-        tutorialEnd();
-    }
-
-    /**
-     * Displays the game text for when tutorial finishes regardless of win or lose.
-     *
-     * @throws RuntimeException if text file is missing
-     */
-    protected void tutorialEnd() {
-        // Try to read the end tutorial text from the TutorialEnemy text file.
-        try {
-            Scanner fileReader = new Scanner(tutorialEnemyText);
+            Scanner fileReader = new Scanner(enemyFile);
             // Skip the first two lines of text.
             fileReader.nextLine();
             fileReader.nextLine();
-            // Print the text to the text area in the location window user.
+            // Print the description to the text area in the Location Menu description text area.
             TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
             descriptionArea.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
