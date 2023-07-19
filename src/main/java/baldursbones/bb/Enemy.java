@@ -28,11 +28,11 @@ public abstract class Enemy {
     // Implementation Constant: Define the number value used to determine an enemies total at the end of combat.
     private final int enemyDifficulty;
 
-    // Implementation Constant: The file object for the text file used for the implementation Enemy type.
+    // Implementation Constant: The file object for the text file used for the created Enemy type.
     private final File enemyFile;
 
     /**
-     * Receives and Sets the field values for the Enemy class. Receives the values from implementations of abstract.
+     * Receives and Sets the field values for the Enemy class. Receives the values from abstract implementations.
      *
      * @param difficultyValue The static integer value used to determine the Enemy's roll in combat
      * @param enemyText       The text file to read the Enemy description text from

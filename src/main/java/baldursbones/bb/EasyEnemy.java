@@ -22,7 +22,7 @@ public class EasyEnemy extends Enemy {
     /**
      * Create an Easy difficulty implementation of the Enemy Abstract.
      *
-     * @param parentElement The layout of the controller using this Enemy object
+     * @param parentElement The layout element for the controller using this Enemy object
      */
     public EasyEnemy(final GridPane parentElement) {
         super(DIFFICULTY, EASY_TEXT, parentElement);

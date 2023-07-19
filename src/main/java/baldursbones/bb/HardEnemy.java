@@ -21,7 +21,7 @@ public class HardEnemy extends Enemy {
     /**
      * Create a Hard difficulty implementation of the Enemy Abstract.
      *
-     * @param parentElement The layout of the controller using this Enemy object
+     * @param parentElement The layout element for the controller using this Enemy object
      */
     public HardEnemy(final GridPane parentElement) {
         super(DIFFICULTY, HARD_TEXT, parentElement);

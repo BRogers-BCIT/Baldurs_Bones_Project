@@ -22,7 +22,7 @@ public class MediumEnemy extends Enemy {
     /**
      * Create a Medium difficulty implementation of the Enemy Abstract.
      *
-     * @param parentElement The layout of the controller using this Enemy object
+     * @param parentElement The layout element for the controller using this Enemy object
      */
     public MediumEnemy(final GridPane parentElement) {
         super(DIFFICULTY, MEDIUM_TEXT, parentElement);

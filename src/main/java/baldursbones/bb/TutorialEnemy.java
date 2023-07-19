@@ -26,7 +26,7 @@ public class TutorialEnemy extends Enemy {
     /**
      * Create a Tutorial type Enemy object and pass the difficulty value, text file, and parent FXML element to super.
      *
-     * @param parentElement The layout of the controller using this Enemy object
+     * @param parentElement The layout element for the controller using this Enemy object
      */
     public TutorialEnemy(final GridPane parentElement) {
         super(DIFFICULTY, TUTORIAL_FILE, parentElement);

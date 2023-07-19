@@ -31,7 +31,7 @@ public class BossEnemy extends Enemy {
     /**
      * Create a Boss type Enemy object and Pass the difficulty value, text file, and parent FXML element to super.
      *
-     * @param parentElement The layout of the controller using this Enemy object
+     * @param parentElement The layout element for the controller using this Enemy object
      */
     public BossEnemy(final GridPane parentElement) {
         super(DIFFICULTY, BOSS_FILE, parentElement);
