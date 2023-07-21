@@ -71,62 +71,54 @@
       </Label>
       <HBox alignment="CENTER">
          <VBox id="CombatRollsContainer" alignment="CENTER_LEFT">
-            <Label id="CombatInfoStartRolls" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                   styleClass="CombatInfoElements" text="Starting Rolls: " textAlignment="CENTER" textOverrun="CLIP">
+            <Label id="CombatInfoStartRolls" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CombatInfoElements" text="Starting Rolls: " textAlignment="CENTER" textOverrun="CLIP">
                <font>
-                  <Font size="18.0"/>
+                  <Font size="18.0" />
                </font>
                <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
             </Label>
-            <Label id="CombatInfoPlayerTotal" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                   styleClass="CombatInfoElements" text="Current Total: " textAlignment="CENTER" textOverrun="CLIP">
+            <Label id="CombatInfoPlayerTotal" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CombatInfoElements" text="Current Total: " textAlignment="CENTER" textOverrun="CLIP">
                <font>
-                  <Font size="18.0"/>
+                  <Font size="18.0" />
                </font>
                <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="40.0"/>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
                </padding>
             </Label>
-            <Label id="CombatInfoLastRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                   styleClass="CombatInfoElements" text="Last Roll: " textAlignment="CENTER" textOverrun="CLIP">
+            <Label id="CombatInfoLastRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CombatInfoElements" text="Last Roll: " textAlignment="CENTER" textOverrun="CLIP">
                <font>
-                  <Font size="18.0"/>
+                  <Font size="18.0" />
                </font>
                <padding>
-                  <Insets left="20.0" right="20.0" top="30.0"/>
+                  <Insets left="20.0" right="20.0" top="30.0" />
                </padding>
             </Label>
          </VBox>
          <VBox id="PlayerAbilitiesContainer">
-            <Label id="CombatInfoReRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                   styleClass="CombatInfoElements" text="Re-Roll Last Roll: " textAlignment="CENTER"
-                   textOverrun="CLIP">
+            <Label id="CombatInfoReRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CombatInfoElements" text="Re-Roll Last Roll: " textAlignment="CENTER" textOverrun="CLIP">
                <font>
-                  <Font size="18.0"/>
+                  <Font size="18.0" />
                </font>
                <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </padding>
             </Label>
-            <Label id="CombatInfoAdd" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                   styleClass="CombatInfoElements" text="Increase Total: " textAlignment="CENTER" textOverrun="CLIP">
+            <Label id="CombatInfoAdd" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CombatInfoElements" text="Increase Total: " textAlignment="CENTER" textOverrun="CLIP">
                <font>
-                  <Font size="18.0"/>
+                  <Font size="18.0" />
                </font>
                <padding>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="40.0"/>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="40.0" />
                </padding>
             </Label>
-            <Label id="CombatInfoTakeAway" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                   styleClass="CombatInfoElements" text="Decrease Total: " textAlignment="CENTER"
-                   textOverrun="CLIP">
+            <Label id="CombatInfoTakeAway" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CombatInfoElements" text="Decrease Total: " textAlignment="CENTER" textOverrun="CLIP">
                <font>
-                  <Font size="18.0"/>
+                  <Font size="18.0" />
                </font>
                <padding>
-                  <Insets left="20.0" right="20.0" top="30.0"/>
+                  <Insets left="20.0" right="20.0" top="30.0" />
                </padding>
             </Label>
          </VBox>
