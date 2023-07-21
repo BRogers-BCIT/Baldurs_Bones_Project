@@ -13,16 +13,16 @@ import java.io.File;
  */
 public class EasyEnemy extends Enemy {
 
-    // Constant: Defines the static difficulty of the Easy Enemy class.
+    // Constant: Define the number used to determine an Easy Enemy's Total Value at the end of combat.
     private static final int DIFFICULTY = 15;
 
-    // Text file: Contains all dialogue to be printed by the Easy Enemy class.
+    // Text file: The Text File object with the Text to display for an Easy Enemy.
     private static final File EASY_TEXT = new File("src/main/resources/baldursbones/bb/EasyEnemyText.txt");
 
     /**
      * Create an Easy difficulty implementation of the Enemy Abstract.
      *
-     * @param parentElement The layout element for the controller using this Enemy object
+     * @param parentElement The Parent's Layout Element for the Controller using the Easy Enemy Class
      */
     public EasyEnemy(final GridPane parentElement) {
         super(DIFFICULTY, EASY_TEXT, parentElement);

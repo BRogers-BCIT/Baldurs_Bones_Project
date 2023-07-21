@@ -12,16 +12,16 @@ import java.io.File;
  */
 public class HardEnemy extends Enemy {
 
-    // Constant: Defines the static difficulty of the Hard Enemy class.
+    // Constant: Define the number used to determine a Hard Enemy's Total Value at the end of combat.
     private static final int DIFFICULTY = 18;
 
-    // Text file: Contains all dialogue to be printed by the Hard Enemy class.
+    // Text file: The Text File object with the Text to display for a Hard Enemy.
     private static final File HARD_TEXT = new File("src/main/resources/baldursbones/bb/HardEnemyText.txt");
 
     /**
      * Create a Hard difficulty implementation of the Enemy Abstract.
      *
-     * @param parentElement The layout element for the controller using this Enemy object
+     * @param parentElement The Parent's Layout Element for the Controller using the Hard Enemy Class
      */
     public HardEnemy(final GridPane parentElement) {
         super(DIFFICULTY, HARD_TEXT, parentElement);
