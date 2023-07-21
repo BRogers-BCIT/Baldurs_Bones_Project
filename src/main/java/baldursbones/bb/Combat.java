@@ -44,12 +44,12 @@ public class Combat {
     protected final Enemy enemy;
 
     /**
-     * Variable: The Players current Total Value of the Player's Rolls.
+     * Variable: The Player's current Total Value of the Player's Rolls.
      */
     protected int playerTotal;
 
     /**
-     * Variable: The value of the Players last die Rolled by the Player.
+     * Variable: The value of the Player's last die Rolled by the Player.
      */
     protected int lastRoll;
 
@@ -129,7 +129,7 @@ public class Combat {
     }
 
     /**
-     * Sets the Players starting Total Value and display their Rolls in the Game Info display.
+     * Sets the Player's starting Total Value and display their Rolls in the Game Info display.
      */
     protected void startRoll() {
         // Set the starting Total Value to 0.
