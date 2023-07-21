@@ -15,65 +15,65 @@ import java.util.Scanner;
  */
 public class TutorialEnemy extends Enemy {
 
-    // Constant: Defines the static difficulty value of the Enemy.
+    // Constant: The number used to determine the Tutorial Enemy's Total Value at the end of combat.
     private static final int DIFFICULTY = 14;
 
-    // Text file: Contains all dialogue to be printed by the Tutorial Enemy class.
+    // Text file: The Text File object to be used by the Tutorial Enemy.
     private static final File TUTORIAL_FILE
             = new File("src/main/resources/baldursbones/bb/TutorialEnemyText.txt");
 
 
     /**
-     * Create a Tutorial type Enemy object and pass the difficulty value, text file, and parent FXML element to super.
+     * Create a Tutorial type Enemy object and pass the Difficulty Value, Text File, and Parent Element to abstract.
      *
-     * @param parentElement The layout element for the controller using this Enemy object
+     * @param parentElement The layout element for the Controller using the Tutorial Enemy object
      */
     public TutorialEnemy(final GridPane parentElement) {
         super(DIFFICULTY, TUTORIAL_FILE, parentElement);
     }
 
     /**
-     * Generates a "total" value for the Enemy and compares the value to the passed Player "total".
-     * Override: Always returns an outcome of 0 & call Tutorial end description.
-     * Tutorial combat does not impact the Player so the end result is not saved.
+     * Generates the Total Value for the Enemy and compares the value to the passed Player Total Value.
+     * Override: Always returns an outcome of 0 + calls the finish Tutorial description method.
      *
-     * @param playerRoll An integer value representing the end total value for the Player
-     * @return An integer representing the outcome of the combat (0 = finished Tutorial)
+     * @param playerRoll The Total Value for the Player in a Combat
+     * @return An integer representing the outcome of the game (1 = Player win, -1 = Player loss)
      */
     @Override
     public int compareTotal(final int playerRoll) {
-        // Set the Enemy total based on Enemy difficulty.
+        // Set the Enemy Total Value based on Enemy Difficulty Value.
         getTotal();
         // Compare Enemy and Player totals and return the result.
         if (playerRoll > enemyTotal) {
-            // If: The Player total is higher than the Enemy total, the Player wins.
+            // If: The Player Total Value is higher than the Enemy Total Value, the Player wins the Combat.
             win();
         } else {
-            // Else: The Enemy total is equal to or grater than the Player total.
+            // Else: The Enemy Total Value is equal to or greater than the Player Total Value.
+            // The Player loses the Combat.
             lose();
         }
         tutorialFinish();
-        // Regardless of outcome return 0. (Tutorial fight does not affect Player).
+        // Regardless of outcome return 0. (Tutorial Combat does not affect Player).
         return 0;
     }
 
     /**
-     * Displays the description for finishing the Tutorial.
+     * Display the win End Tutorial description.
      *
      * @throws RuntimeException If the text document being loaded does not exist
      */
     protected void tutorialFinish() {
-        // Try to read the finish Tutorial description from the Tutorial Enemy text file.
+        // Try to read the finish Tutorial text from the Tutorial Enemy Text File.
         try {
             Scanner fileReader = new Scanner(TUTORIAL_FILE);
-            // Skip the first two lines of text.
+            // Skip the first two lines of the Text File.
             fileReader.nextLine();
             fileReader.nextLine();
-            // Print the description to the text area in the Location Menu description text area.
-            TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
+            // Display the End Tutorial text in the Location Menu Description display.
+            TextArea descriptionArea = (TextArea) container.lookup("#GameDescription");
             descriptionArea.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
-            // Catch any errors with reading the text file.
+            // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
         }
     }

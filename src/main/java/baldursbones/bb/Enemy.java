@@ -48,14 +48,14 @@ public abstract class Enemy {
     /**
      * Generates the Total Value for the Enemy and compares the value to the passed Player Total Value.
      *
-     * @param playerRoll The Total Value for the Player in a Combat
+     * @param playerTotal The Total Value for the Player in a Combat
      * @return An integer representing the outcome of the game (1 = Player win, -1 = Player loss)
      */
-    public int compareTotal(final int playerRoll) {
+    public int compareTotal(final int playerTotal) {
         // Set the Total Value for the Enemy.
         getTotal();
         // Compare the Total Value for the Enemy to the Player Total Value.
-        if (playerRoll > enemyTotal) {
+        if (playerTotal > enemyTotal) {
             // If: The Player Total Value > Enemy Total Value, the Player wins.
             win();
             return 1;
@@ -80,7 +80,7 @@ public abstract class Enemy {
     }
 
     /**
-     * Display the win Combat Text for Enemy Implementation Type.
+     * Display the win Combat text for Enemy Implementation Type.
      *
      * @throws RuntimeException If the text document being loaded does not exist
      */
@@ -98,7 +98,7 @@ public abstract class Enemy {
     }
 
     /**
-     * Display the lose Combat Text for Enemy Implementation Type.
+     * Display the lose Combat text for Enemy Implementation Type.
      *
      * @throws RuntimeException If the text document being loaded does not exist
      */

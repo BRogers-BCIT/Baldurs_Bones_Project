@@ -16,22 +16,23 @@ import java.util.Scanner;
  */
 public class BossEnemy extends Enemy {
 
-    // Constant: Defines the static difficulty value of the Boss Enemy class.
-    private static final int DIFFICULTY = 19;
+    // Constant: The number used to determine the Boss's Total Value at the end of Combat.
+    private static final int DIFFICULTY = 14;
 
-    // Text file: Contains all dialogue to be printed by the Boss Enemy class.
-    private static final File BOSS_FILE = new File("src/main/resources/baldursbones/bb/BossEnemyText.txt");
+    // Text file: The Text File object to be used by the Boss Enemy.
+    private static final File BOSS_FILE
+            = new File("src/main/resources/baldursbones/bb/TutorialEnemyText.txt");
 
     /**
-     * Variable: An integer representing the number of rounds the Boss has lost vs won.
-     * Equation: rounds lost - rounds won.
+     * Variable: An integer representing the number of Rounds the Boss has lost vs won.
+     * Equation: Rounds Lost - Rounds Won.
      */
     protected int roundOutcomeCount;
 
     /**
-     * Create a Boss type Enemy object and Pass the difficulty value, text file, and parent FXML element to super.
+     * Create a Boss type Enemy object and Pass the Difficulty Value, Text File, and Parent Element to abstract.
      *
-     * @param parentElement The layout element for the controller using this Enemy object
+     * @param parentElement The layout element for the Controller using the Boss Enemy object
      */
     public BossEnemy(final GridPane parentElement) {
         super(DIFFICULTY, BOSS_FILE, parentElement);
@@ -39,36 +40,33 @@ public class BossEnemy extends Enemy {
     }
 
     /**
-     * Generates a "total" value for the Enemy and compares the value to the passed Player "total".
-     * Override: Keep a running internal total of rounds the Boss Enemy has won vs lost.
+     * Generates the Total Value for the Enemy and compares the value to the passed Player Total Value.
+     * Override: Adds a counter to track the number of Rounds won and lost by the Boss.
      *
-     * @param playerTotal An integer value representing the end total value for the Player
+     * @param playerTotal The Total Value for the Player in a Combat
      * @return An integer representing the outcome of the game (1 = Player win, -1 = Player loss)
      */
     @Override
     public int compareTotal(final int playerTotal) {
-        // Define the text area to write information into.
-        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
-        // Get the total value for the Boss.
+        // Get the Total Value for the Boss.
         getTotal();
-        // Display the total value for the Boss to the Player total value.
-        descriptionBox.setText("Boss total: " + enemyTotal + ".");
         // Compare the Player total to the Boss total.
-        // Update the counter and return the result.
+        // Update the Round Outcome counter, then return the result.
         if (playerTotal > enemyTotal) {
-            // If: The Player total > Enemy total, the Player wins.
+            // If: The Player total > Boss total, the Player wins.
             roundOutcomeCount += 1;
             return 1;
         } else {
-            // Else: The Enemy total >= Player total, the Player loses.
+            // Else: The Boss total >= Player total, the Player loses.
             roundOutcomeCount -= 1;
             return -1;
         }
     }
 
     /**
-     * Creates the total value for the Boss Enemy.
-     * Equation: Difficulty + (0-1) - (number of rounds won + number of rounds lost).
+     * Set the Total Value for the Enemy based on the Difficulty Value passed to the constructor.
+     * Override: Also increases / decreases the Total Value based on the Rounds won and lost by the Boss.
+     * Equation: (Difficulty Value) + (0 - 1) + (Rounds Lost) - (Rounds Won)
      */
     @Override
     public void getTotal() {
@@ -77,91 +75,89 @@ public class BossEnemy extends Enemy {
         Random rand = new Random();
         int rollVariance = rand.nextInt(0, 2);
         enemyTotal += rollVariance;
-        // Adjust the total based on the current value of the round outcome counter.
+        // Adjust the total based on the current value of the Round Outcome counter.
         enemyTotal += roundOutcomeCount;
     }
 
     /**
-     * Defines the Enemy behavior if the Player wins a round of combat (Naming is defined by context of combat class).
+     * Defines the Enemy behavior if the Player wins a Round of Combat.
      *
      * @throws RuntimeException If the text document being loaded does not exist
      */
     protected void winRound() {
-        // Define the text area to write information into.
-        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
-        // Try to read the win-round text from the Boss Enemy text file.
+        // Try to read the win Round text from the Boss Text File.
         try {
             Scanner fileReader = new Scanner(BOSS_FILE);
-            // Display the description in the text area element.
+            // Display the win Round text in the Game Description display.
+            TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
             descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
-            // Catch any errors with reading the text file.
+            // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
         }
     }
 
     /**
-     * Defines the Enemy behavior if the Player loses a round of combat (Naming is defined by context of combat class).
+     * Defines the Enemy behavior if the Player loses a Round of Combat.
      *
      * @throws RuntimeException If the text document being loaded does not exist
      */
     protected void loseRound() {
-        // Define the text area to write information into.
-        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
-        // Try to read the lose-round text from the Boss Enemy text file.
+        // Try to read the lose Round text from the Boss Text File.
         try {
             Scanner fileReader = new Scanner(BOSS_FILE);
-            // Skip the first line of the text file.
+            // Skip the first line of the Text File.
             fileReader.nextLine();
-            // Display the description in the text area element.
+            // Display the win Round text in the Game Description display.
+            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
             descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
-            // Catch any errors with reading the text file.
+            // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
         }
     }
 
     /**
-     * Define the Enemy behavior (Game end text) if the Player loses.
+     * Display the win Combat text for Boss Enemy.
+     * Override: Boss Text File has a different layout from regular Enemies.
      *
      * @throws RuntimeException If the text document being loaded does not exist
      */
     protected void win() {
-        // Define the text area to write information into.
-        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
-        // Try to read the win-combat text from the Boss Enemy text file.
+        // Try to read the win Combat text from the Boss Text File.
         try {
             Scanner fileReader = new Scanner(BOSS_FILE);
-            // Skip the first 2 lines of the text document.
+            // Skip the first 2 lines of the Text File.
             fileReader.nextLine();
             fileReader.nextLine();
-            // Display the description in the text area element.
+            // Display the win Combat in the Game Description display.
+            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
             descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
-            // Catch any errors with reading the text file.
+            // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
         }
     }
 
     /**
-     * Define the Enemy behavior (Game end text) if the Player loses.
+     * Display the lose Combat text for the Boss Enemy.
+     * Override: Boss Text File has a different layout from regular Enemies.
      *
      * @throws RuntimeException If the text document being loaded does not exist
      */
     protected void lose() {
-        // Define the text area to write information into.
-        TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
-        // Try to read the lose-combat text from the Boss Enemy text file.
+        // Try to read the lose Combat text from the Boss Text File.
         try {
             Scanner fileReader = new Scanner(BOSS_FILE);
-            // Skip the first 3 lines of the text document.
+            // Skip the first 3 lines of the Text File.
             fileReader.nextLine();
             fileReader.nextLine();
             fileReader.nextLine();
-            // Display the description in the text area element.
+            // Display the lose Combat text in the Game Description display.
+            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
             descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
-            // Catch any errors with reading the text file.
+            // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
         }
     }
