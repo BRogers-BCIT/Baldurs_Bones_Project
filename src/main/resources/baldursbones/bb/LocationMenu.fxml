@@ -65,12 +65,12 @@
          <RowConstraints vgrow="SOMETIMES" />
          <RowConstraints vgrow="SOMETIMES" />
       </rowConstraints>
-      <Button id="MoveWestButton" fx:id="moveWestButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="LocationMoveButtons" text="West" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="1">
+      <Button id="MoveWestButton" fx:id="moveWestButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveWest" styleClass="LocationMoveButtons" text="West" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button id="MoveSouthButton" fx:id="moveSouthButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="LocationMoveButtons" text="South" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <Button id="MoveSouthButton" fx:id="moveSouthButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveSouth" styleClass="LocationMoveButtons" text="South" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
@@ -80,12 +80,12 @@
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button id="MoveEastButton" fx:id="moveEastButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="LocationMoveButtons" text="East" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2" GridPane.rowIndex="1">
+      <Button id="MoveEastButton" fx:id="moveEastButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveEast" styleClass="LocationMoveButtons" text="East" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button id="MoveNorthButton" fx:id="moveNorthButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" styleClass="LocationMoveButton" text="North" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1">
+      <Button id="MoveNorthButton" fx:id="moveNorthButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveNorth" styleClass="LocationMoveButton" text="North" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>

@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 /**
  * Location Menu Controller.
@@ -95,8 +96,8 @@ public class LocationMenuController implements Initializable {
     private String gameState;
 
     /**
-     * Checks if the tutorial section is enabled and either: starts the tutorial or skips the tutorial.
-     * If not skip tutorial: get the description for starting the tutorial and wait for the user to continue.
+     * Checks if the tutorial option is enabled and either starts the tutorial or skips the tutorial.
+     * If playing tutorial: get the description for starting the tutorial and set the game state to start tutorial.
      * If skip tutorial: call the display a message about skipping the tutorial and call the movement method.
      */
     public void gameStarter() {
@@ -107,40 +108,103 @@ public class LocationMenuController implements Initializable {
             // Create a tutorial location, and call method to display the tutorial start description.
             currentLocation = new TutorialLocation(0, locationMenuGrid);
             currentLocation.getDescription();
-            // Set the game to be waiting for the user to continue.
-            gameState = "tutorial fight";
+            // Set the Game State to be waiting for the user to continue.
+            gameState = "start tutorial";
         } else {
-            // Else: display the game start movement message and set the game to wait for the user to continue.
-            locationDescription.setText("Start of Game Movement Message.");
-            gameState = "movement";
+            // Else: display the start game message and call the Movement method.
+            locationDescription.setText("Game Start Movement Message.");
+            playerMove();
         }
     }
 
-    private void tutorialFight() {
-        // Define the enemy type for the current enemy.
+    private void tutorialCombat() {
+        // Create an Enemy of Tutorial type and pass the JavaFX layout element.
         currentEnemy = new TutorialEnemy(locationMenuGrid);
         // Open the combat menu and get the controller.
         // The combat menu will contain the player and enemy objects.
         GameCombatController combatController = openGameCombatMenu().getController();
-        // Begin the tutorial combat loop.
+        // Begin the Tutorial Combat. Also pass a Combat Name and Combat Description.
         combatController.combatStarter("Tutorial: Into Fight", "Fight with your old boss.");
-        // Set the tutorial fight to be over, display the start movement text and wait for the user to continue.
-        gameState = "end tutorial";
+        // Set the Tutorial Combat to be over, and wait for the user to continue before calling the Movement method.
+        gameState = "finish tutorial";
     }
 
+    private void regularCombat(final String combatTitle, final String combatDescription) {
+        // Open the combat menu and get the controller.
+        // The combat menu will contain the player and enemy objects.
+        GameCombatController combatController = openGameCombatMenu().getController();
+        // Begin the Tutorial Combat. Also pass a Combat Name and Combat Description.
+        combatController.combatStarter(combatTitle, combatDescription);
+        // Set the Combat to be over, and wait for the user to continue before calling the Movement method.
+        gameState = "finish combat";
+    }
+
+    private void bossCombat() {
+        // Open the combat menu and get the controller.
+        // The combat menu will contain the player and enemy objects.
+        GameCombatController combatController = openGameCombatMenu().getController();
+        // Begin the Tutorial Combat. Also pass a Combat Name and Combat Description.
+        combatController.combatStarter("boss combat title", "boss combat description");
+        // Set the Combat to be over, and wait for the user to continue before calling the Movement method.
+        gameState = "finish combat";
+    }
+
+    private void playerMove() {
+        locationDescription.appendText("Movement Message");
+        moveNorthButton.setDisable(false);
+        moveEastButton.setDisable(false);
+        moveSouthButton.setDisable(false);
+        moveWestButton.setDisable(false);
+        playerMovement.setLocation(playerCharacter.getLocation());
+    }
+
+    @FXML
+    public void moveNorth() {
+        System.out.println(playerCharacter.getLocation()[0] + "," + playerCharacter.getLocation()[1]);
+        playerCharacter.setLocation(playerMovement.moveNorth());
+        gameMaps.setPlayerLocation(playerCharacter.getLocation());
+        gameMaps.displayMiniMap(locationMenuMap);
+        System.out.println(playerCharacter.getLocation()[0] + "," + playerCharacter.getLocation()[1]);
+    }
+
+    @FXML
+    public void moveEast() {
+        playerCharacter.setLocation(playerMovement.moveEast());
+        gameMaps.setPlayerLocation(playerCharacter.getLocation());
+        gameMaps.displayMiniMap(locationMenuMap);
+    }
+
+    @FXML
+    public void moveSouth() {
+        playerCharacter.setLocation(playerMovement.moveSouth());
+        gameMaps.setPlayerLocation(playerCharacter.getLocation());
+        gameMaps.displayMiniMap(locationMenuMap);
+    }
+
+    @FXML
+    public void moveWest() {
+        playerCharacter.setLocation(playerMovement.moveWest());
+        gameMaps.setPlayerLocation(playerCharacter.getLocation());
+        gameMaps.displayMiniMap(locationMenuMap);
+    }
+
+
     /**
-     * Compares the continueState string to other strings and calls the appropriate method if there is a match.
-     * The continueState string is set whenever the game is waiting for the user to decide to continue.
+     * Compares the Game State string to specific strings and calls the appropriate method if there is a match.
+     * The Game State string is set whenever the game is waiting for the user to continue after an action.
      */
     @FXML
     public void gameStateCheck() {
-        if (Objects.equals(gameState, "tutorial fight")) {
-            tutorialFight();
-        } else if (Objects.equals(gameState, "end tutorial")) {
-            // Display the game start movement message and set the game to wait for the user to continue.
-            locationDescription.setText("Start of Game Movement Message.");
+        if (Objects.equals(gameState, "start tutorial")) {
+            gameState = "";
+            tutorialCombat();
+        } else if (Objects.equals(gameState, "finish tutorial")) {
+            gameState = "";
+            locationDescription.setText("Game Start Movement Message.");
+            playerMove();
         }
     }
+
 
     /**
      * Load the Settings Menu document, display it in the center of the screen, and disable all location menu buttons.
@@ -248,6 +312,7 @@ public class LocationMenuController implements Initializable {
         return loader;
     }
 
+
     // Disables the location menu buttons while a different menu is open.
     private void disableMenuButtons() {
         openSettingsButton.setDisable(true);
@@ -277,12 +342,14 @@ public class LocationMenuController implements Initializable {
     @Override
     public void initialize(final URL url, final ResourceBundle resourceBundle) {
         moveNorthButton.setDisable(true);
-        moveSouthButton.setDisable(true);
         moveEastButton.setDisable(true);
+        moveSouthButton.setDisable(true);
         moveWestButton.setDisable(true);
+        startFightButton.setDisable(true);
         playerCharacter = new Player();
         gameMaps = new Map();
-        playerMovement = new Movement();
+        gameMaps.setPlayerLocation(playerCharacter.getLocation());
+        playerMovement = new Movement(locationMenuGrid);
         gameMaps.displayMiniMap(locationMenuMap);
     }
 }

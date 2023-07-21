@@ -82,8 +82,6 @@ public class Map {
      * Initializes a map object and sets the game map and player map to their starting values.
      */
     public Map() {
-        lastPlayerLocation = new int[2];
-        lastPlayerLocation[0] = STARTING_Y;
         mapArray = STARTING_MAP;
         playerMapArray = STARTING_MAP_PLAYER;
     }
@@ -155,12 +153,13 @@ public class Map {
      * @param miniMapDisplay the grid pane object to update with the map icons
      */
     public void displayMiniMap(final GridPane miniMapDisplay) {
+        miniMapDisplay.getChildren().clear();
         // Used to track which row of the grid to update because grid is smaller than map.
         int showRow = 0;
-        for (int row = lastPlayerLocation[0] + 1; row >= lastPlayerLocation[0] - 1; row--) {
+        for (int row = lastPlayerLocation[0] - 1; row <= lastPlayerLocation[0] + 1; row++) {
             // Used to track which column of the grid to update because grid is smaller than map.
             int showColumn = 0;
-            for (int column = lastPlayerLocation[1] + 1; column >= lastPlayerLocation[1] - 1; column--) {
+            for (int column = lastPlayerLocation[1] - 1; column <= lastPlayerLocation[1] + 1; column++) {
                 // Find the current coordinates being updated and define the image object for out of bounds locations.
                 int[] currentCoordinates = {row, column};
                 Image cellImage = new Image(asciiToImage("/"), IMAGE_SIZE, IMAGE_SIZE, true, true);
@@ -177,7 +176,7 @@ public class Map {
                 currentLocationIcon.setImage(cellImage);
                 // Load the icon into the correct spot of the map grid and update the map.
                 // Maps work column row so the order is switched.
-                GridPane.setConstraints(currentLocationIcon, showRow, showColumn);
+                GridPane.setConstraints(currentLocationIcon, showColumn, showRow);
                 miniMapDisplay.getChildren().add(currentLocationIcon);
                 // Increment column to update.
                 showColumn += 1;
