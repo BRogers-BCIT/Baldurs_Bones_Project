@@ -63,7 +63,7 @@ public abstract class Location {
      * @return A boolean value indicating if the current Location is a Combat Location
      */
     public boolean getDescription() {
-        if (locationValue == EXPLORE_LOCATION || locationValue == EXPLORE_LOCATION_FOUND) {
+        if (locationValue % 100 == EXPLORE_LOCATION || locationValue % 100 == EXPLORE_LOCATION_FOUND) {
             // If: Location value matches a non-Combat Location value.
             return exploreLocation();
         } else {
@@ -92,18 +92,18 @@ public abstract class Location {
             // Display the Combat Location description on screen.
             descriptionBox.setText(fileReader.nextLine());
             // First encounter at the Location.
-            if (locationValue == FIGHT_LOCATION) {
+            if (locationValue % 100 == FIGHT_LOCATION) {
                 // Display the description in the text area element on screen.
                 descriptionBox.appendText(fileReader.nextLine());
                 return true;
                 // Returning encounter at the Location (lost first Combat).
-            } else if (locationValue == FIGHT_LOCATION_FOUND) {
+            } else if (locationValue % 100 == FIGHT_LOCATION_FOUND) {
                 // Skip to correct text file line and display the text in the text area element on screen.
                 fileReader.nextLine();
                 descriptionBox.appendText(fileReader.nextLine());
                 return true;
                 // Beaten the fight at this Location.
-            } else if (locationValue == FIGHT_LOCATION_BEATEN) {
+            } else if (locationValue % 100 == FIGHT_LOCATION_BEATEN) {
                 // Skip to correct text file line and display it in the text area element on screen.
                 fileReader.nextLine();
                 fileReader.nextLine();
@@ -133,7 +133,7 @@ public abstract class Location {
             // Display the "Explore Location" description on screen.
             descriptionBox.setText(fileReader.nextLine());
             // First encounter at this Location.
-            if (locationValue == EXPLORE_LOCATION) {
+            if (locationValue % 100 == EXPLORE_LOCATION) {
                 // Append the additional Explore Location description.
                 descriptionBox.appendText(fileReader.nextLine());
                 // Returning to a found Location.
@@ -148,5 +148,23 @@ public abstract class Location {
         }
         // Return false for a non-Combat Location
         return false;
+    }
+
+    protected String getCombatTitle() throws FileNotFoundException {
+        int linesToSkip = 7;
+        Scanner fileReader = new Scanner(locationFile);
+        for (int skipLines = 0; skipLines <= linesToSkip; skipLines ++) {
+            fileReader.nextLine();
+        }
+        return fileReader.nextLine();
+    }
+
+    protected String getCombatDescription() throws FileNotFoundException {
+        int linesToSkip = 8;
+        Scanner fileReader = new Scanner(locationFile);
+        for (int skipLines = 0; skipLines <= linesToSkip; skipLines ++) {
+            fileReader.nextLine();
+        }
+        return fileReader.nextLine();
     }
 }

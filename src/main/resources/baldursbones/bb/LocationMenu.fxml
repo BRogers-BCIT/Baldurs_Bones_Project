@@ -75,7 +75,7 @@
             <Insets />
          </GridPane.margin>
       </Button>
-      <Button id="locationFightButton" fx:id="startFightButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openGameCombatMenu" text="Fight" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <Button id="locationFightButton" fx:id="startFightButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#startFight" text="Fight" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1">
          <GridPane.margin>
             <Insets />
          </GridPane.margin>

@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
@@ -125,11 +126,14 @@ public class LocationMenuController implements Initializable {
         GameCombatController combatController = openGameCombatMenu().getController();
         // Begin the Tutorial Combat. Also pass a Combat Name and Combat Description.
         combatController.combatStarter("Tutorial: Into Fight", "Fight with your old boss.");
+        // Update the game map to have the tutorial be beaten.
+        gameMaps.beatTutorial();
         // Set the Tutorial Combat to be over, and wait for the user to continue before calling the Movement method.
         gameState = "finish tutorial";
     }
 
-    private void regularCombat(final String combatTitle, final String combatDescription) {
+    @FXML
+    public void regularCombat(final String combatTitle, final String combatDescription) {
         // Open the combat menu and get the controller.
         // The combat menu will contain the player and enemy objects.
         GameCombatController combatController = openGameCombatMenu().getController();
@@ -160,11 +164,10 @@ public class LocationMenuController implements Initializable {
 
     @FXML
     public void moveNorth() {
-        System.out.println(playerCharacter.getLocation()[0] + "," + playerCharacter.getLocation()[1]);
         playerCharacter.setLocation(playerMovement.moveNorth());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
-        System.out.println(playerCharacter.getLocation()[0] + "," + playerCharacter.getLocation()[1]);
+        checkLocation();
     }
 
     @FXML
@@ -172,6 +175,7 @@ public class LocationMenuController implements Initializable {
         playerCharacter.setLocation(playerMovement.moveEast());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
+        checkLocation();
     }
 
     @FXML
@@ -179,6 +183,7 @@ public class LocationMenuController implements Initializable {
         playerCharacter.setLocation(playerMovement.moveSouth());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
+        checkLocation();
     }
 
     @FXML
@@ -186,6 +191,38 @@ public class LocationMenuController implements Initializable {
         playerCharacter.setLocation(playerMovement.moveWest());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
+        checkLocation();
+    }
+
+    private void checkLocation() {
+        disableActionButtons();
+        int currentLocationValue = gameMaps.getLocation();
+        int locationArea = currentLocationValue / 100;
+        if (locationArea == 0) {
+            currentLocation = new TutorialLocation(currentLocationValue, locationMenuGrid);
+        } else if (locationArea == 1) {
+            currentLocation = new EasyLocation(currentLocationValue, locationMenuGrid);
+        } else if (locationArea == 2) {
+            currentLocation = new MediumLocation(currentLocationValue, locationMenuGrid);
+        } else if (locationArea == 3) {
+            currentLocation = new HardLocation(currentLocationValue, locationMenuGrid);
+        } else if (locationArea >= 4) {
+            currentLocation = new BossLocation(currentLocationValue, locationMenuGrid);
+        }
+        if (currentLocation.getDescription()) {
+            gameState = "combat location";
+        } else {
+            gameState = "explore location";
+        }
+    }
+
+    @FXML
+    public void startFight() throws FileNotFoundException {
+        if (currentLocation.locationValue != 500) {
+            regularCombat(currentLocation.getCombatTitle(), currentLocation.getCombatDescription());
+        } else {
+            bossCombat();
+        }
     }
 
 
@@ -202,6 +239,12 @@ public class LocationMenuController implements Initializable {
             gameState = "";
             locationDescription.setText("Game Start Movement Message.");
             playerMove();
+        } else if (Objects.equals(gameState, "explore location")) {
+            gameState = "";
+            playerMove();
+        }  else if (Objects.equals(gameState, "combat location")) {
+            gameState = "";
+            startFightButton.setDisable(false);
         }
     }
 
@@ -320,6 +363,15 @@ public class LocationMenuController implements Initializable {
         viewCharacterButton.setDisable(true);
         viewMapButton.setDisable(true);
         endGameButton.setDisable(true);
+    }
+
+    // Disables the location action buttons while the player is displayed a message.
+    private void disableActionButtons() {
+        moveNorthButton.setDisable(true);
+        moveEastButton.setDisable(true);
+        moveSouthButton.setDisable(true);
+        moveWestButton.setDisable(true);
+        startFightButton.setDisable(true);
     }
 
     /**
