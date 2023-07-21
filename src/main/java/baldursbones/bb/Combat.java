@@ -71,7 +71,7 @@ public class Combat {
      *
      * @param playerCharacter The current Player Character object
      * @param newEnemy        A new Enemy object for the Combat
-     * @param parentElement   The Parent's Layout Element for the Controller using the Boss Combat Class
+     * @param parentElement   The Parent's Layout Element for the Controller using the Combat Class
      */
     public Combat(final Player playerCharacter, final Enemy newEnemy, final GridPane parentElement) {
         player = playerCharacter;
