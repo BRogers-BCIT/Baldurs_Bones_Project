@@ -149,22 +149,4 @@ public abstract class Location {
         // Return false for a non-Combat Location
         return false;
     }
-
-    protected String getCombatTitle() throws FileNotFoundException {
-        int linesToSkip = 7;
-        Scanner fileReader = new Scanner(locationFile);
-        for (int skipLines = 0; skipLines <= linesToSkip; skipLines ++) {
-            fileReader.nextLine();
-        }
-        return fileReader.nextLine();
-    }
-
-    protected String getCombatDescription() throws FileNotFoundException {
-        int linesToSkip = 8;
-        Scanner fileReader = new Scanner(locationFile);
-        for (int skipLines = 0; skipLines <= linesToSkip; skipLines ++) {
-            fileReader.nextLine();
-        }
-        return fileReader.nextLine();
-    }
 }

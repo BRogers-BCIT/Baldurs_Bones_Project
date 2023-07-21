@@ -202,13 +202,18 @@ public class LocationMenuController implements Initializable {
             currentLocation = new TutorialLocation(currentLocationValue, locationMenuGrid);
         } else if (locationArea == 1) {
             currentLocation = new EasyLocation(currentLocationValue, locationMenuGrid);
+            currentEnemy = new EasyEnemy(locationMenuGrid);
         } else if (locationArea == 2) {
             currentLocation = new MediumLocation(currentLocationValue, locationMenuGrid);
+            currentEnemy = new MediumEnemy(locationMenuGrid);
         } else if (locationArea == 3) {
             currentLocation = new HardLocation(currentLocationValue, locationMenuGrid);
+            currentEnemy = new HardEnemy(locationMenuGrid);
         } else if (locationArea >= 4) {
             currentLocation = new BossLocation(currentLocationValue, locationMenuGrid);
+            currentEnemy = new BossEnemy(locationMenuGrid);
         }
+        gameMaps.updateMap(playerCharacter.getLocation());
         if (currentLocation.getDescription()) {
             gameState = "combat location";
         } else {
@@ -219,7 +224,11 @@ public class LocationMenuController implements Initializable {
     @FXML
     public void startFight() throws FileNotFoundException {
         if (currentLocation.locationValue != 500) {
-            regularCombat(currentLocation.getCombatTitle(), currentLocation.getCombatDescription());
+            regularCombat(currentEnemy.getCombatTitle(), currentEnemy.getCombatDescription());
+            playerCharacter.finishBattle(locationDescription);
+            if (playerCharacter.getLastOutcome() == 1) {
+                gameMaps.beatBattle(playerCharacter.getLocation());
+            }
         } else {
             bossCombat();
         }
@@ -245,6 +254,9 @@ public class LocationMenuController implements Initializable {
         }  else if (Objects.equals(gameState, "combat location")) {
             gameState = "";
             startFightButton.setDisable(false);
+        } else if (Objects.equals(gameState, "finish combat")) {
+            gameState = "";
+            playerMove();
         }
     }
 

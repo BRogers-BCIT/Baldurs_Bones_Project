@@ -269,13 +269,12 @@ public class Player {
      * Takes an outcome value and calls the appropriate method to handle the outcome.
      *
      * @param descriptionArea The text area to display the result of the combat in
-     * @param outcome An integer value representing the outcome of the combat
      */
-    public void finishBattle(final int outcome, final TextArea descriptionArea) {
-        if (outcome == LOSE_BATTLE || outcome == LOSE_TO_BOSS) {
+    public void finishBattle(final TextArea descriptionArea) {
+        if (lastOutcome == LOSE_BATTLE || lastOutcome == LOSE_TO_BOSS) {
             // If: outcome matches a "lose" outcome then call the loseBattle method.
-            loseBattle(outcome, descriptionArea);
-        } else if (outcome == WIN_BATTLE) {
+            loseBattle(lastOutcome, descriptionArea);
+        } else if (lastOutcome == WIN_BATTLE) {
             // Else: outcome matches a "win" outcome then call the winBattle method.
             winBattle(descriptionArea);
         }
