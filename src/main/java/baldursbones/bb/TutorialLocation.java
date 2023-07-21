@@ -41,8 +41,7 @@ public class TutorialLocation extends Location {
     @Override
     public boolean getDescription() {
         if (locationValue == RETURNED_TUTORIAL) {
-            exploreLocation();
-            return false;
+            return exploreLocation();
         } else {
             return fightLocation();
         }

@@ -92,7 +92,7 @@ public class LocationMenuController implements Initializable {
     private boolean skipTutorial;
 
     // Variable: Used to record the current game state when waiting for the player to continue after text is displayed.
-    private String continueState;
+    private String gameState;
 
     /**
      * Checks if the tutorial section is enabled and either: starts the tutorial or skips the tutorial.
@@ -108,11 +108,11 @@ public class LocationMenuController implements Initializable {
             currentLocation = new TutorialLocation(0, locationMenuGrid);
             currentLocation.getDescription();
             // Set the game to be waiting for the user to continue.
-            continueState = "tutorial fight";
+            gameState = "tutorial fight";
         } else {
             // Else: display the game start movement message and set the game to wait for the user to continue.
             locationDescription.setText("Start of Game Movement Message.");
-            continueState = "start movement";
+            gameState = "movement";
         }
     }
 
@@ -125,7 +125,7 @@ public class LocationMenuController implements Initializable {
         // Begin the tutorial combat loop.
         combatController.combatStarter("Tutorial: Into Fight", "Fight with your old boss.");
         // Set the tutorial fight to be over, display the start movement text and wait for the user to continue.
-        continueState = "end tutorial";
+        gameState = "end tutorial";
     }
 
     /**
@@ -133,15 +133,12 @@ public class LocationMenuController implements Initializable {
      * The continueState string is set whenever the game is waiting for the user to decide to continue.
      */
     @FXML
-    public void continueChecker() {
-        if (Objects.equals(continueState, "tutorial fight")) {
+    public void gameStateCheck() {
+        if (Objects.equals(gameState, "tutorial fight")) {
             tutorialFight();
-        } else if (Objects.equals(continueState, "start movement")) {
-            System.out.println("Start game movement method.");
-        } else if (Objects.equals(continueState, "end tutorial")) {
+        } else if (Objects.equals(gameState, "end tutorial")) {
             // Display the game start movement message and set the game to wait for the user to continue.
             locationDescription.setText("Start of Game Movement Message.");
-            continueState = "start movement";
         }
     }
 
