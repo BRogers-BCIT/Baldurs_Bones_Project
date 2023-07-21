@@ -93,7 +93,7 @@ public class BossEnemy extends Enemy {
         try {
             Scanner fileReader = new Scanner(BOSS_FILE);
             // Display the description in the text area element.
-            descriptionBox.setText(fileReader.nextLine());
+            descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
@@ -114,7 +114,7 @@ public class BossEnemy extends Enemy {
             // Skip the first line of the text file.
             fileReader.nextLine();
             // Display the description in the text area element.
-            descriptionBox.setText(fileReader.nextLine());
+            descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
@@ -136,7 +136,7 @@ public class BossEnemy extends Enemy {
             fileReader.nextLine();
             fileReader.nextLine();
             // Display the description in the text area element.
-            descriptionBox.setText(fileReader.nextLine());
+            descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);
@@ -159,7 +159,7 @@ public class BossEnemy extends Enemy {
             fileReader.nextLine();
             fileReader.nextLine();
             // Display the description in the text area element.
-            descriptionBox.setText(fileReader.nextLine());
+            descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the text file.
             throw new RuntimeException(e);

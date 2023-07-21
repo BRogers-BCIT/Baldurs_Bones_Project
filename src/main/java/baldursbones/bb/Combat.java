@@ -60,8 +60,10 @@ public class Combat {
      */
     protected int outcome;
 
-    // The parent element the combat class is working for.
-    private final GridPane container;
+    /**
+     * The parent element the combat class is working for.
+     */
+    protected final GridPane container;
 
     /**
      * Create a new combat by saving the character and enemy objects and setting the starting values of a fight.
@@ -278,6 +280,7 @@ public class Combat {
         updateAbilities();
     }
 
+    // Update the Combat information Labels.
     private void updateRollInfo() {
         // Display the value of the last roll by the player.
         Label playerStartTotal = (Label) container.lookup("#CombatInfoLastRoll");

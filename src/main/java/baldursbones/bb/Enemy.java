@@ -57,9 +57,11 @@ public abstract class Enemy {
         // Display the total value for the Boss to the Player total value.
         if (playerRoll > enemyTotal) {
             // If: The Player total > Enemy total, the Player wins.
+            win();
             return 1;
         } else {
             // Else: The Enemy total >= Player total, the Player loses.
+            lose();
             return -1;
         }
     }
