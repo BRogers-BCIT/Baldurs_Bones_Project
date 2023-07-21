@@ -1,2 +1,4 @@
 Easy enemy win combat text.
 Easy enemy lose combat text.
+Easy Enemy Combat Title.
+Easy Enemy Combat Description.

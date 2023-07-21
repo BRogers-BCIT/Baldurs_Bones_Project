@@ -1,2 +1,4 @@
 Medium enemy win combat text.
 Medium enemy lose combat text.
+Medium Enemy Combat Title.
+Medium Enemy Combat Description.

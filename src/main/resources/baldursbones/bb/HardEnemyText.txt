@@ -1,2 +1,4 @@
 Hard enemy win combat text.
 Hard enemy lose combat text.
+Hard Enemy Combat Title.
+Hard Enemy Combat Description.

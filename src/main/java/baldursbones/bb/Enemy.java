@@ -117,5 +117,19 @@ public abstract class Enemy {
         }
     }
 
+    protected String getCombatTitle() throws FileNotFoundException {
+        Scanner fileReader = new Scanner(enemyFile);
+        fileReader.nextLine();
+        fileReader.nextLine();
+        return fileReader.nextLine();
+    }
+
+    protected String getCombatDescription() throws FileNotFoundException {
+        Scanner fileReader = new Scanner(enemyFile);
+        fileReader.nextLine();
+        fileReader.nextLine();
+        fileReader.nextLine();
+        return fileReader.nextLine();
+    }
 }
 
