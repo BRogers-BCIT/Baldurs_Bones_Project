@@ -3,6 +3,8 @@ package baldursbones.bb;
 import javafx.fxml.FXML;
 import javafx.scene.layout.GridPane;
 
+import java.util.Objects;
+
 /**
  * Game Combat Controller.
  *
@@ -27,18 +29,18 @@ public class GameCombatController {
     // Game Object: The current Combat object for the Game Combat menu.
     private Combat currentCombat;
 
-    // Variable: Tracks if the combat is over to close the combat menu when the text area is clicked.
-    private boolean endCombat;
+    // Variable: Tracks a value to preform the correct action when the text area is clicked.
+    private String gameState;
 
     /**
      * Create a new combat for the game combat menu and call the combat starter method.
      *
-     * @param locationName        A string used to represent the name of the location for the combat.
-     * @param locationDescription A string used to provide a description of the event at the start of combat.
+     * @param combatTitle        A string used to represent the title of the combat.
+     * @param combatDescription A string used to provide a description of the event at the start of combat.
      */
-    public void combatStarter(final String locationName, final String locationDescription) {
+    public void combatStarter(final String combatTitle, final String combatDescription) {
         currentCombat = new Combat(player, enemy, gameCombatGrid);
-        currentCombat.combatStarter(locationName, locationDescription);
+        currentCombat.combatStarter(combatTitle, combatDescription);
     }
 
     /**
@@ -79,13 +81,12 @@ public class GameCombatController {
      */
     @FXML
     public void playerHold() {
-        currentCombat.finishCombat();
+        gameState = currentCombat.finishCombat();
         gameCombatGrid.lookup("#GameActionRoll").setDisable(true);
         gameCombatGrid.lookup("#GameActionHold").setDisable(true);
         gameCombatGrid.lookup("#PlayerAbilityAdd").setDisable(true);
         gameCombatGrid.lookup("#PlayerAbilityTakeAway").setDisable(true);
         gameCombatGrid.lookup("#PlayerAbilityReRoll").setDisable(true);
-        endCombat = true;
     }
 
     /**
@@ -93,8 +94,14 @@ public class GameCombatController {
      */
     @FXML
     public void endCombat() {
-        if (endCombat) {
+        if (Objects.equals(gameState, "end combat")) {
             closeGameCombatMenu();
+        } else if (Objects.equals(gameState, "end round")) {
+            gameCombatGrid.lookup("#GameActionRoll").setDisable(false);
+            gameCombatGrid.lookup("#GameActionHold").setDisable(false);
+            gameCombatGrid.lookup("#PlayerAbilityAdd").setDisable(false);
+            gameCombatGrid.lookup("#PlayerAbilityTakeAway").setDisable(false);
+            gameCombatGrid.lookup("#PlayerAbilityReRoll").setDisable(false);
         }
     }
 
@@ -103,7 +110,6 @@ public class GameCombatController {
      */
     public void closeGameCombatMenu() {
         // Set location menu buttons to be clickable.
-        container.lookup("#locationFightButton").setDisable(false);
         container.lookup("#locationViewStats").setDisable(false);
         container.lookup("#locationViewMap").setDisable(false);
         container.lookup("#endGameTest").setDisable(false);
@@ -123,7 +129,7 @@ public class GameCombatController {
         player = playerCharacter;
         enemy = currentEnemy;
         // Set the combat to be in progress.
-        endCombat = false;
+        gameState = "";
         // Disable the settings button when the menu is opened.
         container.lookup("#openSettingsButton").setDisable(false);
     }

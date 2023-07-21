@@ -168,8 +168,10 @@ public class Combat {
     /**
      * Call the getRoll method from the enemy to get enemy roll.
      * Compare against player roll and set the outcome (true = player wins, false = player loses)
+     *
+     * @return A string value to let the Combat Controller know the combat is finished.
      */
-    protected void finishCombat() {
+    protected String finishCombat() {
         TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
         fightDescription.setText("");
         // If the player ends with a total greater than 21, assign them to auto fail.
@@ -182,6 +184,7 @@ public class Combat {
         // Display the end roll comparison to the player.
         fightDescription.appendText("You rolled: " + lastRoll + ". Your opponent rolled " + enemy.enemyTotal + ".");
         pc.setLastOutcome(outcome);
+        return "end combat";
     }
 
     /**

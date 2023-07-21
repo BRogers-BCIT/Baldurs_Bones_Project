@@ -42,11 +42,11 @@ public class BossCombat extends Combat {
     /**
      * Call the getRoll method from the enemy to get enemy roll.
      * Compare against player roll and set the outcome (true = player wins, false = player loses)
+     * @return A string value to let the Combat Controller know if a round finished or the Combat finished.
      */
     @Override
-    protected void finishCombat() {
+    protected String finishCombat() {
         rounds += 1;
-
         TextArea fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
         fightDescription.setText("");
         // If the player ends with a total greater than 21, assign them to auto fail.
@@ -61,13 +61,17 @@ public class BossCombat extends Combat {
         if (outcome == 1) {
             bossEnemy.winRound();
             roundsWon += 1;
+            super.combatStarter("Boss Combat", "Round: " + rounds);
         } else if (outcome == -1) {
             bossEnemy.loseRound();
             roundsLost += 1;
+            super.combatStarter("Boss Combat", "Round: " + rounds);
         }
         if (rounds < MAX_ROUNDS && roundsLost < 2 && roundsWon < 2) {
             setOutcome();
+            return "end combat";
         }
+        return "end round";
     }
 
     /**
