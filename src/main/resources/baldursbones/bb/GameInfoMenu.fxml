@@ -9,10 +9,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="gameInfoMenu" maxWidth="725.0" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.GameInfoController">
-   <Region fx:id="GameInfoLeft" prefWidth="50.0" />
+<HBox fx:id="gameInfoMenu" maxWidth="725.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.GameInfoController">
+   <Region minWidth="-Infinity" prefWidth="30.0" />
    <VBox id="GameInfoPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-      <Region fx:id="GameInfoHeader" minHeight="30.0" VBox.vgrow="NEVER" />
+      <Region minHeight="-Infinity" prefHeight="30.0" VBox.vgrow="NEVER" />
       <HBox id="TitleBox" alignment="CENTER" VBox.vgrow="NEVER">
          <Region fx:id="GameInfoHeaderLeft" prefWidth="50.0" />
          <Label id="GameInfoTitle" fx:id="gameInfoTitle" alignment="CENTER" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game Info: Page X" textAlignment="CENTER" textOverrun="CLIP">
@@ -68,31 +68,29 @@
          </VBox.margin>
       </TextArea>
       <Region minHeight="30.0" VBox.vgrow="ALWAYS" />
-      <HBox id="GameInfoButtonsContainer">
+      <HBox id="GameInfoButtonsContainer" alignment="CENTER">
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <Region fx:id="GameInfoFooterLeft" prefWidth="50.0" />
          <Button id="PrevInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#prevPage" styleClass="GameInfoButton" text="Previous Page" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
                <Insets bottom="10.0" left="50.0" top="10.0" />
             </HBox.margin>
          </Button>
-         <Region minWidth="50.0" HBox.hgrow="ALWAYS" />
+         <Region minWidth="50.0" />
          <Button id="CloseInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" styleClass="GameInfoButton" text="Close Game Info" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
-               <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
+               <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
          </Button>
-         <Region minWidth="50.0" HBox.hgrow="ALWAYS" />
+         <Region minWidth="50.0" />
          <Button id="NextInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#nextPage" styleClass="GameInfoButton" text="Next Page" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" right="50.0" top="10.0" />
             </HBox.margin>
          </Button>
-         <Region fx:id="GameInfoFooterRight" prefWidth="50.0" />
       </HBox>
-      <Region fx:id="GameInfoFooter" minHeight="30.0" />
+      <Region minHeight="-Infinity" prefHeight="30.0" />
    </VBox>
-   <Region fx:id="GameInfoRight" prefWidth="50.0" />
+   <Region minWidth="-Infinity" prefWidth="30.0" />
 </HBox>

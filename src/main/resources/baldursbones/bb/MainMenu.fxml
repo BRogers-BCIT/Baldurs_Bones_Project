@@ -15,6 +15,8 @@
 
 <GridPane id="mainMenuGrid" fx:id="mainMenuGrid" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.MainMenuController">
    <columnConstraints>
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+      <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
       <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" />
    </columnConstraints>
    <rowConstraints>
@@ -23,12 +25,10 @@
       <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" valignment="CENTER" vgrow="SOMETIMES" />
       <RowConstraints vgrow="SOMETIMES" />
    </rowConstraints>
-   <HBox id="MainMenuContentContainer" prefHeight="100.0" GridPane.hgrow="ALWAYS">
-      <Region fx:id="MainMenuHeaderLeft" prefWidth="100.0" />
-      <Region fx:id="MainMenuHeaderCenter" prefWidth="500.0" />
-      <Region fx:id="MainMenuHeaderRight" prefHeight="100.0" prefWidth="100.0" />
-   </HBox>
-   <Button id="openSettingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER" textOverrun="CLIP" GridPane.halignment="RIGHT">
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" />
+   <Region GridPane.columnIndex="1" />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="2" />
+   <Button id="openSettingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2" GridPane.halignment="RIGHT">
       <graphic>
          <ImageView id="SettingsIcon" fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
             <viewport>
@@ -44,20 +44,19 @@
          <Cursor fx:constant="DEFAULT" />
       </cursor>
       <GridPane.margin>
-         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         <Insets right="20.0" top="20.0" />
       </GridPane.margin>
    </Button>
-   <HBox id="MainMenuContentContainer" prefHeight="100.0" GridPane.rowIndex="1">
-      <Region fx:id="MainMenuContentLeft" prefWidth="100.0" />
-      <Region fx:id="MainMenuContentCenter" prefWidth="500.0" />
-      <Region fx:id="MainMenuContentRight" prefHeight="100.0" prefWidth="100.0" />
-   </HBox>
-   <VBox id="MainMenuFooterContainer" alignment="CENTER" GridPane.rowIndex="3">
-      <HBox id="MainMenuButtonContainer" alignment="CENTER" maxHeight="-Infinity" minHeight="-Infinity">
-         <Region fx:id="MainMenuFooterLeft" HBox.hgrow="ALWAYS" />
+   <Region GridPane.rowIndex="1" />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="500.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   <Region GridPane.columnIndex="2" GridPane.rowIndex="1" />
+   <Region GridPane.rowIndex="2" />
+   <VBox id="MainMenuFooterContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <HBox id="MainMenuButtonContainer" alignment="CENTER">
+         <Region HBox.hgrow="ALWAYS" />
          <Button id="newGameButton" fx:id="newGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openNewGameMenu" prefWidth="110.0" styleClass="MMOptions" text="New Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
-               <Insets bottom="30.0" top="30.0" />
+               <Insets top="20.0" />
             </HBox.margin>
             <padding>
                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
@@ -66,7 +65,7 @@
          <Region HBox.hgrow="ALWAYS" />
          <Button id="savedGamesButton" fx:id="savedGamesButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSaveGameMenu" prefWidth="110.0" styleClass="MMOptions" text="Load Saves" HBox.hgrow="NEVER">
             <HBox.margin>
-               <Insets bottom="30.0" top="30.0" />
+               <Insets top="20.0" />
             </HBox.margin>
             <padding>
                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
@@ -75,14 +74,17 @@
          <Region HBox.hgrow="ALWAYS" />
          <Button id="gameInfoButton" fx:id="gameInfoButton" maxWidth="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openGameInfoMenu" prefWidth="110.0" styleClass="MMOptions" text="Game Rules" HBox.hgrow="NEVER">
             <HBox.margin>
-               <Insets bottom="30.0" top="30.0" />
+               <Insets top="20.0" />
             </HBox.margin>
             <padding>
                <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
             </padding>
          </Button>
-         <Region fx:id="MainMenuFooterRight" HBox.hgrow="ALWAYS" />
+         <Region HBox.hgrow="ALWAYS" />
       </HBox>
-      <Region fx:id="MainMenuFooter" prefHeight="50.0" />
    </VBox>
+   <Region GridPane.columnIndex="2" GridPane.rowIndex="2" />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="3" />
+   <Region GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
 </GridPane>
