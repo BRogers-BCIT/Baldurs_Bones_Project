@@ -11,10 +11,10 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="mapInfoBox" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.MapInfoController">
-    <Region fx:id="GameMapLeft" prefWidth="30.0" />
+<HBox fx:id="mapInfoBox" style="-fx-border-color: gray; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.MapInfoController">
+    <Region prefWidth="30.0" />
     <VBox id="MapWindow" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
-        <Region fx:id="MapHeaderArea" prefHeight="30.0" VBox.vgrow="ALWAYS" />
+        <Region prefHeight="30.0" VBox.vgrow="ALWAYS" />
       <Button contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" text="Close" textAlignment="CENTER" textOverrun="CLIP">
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -27,18 +27,18 @@
          </font>
       </Button>
         <HBox id="MapTitleContainer" alignment="CENTER">
-            <Region id="GameMapTitleLeft" fx:id="MapTitleLeft" HBox.hgrow="ALWAYS" />
+            <Region id="GameMapTitleLeft" HBox.hgrow="ALWAYS" />
             <Label id="GameMapTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game Map" textAlignment="CENTER" textOverrun="CLIP">
                 <font>
                     <Font size="24.0" />
                 </font>
                 <padding>
-                    <Insets bottom="50.0" left="20.0" right="20.0" />
+                    <Insets left="20.0" right="20.0" />
                 </padding>
             </Label>
-            <Region id="GameMapTitleRight" fx:id="MapTitleRight" HBox.hgrow="ALWAYS" />
+            <Region id="GameMapTitleRight" HBox.hgrow="ALWAYS" />
         </HBox>
-        <GridPane id="GameMapGrid" fx:id="mapInfoGrid" alignment="CENTER" style="-fx-background-color: gray;" VBox.vgrow="NEVER">
+        <GridPane id="GameMapGrid" fx:id="mapInfoGrid" alignment="CENTER" style="-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 5px;" VBox.vgrow="NEVER">
             <columnConstraints>
                 <ColumnConstraints fx:id="LegendColumn" halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
@@ -60,83 +60,81 @@
                 <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" valignment="CENTER" vgrow="NEVER" />
             </rowConstraints>
             <VBox.margin>
-                <Insets bottom="20.0" left="30.0" right="30.0" top="20.0" />
+                <Insets bottom="20.0" left="25.0" right="25.0" top="20.0" />
             </VBox.margin>
-         <children>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="1" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="1">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="2" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="2">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="3" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="3">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="4" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="4">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="5" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="5">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="6" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="6">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="7" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="7">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="A" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="B" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="C" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="D" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="4">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="E" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="5">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="F" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="6">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
             <Label contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="G" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="7">
-               <font>
-                  <Font size="24.0" />
-               </font>
+                <font>
+                    <Font size="24.0" />
+                </font>
             </Label>
-         </children>
         </GridPane>
-        <Region fx:id="GameMapLegend" prefHeight="50.0" />
-        <Region fx:id="MapFooterArea" prefHeight="30.0" />
+        <Region fx:id="GameMapLegend" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 5px;" />
+        <Region prefHeight="30.0" />
     </VBox>
-    <Region fx:id="GameMapRight" prefWidth="30.0" />
+    <Region prefWidth="30.0" />
 </HBox>

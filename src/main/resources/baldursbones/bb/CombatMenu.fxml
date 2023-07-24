@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gameCombatGrid" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.GameCombatController">
+<GridPane fx:id="gameCombatGrid" style="-fx-border-color: gray; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.GameCombatController">
    <columnConstraints>
       <ColumnConstraints hgrow="NEVER" />
       <ColumnConstraints hgrow="NEVER" />
@@ -44,7 +44,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </Label>
-      <TextArea id="CombatDescription" onMouseClicked="#endCombat" prefHeight="100.0" prefWidth="200.0" promptText="Combat Description">
+      <TextArea id="CombatDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#endCombat" prefHeight="100.0" prefWidth="300.0" promptText="Combat Description" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -53,8 +53,7 @@
          </VBox.margin>
       </TextArea>
    </VBox>
-   <Region GridPane.columnIndex="2" GridPane.rowIndex="1" />
-   <Region GridPane.columnIndex="3" GridPane.rowIndex="1" />
+   <Region style="-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 5px;" GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="1" />
    <Region GridPane.columnIndex="4" GridPane.rowIndex="1" />
    <Region GridPane.rowIndex="2" />
    <VBox id="CharacterInfoContainer" alignment="TOP_CENTER" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">

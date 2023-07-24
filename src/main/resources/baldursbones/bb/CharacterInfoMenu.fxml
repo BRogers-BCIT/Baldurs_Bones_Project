@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="characterInfoGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.CharacterInfoController">
+<GridPane fx:id="characterInfoGrid" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" style="-fx-border-color: gray; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.CharacterInfoController">
    <columnConstraints>
       <ColumnConstraints halignment="CENTER" hgrow="NEVER" />
       <ColumnConstraints halignment="CENTER" hgrow="NEVER" minWidth="100.0" />
@@ -23,17 +23,17 @@
       <RowConstraints valignment="CENTER" vgrow="NEVER" />
       <RowConstraints valignment="CENTER" vgrow="NEVER" />
    </rowConstraints>
-   <Region fx:id="CharacterHeaderLeft" prefHeight="30.0" prefWidth="30.0" />
-   <Region fx:id="CharacterHeaderCenterOne" GridPane.columnIndex="1" />
-   <Region fx:id="CharacterHeaderCenterTwo" GridPane.columnIndex="2" />
-   <Region fx:id="CharacterHeaderRight" prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="3" />
-   <Region fx:id="CharacterLeftBorderOne" GridPane.rowIndex="1" />
-   <Region fx:id="CharacterPortraitArea" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-   <Region fx:id="CharacterInfoTop" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
-   <Region fx:id="CharacterInfoLeft" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+   <Region prefHeight="30.0" prefWidth="30.0" />
+   <Region GridPane.columnIndex="1" />
+   <Region GridPane.columnIndex="2" />
+   <Region prefHeight="50.0" prefWidth="50.0" GridPane.columnIndex="3" />
+   <Region GridPane.rowIndex="1" />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 5px;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+   <Region maxHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.valignment="TOP" />
+   <Region maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
    <VBox id="CharacterTitleContainer" alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="1">
       <GridPane.margin>
-         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </GridPane.margin>
       <Label id="CharacterNameTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name" textAlignment="CENTER" textOverrun="CLIP">
          <font>
@@ -49,22 +49,20 @@
          </font>
       </Label>
    </VBox>
-   <Region fx:id="CharacterInfoRight" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
-   <Region fx:id="CharacterInfoBottom" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-   <Region fx:id="CharacterRightBorderOne" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-   <Region fx:id="CharacterLeftBorderTwo" GridPane.rowIndex="2" />
-   <Region fx:id="CharacterStatsTop" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-   <Region fx:id="CharacterStatsLeft" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
+   <Region maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="CENTER" />
+   <Region maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+   <Region GridPane.columnIndex="3" GridPane.rowIndex="1" />
+   <Region GridPane.rowIndex="2" />
    <VBox id="CharacterInfoContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
       <GridPane.margin>
-         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </GridPane.margin>
       <Label id="CharacterDisplayNameStats" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name Stats" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="24.0" />
          </font>
          <padding>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+            <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </padding>
       </Label>
       <Label id="CharacterDisplayHealth" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Health : " textAlignment="CENTER" textOverrun="CLIP">
@@ -92,13 +90,9 @@
          </font>
       </Label>
    </VBox>
-   <Region fx:id="CharacterStatsBottom" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-   <Region fx:id="CharacterStatsRight" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-   <Region fx:id="CharacterAbilitiesTop" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="TOP" />
-   <Region fx:id="CharacterAbilitiesLeft" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="2" />
    <VBox id="CharacterInfoContainer" alignment="CENTER" GridPane.columnIndex="2" GridPane.rowIndex="2">
       <GridPane.margin>
-         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+         <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </GridPane.margin>
       <Label id="CharacterDisplayNameAbilities" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name Abilities" textAlignment="CENTER" textOverrun="CLIP">
          <font>
@@ -133,13 +127,11 @@
          </font>
       </Label>
    </VBox>
-   <Region fx:id="CharacterAbilitiesBottom" maxHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-   <Region fx:id="CharacterAbilitiesRight" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="2" />
-   <Region fx:id="CharacterFooterRight" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-   <Region fx:id="CharacterBorderRightTwo" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-   <Region fx:id="CharacterFooterLeft" prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="3" />
-   <Region fx:id="CharacterFooterCenterOne" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-   <Region fx:id="CharacterFooterCenterTwo" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+   <Region prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+   <Region GridPane.columnIndex="3" GridPane.rowIndex="2" />
+   <Region prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="3" />
+   <Region GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   <Region GridPane.columnIndex="2" GridPane.rowIndex="3" />
    <Button id="CloseCharacterButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" text="Close" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="3">
       <font>
          <Font size="18.0" />
