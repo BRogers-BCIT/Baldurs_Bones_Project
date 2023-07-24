@@ -81,15 +81,17 @@ public class BossEnemy extends Enemy {
 
     /**
      * Defines the Enemy behavior if the Player wins a Round of Combat.
+     * Takes the Parent Layout Element of the Combat to display the Round end text in the Combat menu.
      *
+     * @param combatContainer The Parent's Layout Element for the Controller using the Boss Combat Class
      * @throws RuntimeException If the text document being loaded does not exist
      */
-    protected void winRound() {
+    protected void winRound(final GridPane combatContainer) {
         // Try to read the win Round text from the Boss Text File.
         try {
             Scanner fileReader = new Scanner(BOSS_FILE);
             // Display the win Round text in the Game Description display.
-            TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
+            TextArea descriptionBox = (TextArea) combatContainer.lookup("#CombatDescription");
             descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
@@ -99,17 +101,19 @@ public class BossEnemy extends Enemy {
 
     /**
      * Defines the Enemy behavior if the Player loses a Round of Combat.
+     * Takes the Parent Layout Element of the Combat to display the Round end text in the Combat menu.
      *
+     * @param combatContainer The Parent's Layout Element for the Controller using the Boss Combat Class
      * @throws RuntimeException If the text document being loaded does not exist
      */
-    protected void loseRound() {
+    protected void loseRound(final GridPane combatContainer) {
         // Try to read the lose Round text from the Boss Text File.
         try {
             Scanner fileReader = new Scanner(BOSS_FILE);
             // Skip the first line of the Text File.
             fileReader.nextLine();
             // Display the win Round text in the Game Description display.
-            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
+            TextArea descriptionBox = (TextArea) combatContainer.lookup("#CombatDescription");
             descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
@@ -131,7 +135,7 @@ public class BossEnemy extends Enemy {
             fileReader.nextLine();
             fileReader.nextLine();
             // Display the win Combat in the Game Description display.
-            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
+            TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
             descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
@@ -154,7 +158,7 @@ public class BossEnemy extends Enemy {
             fileReader.nextLine();
             fileReader.nextLine();
             // Display the lose Combat text in the Game Description display.
-            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
+            TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
             descriptionBox.appendText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.

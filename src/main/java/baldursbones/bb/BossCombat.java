@@ -68,13 +68,13 @@ public class BossCombat extends Combat {
         // If the Outcome equals a 1, then the Player has won.
         if (outcome == 1) {
             // Display the Boss Enemy win Round Game Text and increment the Player Rounds won counter.
-            bossEnemy.winRound();
+            bossEnemy.winRound(container);
             roundsWon += 1;
             // Start a new Combat and update the Combat Description to display the number of Rounds played.
             super.combatStarter("Boss Combat", "Round: " + rounds);
         } else if (outcome == -1) {
             // Display the Boss Enemy lose Round Game Text and increment the Player Rounds lost counter.
-            bossEnemy.loseRound();
+            bossEnemy.loseRound(container);
             roundsLost += 1;
             // Start a new Combat and update the Combat Description to display the number of Rounds played.
             super.combatStarter("Boss Combat", "Round: " + rounds);
