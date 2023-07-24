@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="gameInfoMenu" maxWidth="725.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.GameInfoController">
-   <Region minWidth="-Infinity" prefWidth="30.0" />
+<HBox fx:id="gameInfoMenu" alignment="CENTER" maxWidth="550.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.GameInfoController">
+   <Region maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" HBox.hgrow="NEVER" />
    <VBox id="GameInfoPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
       <Region minHeight="-Infinity" prefHeight="30.0" VBox.vgrow="NEVER" />
       <HBox id="TitleBox" alignment="CENTER" VBox.vgrow="NEVER">
@@ -92,5 +92,5 @@
       </HBox>
       <Region minHeight="-Infinity" prefHeight="30.0" />
    </VBox>
-   <Region minWidth="-Infinity" prefWidth="30.0" />
+   <Region maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" HBox.hgrow="NEVER" />
 </HBox>

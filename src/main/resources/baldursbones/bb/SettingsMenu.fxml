@@ -9,8 +9,8 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="settingsMenu" fillHeight="false" maxWidth="350.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SettingsMenuController">
-   <VBox id="SettingsMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+<HBox fx:id="settingsMenu" alignment="CENTER" fillHeight="false" maxWidth="250.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SettingsMenuController">
+   <VBox id="SettingsMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="NEVER">
       <Region minHeight="-Infinity" prefHeight="30.0" />
       <HBox id="SettingsTitleContainer" alignment="CENTER" minWidth="-Infinity" prefWidth="200.0">
          <Label id="SettingsTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Settings" textAlignment="CENTER" textOverrun="CLIP">

@@ -29,7 +29,7 @@
          </Label>
       </HBox>
       <Region minHeight="30.0" VBox.vgrow="ALWAYS" />
-      <TableView id="SavedFilesTable" fx:id="saveFileTable" focusTraversable="false" minHeight="200.0" minWidth="600.0" prefHeight="200.0" prefWidth="600.0" VBox.vgrow="NEVER">
+      <TableView id="SavedFilesTable" fx:id="saveFileTable" focusTraversable="false" minHeight="200.0" minWidth="605.0" prefHeight="200.0" prefWidth="605.0" VBox.vgrow="NEVER">
          <columns>
             <TableColumn id="SavedTableFileName" fx:id="nameColumn" editable="false" maxWidth="-Infinity" minWidth="200.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="File Name" />
             <TableColumn id="SavedTableCharacterName" fx:id="characterColumn" editable="false" maxWidth="-Infinity" minWidth="200.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="Character" />

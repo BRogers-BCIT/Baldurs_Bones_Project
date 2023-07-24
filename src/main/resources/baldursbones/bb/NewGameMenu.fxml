@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="newGameMenu" maxHeight="1.7976931348623157E308" maxWidth="450.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.NewGameController">
+<HBox fx:id="newGameMenu" alignment="CENTER" maxHeight="300.0" maxWidth="380.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.NewGameController">
    <Region minWidth="-Infinity" prefWidth="30.0" />
    <VBox id="NewGameMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
       <Region minHeight="-Infinity" prefHeight="30.0" />
