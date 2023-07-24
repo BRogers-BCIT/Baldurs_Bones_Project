@@ -12,15 +12,15 @@ import java.io.File;
  */
 public class MediumLocation extends Location {
 
-    // Text file: Contains all dialogue to be printed by the Medium Location class.
+    // Text file: The Text File object with the Text to display for a Medium Location.
     private static final File MEDIUM_TEXT
             = new File("src/main/resources/baldursbones/bb/MediumLocationText.txt");
 
     /**
      * Create a Medium difficulty implementation of the Location Abstract.
      *
-     * @param newLocationType An integer representing the location's value.
-     * @param locationGrid    The layout element of the controller using this Location object
+     * @param newLocationType An integer representing the Location Value.
+     * @param locationGrid    The Parent's Layout Element for the Controller using the Medium Location Class
      */
     public MediumLocation(final int newLocationType, final GridPane locationGrid) {
         super(newLocationType, MEDIUM_TEXT, locationGrid);

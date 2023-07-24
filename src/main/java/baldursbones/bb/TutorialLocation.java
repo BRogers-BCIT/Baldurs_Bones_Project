@@ -15,28 +15,28 @@ import java.util.Scanner;
  */
 public class TutorialLocation extends Location {
 
-    // Constant: Location value for returning to Tutorial Location class.
+    // Constant: Location Value for returning to the Tutorial Location.
     private static final int RETURNED_TUTORIAL = 1;
 
-    // Text file: Contains all descriptions to be printed by the Tutorial Location class.
+    // Text file: The Text File object with the Text to display for the Tutorial Location.
     private static final File TUTORIAL_TEXT
             = new File("src/main/resources/baldursbones/bb/TutorialLocationText.txt");
 
     /**
-     * Creates a new Tutorial Location object and assigns it a Location value.
+     * Create a Tutorial implementation of the Location Abstract.
      *
-     * @param newLocationType An integer representing the Location's value.
-     * @param locationGrid    The Location menu layout element that uses this Location object
+     * @param newLocationType An integer representing the Location Value.
+     * @param locationGrid    The Parent's Layout Element for the Controller using the Tutorial Location Class
      */
     public TutorialLocation(final int newLocationType, final GridPane locationGrid) {
         super(newLocationType, TUTORIAL_TEXT, locationGrid);
     }
 
     /**
-     * Call the method to display the Location description based on the Location value.
-     * Override: Different location types than regular Locations.
+     * Find the Location type from the Location Value and call the Combat check method.
+     * Override: Different Location Types than regular Location Implementations.
      *
-     * @return A boolean value indicating if the current Location is a Combat Location
+     * @return A boolean value from the Combat Check indicating if the Location is a Combat Location
      */
     @Override
     public boolean getDescription() {
@@ -48,49 +48,50 @@ public class TutorialLocation extends Location {
     }
 
     /**
-     * Displays the description for the start of the Tutorial and leads into the Tutorial fight.
-     * Override: Different file layout to read then regular Locations.
+     * Displays the text for the start of the Tutorial and returns True to allow a Tutorial Combat.
+     * Override: Different file layout than regular Location Implementations.
      *
      * @return A boolean value indicating that a Combat can be started at this Location
      * @throws RuntimeException If the text document being loaded does not exist
      */
     @Override
     protected boolean fightLocation() {
-        // Try to read the "Start Tutorial" description from the Tutorial Location text file.
+        // Try to read the "Start Tutorial" description from the Tutorial Location Text File.
         try {
             Scanner fileReader = new Scanner(TUTORIAL_TEXT);
-            // Display the "Start Tutorial Location" description on screen.
-            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
+            // Display the Start Tutorial description in the Game Description display.
+            TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
             descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
-            // Catch any errors with reading the text file.
+            // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
         }
+        // Return True to start the Tutorial Combat.
         return true;
     }
 
     /**
-     * Prints the description for returning to the Tutorial Location.
-     * Override: Different file layout to read then regular Locations.
+     * Displays the text for returning to the Tutorial Location.
+     * Override: Different file layout than regular Location Implementations.
      *
-     * @return A false boolean value indicating that a Combat cannot be started at this Location
+     * @return A boolean value indicating that a Combat cannot be started at this Location
      * @throws RuntimeException If the text document being loaded does not exist
      */
     @Override
     protected boolean exploreLocation() {
-        // Try to read the "Return to Tutorial" description from the Tutorial Location text file.
+        // Try to read the "Return to Tutorial" description from the Tutorial Location Text File.
         try {
             Scanner fileReader = new Scanner(TUTORIAL_TEXT);
-            // Skip the first line of text.
+            // Skip the Tutorial Combat text.
             fileReader.nextLine();
-            // Display the "Return to Tutorial Location" description on screen.
-            TextArea descriptionBox = (TextArea) container.lookup("#GameTextArea");
+            // Display the Return to Tutorial description in the Game Description display.
+            TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
             descriptionBox.setText(fileReader.nextLine());
         } catch (FileNotFoundException e) {
-            // Catch any errors with reading the text file.
+            // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
         }
-        // Return false for a non-Combat Location
+        // Return false for a non-Combat Location.
         return false;
     }
 

@@ -12,14 +12,14 @@ import java.io.File;
  */
 public class EasyLocation extends Location {
 
-    // Text file: Contains all dialogue to be printed by the Easy Location class.
+    // Text file: The Text File object with the Text to display for an Easy Location.
     private static final File EASY_TEXT = new File("src/main/resources/baldursbones/bb/EasyLocationText.txt");
 
     /**
      * Create an Easy difficulty implementation of the Location Abstract.
      *
-     * @param newLocationType An integer representing the location's value.
-     * @param locationGrid    The layout element of the controller using this Location object
+     * @param newLocationType An integer representing the Location Value.
+     * @param locationGrid    The Parent's Layout Element for the Controller using the Easy Location Class
      */
     public EasyLocation(final int newLocationType, final GridPane locationGrid) {
         super(newLocationType, EASY_TEXT, locationGrid);
