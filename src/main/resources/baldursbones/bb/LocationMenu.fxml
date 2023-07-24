@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane id="locationMenuGrid" fx:id="locationMenuGrid" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.LocationMenuController">
+<GridPane id="locationMenuGrid" fx:id="locationMenuGrid" alignment="CENTER" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.LocationMenuController">
    <columnConstraints>
       <ColumnConstraints hgrow="NEVER" />
       <ColumnConstraints hgrow="NEVER" />
@@ -25,15 +25,14 @@
    </columnConstraints>
    <rowConstraints>
       <RowConstraints vgrow="NEVER" />
-      <RowConstraints vgrow="NEVER" />
-      <RowConstraints vgrow="ALWAYS" />
+      <RowConstraints valignment="CENTER" vgrow="ALWAYS" />
       <RowConstraints valignment="TOP" vgrow="NEVER" />
       <RowConstraints valignment="TOP" vgrow="NEVER" />
    </rowConstraints>
-   <Region fx:id="LocationHeaderLeft" />
-   <Region fx:id="LocationHeaderMiddleOne" GridPane.columnIndex="1" />
-   <Region fx:id="LocationHeaderMiddleTwo" GridPane.columnIndex="2" />
-   <Region fx:id="LocationHeaderRight" GridPane.columnIndex="3" />
+   <Region />
+   <Region GridPane.columnIndex="1" />
+   <Region GridPane.columnIndex="2" />
+   <Region GridPane.columnIndex="3" />
    <Button id="openSettingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
       <GridPane.margin>
          <Insets right="20.0" top="20.0" />
@@ -53,68 +52,65 @@
          <Cursor fx:constant="DEFAULT" />
       </cursor>
    </Button>
-   <Region fx:id="LocationLeftOne" GridPane.rowIndex="1" />
-   <GridPane id="LocationMoveGrid" GridPane.columnIndex="1" GridPane.rowIndex="1">
-      <columnConstraints>
-         <ColumnConstraints hgrow="SOMETIMES" />
-         <ColumnConstraints hgrow="SOMETIMES" />
-         <ColumnConstraints hgrow="SOMETIMES" />
-      </columnConstraints>
-      <rowConstraints>
-         <RowConstraints vgrow="SOMETIMES" />
-         <RowConstraints vgrow="SOMETIMES" />
-         <RowConstraints vgrow="SOMETIMES" />
-      </rowConstraints>
-      <Button id="MoveWestButton" fx:id="moveWestButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveWest" styleClass="LocationMoveButtons" text="West" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </Button>
-      <Button id="MoveSouthButton" fx:id="moveSouthButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveSouth" styleClass="LocationMoveButtons" text="South" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="2">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </Button>
-      <Button id="locationFightButton" fx:id="startFightButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#startFight" text="Fight" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </Button>
-      <Button id="MoveEastButton" fx:id="moveEastButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveEast" styleClass="LocationMoveButtons" text="East" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </Button>
-      <Button id="MoveNorthButton" fx:id="moveNorthButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveNorth" styleClass="LocationMoveButton" text="North" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1">
-         <GridPane.margin>
-            <Insets />
-         </GridPane.margin>
-      </Button>
-   </GridPane>
-   <Region fx:id="LocationDisplayTop" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-   <Region fx:id="LocationRightOne" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-   <Region fx:id="LocationLeftTwo" GridPane.rowIndex="2" />
-   <VBox id="LocationButtonContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="2">
-      <Button id="locationViewStats" fx:id="viewCharacterButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openCharacterInfo" styleClass="LocationButtons" text="View Character" textAlignment="CENTER" textOverrun="CLIP">
+   <Region GridPane.rowIndex="1" />
+   <VBox id="LocationButtonContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.rowIndex="1">
+      <GridPane id="LocationMoveGrid">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+            <ColumnConstraints hgrow="SOMETIMES" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+            <RowConstraints vgrow="SOMETIMES" />
+         </rowConstraints>
+         <Button id="MoveWestButton" fx:id="moveWestButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveWest" styleClass="LocationMoveButtons" text="West" textAlignment="CENTER" textOverrun="CLIP" GridPane.rowIndex="1">
+            <GridPane.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </GridPane.margin>
+         </Button>
+         <Button id="MoveSouthButton" fx:id="moveSouthButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveSouth" styleClass="LocationMoveButtons" text="South" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <GridPane.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </GridPane.margin>
+         </Button>
+         <Button id="locationFightButton" fx:id="startFightButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#startFight" text="Fight" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <GridPane.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </GridPane.margin>
+         </Button>
+         <Button id="MoveEastButton" fx:id="moveEastButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveEast" styleClass="LocationMoveButtons" text="East" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <GridPane.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </GridPane.margin>
+         </Button>
+         <Button id="MoveNorthButton" fx:id="moveNorthButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#moveNorth" styleClass="LocationMoveButton" text="North" textAlignment="CENTER" textOverrun="CLIP" GridPane.columnIndex="1">
+            <GridPane.margin>
+               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            </GridPane.margin>
+         </Button>
+      </GridPane>
+      <Button id="locationViewStats" fx:id="viewCharacterButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openCharacterInfo" text="View Character" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </Button>
-      <Button id="locationViewMap" fx:id="viewMapButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openMapInfo" styleClass="LocationButtons" text="View Map" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+      <Button id="locationViewMap" fx:id="viewMapButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openMapInfo" text="View Map" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </Button>
-      <Button id="endGameTest" fx:id="endGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openEndGameMenu" styleClass="LocationButtons" text="End Game (Test)" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="endGameTest" fx:id="endGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openEndGameMenu" text="End Game (Test)" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </Button>
    </VBox>
-   <Region fx:id="LocationDisplayBottom" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-   <Region fx:id="LocationRightTwo" GridPane.columnIndex="3" GridPane.rowIndex="2" />
-   <Region fx:id="LocationLeftThree" GridPane.rowIndex="3" />
-   <VBox id="CharacterInfoContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER">
+   <Region GridPane.columnIndex="2" GridPane.rowIndex="1" />
+   <Region GridPane.columnIndex="3" GridPane.rowIndex="1" />
+   <Region GridPane.rowIndex="2" />
+   <VBox id="CharacterInfoContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
       <Label id="CharacterDisplayName" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="18.0" />
@@ -148,49 +144,52 @@
          </padding>
       </Label>
    </VBox>
-   <HBox GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="3" GridPane.vgrow="NEVER">
-      <children>
-         <VBox id="LocationDescriptionContainer" alignment="CENTER">
-            <Label id="LocationDescriptionTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Location Name" textAlignment="CENTER" textOverrun="CLIP">
-               <font>
-                  <Font size="24.0" />
-               </font>
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-               <padding>
-                  <Insets bottom="20.0" />
-               </padding>
-            </Label>
-            <TextArea id="GameTextArea" fx:id="locationDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#gameStateCheck" prefHeight="100.0" prefWidth="200.0" promptText="Area Description" wrapText="true">
-               <font>
-                  <Font size="18.0" />
-               </font>
-               <VBox.margin>
-                  <Insets left="20.0" right="20.0" />
-               </VBox.margin>
-            </TextArea>
-         </VBox>
-         <GridPane fx:id="locationMenuMap" alignment="CENTER" style="-fx-background-color: gray;">
-           <columnConstraints>
-             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-             <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-               <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-           </columnConstraints>
-           <rowConstraints>
-             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
-             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
-             <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
-           </rowConstraints>
-            <HBox.margin>
-               <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-            </HBox.margin>
-         </GridPane>
-      </children>
+   <HBox GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
+      <VBox id="LocationDescriptionContainer" alignment="CENTER">
+         <Label id="LocationDescriptionTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
+                text="Location Name" textAlignment="CENTER" textOverrun="CLIP">
+            <font>
+               <Font size="24.0"/>
+            </font>
+            <VBox.margin>
+               <Insets/>
+            </VBox.margin>
+            <padding>
+               <Insets bottom="20.0"/>
+            </padding>
+         </Label>
+         <TextArea id="GameDescription" fx:id="locationDescription" minHeight="-Infinity" minWidth="-Infinity"
+                   onMouseClicked="#gameStateCheck" prefHeight="100.0" prefWidth="300.0" promptText="Area Description"
+                   wrapText="true">
+            <font>
+               <Font size="18.0"/>
+            </font>
+            <VBox.margin>
+               <Insets left="20.0" right="20.0"/>
+            </VBox.margin>
+         </TextArea>
+      </VBox>
+      <GridPane fx:id="locationMenuMap" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
+                minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="100.0"
+                style="-fx-background-color: lightgray; -fx-border-color: black; -fx-border-width: 5px;">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0"/>
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES"/>
+         </rowConstraints>
+         <HBox.margin>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+         </HBox.margin>
+      </GridPane>
    </HBox>
-   <Region fx:id="LocationRightThree" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-   <Region fx:id="LocationFooterLeft" prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="4" />
-   <Region fx:id="LocationFooterMiddleOne" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-   <Region fx:id="LocationFooterMiddleTwo" GridPane.columnIndex="2" GridPane.rowIndex="4" />
-   <Region fx:id="LocationFooterMiddleRight" GridPane.columnIndex="3" GridPane.rowIndex="4" />
+   <Region GridPane.columnIndex="3" GridPane.rowIndex="2" />
+   <Region prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="3" />
+   <Region GridPane.columnIndex="1" GridPane.rowIndex="3" />
+   <Region GridPane.columnIndex="2" GridPane.rowIndex="3" />
+   <Region GridPane.columnIndex="3" GridPane.rowIndex="3" />
 </GridPane>

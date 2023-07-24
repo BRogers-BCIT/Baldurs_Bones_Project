@@ -97,7 +97,7 @@ public class EndGameController {
         NewGameController controller = loader.getController();
         controller.getContainerElement(container);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 2, 2);
+        GridPane.setConstraints(root, 2, 1);
         container.getChildren().add(root);
         container.getChildren().remove(endGameBox);
     }

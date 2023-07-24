@@ -109,7 +109,7 @@ public class SettingsMenuController implements Initializable {
             GridPane.setConstraints(root, 0, 2);
         } else {
             // Load scene into location menu position.
-            GridPane.setConstraints(root, 2, 2);
+            GridPane.setConstraints(root, 2, 1);
         }
         // Add new menu to the layout.
         container.getChildren().add(root);
@@ -134,7 +134,7 @@ public class SettingsMenuController implements Initializable {
             GridPane.setConstraints(root, 0, 2);
         } else {
             // Load scene into location menu position.
-            GridPane.setConstraints(root, 2, 2);
+            GridPane.setConstraints(root, 2, 1);
         }
         // Add new menu to the layout.
         container.getChildren().add(root);

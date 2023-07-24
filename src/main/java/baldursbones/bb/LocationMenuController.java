@@ -148,7 +148,7 @@ public class LocationMenuController implements Initializable {
         // The combat menu will contain the player and enemy objects.
         GameCombatController combatController = openGameCombatMenu().getController();
         // Begin the Tutorial Combat. Also pass a Combat Name and Combat Description.
-        combatController.combatStarter("boss combat title", "boss combat description");
+        combatController.combatStarter("Boss Combat", "Round: 1");
         // Set the Combat to be over, and wait for the user to continue before calling the Movement method.
         gameState = "finish combat";
     }
@@ -275,7 +275,7 @@ public class LocationMenuController implements Initializable {
         SettingsMenuController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 2, 2);
+        GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
         disableMenuButtons();
         openSettingsButton.setDisable(true);
@@ -295,7 +295,7 @@ public class LocationMenuController implements Initializable {
         CharacterInfoController controller = loader.getController();
         controller.getContainerElements(locationMenuGrid, playerCharacter);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 2, 2);
+        GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
         controller.displayCharacter();
         disableMenuButtons();
@@ -315,7 +315,7 @@ public class LocationMenuController implements Initializable {
         MapInfoController controller = loader.getController();
         controller.getContainerElements(locationMenuGrid, gameMaps);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 2, 2);
+        GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
         controller.displayMap();
         disableMenuButtons();
@@ -335,7 +335,7 @@ public class LocationMenuController implements Initializable {
         EndGameController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 2, 2);
+        GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
         disableMenuButtons();
     }
@@ -362,7 +362,7 @@ public class LocationMenuController implements Initializable {
         GameCombatController controller = loader.getController();
         controller.getContainerElement(locationMenuGrid, playerCharacter, currentEnemy);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 2, 2);
+        GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
         return loader;
     }
