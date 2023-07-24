@@ -45,7 +45,7 @@ public class MainMenuController implements Initializable {
 
     /**
      * Load the Settings Menu document and pass the parent container to its controller.
-     * Displays the scene it in the center of the grid (0, 2) and disables the background Main Menu buttons.
+     * Displays the scene it in the center of the grid (1, 1) and disables the background Main Menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -58,7 +58,7 @@ public class MainMenuController implements Initializable {
         SettingsMenuController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
         // Disable the menu buttons in the background
         disableMenuButtons();
@@ -66,7 +66,7 @@ public class MainMenuController implements Initializable {
 
     /**
      * Load the Game Info menu document and pass the parent container to its controller.
-     * Displays the scene it in the center of the grid (0, 2) and disables the background Main Menu buttons.
+     * Displays the scene it in the center of the grid (1, 1) and disables the background Main Menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -79,7 +79,7 @@ public class MainMenuController implements Initializable {
         NewGameController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
         // Disable the menu buttons in the background
         disableMenuButtons();
@@ -87,7 +87,7 @@ public class MainMenuController implements Initializable {
 
     /**
      * Load the Saved Games menu document and pass the parent container to its controller.
-     * Displays the scene it in the center of the grid (0, 2) and disables the background Main Menu buttons.
+     * Displays the scene it in the center of the grid (1, 1) and disables the background Main Menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -100,7 +100,7 @@ public class MainMenuController implements Initializable {
         SaveMenuController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
         // Disable the menu buttons in the background
         disableMenuButtons();
@@ -108,7 +108,7 @@ public class MainMenuController implements Initializable {
 
     /**
      * Load the Game Info menu document and pass the parent container to its controller.
-     * Displays the scene it in the center of the grid (0, 2) and disables the background Main Menu buttons.
+     * Displays the scene it in the center of the grid (1, 1) and disables the background Main Menu buttons.
      *
      * @throws IOException if the fxml file being loaded does not exist
      */
@@ -121,7 +121,7 @@ public class MainMenuController implements Initializable {
         GameInfoController controller = loader.getController();
         controller.getContainerElement(mainMenuGrid);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
         // Disable the menu buttons in the background
         disableMenuButtons();

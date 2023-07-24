@@ -79,7 +79,7 @@ public class EndGameController {
         SaveMenuController controller = loader.getController();
         controller.getContainerElement(container);
         // Define where to display the new menu and add it to the layout.
-        GridPane.setConstraints(root, 0, 2);
+        GridPane.setConstraints(root, 1, 1);
         container.getChildren().add(root);
     }
 

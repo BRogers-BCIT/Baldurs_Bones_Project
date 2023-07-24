@@ -106,7 +106,7 @@ public class SettingsMenuController implements Initializable {
         controller.getContainerElement(container);
         // If the current container is the Main Menu, load scene into correct grid position.
         if (container.getId().equals("mainMenuGrid")) {
-            GridPane.setConstraints(root, 0, 2);
+            GridPane.setConstraints(root, 1, 1);
         } else {
             // Load scene into location menu position.
             GridPane.setConstraints(root, 2, 1);
@@ -131,7 +131,7 @@ public class SettingsMenuController implements Initializable {
         controller.getContainerElement(container);
         // If the current container is the Main Menu, load scene into correct grid position.
         if (container.getId().equals("mainMenuGrid")) {
-            GridPane.setConstraints(root, 0, 2);
+            GridPane.setConstraints(root, 1, 1);
         } else {
             // Load scene into location menu position.
             GridPane.setConstraints(root, 2, 1);
