@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane fx:id="gameCombatGrid" style="-fx-border-color: gray; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.GameCombatController">
+<GridPane fx:id="gameCombatGrid" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.GameCombatController">
    <columnConstraints>
       <ColumnConstraints hgrow="NEVER" />
       <ColumnConstraints hgrow="NEVER" />
@@ -26,11 +26,11 @@
       <RowConstraints valignment="TOP" vgrow="NEVER" />
       <RowConstraints valignment="TOP" vgrow="NEVER" />
    </rowConstraints>
-   <Region prefHeight="30.0" prefWidth="30.0" />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" />
    <Region GridPane.columnIndex="1" />
    <Region GridPane.columnIndex="2" />
    <Region GridPane.columnIndex="3" />
-   <Region prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="4" />
+   <Region maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="4" />
    <Region GridPane.rowIndex="1" />
    <VBox id="CombatTitleContainer" alignment="CENTER" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
       <Label id="CombatTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Combat Title" textAlignment="CENTER" textOverrun="CLIP">
@@ -44,7 +44,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </Label>
-      <TextArea id="CombatDescription" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#endCombat" prefHeight="100.0" prefWidth="300.0" promptText="Combat Description" wrapText="true">
+      <TextArea id="CombatDescription" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#endCombat" prefHeight="100.0" prefWidth="300.0" promptText="Combat Description" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
@@ -190,9 +190,9 @@
       </Button>
    </VBox>
    <Region GridPane.columnIndex="4" GridPane.rowIndex="2" />
-   <Region prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="3" />
+   <Region maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="3" />
    <Region GridPane.columnIndex="1" GridPane.rowIndex="3" />
    <Region GridPane.columnIndex="2" GridPane.rowIndex="3" />
    <Region GridPane.columnIndex="3" GridPane.rowIndex="3" />
-   <Region prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
+   <Region maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="4" GridPane.rowIndex="3" />
 </GridPane>

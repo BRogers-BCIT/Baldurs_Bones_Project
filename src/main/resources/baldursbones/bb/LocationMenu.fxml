@@ -29,10 +29,10 @@
       <RowConstraints valignment="TOP" vgrow="NEVER" />
       <RowConstraints valignment="TOP" vgrow="NEVER" />
    </rowConstraints>
-   <Region />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" />
    <Region GridPane.columnIndex="1" />
    <Region GridPane.columnIndex="2" />
-   <Region GridPane.columnIndex="3" />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="3" />
    <Button id="openSettingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
       <GridPane.margin>
          <Insets right="20.0" top="20.0" />
@@ -146,50 +146,45 @@
    </VBox>
    <HBox GridPane.columnIndex="2" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
       <VBox id="LocationDescriptionContainer" alignment="CENTER">
-         <Label id="LocationDescriptionTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0"
-                text="Location Name" textAlignment="CENTER" textOverrun="CLIP">
+         <Label id="LocationDescriptionTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Location Name" textAlignment="CENTER" textOverrun="CLIP">
             <font>
-               <Font size="24.0"/>
+               <Font size="24.0" />
             </font>
             <VBox.margin>
-               <Insets/>
+               <Insets />
             </VBox.margin>
             <padding>
-               <Insets bottom="20.0"/>
+               <Insets bottom="20.0" />
             </padding>
          </Label>
-         <TextArea id="GameDescription" fx:id="locationDescription" minHeight="-Infinity" minWidth="-Infinity"
-                   onMouseClicked="#gameStateCheck" prefHeight="100.0" prefWidth="300.0" promptText="Area Description"
-                   wrapText="true">
+         <TextArea id="GameDescription" fx:id="locationDescription" editable="false" minHeight="-Infinity" minWidth="-Infinity" onMouseClicked="#gameStateCheck" prefHeight="100.0" prefWidth="300.0" promptText="Area Description" wrapText="true">
             <font>
-               <Font size="18.0"/>
+               <Font size="18.0" />
             </font>
             <VBox.margin>
-               <Insets left="20.0" right="20.0"/>
+               <Insets left="20.0" right="20.0" />
             </VBox.margin>
          </TextArea>
       </VBox>
-      <GridPane fx:id="locationMenuMap" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity"
-                minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="100.0"
-                style="-fx-background-color: lightgray; -fx-border-color: black; -fx-border-width: 5px;">
+      <GridPane fx:id="locationMenuMap" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="115.0" prefWidth="100.0" style="-fx-background-color: lightgray; -fx-border-color: black; -fx-border-width: 5px;">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0"/>
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES"/>
-            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES"/>
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints maxHeight="-Infinity" minHeight="-Infinity" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <HBox.margin>
-            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </HBox.margin>
       </GridPane>
    </HBox>
    <Region GridPane.columnIndex="3" GridPane.rowIndex="2" />
-   <Region prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="3" />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.rowIndex="3" />
    <Region GridPane.columnIndex="1" GridPane.rowIndex="3" />
    <Region GridPane.columnIndex="2" GridPane.rowIndex="3" />
-   <Region GridPane.columnIndex="3" GridPane.rowIndex="3" />
+   <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
 </GridPane>
