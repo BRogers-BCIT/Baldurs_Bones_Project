@@ -13,95 +13,107 @@ import javafx.scene.layout.GridPane;
 
 public class Movement {
 
-    // Constant: Minimum valid value of a player coordinate.
+    // Constant: Minimum valid Value of a Player Coordinate.
     private static final int MAP_LOWER_BOUNDARY = 0;
 
-    // Constant: Maximum valid value of a player coordinate.
-    private static final int MAP_UPPER_BOUNDARY = 7;
-
-     // FXML Element: The layout element of the controller that created the Location object.
-    private final GridPane container;
+    // Constant: Maximum valid Value of a Player Coordinate.
+    private static final int MAP_UPPER_BOUNDARY = 6;
 
     /**
-     * Variable: The X,Y coordinates of the new location.
+     * Variable: The X,Y coordinates of the Location the Player moves too.
      */
     protected int[] location;
 
+    // FXML Element: The Parent Layout Element the Movement class is being used by.
+    private final GridPane container;
+
     /**
-     * Initializes a movement object and sets the player coordinates to their starting values.
+     * Initializes a Movement object and sets the Parent Layout Element of the Class.
+     *
+     * @param parentElement The Parent's Layout Element for the Controller using the Movement Class
      */
     public Movement(final GridPane parentElement) {
         container = parentElement;
     }
 
-    public void setLocation(final int[] currentPlayerLocation) {
-        location = currentPlayerLocation;
+    /**
+     * Update the Player Coordinates with new Values from the Player object.
+     *
+     * @param playerLocation The X & Y Coordinates of the current Player Location.
+     */
+    public void setLocation(final int[] playerLocation) {
+        location = playerLocation;
     }
 
     /**
-     * Checks if an upward move is possible and either updates player coordinates or returns the current ones.
+     * Checks if moving North is possible for the current Player Location.
+     * If the movement is possible, decrease the Row value of the Player Location.
      *
-     * @return the updated X,Y coordinates of the players locations
+     * @return The updated X & Y coordinates of the new Player Location
      */
     protected int[] moveNorth() {
-        // If the movement would put the player out of the map call the "cannot move" method.
         if (location[0] - 1 < MAP_LOWER_BOUNDARY) {
+            // If: the new Player Coordinate will put the Player Location outside the map area.
             cantMove();
-            // Otherwise update the player location and return the new value.
         } else {
+            // Else: update the Player Coordinates.
             location[0] = location[0] - 1;
         }
+        // Return the Coordinate Values regardless of if they were updated.
         return location;
     }
 
     /**
-     * Checks if a downward move is possible and either updates player coordinates or returns the current ones.
+     * Checks if moving South is possible for the current Player Location.
+     * If the movement is possible, increase the Row value of the Player Location.
      *
-     * @return the updated X,Y coordinates of the players locations
+     * @return The updated X & Y coordinates of the new Player Location
      */
     protected int[] moveSouth() {
-        // If the movement would put the player out of the map call the "cannot move" method.
-        if (location[0] + 1 >= MAP_UPPER_BOUNDARY) {
+        if (location[0] + 1 > MAP_UPPER_BOUNDARY) {
+            // If: the new Player Coordinate will put the Player Location outside the map area.
             cantMove();
-
-            // Otherwise update the player location and return the new value.
         } else {
+            // Else: update the Player Coordinates.
             location[0] = location[0] + 1;
         }
+        // Return the Coordinate Values regardless of if they were updated.
         return location;
     }
 
     /**
-     * Checks if a left move is possible and either updates player coordinates or returns the current ones.
+     * Checks if moving West is possible for the current Player Location.
+     * If the movement is possible, decrease the Column value of the Player Location.
      *
-     * @return the updated X,Y coordinates of the players locations
+     * @return The updated X & Y coordinates of the new Player Location
      */
     protected int[] moveWest() {
-        // If the movement would put the player out of the map call the "cannot move" method.
         if (location[1] - 1 < MAP_LOWER_BOUNDARY) {
+            // If: the new Player Coordinate will put the Player Location outside the map area.
             cantMove();
-
-            // Otherwise update the player location and return the new value.
         } else {
+            // Else: update the Player Coordinates.
             location[1] = location[1] - 1;
         }
+        // Return the Coordinate Values regardless of if they were updated.
         return location;
     }
 
     /**
-     * Checks if a right move is possible and either updates player coordinates or returns the current ones.
+     * Checks if moving East is possible for the current Player Location.
+     * If the movement is possible, increase the Column value of the Player Location.
      *
-     * @return the updated X,Y coordinates of the players locations
+     * @return The updated X & Y coordinates of the new Player Location
      */
     protected int[] moveEast() {
-        // If the movement would put the player out of the map call the "cannot move" method.
-        if (location[1] + 1 >= MAP_UPPER_BOUNDARY) {
+        if (location[1] + 1 > MAP_LOWER_BOUNDARY) {
+            // If: the new Player Coordinate will put the Player Location outside the map area.
             cantMove();
-
-            // Otherwise update the player location and return the new value.
         } else {
+            // Else: update the Player Coordinates.
             location[1] = location[1] + 1;
         }
+        // Return the Coordinate Values regardless of if they were updated.
         return location;
     }
 
@@ -109,8 +121,9 @@ public class Movement {
      * Informs the player of an invalid movement and resets the player movement choice.
      */
     protected void cantMove() {
-        TextArea descriptionArea = (TextArea) container.lookup("#GameTextArea");
-        descriptionArea.setText("Invalid movement. Out of Bounds.");
+        TextArea descriptionArea = (TextArea) container.lookup("#GameDescription");
+        descriptionArea.setText("Invalid movement. Out of Bounds.\n");
+        descriptionArea.appendText("Movement Text.");
     }
 
 }
