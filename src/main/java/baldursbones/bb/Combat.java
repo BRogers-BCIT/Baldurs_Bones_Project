@@ -172,6 +172,9 @@ public class Combat {
         // Update the Starting Rolls in the Game Info display.
         Label playerStartingRolls = (Label) container.lookup("#CombatInfoStartRolls");
         playerStartingRolls.setText(startRolls.toString());
+        // Append the Starting Rolls to the Combat Description.
+        Label combatDescription = (Label) container.lookup("#CombatDescription");
+        combatDescription.setText(combatDescription.getText() + "\n" + startRolls);
     }
 
 
