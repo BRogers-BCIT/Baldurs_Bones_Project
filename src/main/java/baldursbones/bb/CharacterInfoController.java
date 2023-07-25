@@ -11,10 +11,10 @@ import javafx.scene.layout.GridPane;
  */
 public class CharacterInfoController {
 
-    // The Layout Element the Character Info menu is displayed within.
+    // The Layout Element the Character Info Scene is displayed within.
     private GridPane container;
 
-    // The Layout Element for the Character Info menu.
+    // The Layout Element for the Character Info Scene.
     @FXML
     private GridPane characterInfoGrid;
 
@@ -22,24 +22,25 @@ public class CharacterInfoController {
     private Player currentPlayer;
 
     /**
-     * Sets the Parent Layout (Location Menu) Buttons to be enabled and closes the Character Info scene.
+     * Sets the Parent Layout (Location Scene) Buttons to be enabled and closes the Character Info Scene.
      */
     @FXML
     public void closeGameInfoMenu() {
-        // Set location menu buttons to be enabled.
+        // Set Location Scene buttons to be enabled.
         container.lookup("#ViewCharacter").setDisable(false);
         container.lookup("#ViewMap").setDisable(false);
-        container.lookup("#endGameTest").setDisable(false);
         container.lookup("#SettingsButton").setDisable(false);
-        // Remove the character info menu from the location menu window.
+        // ** Temp Testing Button **
+        container.lookup("#endGameTest").setDisable(false);
+        // Remove the Character Info Scene from the Location Scene.
         container.getChildren().remove(characterInfoGrid);
     }
 
     /**
-     * Takes the parent element that the layout will be displayed in and saves it.
+     * Sets the Parent Layout Element to display inside and the player object to read display info from.
      *
-     * @param parentGrid The parent element of the character info menu layout
-     * @param playerCharacter The player object that contains the methods to update the player info menu.
+     * @param parentGrid The Parent Layout Element of the Character Info Scene
+     * @param playerCharacter The Player object that is used to update the Player Info.
      */
     public void getContainerElements(final GridPane parentGrid, final Player playerCharacter) {
         container = parentGrid;
@@ -47,7 +48,7 @@ public class CharacterInfoController {
     }
 
     /**
-     * Method call used to display / update the player info in the player info menu.
+     * Calls the display Character Info method from the Player object.
      */
     public void displayCharacter() {
         currentPlayer.displayStats(characterInfoGrid);

@@ -13,30 +13,30 @@ import java.util.Objects;
  */
 public class GameCombatController {
 
-    // The parent element the game combat menu is displayed in.
+    // The Parent Layout Element the Game Combat Scene is displayed in.
     private GridPane container;
 
-    // The layout element for the game combat menu.
+    // The Layout Element for the Game Combat scene.
     @FXML
     private GridPane gameCombatGrid;
 
-    // Game Object: The current Player object for display and combat class.
+    // Game Object: The current Player object for the Character Info and Combat Classes.
     private Player player;
 
-    // Game Object: The current Enemy object for the combat class.
+    // Game Object: The current Enemy object for the Combat class.
     private Enemy enemy;
 
-    // Game Object: The current Combat object for the Game Combat menu.
+    // Game Object: The current Combat object for the Game Combat Controller.
     private Combat currentCombat;
 
-    // Variable: Tracks a value to preform the correct action when the text area is clicked.
+    // Variable: A value hold the game in a specific State while waiting for user to confirm after a game action.
     private String gameState;
 
     /**
-     * Create a new combat for the game combat menu and call the combat starter method.
+     * Creates a new Combat object for the Game Combat Scene and calls the Combat Starter method.
      *
-     * @param combatTitle        A string used to represent the title of the combat.
-     * @param combatDescription A string used to provide a description of the event at the start of combat.
+     * @param combatTitle       A string representing the title of the combat.
+     * @param combatDescription A string representing a description for the start of combat.
      */
     public void combatStarter(final String combatTitle, final String combatDescription) {
         currentCombat = new Combat(player, enemy, gameCombatGrid);
@@ -44,7 +44,7 @@ public class GameCombatController {
     }
 
     /**
-     * When the player clicks the add roll button, call the combat method for adding a roll.
+     * Calls the Combat Roll method when the Player Roll button is clicked.
      */
     @FXML
     public void playerRoll() {
@@ -52,23 +52,7 @@ public class GameCombatController {
     }
 
     /**
-     * When the player clicks the Add ability button, call the combat method for  using an "Add" ability.
-     */
-    @FXML
-    public void playerAdd() {
-        currentCombat.playerAdd();
-    }
-
-    /**
-     * When the player clicks the Take-Away ability button, call the combat method for using a "Take Away" ability.
-     */
-    @FXML
-    public void playerTakeAway() {
-        currentCombat.playerTakeAway();
-    }
-
-    /**
-     * When the player clicks the Re-Roll ability button, call the combat method for  using a "Re-Roll" ability.
+     * Calls the Combat "Re-Roll" Ability method when the Player Roll button is clicked.
      */
     @FXML
     public void playerReRoll() {
@@ -76,12 +60,30 @@ public class GameCombatController {
     }
 
     /**
-     * When the player clicks the hold total button, call the combat method for ending the game.
-     * Also disables the game buttons and sets the menu to wait for user to continue through game results.
+     * Calls the Combat "Add" Ability method when the Player Roll button is clicked.
+     */
+    @FXML
+    public void playerAdd() {
+        currentCombat.playerAdd();
+    }
+
+    /**
+     * Calls the Combat "Take-Away" Ability method when the Player Roll button is clicked.
+     */
+    @FXML
+    public void playerTakeAway() {
+        currentCombat.playerTakeAway();
+    }
+
+    /**
+     * When the player clicks the Hold button, call the Combat method for ending a round of Combat.
+     * A Game State will be returned to inform the Controller what to do once the Player continues.
      */
     @FXML
     public void playerHold() {
+        // Set the Game State for the End of a Combat Round.
         gameState = currentCombat.finishCombat();
+        // Disable Buttons while game state is un-resolved.
         gameCombatGrid.lookup("#RollButton").setDisable(true);
         gameCombatGrid.lookup("#HoldButton").setDisable(true);
         gameCombatGrid.lookup("#AddButton").setDisable(true);
@@ -90,37 +92,45 @@ public class GameCombatController {
     }
 
     /**
-     * Allows the player to close the combat and progress by clicking the text area when combat is finished.
+     * Progresses a Combat after a round has finished. Proceeds based on the current Game State.
+     * End Combat: Close the Game Combat Scene.
+     * End Round: Re-Enable the buttons, a new Round against the Boss has started.
      */
     @FXML
     public void endCombat() {
         if (Objects.equals(gameState, "end combat")) {
+            // If: The Game State is "end combat", close the Game Combat Scene.
             closeGameCombatMenu();
         } else if (Objects.equals(gameState, "end round")) {
+            // Else If: The Game State is "end round", re-enable the Combat buttons.
             gameCombatGrid.lookup("#RollButton").setDisable(false);
             gameCombatGrid.lookup("#HoldButton").setDisable(false);
             gameCombatGrid.lookup("#AddButton").setDisable(false);
             gameCombatGrid.lookup("#TakeAwayButton").setDisable(false);
             gameCombatGrid.lookup("#ReRollButton").setDisable(false);
+            // Un-set Game State.
+            gameState = "";
         }
     }
 
     /**
-     * Removes the map info menu layout from the Location Menu and makes the buttons clickable again.
+     * Sets the Parent Layout (Location Scene) Buttons to be enabled and closes the Game Combat Scene.
      */
     public void closeGameCombatMenu() {
-        // Set location menu buttons to be clickable.
+        // Set Location Scene buttons to be clickable.
         container.lookup("#ViewCharacter").setDisable(false);
         container.lookup("#ViewMap").setDisable(false);
+        container.lookup("#SettingsButton").setDisable(false);
+        // ** Temp Testing Button **
         container.lookup("#endGameTest").setDisable(false);
-        // Remove the Game Info menu from the location menu window.
+        // Remove the Game Info Scene from the Location Scene.
         container.getChildren().remove(gameCombatGrid);
     }
 
     /**
-     * Takes the parent element that the layout will be displayed in and saves it. Also disables the Settings Menu.
+     * Sets the Parent Layout Element of the End Game Scene. Also sets the Player and Enemy objects.
      *
-     * @param parentGrid      The parent element of the character info menu layout
+     * @param parentGrid      The Parent Layout Element of the character info Scene layout
      * @param playerCharacter The Player object to be used in the Combat for this Combat Menu
      * @param currentEnemy    The Enemy object to be used in the Combat for this Combat Menu
      */
@@ -128,10 +138,8 @@ public class GameCombatController {
         container = parentGrid;
         player = playerCharacter;
         enemy = currentEnemy;
-        // Set the combat to be in progress.
+        // Set the default Game State.
         gameState = "";
-        // Disable the settings button when the menu is opened.
-        container.lookup("#SettingsButton").setDisable(false);
     }
 
 }
