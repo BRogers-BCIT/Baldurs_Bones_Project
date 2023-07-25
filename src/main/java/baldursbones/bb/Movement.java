@@ -49,7 +49,7 @@ public class Movement {
      * Checks if moving North is possible for the current Player Location.
      * If the movement is possible, decrease the Row value of the Player Location.
      *
-     * @return The updated X & Y coordinates of the new Player Location
+     * @return The updated X & Y Coordinates of the new Player Location
      */
     protected int[] moveNorth() {
         if (location[0] - 1 < MAP_LOWER_BOUNDARY) {
@@ -67,7 +67,7 @@ public class Movement {
      * Checks if moving South is possible for the current Player Location.
      * If the movement is possible, increase the Row value of the Player Location.
      *
-     * @return The updated X & Y coordinates of the new Player Location
+     * @return The updated X & Y Coordinates of the new Player Location
      */
     protected int[] moveSouth() {
         if (location[0] + 1 > MAP_UPPER_BOUNDARY) {
@@ -85,7 +85,7 @@ public class Movement {
      * Checks if moving West is possible for the current Player Location.
      * If the movement is possible, decrease the Column value of the Player Location.
      *
-     * @return The updated X & Y coordinates of the new Player Location
+     * @return The updated X & Y Coordinates of the new Player Location
      */
     protected int[] moveWest() {
         if (location[1] - 1 < MAP_LOWER_BOUNDARY) {
@@ -103,7 +103,7 @@ public class Movement {
      * Checks if moving East is possible for the current Player Location.
      * If the movement is possible, increase the Column value of the Player Location.
      *
-     * @return The updated X & Y coordinates of the new Player Location
+     * @return The updated X & Y Coordinates of the new Player Location
      */
     protected int[] moveEast() {
         if (location[1] + 1 > MAP_LOWER_BOUNDARY) {

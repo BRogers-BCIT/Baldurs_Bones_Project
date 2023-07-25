@@ -69,7 +69,7 @@ public class Map {
                     {"?", "?", "?", "?", "?", "?", "?"},
                     {"0", "?", "?", "?", "?", "?", "?"}};
 
-    // Variable: Records the X & Y Values of the Player Location.
+    // Variable: Records the X & Y Coordinates of the Player Location.
     private int[] playerLocation;
 
     // Variable: The 2D array that tracks the Location Values of each Cell in the Game Map grid.
@@ -87,9 +87,9 @@ public class Map {
     }
 
     /**
-     * Sets the last Player Location tuple to the current X & Y values of the Player object.
+     * Sets the last Player Location tuple to the current X & Y Coordinates of the Player object.
      *
-     * @param currentPlayerLocation A tuple representing the X & Y values of the Players Location
+     * @param currentPlayerLocation A tuple representing the X & Y Coordinates of the Players Location
      */
     public void setPlayerLocation(final int[] currentPlayerLocation) {
         playerLocation = currentPlayerLocation;
