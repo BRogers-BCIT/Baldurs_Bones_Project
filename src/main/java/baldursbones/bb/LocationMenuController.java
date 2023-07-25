@@ -213,7 +213,8 @@ public class LocationMenuController implements Initializable {
             currentLocation = new BossLocation(currentLocationValue, locationMenuGrid);
             currentEnemy = new BossEnemy(locationMenuGrid);
         }
-        gameMaps.updateMap(playerCharacter.getLocation());
+        gameMaps.setPlayerLocation(playerCharacter.getLocation());
+        gameMaps.updateMap();
         if (currentLocation.getDescription()) {
             gameState = "combat location";
         } else {
@@ -246,7 +247,7 @@ public class LocationMenuController implements Initializable {
             tutorialCombat();
         } else if (Objects.equals(gameState, "finish tutorial")) {
             gameState = "";
-            locationDescription.setText("Game Start Movement Message.");
+            locationDescription.setText("Game Start Movement Message.\n");
             playerMove();
         } else if (Objects.equals(gameState, "explore location")) {
             gameState = "";

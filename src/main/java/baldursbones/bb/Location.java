@@ -93,7 +93,7 @@ public abstract class Location {
             Scanner fileReader = new Scanner(locationFile);
             // Display the "Explore Location" description in the Game Description display.
             TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
-            descriptionBox.setText(fileReader.nextLine());
+            descriptionBox.setText(fileReader.nextLine() + "\n");
             // First encounter at this Location.
             if (locationValue % LOCATION_DIGIT == EXPLORE_LOCATION) {
                 // Display the Explore Location text.
@@ -129,7 +129,7 @@ public abstract class Location {
             fileReader.nextLine();
             // Display the Combat Location description in the Game Description display.
             TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
-            descriptionBox.setText(fileReader.nextLine());
+            descriptionBox.setText(fileReader.nextLine() + "\n");
             // First encounter at the Location.
             if (locationValue % LOCATION_DIGIT == FIGHT_LOCATION) {
                 // Display the First Encounter text.
