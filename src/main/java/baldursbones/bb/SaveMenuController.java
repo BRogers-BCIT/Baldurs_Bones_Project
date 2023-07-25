@@ -360,7 +360,7 @@ public class SaveMenuController implements Initializable {
         // Get the Save File row that is currently selected.
         SaveFile saveFile = saveFileTable.getSelectionModel().getSelectedItem();
         // Get the document assosiated with that Save File and load it into a file object.
-        String fileName = saveFile.getDataFile();
+        String fileName = saveFile.getInfoFile();
         File infoFile = new File("src/main/resources/baldursbones/bb/" + fileName);
         // Open the info file in a scanner for reading.
         Scanner infoReader = new Scanner(infoFile);
