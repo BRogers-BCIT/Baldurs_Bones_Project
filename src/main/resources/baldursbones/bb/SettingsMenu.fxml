@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 
 <HBox fx:id="settingsMenu" alignment="CENTER" fillHeight="false" maxWidth="250.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SettingsMenuController">
-   <VBox id="SettingsMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="NEVER">
+   <VBox id="SettingsMenuContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" HBox.hgrow="NEVER">
       <Region minHeight="-Infinity" prefHeight="30.0" />
       <HBox id="SettingsTitleContainer" alignment="CENTER" minWidth="-Infinity" prefWidth="200.0">
          <Label id="SettingsTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Settings" textAlignment="CENTER" textOverrun="CLIP">
@@ -23,38 +23,38 @@
          </Label>
       </HBox>
       <Region prefHeight="30.0" VBox.vgrow="ALWAYS" />
-      <Button id="SaveButton" fx:id="closeMenuButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeSettings" styleClass="SettingsButton" text="Close" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="SaveButton" fx:id="closeMenuButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeSettings" text="Close" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="30.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Button>
-      <CheckBox id="MusicDisable" fx:id="musicCheckbox" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateSoundSettings" styleClass="SoundSettings" text="Disable Music" textAlignment="CENTER" textOverrun="CLIP" visible="false">
+      <CheckBox id="MusicDisable" fx:id="musicCheckbox" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateSoundSettings" text="Disable Music" textAlignment="CENTER" textOverrun="CLIP" visible="false">
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </CheckBox>
-      <Button id="SaveButton" fx:id="openSaveMenuButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openSaveMenu" styleClass="SettingsButton" text="Save / Load" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="SaveButton" fx:id="openSaveMenuButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openSaveMenu" text="Save / Load" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="30.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Button>
-      <CheckBox id="EffectsDisable" fx:id="effectsCheckbox" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#updateSoundSettings" styleClass="SoundSettings" text="Disable Effects" textAlignment="CENTER" textOverrun="CLIP" visible="false">
+      <CheckBox id="EffectsDisable" fx:id="effectsCheckbox" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#updateSoundSettings" text="Disable Effects" textAlignment="CENTER" textOverrun="CLIP" visible="false">
          <VBox.margin>
             <Insets />
          </VBox.margin>
       </CheckBox>
-      <Button id="RulesButton" fx:id="openGameInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openGameInfoMenu" styleClass="SettingsButton" text="Game Info" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="RulesButton" fx:id="openGameInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openGameInfoMenu" text="Game Info" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="22.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Button>
-      <Button id="ReturnFromSound" fx:id="closeSoundSettingsButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#toggleSoundSettings" styleClass="SoundSettings" text="Close Sound Settings" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
-      <Button id="SoundButton" fx:id="openSoundSettingsButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#toggleSoundSettings" styleClass="SettingsButton" text="Sound Settings" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="ReturnFromSound" fx:id="closeSoundSettingsButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#toggleSoundSettings" text="Close Sound Settings" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
+      <Button id="SoundButton" fx:id="openSoundSettingsButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#toggleSoundSettings" text="Sound Settings" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="30.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Button>
-      <Button id="QuitButton" fx:id="quitGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openQuitGamePopUp" styleClass="SettingsButton" text="Quit" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="QuitButton" fx:id="quitGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openQuitGamePopUp" text="Quit" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="17.0" />
          </VBox.margin>

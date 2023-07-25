@@ -13,9 +13,9 @@
 
 <HBox fx:id="saveGameMenu" alignment="CENTER" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.SaveMenuController">
    <Region minWidth="-Infinity" prefWidth="30.0" />
-   <VBox id="SaveMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+   <VBox id="SaveMenuContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
       <Region minHeight="30.0" />
-      <HBox id="TitleBox" alignment="CENTER" VBox.vgrow="NEVER">
+      <HBox id="SaveTitleContainer" alignment="CENTER" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -31,9 +31,9 @@
       <Region minHeight="30.0" VBox.vgrow="ALWAYS" />
       <TableView id="SavedFilesTable" fx:id="saveFileTable" focusTraversable="false" minHeight="200.0" minWidth="605.0" prefHeight="200.0" prefWidth="605.0" VBox.vgrow="NEVER">
          <columns>
-            <TableColumn id="SavedTableFileName" fx:id="nameColumn" editable="false" maxWidth="-Infinity" minWidth="200.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="File Name" />
-            <TableColumn id="SavedTableCharacterName" fx:id="characterColumn" editable="false" maxWidth="-Infinity" minWidth="200.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="Character" />
-            <TableColumn id="SavedTableSaveTime" fx:id="timeColumn" editable="false" maxWidth="-Infinity" minWidth="200.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" styleClass="SavedTableColumn" text="Save Time" />
+            <TableColumn id="SavedTableFileName" fx:id="nameColumn" editable="false" maxWidth="-Infinity" minWidth="200.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="File Name" />
+            <TableColumn id="SavedTableCharacterName" fx:id="characterColumn" editable="false" maxWidth="-Infinity" minWidth="200.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Character" />
+            <TableColumn id="SavedTableSaveTime" fx:id="timeColumn" editable="false" maxWidth="-Infinity" minWidth="200.0" prefWidth="-1.0" style="-fx-alignment: CENTER;" text="Save Time" />
          </columns>
          <VBox.margin>
             <Insets left="20.0" right="20.0" />
@@ -43,7 +43,7 @@
          </columnResizePolicy>
       </TableView>
       <Region minHeight="30.0" VBox.vgrow="ALWAYS" />
-      <HBox id="SaveMenuInputContainer" alignment="CENTER" VBox.vgrow="NEVER">
+      <HBox id="SaveInputContainer" alignment="CENTER" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -63,13 +63,13 @@
                <Font size="14.0" />
             </font>
          </TextField>
-         <Button id="SaveFileButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#addNewSaveFile" styleClass="SaveMenuButton" text="Create New Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="SaveFileButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#addNewSaveFile" text="Create New Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
          </Button>
       </HBox>
-      <HBox id="outputContainer" alignment="CENTER" VBox.vgrow="NEVER">
+      <HBox id="SaveOutputContainer" alignment="CENTER" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets bottom="20.0" top="10.0" />
          </VBox.margin>
@@ -79,23 +79,23 @@
             </font>
          </Label>
       </HBox>
-      <HBox id="SaveMenuButtonsContainer" alignment="CENTER" VBox.vgrow="NEVER">
+      <HBox id="SaveButtonsContainer" alignment="CENTER" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets left="50.0" right="50.0" />
          </VBox.margin>
-         <Button id="LoadSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#loadSaveFile" styleClass="SaveMenuButton" text="Load Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="LoadSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#loadSaveFile" text="Load Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
          </Button>
          <Region HBox.hgrow="ALWAYS" />
-         <Button id="CloseSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeSaveMenu" styleClass="SaveMenuButton" text="Close Menu" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="CloseSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeSaveMenu" text="Close Menu" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
          </Button>
          <Region HBox.hgrow="ALWAYS" />
-         <Button id="DeleteSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#deleteSaveFile" styleClass="SaveMenuButton" text="Delete Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="DeleteSaveMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#deleteSaveFile" text="Delete Save" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" top="10.0" />
             </HBox.margin>

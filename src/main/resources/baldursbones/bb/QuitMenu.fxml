@@ -10,7 +10,7 @@
 
 <HBox style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.QuitPopupController">
    <Region minWidth="-Infinity" prefWidth="30.0" />
-   <VBox id="QuitMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+   <VBox id="QuitMenuContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
       <Region minHeight="-Infinity" prefHeight="30.0" />
       <HBox id="QuitTitleContainer" alignment="CENTER">
          <VBox.margin>
@@ -29,19 +29,19 @@
          </Label>
       </HBox>
       <HBox id="QuitButtonsContainer" alignment="CENTER" VBox.vgrow="ALWAYS">
-         <Button id="CancelQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#cancelQuit" styleClass="QuitButton" text="Cancel Quit" textAlignment="CENTER" textOverrun="CLIP">
+         <Button id="CancelQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#cancelQuit" text="Cancel Quit" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
                <Insets />
             </HBox.margin>
          </Button>
          <Region HBox.hgrow="ALWAYS" />
-         <Button id="MenuQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#returnToMainMenu" styleClass="QuitButton" text="Return to Menu" textAlignment="CENTER" textOverrun="CLIP">
+         <Button id="MenuQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#returnToMainMenu" text="Return to Menu" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
                <Insets />
             </HBox.margin>
          </Button>
          <Region HBox.hgrow="ALWAYS" />
-         <Button id="DesktopQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#quitGame" styleClass="QuitButton" text="Confirm Quit" textAlignment="CENTER" textOverrun="CLIP">
+         <Button id="DesktopQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#quitGame" text="Confirm Quit" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
                <Insets />
             </HBox.margin>

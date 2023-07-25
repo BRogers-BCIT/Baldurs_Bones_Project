@@ -13,7 +13,7 @@
 
 <HBox fx:id="mapInfoBox" alignment="CENTER" maxHeight="575.0" maxWidth="400.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.MapInfoController">
     <Region maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="30.0" />
-    <VBox id="MapWindow" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+    <VBox id="GameMapContainer" alignment="TOP_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
         <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" VBox.vgrow="ALWAYS" />
       <Button contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" text="Close" textAlignment="CENTER" textOverrun="CLIP">
          <padding>
@@ -133,7 +133,7 @@
                 </font>
             </Label>
         </GridPane>
-        <Region fx:id="GameMapLegend" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 5px;" />
+        <Region id="MapLegendRegion" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="300.0" style="-fx-background-color: gray; -fx-border-color: black; -fx-border-width: 5px;" />
         <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" />
     </VBox>
     <Region maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="30.0" />

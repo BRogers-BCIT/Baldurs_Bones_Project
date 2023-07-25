@@ -12,9 +12,9 @@
 
 <HBox fx:id="newGameMenu" alignment="CENTER" maxHeight="300.0" maxWidth="380.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.NewGameController">
    <Region minWidth="-Infinity" prefWidth="30.0" />
-   <VBox id="NewGameMenu" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+   <VBox id="NewGameContainer" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
       <Region minHeight="-Infinity" prefHeight="30.0" />
-      <HBox id="NewGameTitleContainer" alignment="CENTER">
+      <HBox id="NewTitleContainer" alignment="CENTER">
          <Label id="NewGameTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="New Game" textAlignment="CENTER" textOverrun="CLIP">
             <font>
                <Font size="36.0" />
@@ -55,17 +55,17 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
          </padding>
       </Label>
-      <HBox id="NewGameButtonsContainer" alignment="CENTER" VBox.vgrow="NEVER">
+      <HBox id="NewButtonsContainer" alignment="CENTER" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <Button id="ReturnMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeNewGameMenu" styleClass="NewGameButton" text="Return to Menu" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="ReturnMenuButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeNewGameMenu" text="Return to Menu" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets left="30.0" />
             </HBox.margin>
          </Button>
          <Region HBox.hgrow="ALWAYS" />
-         <Button id="StartGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openGameWindow" styleClass="NewGameButton" text="Start Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="StartGameButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#openGameWindow" text="Start Game" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets right="30.0" />
             </HBox.margin>

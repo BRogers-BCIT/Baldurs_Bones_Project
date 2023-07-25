@@ -11,10 +11,9 @@
 
 <HBox fx:id="gameInfoMenu" alignment="CENTER" maxWidth="550.0" style="-fx-border-color: black; -fx-border-width: 5px;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baldursbones.bb.GameInfoController">
    <Region maxWidth="-Infinity" minWidth="-Infinity" prefWidth="30.0" HBox.hgrow="NEVER" />
-   <VBox id="GameInfoPage" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+   <VBox id="GameInfoContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
       <Region minHeight="-Infinity" prefHeight="30.0" VBox.vgrow="NEVER" />
       <HBox id="TitleBox" alignment="CENTER" VBox.vgrow="NEVER">
-         <Region fx:id="GameInfoHeaderLeft" prefWidth="50.0" />
          <Label id="GameInfoTitle" fx:id="gameInfoTitle" alignment="CENTER" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Game Info: Page X" textAlignment="CENTER" textOverrun="CLIP">
             <font>
                <Font size="24.0" />
@@ -23,10 +22,9 @@
                <Insets />
             </HBox.margin>
          </Label>
-         <Region fx:id="GameInfoHeaderRight" prefWidth="50.0" />
       </HBox>
       <Region minHeight="30.0" />
-      <Label id="InfoTitleOne" fx:id="infoTitleOne" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="InfoTitle" text="Info Element One" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+      <Label id="InfoTitleOne" fx:id="infoTitleOne" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Info Element One" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
          <font>
             <Font size="18.0" />
          </font>
@@ -34,13 +32,13 @@
             <Insets left="30.0" />
          </VBox.margin>
       </Label>
-      <TextArea id="InfoBoxOne" fx:id="infoAreaOne" editable="false" prefColumnCount="0" prefRowCount="0" styleClass="InfoBox" wrapText="true" VBox.vgrow="NEVER">
+      <TextArea id="InfoBoxOne" fx:id="infoAreaOne" editable="false" prefColumnCount="0" prefRowCount="0" wrapText="true" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </TextArea>
       <Region minHeight="30.0" VBox.vgrow="ALWAYS" />
-      <Label id="InfoElementTwo" fx:id="infoTitleTwo" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="InfoTitle" text="Info Element Two" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+      <Label id="InfoElementTwo" fx:id="infoTitleTwo" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Info Element Two" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
          <font>
             <Font size="18.0" />
          </font>
@@ -48,13 +46,13 @@
             <Insets left="30.0" />
          </VBox.margin>
       </Label>
-      <TextArea id="InfoBoxTwo" fx:id="infoAreaTwo" editable="false" prefColumnCount="0" prefRowCount="0" styleClass="InfoBox" wrapText="true" VBox.vgrow="NEVER">
+      <TextArea id="InfoBoxTwo" fx:id="infoAreaTwo" editable="false" prefColumnCount="0" prefRowCount="0" wrapText="true" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </TextArea>
       <Region minHeight="30.0" VBox.vgrow="ALWAYS" />
-      <Label id="InfoElementThree" fx:id="infoTitleThree" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="InfoTitle" text="Info Element Three" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+      <Label id="InfoElementThree" fx:id="infoTitleThree" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Info Element Three" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
          <font>
             <Font size="18.0" />
          </font>
@@ -62,29 +60,29 @@
             <Insets left="30.0" />
          </VBox.margin>
       </Label>
-      <TextArea id="InfoBoxThree" fx:id="infoAreaThree" editable="false" prefColumnCount="0" prefRowCount="0" styleClass="InfoBox" wrapText="true" VBox.vgrow="NEVER">
+      <TextArea id="InfoBoxThree" fx:id="infoAreaThree" editable="false" prefColumnCount="0" prefRowCount="0" wrapText="true" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </TextArea>
       <Region minHeight="30.0" VBox.vgrow="ALWAYS" />
-      <HBox id="GameInfoButtonsContainer" alignment="CENTER">
+      <HBox id="InfoButtonsContainer" alignment="CENTER">
          <VBox.margin>
             <Insets />
          </VBox.margin>
-         <Button id="PrevInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#prevPage" styleClass="GameInfoButton" text="Previous Page" textAlignment="CENTER" textOverrun="CLIP">
+         <Button id="PrevInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#prevPage" text="Previous Page" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
                <Insets bottom="10.0" left="50.0" top="10.0" />
             </HBox.margin>
          </Button>
          <Region minWidth="50.0" />
-         <Button id="CloseInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" styleClass="GameInfoButton" text="Close Game Info" textAlignment="CENTER" textOverrun="CLIP">
+         <Button id="CloseInfoButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#closeGameInfoMenu" text="Close Game Info" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
                <Insets bottom="10.0" top="10.0" />
             </HBox.margin>
          </Button>
          <Region minWidth="50.0" />
-         <Button id="NextInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#nextPage" styleClass="GameInfoButton" text="Next Page" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
+         <Button id="NextInfoPageButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#nextPage" text="Next Page" textAlignment="CENTER" textOverrun="CLIP" HBox.hgrow="NEVER">
             <HBox.margin>
                <Insets bottom="10.0" right="50.0" top="10.0" />
             </HBox.margin>
