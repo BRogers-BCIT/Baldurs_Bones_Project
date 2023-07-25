@@ -8,101 +8,69 @@ package baldursbones.bb;
  */
 public class SaveFile {
     // Name of the save file.
-    private String fileName;
+    private final String fileName;
 
     // Name of the saved character.
-    private String characterName;
+    private final String characterName;
 
     // Time the file was saved.
-    private String saveTime;
+    private final String saveTime;
 
     // Name of the associated game data file.
-    private String dataFile;
+    private final String infoFile;
 
     /**
-     * Creates a Save File object that contains all the values needed to display and open a save file.
+     * Creates a Save File object that with the Save File Info and the Path of the Save Info File.
      *
-     * @param fileName      the name of the Save File object
-     * @param characterName the character name being played in the Save File
-     * @param saveTime      the time that the Save File was created / updated
-     * @param dataFile      the name of the file with the character data
+     * @param fileName      The Name of the Save File object
+     * @param characterName The Character Name assosiated with the Save File
+     * @param saveTime      The time that the Save File was created / updated
+     * @param infoFile      The Path of the Info File associated with the Save File
      */
-    public SaveFile(final String fileName, final String characterName, final String saveTime, final String dataFile) {
+    public SaveFile(final String fileName, final String characterName, final String saveTime, final String infoFile) {
         this.fileName = fileName;
         this.characterName = characterName;
         this.saveTime = saveTime;
-        this.dataFile = dataFile;
+        this.infoFile = infoFile;
     }
 
     /**
-     * Returns a string with the file name value of the Save File object.
+     * Returns a string with the File Name value of the Save File object.
+     * Used to find the Save File data in the Master Save Directory / Display Info in the Saved Games Table.
      *
-     * @return a string with the file name value of this Save File object
+     * @return A string representing the File Name value of this Save File object
      */
     public String getFileName() {
         return fileName;
     }
 
     /**
-     * Sets the value of the file name property of this Save File object to a passed string.
+     * Returns a string with the Character Name value associated with the Save File object.
+     * Used to display Save Information in the Saved Games Table.
      *
-     * @param fileName the new string to set the file name value to
-     */
-    public void setFileName(final String fileName) {
-        this.fileName = fileName;
-    }
-
-    /**
-     * Returns a string with the character name value of the Save File object.
-     *
-     * @return a string with the character name value of this Save File object
+     * @return A string representing the Character Name value assosiated with this Save File object
      */
     public String getCharacterName() {
         return characterName;
     }
 
     /**
-     * Sets the value of the character name property of this Save File object to a passed string.
+     * Returns a string with the Save Time value of the Save File object.
+     * Used to display Save Information in the Saved Games Table.
      *
-     * @param characterName the new string to set the character name value to
-     */
-    public void setCharacterName(final String characterName) {
-        this.characterName = characterName;
-    }
-
-    /**
-     * Returns a string with the save time value of the Save File object.
-     *
-     * @return a string with the save time value of this Save File object
+     * @return A string representing the Save Time value assosiated with this Save File object
      */
     public String getSaveTime() {
         return saveTime;
     }
 
     /**
-     * Sets the value of the save time property of this Save File object to a passed string.
+     * Returns a string with the Path of the Info File assosiated with the Save File.
+     * Used to find the assosiated Info File when Loading or Deleting a Save / Display Info in the Saved Games Table.
      *
-     * @param saveTime the new string to set the save time value to
+     * @return A string representing the Path of the Info File of the Save File object
      */
-    public void setSaveTime(final String saveTime) {
-        this.saveTime = saveTime;
-    }
-
-    /**
-     * Returns a string with the datafile value of the Save File object.
-     *
-     * @return a string with the data file value of this Save File object
-     */
-    public String getDataFile() {
-        return dataFile;
-    }
-
-    /**
-     * Sets the value of the data file property of this save file object to a passed string.
-     *
-     * @param dataFile the new string to set the data file value to
-     */
-    public void setDataFile(final String dataFile) {
-        this.dataFile = dataFile;
+    public String getInfoFile() {
+        return infoFile;
     }
 }
