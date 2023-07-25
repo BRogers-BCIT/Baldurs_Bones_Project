@@ -33,7 +33,7 @@
    <Region GridPane.columnIndex="1" />
    <Region GridPane.columnIndex="2" />
    <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="3" />
-   <Button id="openSettingsButton" fx:id="openSettingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
+   <Button id="SettingsButton" fx:id="settingsButton" accessibleHelp="Settings" accessibleRoleDescription="Settings Button" accessibleText="Settings" alignment="CENTER" cancelButton="true" contentDisplay="GRAPHIC_ONLY" ellipsisString="" focusTraversable="false" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#openSettingsMenu" prefHeight="60.0" prefWidth="60.0" textOverrun="CLIP" GridPane.columnIndex="3" GridPane.halignment="RIGHT" GridPane.hgrow="NEVER" GridPane.valignment="TOP" GridPane.vgrow="NEVER">
       <GridPane.margin>
          <Insets right="20.0" top="20.0" />
       </GridPane.margin>
@@ -91,12 +91,12 @@
             </GridPane.margin>
          </Button>
       </GridPane>
-      <Button id="locationViewStats" fx:id="viewCharacterButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openCharacterInfo" text="View Character" textAlignment="CENTER" textOverrun="CLIP">
+      <Button id="ViewCharacter" fx:id="viewCharacterButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openCharacterInfo" text="View Character" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>
       </Button>
-      <Button id="locationViewMap" fx:id="viewMapButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openMapInfo" text="View Map" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
+      <Button id="ViewMap" fx:id="viewMapButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#openMapInfo" text="View Map" textAlignment="CENTER" textOverrun="CLIP" VBox.vgrow="NEVER">
          <VBox.margin>
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </VBox.margin>

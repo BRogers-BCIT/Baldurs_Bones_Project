@@ -11,27 +11,26 @@ import javafx.scene.layout.GridPane;
  */
 public class CharacterInfoController {
 
-    // The parent element the character info menu is displayed in.
+    // The Layout Element the Character Info menu is displayed within.
     private GridPane container;
 
-    // The layout element for the character info menu.
+    // The Layout Element for the Character Info menu.
     @FXML
     private GridPane characterInfoGrid;
 
-    // Object: The game player object with the current game information.
+    // Object: The Player object for the current game.
     private Player currentPlayer;
 
     /**
-     * Removes the character info menu layout from the location menu and makes the buttons clickable again.
+     * Sets the Parent Layout (Location Menu) Buttons to be enabled and closes the Character Info scene.
      */
     @FXML
     public void closeGameInfoMenu() {
-        // Set location menu buttons to be clickable.
-        container.lookup("#locationFightButton").setDisable(false);
-        container.lookup("#locationViewStats").setDisable(false);
-        container.lookup("#locationViewMap").setDisable(false);
+        // Set location menu buttons to be enabled.
+        container.lookup("#ViewCharacter").setDisable(false);
+        container.lookup("#ViewMap").setDisable(false);
         container.lookup("#endGameTest").setDisable(false);
-        container.lookup("#openSettingsButton").setDisable(false);
+        container.lookup("#SettingsButton").setDisable(false);
         // Remove the character info menu from the location menu window.
         container.getChildren().remove(characterInfoGrid);
     }

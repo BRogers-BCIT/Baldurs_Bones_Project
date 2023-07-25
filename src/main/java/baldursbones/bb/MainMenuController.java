@@ -28,7 +28,7 @@ public class MainMenuController implements Initializable {
 
     // FXML Element: Menu button that calls the open Settings Menu method.
     @FXML
-    private Button openSettingsButton;
+    private Button settingsButton;
 
     // FXML Element: Menu button that calls the open New Game menu method.
     @FXML
@@ -132,7 +132,7 @@ public class MainMenuController implements Initializable {
         newGameButton.setDisable(true);
         savedGamesButton.setDisable(true);
         gameInfoButton.setDisable(true);
-        openSettingsButton.setDisable(true);
+        settingsButton.setDisable(true);
     }
 
     /**

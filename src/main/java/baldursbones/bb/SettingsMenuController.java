@@ -74,17 +74,16 @@ public class SettingsMenuController implements Initializable {
     @FXML
     public void closeSettings() {
         // Set the settings button to be clickable.
-        container.lookup("#openSettingsButton").setDisable(false);
+        container.lookup("#SettingsButton").setDisable(false);
         // If: the current container is the Main Menu, enable main menu buttons.
         if (container.getId().equals("mainMenuGrid")) {
-            container.lookup("#newGameButton").setDisable(false);
-            container.lookup("#savedGamesButton").setDisable(false);
-            container.lookup("#gameInfoButton").setDisable(false);
+            container.lookup("#NewGameButton").setDisable(false);
+            container.lookup("#SavesButton").setDisable(false);
+            container.lookup("#GameInfoButton").setDisable(false);
         } else {
             // Else: Set location menu buttons to be clickable.
-            container.lookup("#locationFightButton").setDisable(false);
-            container.lookup("#locationViewStats").setDisable(false);
-            container.lookup("#locationViewMap").setDisable(false);
+            container.lookup("#ViewCharacter").setDisable(false);
+            container.lookup("#ViewMap").setDisable(false);
             container.lookup("#endGameTest").setDisable(false);
         }
         // Remove the Settings Menu from the current menu window.

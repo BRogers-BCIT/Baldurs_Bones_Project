@@ -35,7 +35,7 @@
       <GridPane.margin>
          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
       </GridPane.margin>
-      <Label id="CharacterNameTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name" textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="CharacterName" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Name" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="24.0" />
          </font>
@@ -43,7 +43,7 @@
             <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
          </padding>
       </Label>
-      <Label id="CharacterDescriptionTitle" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Description" textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="CharacterDescription" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" text="Character Description" textAlignment="CENTER" textOverrun="CLIP">
          <font>
             <Font size="18.0" />
          </font>
@@ -65,7 +65,7 @@
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </padding>
       </Label>
-      <Label id="CharacterDisplayHealth" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Health : " textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="PlayerHealth" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Health : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
@@ -73,7 +73,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label id="CharacterDisplayLevel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Level : " textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="PlayerLevel" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Level : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
@@ -81,7 +81,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label id="CharacterDisplayExp" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Experience : " textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="PlayerExp" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayStats" text="Experience : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -102,7 +102,7 @@
             <Insets bottom="10.0" left="20.0" right="20.0" top="10.0" />
          </padding>
       </Label>
-      <Label id="CharacterDisplayAdd" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayAbilities" text="Add (+1) : " textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="PlayerAdd" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayAbilities" text="Add (+1) : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
@@ -110,7 +110,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label id="CharacterDisplayTakeAway" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayAbilities" text="Take Away (-1) : " textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="PlayerTakeAway" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayAbilities" text="Take Away (-1) : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="10.0" />
          </VBox.margin>
@@ -118,7 +118,7 @@
             <Font size="18.0" />
          </font>
       </Label>
-      <Label id="CharacterDisplayReRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayAbilities" text="Re-Roll Last Die : " textAlignment="CENTER" textOverrun="CLIP">
+      <Label id="PlayerReRoll" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" styleClass="CharacterDisplayAbilities" text="Re-Roll Last Die : " textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets />
          </VBox.margin>

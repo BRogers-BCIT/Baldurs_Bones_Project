@@ -220,18 +220,18 @@ public class Player {
     public void displayStats(final GridPane characterInfoMenu) {
         // Get the assosiated label for each part of the character info menu.
         // Title Labels.
-        Label characterName = (Label) characterInfoMenu.lookup("#CharacterNameTitle");
-        Label characterDescription = (Label) characterInfoMenu.lookup("#CharacterDescriptionTitle");
-        Label characterNameStats = (Label) characterInfoMenu.lookup("#CharacterDisplayNameStats");
-        Label characterNameAbilities = (Label) characterInfoMenu.lookup("#CharacterDisplayNameAbilities");
+        Label characterName = (Label) characterInfoMenu.lookup("#CharacterName");
+        Label characterDescription = (Label) characterInfoMenu.lookup("#CharacterDescription");
+        Label characterNameStats = (Label) characterInfoMenu.lookup("#StatsTitle");
+        Label characterNameAbilities = (Label) characterInfoMenu.lookup("#AbilitiesTitle");
         // Stats Labels.
-        Label characterHealth = (Label) characterInfoMenu.lookup("#CharacterDisplayHealth");
-        Label characterLevel = (Label) characterInfoMenu.lookup("#CharacterDisplayLevel");
-        Label characterExp = (Label) characterInfoMenu.lookup("#CharacterDisplayExp");
+        Label characterHealth = (Label) characterInfoMenu.lookup("#PlayerHealth");
+        Label characterLevel = (Label) characterInfoMenu.lookup("#PlayerLevel");
+        Label characterExp = (Label) characterInfoMenu.lookup("#PlayerExp");
         /// Abilities Labels.
-        Label characterAdd = (Label) characterInfoMenu.lookup("#CharacterDisplayAdd");
-        Label characterTakeAway = (Label) characterInfoMenu.lookup("#CharacterDisplayTakeAway");
-        Label characterReRoll = (Label) characterInfoMenu.lookup("#CharacterDisplayReRoll");
+        Label characterAdd = (Label) characterInfoMenu.lookup("#PlayerAdd");
+        Label characterTakeAway = (Label) characterInfoMenu.lookup("#PlayerTakeAway");
+        Label characterReRoll = (Label) characterInfoMenu.lookup("#PlayerReRoll");
         // Helper functions to populate Labels with Player information.
         updateTitles(characterName, characterDescription, characterNameStats, characterNameAbilities);
         updateStats(characterHealth, characterLevel, characterExp);

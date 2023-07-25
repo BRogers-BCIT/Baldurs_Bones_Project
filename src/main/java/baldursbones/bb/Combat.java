@@ -104,23 +104,23 @@ public class Combat {
     // Update the Player Abilities Labels when loading the page or after using an Ability.
     private void updateAbilities() {
         // Update the "Re-Roll" Ability display on the Combat menu.
-        Label playerReRollUses = (Label) container.lookup("#CombatInfoReRoll");
+        Label playerReRollUses = (Label) container.lookup("#ReRollUses");
         playerReRollUses.setText("Re-Roll Last Roll: " + player.getAbilityReRoll());
         // Update the "Add" Ability display on the Combat menu.
-        Label playerAddUses = (Label) container.lookup("#CombatInfoAdd");
+        Label playerAddUses = (Label) container.lookup("#AddUses");
         playerAddUses.setText("Increase Total: " + player.getAbilityAdd());
         // Update the "Take-Away" Ability display on the Combat menu.
-        Label playerTakeAwayUses = (Label) container.lookup("#CombatInfoTakeAway");
+        Label playerTakeAwayUses = (Label) container.lookup("#TakeAwayUses");
         playerTakeAwayUses.setText("Decrease Total: " + player.getAbilityTakeAway());
     }
 
     // Update the Combat Information Labels.
     private void updateRollInfo() {
         // Display the value of the last Roll by the Player.
-        Label playerStartTotal = (Label) container.lookup("#CombatInfoLastRoll");
+        Label playerStartTotal = (Label) container.lookup("#LastRoll");
         playerStartTotal.setText("Last Roll: " + lastRoll);
         // Display the starting Total Value for the Player.
-        Label playerStartLastRoll = (Label) container.lookup("#CombatInfoPlayerTotal");
+        Label playerStartLastRoll = (Label) container.lookup("#PlayerTotal");
         playerStartLastRoll.setText("Current Total: " + playerTotal);
     }
 
@@ -131,10 +131,10 @@ public class Combat {
         // Get the starting Rolls for the Player.
         startRoll();
         // Display the value of the last Roll by the Player.
-        Label playerStartTotal = (Label) container.lookup("#CombatInfoLastRoll");
+        Label playerStartTotal = (Label) container.lookup("#LastRoll");
         playerStartTotal.setText("Last Roll: " + lastRoll);
         // Display the starting Total value for the Player.
-        Label playerStartLastRoll = (Label) container.lookup("#CombatInfoPlayerTotal");
+        Label playerStartLastRoll = (Label) container.lookup("#InfoTotal");
         playerStartLastRoll.setText("Current Total: " + playerTotal);
     }
 
@@ -170,7 +170,7 @@ public class Combat {
         playerTotal += lastRoll;
 
         // Update the Starting Rolls in the Game Info display.
-        Label playerStartingRolls = (Label) container.lookup("#CombatInfoStartRolls");
+        Label playerStartingRolls = (Label) container.lookup("#StartRolls");
         playerStartingRolls.setText(startRolls.toString());
         // Append the Starting Rolls to the Combat Description.
         Label combatDescription = (Label) container.lookup("#CombatDescription");
@@ -268,7 +268,7 @@ public class Combat {
         if (player.useAdd(fightDescription)) {
             // If the Player can use their Ability then add one to the Total Value and update the description.
             playerTotal += 1;
-            fightDescription = (TextArea) container.lookup("#CombatDescriptionTextBox");
+            fightDescription = (TextArea) container.lookup("#CombatDescription");
             fightDescription.appendText("Increased Total By 1 \n");
             // If the new Player Total Value exceeds the maximum accepted value.
             if (playerTotal >= TOTAL_MAX) {

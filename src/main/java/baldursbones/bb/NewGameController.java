@@ -67,10 +67,10 @@ public class NewGameController {
         // If the current container is the Main Menu, allow the menu to be closed.
         if (container.getId().equals("mainMenuGrid")) {
             // If: The current container is the Main Menu, enable Main Menu buttons.
-            container.lookup("#newGameButton").setDisable(false);
-            container.lookup("#savedGamesButton").setDisable(false);
-            container.lookup("#gameInfoButton").setDisable(false);
-            container.lookup("#openSettingsButton").setDisable(false);
+            container.lookup("#NewGameButton").setDisable(false);
+            container.lookup("#SavesButton").setDisable(false);
+            container.lookup("#GameInfoButton").setDisable(false);
+            container.lookup("#SettingsButton").setDisable(false);
             // Remove the Game Info menu from its parent menu object.
             container.getChildren().remove(newGameMenu);
         } else {

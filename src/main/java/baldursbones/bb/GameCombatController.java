@@ -82,11 +82,11 @@ public class GameCombatController {
     @FXML
     public void playerHold() {
         gameState = currentCombat.finishCombat();
-        gameCombatGrid.lookup("#GameActionRoll").setDisable(true);
-        gameCombatGrid.lookup("#GameActionHold").setDisable(true);
-        gameCombatGrid.lookup("#PlayerAbilityAdd").setDisable(true);
-        gameCombatGrid.lookup("#PlayerAbilityTakeAway").setDisable(true);
-        gameCombatGrid.lookup("#PlayerAbilityReRoll").setDisable(true);
+        gameCombatGrid.lookup("#RollButton").setDisable(true);
+        gameCombatGrid.lookup("#HoldButton").setDisable(true);
+        gameCombatGrid.lookup("#AddButton").setDisable(true);
+        gameCombatGrid.lookup("#TakeAwayButton").setDisable(true);
+        gameCombatGrid.lookup("#ReRollButton").setDisable(true);
     }
 
     /**
@@ -97,11 +97,11 @@ public class GameCombatController {
         if (Objects.equals(gameState, "end combat")) {
             closeGameCombatMenu();
         } else if (Objects.equals(gameState, "end round")) {
-            gameCombatGrid.lookup("#GameActionRoll").setDisable(false);
-            gameCombatGrid.lookup("#GameActionHold").setDisable(false);
-            gameCombatGrid.lookup("#PlayerAbilityAdd").setDisable(false);
-            gameCombatGrid.lookup("#PlayerAbilityTakeAway").setDisable(false);
-            gameCombatGrid.lookup("#PlayerAbilityReRoll").setDisable(false);
+            gameCombatGrid.lookup("#RollButton").setDisable(false);
+            gameCombatGrid.lookup("#HoldButton").setDisable(false);
+            gameCombatGrid.lookup("#AddButton").setDisable(false);
+            gameCombatGrid.lookup("#TakeAwayButton").setDisable(false);
+            gameCombatGrid.lookup("#ReRollButton").setDisable(false);
         }
     }
 
@@ -110,8 +110,8 @@ public class GameCombatController {
      */
     public void closeGameCombatMenu() {
         // Set location menu buttons to be clickable.
-        container.lookup("#locationViewStats").setDisable(false);
-        container.lookup("#locationViewMap").setDisable(false);
+        container.lookup("#ViewCharacter").setDisable(false);
+        container.lookup("#ViewMap").setDisable(false);
         container.lookup("#endGameTest").setDisable(false);
         // Remove the Game Info menu from the location menu window.
         container.getChildren().remove(gameCombatGrid);
@@ -131,7 +131,7 @@ public class GameCombatController {
         // Set the combat to be in progress.
         gameState = "";
         // Disable the settings button when the menu is opened.
-        container.lookup("#openSettingsButton").setDisable(false);
+        container.lookup("#SettingsButton").setDisable(false);
     }
 
 }

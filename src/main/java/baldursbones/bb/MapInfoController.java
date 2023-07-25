@@ -33,12 +33,11 @@ public class MapInfoController {
     @FXML
     public void closeGameInfoMenu() {
         // Set location menu buttons to be clickable.
-        container.lookup("#locationFightButton").setDisable(false);
-        container.lookup("#locationViewStats").setDisable(false);
-        container.lookup("#locationViewMap").setDisable(false);
+        container.lookup("#ViewCharacter").setDisable(false);
+        container.lookup("#ViewMap").setDisable(false);
         container.lookup("#endGameTest").setDisable(false);
-        container.lookup("#openSettingsButton").setDisable(false);
-        // Remove the map info menu from the location menu window.
+        container.lookup("#SettingsButton").setDisable(false);
+        // Remove the map info menu from SettingsButton location menu window.
         container.getChildren().remove(mapInfoBox);
     }
 
