@@ -48,29 +48,6 @@ public class TutorialLocation extends Location {
     }
 
     /**
-     * Displays the text for the start of the Tutorial and returns True to allow a Tutorial Combat.
-     * Override: Different file layout than regular Location Implementations.
-     *
-     * @return A boolean value indicating that a Combat can be started at this Location
-     * @throws RuntimeException If the text document being loaded does not exist
-     */
-    @Override
-    protected boolean fightLocation() {
-        // Try to read the "Start Tutorial" description from the Tutorial Location Text File.
-        try {
-            Scanner fileReader = new Scanner(TUTORIAL_TEXT);
-            // Display the Start Tutorial description in the Game Description display.
-            TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
-            descriptionBox.setText(fileReader.nextLine());
-        } catch (FileNotFoundException e) {
-            // Catch any errors with reading the Text File.
-            throw new RuntimeException(e);
-        }
-        // Return True to start the Tutorial Combat.
-        return true;
-    }
-
-    /**
      * Displays the text for returning to the Tutorial Location.
      * Override: Different file layout than regular Location Implementations.
      *
@@ -95,4 +72,26 @@ public class TutorialLocation extends Location {
         return false;
     }
 
+    /**
+     * Displays the text for the start of the Tutorial and returns True to allow a Tutorial Combat.
+     * Override: Different file layout than regular Location Implementations.
+     *
+     * @return A boolean value indicating that a Combat can be started at this Location
+     * @throws RuntimeException If the text document being loaded does not exist
+     */
+    @Override
+    protected boolean fightLocation() {
+        // Try to read the "Start Tutorial" description from the Tutorial Location Text File.
+        try {
+            Scanner fileReader = new Scanner(TUTORIAL_TEXT);
+            // Display the Start Tutorial description in the Game Description display.
+            TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
+            descriptionBox.setText(fileReader.nextLine());
+        } catch (FileNotFoundException e) {
+            // Catch any errors with reading the Text File.
+            throw new RuntimeException(e);
+        }
+        // Return True to start the Tutorial Combat.
+        return true;
+    }
 }

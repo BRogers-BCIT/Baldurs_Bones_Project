@@ -46,6 +46,33 @@ public abstract class Enemy {
     }
 
     /**
+     * Returns a Combat Title for the Implemented Enemy Type.
+     *
+     * @return A string to display as the Title for the Combat with they Enemy Implementation Type.
+     * @throws FileNotFoundException If the text document being loaded does not exist
+     */
+    protected String getCombatTitle() throws FileNotFoundException {
+        Scanner fileReader = new Scanner(enemyFile);
+        fileReader.nextLine();
+        fileReader.nextLine();
+        return fileReader.nextLine();
+    }
+
+    /**
+     * Returns a Combat Description for the Implemented Enemy Type.
+     *
+     * @return A string to display as the Description for the Combat with they Enemy Implementation Type.
+     * @throws FileNotFoundException If the text document being loaded does not exist
+     */
+    protected String getCombatDescription() throws FileNotFoundException {
+        Scanner fileReader = new Scanner(enemyFile);
+        fileReader.nextLine();
+        fileReader.nextLine();
+        fileReader.nextLine();
+        return fileReader.nextLine();
+    }
+
+    /**
      * Generates the Total Value for the Enemy and compares the value to the passed Player Total Value.
      *
      * @param playerTotal The Total Value for the Player in a Combat
@@ -115,33 +142,6 @@ public abstract class Enemy {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
         }
-    }
-
-    /**
-     * Returns a Combat Title for the Implemented Enemy Type.
-     *
-     * @return A string to display as the Title for the Combat with they Enemy Implementation Type.
-     * @throws FileNotFoundException If the text document being loaded does not exist
-     */
-    protected String getCombatTitle() throws FileNotFoundException {
-        Scanner fileReader = new Scanner(enemyFile);
-        fileReader.nextLine();
-        fileReader.nextLine();
-        return fileReader.nextLine();
-    }
-
-    /**
-     * Returns a Combat Description for the Implemented Enemy Type.
-     *
-     * @return A string to display as the Description for the Combat with they Enemy Implementation Type.
-     * @throws FileNotFoundException If the text document being loaded does not exist
-     */
-    protected String getCombatDescription() throws FileNotFoundException {
-        Scanner fileReader = new Scanner(enemyFile);
-        fileReader.nextLine();
-        fileReader.nextLine();
-        fileReader.nextLine();
-        return fileReader.nextLine();
     }
 }
 

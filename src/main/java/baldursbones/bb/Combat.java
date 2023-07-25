@@ -114,6 +114,16 @@ public class Combat {
         playerTakeAwayUses.setText("Decrease Total: " + player.getAbilityTakeAway());
     }
 
+    // Update the Combat Information Labels.
+    private void updateRollInfo() {
+        // Display the value of the last Roll by the Player.
+        Label playerStartTotal = (Label) container.lookup("#CombatInfoLastRoll");
+        playerStartTotal.setText("Last Roll: " + lastRoll);
+        // Display the starting Total Value for the Player.
+        Label playerStartLastRoll = (Label) container.lookup("#CombatInfoPlayerTotal");
+        playerStartLastRoll.setText("Current Total: " + playerTotal);
+    }
+
     /**
      * Get the starting Rolls and update the Game Information display.
      */
@@ -286,15 +296,4 @@ public class Combat {
         updateRollInfo();
         updateAbilities();
     }
-
-    // Update the Combat Information Labels.
-    private void updateRollInfo() {
-        // Display the value of the last Roll by the Player.
-        Label playerStartTotal = (Label) container.lookup("#CombatInfoLastRoll");
-        playerStartTotal.setText("Last Roll: " + lastRoll);
-        // Display the starting Total Value for the Player.
-        Label playerStartLastRoll = (Label) container.lookup("#CombatInfoPlayerTotal");
-        playerStartLastRoll.setText("Current Total: " + playerTotal);
-    }
-
 }

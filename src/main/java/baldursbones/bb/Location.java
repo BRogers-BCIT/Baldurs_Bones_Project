@@ -79,7 +79,6 @@ public abstract class Location {
         }
     }
 
-
     /**
      * Displays the description for the Explore Location then prints a description based on State of the Location.
      * Location Value options: First exploration or Returning exploration.

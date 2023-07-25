@@ -87,36 +87,6 @@ public class Map {
     }
 
     /**
-     * Sets the last Player Location tuple to the current X & Y Coordinates of the Player object.
-     *
-     * @param currentPlayerLocation A tuple representing the X & Y Coordinates of the Players Location
-     */
-    public void setPlayerLocation(final int[] currentPlayerLocation) {
-        playerLocation = currentPlayerLocation;
-    }
-
-    /**
-     * Updates the Game Map and Player map whenever a Player moves to a Location.
-     * If the Location Value is match a non-visited Location, then the Maps will be updated.
-     */
-    public void updateMap() {
-        // Get the Location Value of the current Player Location and Mod by 100 to find the last 2 digits.
-        // If the Digits match a not visited Explore Location then update the Map.
-        if (mapArray[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_EXPLORE_LOCATION) {
-            // If: the current Location is an unexplored non-Combat Location, set it to be found.
-            mapArray[playerLocation[0]][playerLocation[1]] = EXPLORE_LOCATION;
-            playerMapArray[playerLocation[0]][playerLocation[1]] = "#";
-        }
-        // Get the Location Value of the current Player Location and Mod by 100 to find the last 2 digits.
-        // If the Digits match a not visited Combat Location then update the Map.
-        if (mapArray[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_COMBAT_LOCATION) {
-            // If: the current Location is an unexplored Combat Location, set it to be found.
-            mapArray[playerLocation[0]][playerLocation[1]] = COMBAT_LOCATION;
-            playerMapArray[playerLocation[  0]][playerLocation[1]] = "!";
-        }
-    }
-
-    /**
      * Takes a 8x8 Grid Pane object and updates Rows and Columns 1-7 with the Player Map.
      * Takes the ASCII values from the Player Map array and converts them to images to display.
      *
@@ -202,35 +172,6 @@ public class Map {
         }
     }
 
-    /**
-     * Returns the Location Value of the cell matching the Player Coordinates.
-     *
-     * @return A three digit integer representing the Location Value of the current Player Cell.
-     */
-    public int getLocation() {
-        return mapArray[playerLocation[0]][playerLocation[1]];
-    }
-
-    /**
-     * Update the Maps with the correct values for a beaten Combat Location at the current Player Cell.
-     */
-    public void beatBattle() {
-        // Set the new Location Area Value for the Game Map
-        // New Location Value equals (Old Value / 100 * 100 = Location Area)
-        int beatenLocationValue = mapArray[playerLocation[0]][playerLocation[1]] / LOCATION_DIVIDER * LOCATION_DIVIDER;
-        // Update the Location Value with the Location Area Value + the Beaten Combat Type & Status Value.
-        mapArray[playerLocation[0]][playerLocation[1]] = beatenLocationValue + BEATEN_LOCATION;
-        // Update the Player Map with a beaten Location ASCII Character.
-        playerMapArray[playerLocation[0]][playerLocation[1]] = "#";
-    }
-
-    /**
-     * Set the Tutorial Location Value to be visited and beaten.
-     */
-    public void beatTutorial() {
-        mapArray[TUTORIAL_ROW][TUTORIAL_COLUMN] = BEATEN_TUTORIAL;
-    }
-
     // Convert the ASCII Character's from the Player Map to Images by Returning an Image File path.
     // Returned Images are used to display the Player Map.
     private InputStream asciiToImage(final String playerMapAscii) {
@@ -261,6 +202,65 @@ public class Map {
         }
         // Return an Input Stream for the Image file.
         return getClass().getResourceAsStream(fileName);
+    }
+
+    /**
+     * Sets the last Player Location tuple to the current X & Y Coordinates of the Player object.
+     *
+     * @param currentPlayerLocation A tuple representing the X & Y Coordinates of the Players Location
+     */
+    public void setPlayerLocation(final int[] currentPlayerLocation) {
+        playerLocation = currentPlayerLocation;
+    }
+
+    /**
+     * Returns the Location Value of the cell matching the Player Coordinates.
+     *
+     * @return A three digit integer representing the Location Value of the current Player Cell.
+     */
+    public int getLocation() {
+        return mapArray[playerLocation[0]][playerLocation[1]];
+    }
+
+    /**
+     * Set the Tutorial Location Value to be visited and beaten.
+     */
+    public void beatTutorial() {
+        mapArray[TUTORIAL_ROW][TUTORIAL_COLUMN] = BEATEN_TUTORIAL;
+    }
+
+    /**
+     * Updates the Game Map and Player map whenever a Player moves to a Location.
+     * If the Location Value is match a non-visited Location, then the Maps will be updated.
+     */
+    public void updateMap() {
+        // Get the Location Value of the current Player Location and Mod by 100 to find the last 2 digits.
+        // If the Digits match a not visited Explore Location then update the Map.
+        if (mapArray[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_EXPLORE_LOCATION) {
+            // If: the current Location is an unexplored non-Combat Location, set it to be found.
+            mapArray[playerLocation[0]][playerLocation[1]] = EXPLORE_LOCATION;
+            playerMapArray[playerLocation[0]][playerLocation[1]] = "#";
+        }
+        // Get the Location Value of the current Player Location and Mod by 100 to find the last 2 digits.
+        // If the Digits match a not visited Combat Location then update the Map.
+        if (mapArray[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_COMBAT_LOCATION) {
+            // If: the current Location is an unexplored Combat Location, set it to be found.
+            mapArray[playerLocation[0]][playerLocation[1]] = COMBAT_LOCATION;
+            playerMapArray[playerLocation[  0]][playerLocation[1]] = "!";
+        }
+    }
+
+    /**
+     * Update the Maps with the correct values for a beaten Combat Location at the current Player Cell.
+     */
+    public void beatBattle() {
+        // Set the new Location Area Value for the Game Map
+        // New Location Value equals (Old Value / 100 * 100 = Location Area)
+        int beatenLocationValue = mapArray[playerLocation[0]][playerLocation[1]] / LOCATION_DIVIDER * LOCATION_DIVIDER;
+        // Update the Location Value with the Location Area Value + the Beaten Combat Type & Status Value.
+        mapArray[playerLocation[0]][playerLocation[1]] = beatenLocationValue + BEATEN_LOCATION;
+        // Update the Player Map with a beaten Location ASCII Character.
+        playerMapArray[playerLocation[0]][playerLocation[1]] = "#";
     }
 }
 

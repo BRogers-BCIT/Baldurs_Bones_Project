@@ -320,6 +320,38 @@ public class Player {
         }
     }
 
+    // Increase Player Stats and Display Level Up description.
+    private void levelUp(final TextArea descriptionArea) {
+        // Increase the Player's Stats.
+        statLevel += 1;
+        statHealth += 1;
+        abilityReRoll += 1;
+        abilityAdd += 1;
+        abilityTakeAway += 1;
+        // Try to read the Level Up description from the Player Text File.
+        try {
+            // Create a new scanner for the Text File and skip the Combat Outcome descriptions.
+            Scanner fileReader = new Scanner(playerText);
+            for (int combatTextLines = 0; combatTextLines < SKIP_TO_LEVEL_UP; combatTextLines++) {
+                fileReader.nextLine();
+            }
+            // Display the Level Up description.
+            descriptionArea.appendText(fileReader.nextLine() + "\n");
+            if (statLevel == LEVEL_2) {
+                // If: Player is Level 2 then display the Level 2 description.
+                descriptionArea.appendText(fileReader.nextLine());
+            }
+            if (statLevel == LEVEL_3) {
+                // If: Player is Level 2 then display the Level 3 description.
+                fileReader.nextLine();
+                descriptionArea.appendText(fileReader.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            // Catch any errors with reading the Text File.
+            throw new RuntimeException(e);
+        }
+    }
+
     // Preform the appropriate actions and display the appropriate Player text for losing a Combat.
     private void loseCombat(final int outcome, final TextArea descriptionArea) {
         // Try to read the "Lose Combat" description from the Player Text File.
@@ -347,38 +379,6 @@ public class Player {
                     descriptionArea.setText(fileReader.nextLine());
                     descriptionArea.appendText("\n" + statHealth + " Health remaining.");
                 }
-            }
-        } catch (FileNotFoundException e) {
-            // Catch any errors with reading the Text File.
-            throw new RuntimeException(e);
-        }
-    }
-
-    // Increase Player Stats and Display Level Up description.
-    private void levelUp(final TextArea descriptionArea) {
-        // Increase the Player's Stats.
-        statLevel += 1;
-        statHealth += 1;
-        abilityReRoll += 1;
-        abilityAdd += 1;
-        abilityTakeAway += 1;
-        // Try to read the Level Up description from the Player Text File.
-        try {
-            // Create a new scanner for the Text File and skip the Combat Outcome descriptions.
-            Scanner fileReader = new Scanner(playerText);
-            for (int combatTextLines = 0; combatTextLines < SKIP_TO_LEVEL_UP; combatTextLines++) {
-                fileReader.nextLine();
-            }
-            // Display the Level Up description.
-            descriptionArea.appendText(fileReader.nextLine() + "\n");
-            if (statLevel == LEVEL_2) {
-                // If: Player is Level 2 then display the Level 2 description.
-                descriptionArea.appendText(fileReader.nextLine());
-            }
-            if (statLevel == LEVEL_3) {
-                // If: Player is Level 2 then display the Level 3 description.
-                fileReader.nextLine();
-                descriptionArea.appendText(fileReader.nextLine());
             }
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
