@@ -20,35 +20,32 @@ import java.util.Objects;
  */
 public class GameDriver extends Application {
 
-    // Define the amount of pixels to leave of the top of the screen for the anchor bar.
-    private static final int ANCHOR_BAR_SIZE = 70;
+    // Define the amount of space to leave available for the Anchor Bar.
+    private static final int ANCHOR_BAR_SIZE = 65;
 
     /**
-     * Loads the Main Menu FXML document and opens it in a window called Baldur's Bones.
-     * The window is set to fill the users screen while leaving space for anchor bar on top.
-     * In addition, the window is centered in the screen and set to not be resizeable.
+     * Loads the Main Menu FXML document and opens it in a new window.
+     * Sets formatting for the window: full screen sizing, center on screen, disable resizing, set window title.
      *
-     * @param stage takes a stage object from the launch method to display the content in.
-     * @throws IOException if the FXML document being loaded does not exist
+     * @param stage Takes a Stage object from the launch method to open in a new window.
+     * @throws IOException If the FXML document being loaded does not exist
      */
     @Override
     public void start(final Stage stage) throws IOException {
         // Load the Main Menu FXML document into a root object.
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
-        // Get the size of the users screen to determine the size and with of the new game stage.
+        // Get the size of the screen to set the size of the Stage.
         Rectangle2D userScreen = Screen.getPrimary().getBounds();
-        // Load the scene with the size and width found above.
-        // (Height - Size of anchor bar allows anchor bar to display)
+        // Load the Scene with the size. Leave extra space in height to display the Anchor Bar.
         Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - ANCHOR_BAR_SIZE);
-        // Set the new scene in the stage object, center the stage, prevent resizing, and set the window title.
+        // Set the new Scene in the Stage object, center the Stage, prevent resizing, and set the window title.
         stage.setScene(scene);
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.setTitle("Baldur's Bones");
         // Display the window.
         stage.show();
-
-        // Catch manual window close, cancel it, and call the Quit Game pop-up menu.
+        // Catch any Close Window Action Event: cancel the Action Event and call the Quit Game Pop-Up menu.
         stage.setOnCloseRequest(e -> {
             e.consume();
             openQuitPopup(stage);
@@ -56,30 +53,32 @@ public class GameDriver extends Application {
 
     }
 
-    // Open the quit pop-up menu to catch users when quitting.
-    // Allows users to cancel the close, return to Main Menu, or close the game.
+    // Open the quit pop-up menu when a quit Action Event is caught.
+    // Allows users to cancel the quit action, return to Main Menu, or close the game.
     private void openQuitPopup(final Stage currentStage) {
         try {
-            // Create the stage for the pop-up and set its values (pop-up window, resizing, centering, and title).
+            // Create the Stage for the Quit Pop-Up and set its values (resizing, centering, and title).
             Stage popup = new Stage();
-            popup.initModality(Modality.APPLICATION_MODAL);
             popup.setResizable(false);
             popup.centerOnScreen();
             popup.setTitle("Quit");
-            // Load the Quit Game pop-up FXML document into a root object.
+            // Set the new Scene to act as a Pop-Up (Prevent actions in main Scene while Quit Pop-Up is open.)
+            popup.initModality(Modality.APPLICATION_MODAL);
+            // Load the Quit Game Pop-Up FXML document into a root object.
             FXMLLoader loader = new FXMLLoader(getClass().getResource("QuitMenu.fxml"));
             Parent root = loader.load();
-            // Get the controller for the new pop-up.
+            // Get the Controller for the new Scene.
             QuitPopupController controller = loader.getController();
-            // Pass the current stage object to the Quit Game pop-up to allow it to close the window if needed.
+            // Pass the current Stage object to the Quit Game Pop-Up - allows it to close the Stage.
             controller.getMainStage(currentStage);
-            // Get the scene from the loaded root.
+            // Get the Scene from the loaded root.
             Scene popupDisplay = new Scene(root);
-            // Load the pop-up scene into the stage and display it.
-            // Application Modal option set above will pause the main window until the pop-up is closed.
+            // Load the Pop-Up Scene into the Stage and display it.
             popup.setScene(popupDisplay);
+            // Show and Wait works with Application Modal to pause the main Stage while Pop-Up is open.
             popup.showAndWait();
         } catch (IOException e) {
+            // Catch errors if the FXML file being loaded does not exist.
             throw new RuntimeException(e);
         }
     }
@@ -90,6 +89,7 @@ public class GameDriver extends Application {
      * @param args No passed arguments
      */
     public static void main(final String[] args) {
+        // Creates a new Stage and calls the Start() method to launch a JavaFX window.
         launch();
     }
 }
