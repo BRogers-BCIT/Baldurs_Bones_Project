@@ -16,7 +16,7 @@ public class GameCombatController {
     // The Parent Layout Element the Game Combat Scene is displayed in.
     private GridPane container;
 
-    // The Layout Element for the Game Combat scene.
+    // The Layout Element for the Game Combat Scene.
     @FXML
     private GridPane gameCombatGrid;
 
@@ -33,6 +33,20 @@ public class GameCombatController {
     private String gameState;
 
     /**
+     * Enables the Parent Scene Buttons and Removes the Game Combat Scene from the Parent Scene.
+     */
+    public void closeGameCombatMenu() {
+        // Enable the Parent Scene Buttons.
+        container.lookup("#ViewCharacter").setDisable(false);
+        container.lookup("#ViewMap").setDisable(false);
+        container.lookup("#SettingsButton").setDisable(false);
+        // ** Temp Testing Button **
+        container.lookup("#endGameTest").setDisable(false);
+        // Remove the Game Info Scene from the Parent Scene.
+        container.getChildren().remove(gameCombatGrid);
+    }
+
+    /**
      * Creates a new Combat object for the Game Combat Scene and calls the Combat Starter method.
      *
      * @param combatTitle       A string representing the title of the combat.
@@ -44,7 +58,7 @@ public class GameCombatController {
     }
 
     /**
-     * Calls the Combat Roll method when the Player Roll button is clicked.
+     * Calls the Combat Roll method when the Player Roll Button is clicked.
      */
     @FXML
     public void playerRoll() {
@@ -52,7 +66,7 @@ public class GameCombatController {
     }
 
     /**
-     * Calls the Combat "Re-Roll" Ability method when the Player Roll button is clicked.
+     * Calls the Combat "Re-Roll" Ability method when the Player Roll Button is clicked.
      */
     @FXML
     public void playerReRoll() {
@@ -60,7 +74,7 @@ public class GameCombatController {
     }
 
     /**
-     * Calls the Combat "Add" Ability method when the Player Roll button is clicked.
+     * Calls the Combat "Add" Ability method when the Player Roll Button is clicked.
      */
     @FXML
     public void playerAdd() {
@@ -68,7 +82,7 @@ public class GameCombatController {
     }
 
     /**
-     * Calls the Combat "Take-Away" Ability method when the Player Roll button is clicked.
+     * Calls the Combat "Take-Away" Ability method when the Player Roll Button is clicked.
      */
     @FXML
     public void playerTakeAway() {
@@ -76,7 +90,7 @@ public class GameCombatController {
     }
 
     /**
-     * When the player clicks the Hold button, call the Combat method for ending a round of Combat.
+     * When the player clicks the Hold Button, call the Combat method for ending a round of Combat.
      * A Game State will be returned to inform the Controller what to do once the Player continues.
      */
     @FXML
@@ -94,7 +108,7 @@ public class GameCombatController {
     /**
      * Progresses a Combat after a round has finished. Proceeds based on the current Game State.
      * End Combat: Close the Game Combat Scene.
-     * End Round: Re-Enable the buttons, a new Round against the Boss has started.
+     * End Round: Re-Enable the Buttons, a new Round against the Boss has started.
      */
     @FXML
     public void endCombat() {
@@ -102,7 +116,7 @@ public class GameCombatController {
             // If: The Game State is "end combat", close the Game Combat Scene.
             closeGameCombatMenu();
         } else if (Objects.equals(gameState, "end round")) {
-            // Else If: The Game State is "end round", re-enable the Combat buttons.
+            // Else If: The Game State is "end round", re-enable the Combat Buttons.
             gameCombatGrid.lookup("#RollButton").setDisable(false);
             gameCombatGrid.lookup("#HoldButton").setDisable(false);
             gameCombatGrid.lookup("#AddButton").setDisable(false);
@@ -114,21 +128,7 @@ public class GameCombatController {
     }
 
     /**
-     * Sets the Parent Layout (Location Scene) Buttons to be enabled and closes the Game Combat Scene.
-     */
-    public void closeGameCombatMenu() {
-        // Set Location Scene buttons to be clickable.
-        container.lookup("#ViewCharacter").setDisable(false);
-        container.lookup("#ViewMap").setDisable(false);
-        container.lookup("#SettingsButton").setDisable(false);
-        // ** Temp Testing Button **
-        container.lookup("#endGameTest").setDisable(false);
-        // Remove the Game Info Scene from the Location Scene.
-        container.getChildren().remove(gameCombatGrid);
-    }
-
-    /**
-     * Sets the Parent Layout Element of the End Game Scene. Also sets the Player and Enemy objects.
+     * Sets the Parent Layout Element of the Game Combat Scene. Also sets the Player and Enemy objects.
      *
      * @param parentGrid      The Parent Layout Element of the character info Scene layout
      * @param playerCharacter The Player object to be used in the Combat for this Combat Menu

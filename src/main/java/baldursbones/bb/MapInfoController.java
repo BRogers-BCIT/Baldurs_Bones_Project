@@ -13,39 +13,40 @@ import javafx.scene.layout.HBox;
  */
 public class MapInfoController {
 
-    // FXML Element: The parent element the map info menu is displayed in.
+    // FXML Element: The Parent Layout Element the Map Info Scene is displayed within.
     private GridPane container;
 
-    // FXML Element: The layout element for the map info menu.
+    // FXML Element: The Layout Element for the Map Info Scene.
     @FXML
     private HBox mapInfoBox;
 
-    // FXML Element: A grid pane object used to display a 7x7 view of the player map.
+    // FXML Element: The Grid Pane object used to display Game Map.
     @FXML
     private GridPane mapInfoGrid;
 
-    // Object: The game maps object with the current game information.
+    // Object: The Map object that contains the Map Display method.
     private Map currentMaps;
 
     /**
-     * Removes the map info menu layout from the location menu and makes the buttons clickable again.
+     * Enables the Parent Scene Buttons and Removes the Map Info Scene from the Parent Scene.
      */
     @FXML
     public void closeGameInfoMenu() {
-        // Set location menu buttons to be clickable.
+        // Enable the Parent Scene Buttons.
         container.lookup("#ViewCharacter").setDisable(false);
         container.lookup("#ViewMap").setDisable(false);
-        container.lookup("#endGameTest").setDisable(false);
         container.lookup("#SettingsButton").setDisable(false);
-        // Remove the map info menu from SettingsButton location menu window.
+        // ** Temp Testing Button **
+        container.lookup("#endGameTest").setDisable(false);
+        // Remove the Map Info Scene from the Parent Scene.
         container.getChildren().remove(mapInfoBox);
     }
 
     /**
-     * Takes the parent element that the layout will be displayed in and saves it.
+     * Sets the Parent Layout Element for the Map Info Scene and the Map object to use.
      *
-     * @param parentGrid The parent element of the character info menu layout
-     * @param gameMaps The map object that contains the methods to update the map grid pane.
+     * @param parentGrid The Parent Layout Element the Character Info Scene is displayed within
+     * @param gameMaps   The Map object that contains the Player Map array and Map Display methods.
      */
     public void getContainerElements(final GridPane parentGrid, final Map gameMaps) {
         container = parentGrid;
@@ -53,7 +54,8 @@ public class MapInfoController {
     }
 
     /**
-     * Method call used to display / update the map info in the map grid pane.
+     * Calls the Display Map method from the Map object to update the Map Grid Pane Element.
+     * Passes the Grid Pane Element to be updated with the Player Map.
      */
     public void displayMap() {
         currentMaps.displayMap(mapInfoGrid);

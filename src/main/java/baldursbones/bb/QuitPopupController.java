@@ -14,77 +14,74 @@ import java.io.IOException;
 import java.util.Objects;
 
 /**
- * Quit Popup Controller.
+ * Quit Pop-Up Controller.
  *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
 public class QuitPopupController {
 
-    // Constant: Define the amount of pixels to leave of the top of the screen for the anchor bar.
-    // Used when creating a new container class scene (Main Menu / Location Menu)
-    private static final int ANCHOR_BAR_SIZE = 70;
+    // Define the amount of space to leave available for the Anchor Bar.
+    private static final int ANCHOR_BAR_SIZE = 65;
 
-    // The parent stage that the Quit Game pop-up was called by. Used to close the parent window if needed.
+    // The Parent Stage of the Quit Pop-Up Scene.
     private Stage parentStage;
 
     /**
-     * Closes the Quit Game pop-up menu.
+     * Closes the Quit Pop-Up Scene.
      *
-     * @param event the event object created by clicking the cancel quit button
+     * @param event The Action Event object created by clicking the Cancel Quit Button
      */
     @FXML
-    public void cancelQuit(final ActionEvent event) {
-        // Get the stage by tracing the source of the click event. Event -> Scene -> Stage.
+    public void closeQuit(final ActionEvent event) {
+        // Get the current Stage by tracing the source of the Action Event. Event -> Scene -> Stage.
         Stage currentPopup = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        // Invoke the close method on the Quit Game pop-up menu.
+        // Invoke the close method on the Quit Pop-Up Stage.
         currentPopup.close();
     }
 
     /**
-     * Opens a new Main Menu window and closes the Quit Game pop-up.
+     * Open a new Main Menu Scene and close the Quit Pop-Up Stage.
      *
-     * @param event the event object created by clicking the load game FXML button
+     * @param event the Action Event object created by clicking the load game FXML Button
      * @throws IOException if the FXML document being loaded does not exist
      */
     @FXML
     public void returnToMainMenu(final ActionEvent event) throws IOException {
         // Get the Main Menu FXML file and load it into root.
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
-        // Get the size of the users screen to set the size and with of the game window.
-        // Get the size of the users screen to determine the size and with of the New Game stage.
+        // Get the size of the screen to set the size of the Stage.
         Rectangle2D userScreen = Screen.getPrimary().getBounds();
-        // Load the scene with the size and width found above.
-        // (Height - Size of anchor bar allows anchor bar to display)
+        // Load the Scene with the size. Leave extra space in height to display the Anchor Bar.
         Scene scene = new Scene(root, userScreen.getWidth(), userScreen.getHeight() - ANCHOR_BAR_SIZE);
-        // Set the new scene in the stage object, center the stage, prevent resizing, and set the window title.
+        // Set the new Scene in the Stage object, center the Stage, prevent resizing, and set the window title.
         parentStage.setScene(scene);
         parentStage.centerOnScreen();
         parentStage.setResizable(false);
         parentStage.setTitle("Baldur's Bones");
         // Display the window.
         parentStage.show();
-        // Call method to close the pop-up.
-        cancelQuit(event);
+        // Call method to close the Quit Pop-Up.
+        closeQuit(event);
     }
 
     /**
-     * Closes the main game window by closing its stage object. Calls method to close the Quit Game pop-up.
+     * Closes the Parent Stage by invoking the close method. Also calls method to close the Quit Pop-Up Stage.
      *
-     * @param event the event object created by clicking the Quit Game button
+     * @param event The Action Event object created by clicking the Quit Game Button
      */
     @FXML
     public void quitGame(final ActionEvent event) {
-        // Invoke the close method on the main window stage to close the main window.
+        // Invoke the close method on the Parent Stage of the Quit Pop-Up.
         parentStage.close();
-        // Call method to close the pop-up.
-        cancelQuit(event);
+        // Call method to close the Quit Pop-Up Stage.
+        closeQuit(event);
     }
 
     /**
-     * Gets the stage object of the window that called this class. Used to close the parent window if needed.
+     * Receives the Stage object for the Primary Game Window (Parent Stage).
      *
-     * @param mainStage the stage object for the current main window
+     * @param mainStage The Stage object for the Primary Game Window
      */
     public void getMainStage(final Stage mainStage) {
         parentStage = mainStage;

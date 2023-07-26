@@ -22,24 +22,24 @@ public class CharacterInfoController {
     private Player currentPlayer;
 
     /**
-     * Sets the Parent Layout (Location Scene) Buttons to be enabled and closes the Character Info Scene.
+     * Enables the Parent Scene Buttons and Removes the Character Info Scene from the Parent Scene.
      */
     @FXML
     public void closeGameInfoMenu() {
-        // Set Location Scene buttons to be enabled.
+        // Enable the Parent Scene Buttons.
         container.lookup("#ViewCharacter").setDisable(false);
         container.lookup("#ViewMap").setDisable(false);
         container.lookup("#SettingsButton").setDisable(false);
         // ** Temp Testing Button **
         container.lookup("#endGameTest").setDisable(false);
-        // Remove the Character Info Scene from the Location Scene.
+        // Remove the Character Info Scene from the Parent Scene.
         container.getChildren().remove(characterInfoGrid);
     }
 
     /**
-     * Sets the Parent Layout Element to display inside and the player object to read display info from.
+     * Sets the Parent Layout Element of the Character Info Scene and the Player object to read info from.
      *
-     * @param parentGrid The Parent Layout Element of the Character Info Scene
+     * @param parentGrid      The Parent Layout Element of the Character Info Scene
      * @param playerCharacter The Player object that is used to update the Player Info.
      */
     public void getContainerElements(final GridPane parentGrid, final Player playerCharacter) {
