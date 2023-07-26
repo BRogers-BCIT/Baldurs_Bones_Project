@@ -73,17 +73,35 @@ public class Map {
     private int[] playerLocation;
 
     // Variable: The 2D array that tracks the Location Values of each Cell in the Game Map grid.
-    private final int[][] mapArray;
+    private int[][] gameMap;
 
     // Variable: The 2D array that tracks the ASCII Values of each Cell in the Player Map grid.
-    private final String[][] playerMapArray;
+    private String[][] playerMap;
 
     /**
      * Initializes a new map object by setting the Game Map and the Player Map to their starting values.
      */
     public Map() {
-        mapArray = STARTING_MAP;
-        playerMapArray = STARTING_MAP_PLAYER;
+        gameMap = STARTING_MAP;
+        playerMap = STARTING_MAP_PLAYER;
+    }
+
+    /**
+     * Sets the Game Map to an Array loaded from a Save File.
+     *
+     * @param loadedGameMap a 2D int array representing the loaded Game Map
+     */
+    public void setGameMap(final int[][] loadedGameMap) {
+        gameMap = loadedGameMap;
+    }
+
+    /**
+     * Sets the Player Map to an Array loaded from a Save File.
+     *
+     * @param loadedPlayerMap a 2D string array representing the loaded Game Map
+     */
+    public void setPlayerMap(final String[][] loadedPlayerMap) {
+        playerMap = loadedPlayerMap;
     }
 
     /**
@@ -108,7 +126,7 @@ public class Map {
                     cellImage = new Image(asciiToImage("@"), IMAGE_SIZE, IMAGE_SIZE, true, true);
                 } else {
                     // Else: get the Image assosiated with the ASCII Character in the current Coordinates.
-                    cellImage = new Image(asciiToImage(playerMapArray[row][column]),
+                    cellImage = new Image(asciiToImage(playerMap[row][column]),
                             IMAGE_SIZE, IMAGE_SIZE, true, true);
                 }
                 // Load the Image for the current Cell into the Image View to be displayed.
@@ -154,7 +172,7 @@ public class Map {
                 } else if (row >= 0 && row < MAP_SIZE && column >= 0 && column < MAP_SIZE) {
                     // Else If: the current Coordinates fall inside the Game Map:
                     // Get the Image assosiated with the ASCII Character in the current Coordinates.
-                    cellImage = new Image(asciiToImage(playerMapArray[row][column]),
+                    cellImage = new Image(asciiToImage(playerMap[row][column]),
                             IMAGE_SIZE, IMAGE_SIZE, true, true);
                 }
                 // Load the Cell Image into the Image View to be displayed.
@@ -219,14 +237,14 @@ public class Map {
      * @return A three digit integer representing the Location Value of the current Player Cell.
      */
     public int getLocation() {
-        return mapArray[playerLocation[0]][playerLocation[1]];
+        return gameMap[playerLocation[0]][playerLocation[1]];
     }
 
     /**
      * Set the Tutorial Location Value to be visited and beaten.
      */
     public void beatTutorial() {
-        mapArray[TUTORIAL_ROW][TUTORIAL_COLUMN] = BEATEN_TUTORIAL;
+        gameMap[TUTORIAL_ROW][TUTORIAL_COLUMN] = BEATEN_TUTORIAL;
     }
 
     /**
@@ -236,17 +254,17 @@ public class Map {
     public void updateMap() {
         // Get the Location Value of the current Player Location and Mod by 100 to find the last 2 digits.
         // If the Digits match a not visited Explore Location then update the Map.
-        if (mapArray[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_EXPLORE_LOCATION) {
+        if (gameMap[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_EXPLORE_LOCATION) {
             // If: the current Location is an unexplored non-Combat Location, set it to be found.
-            mapArray[playerLocation[0]][playerLocation[1]] = EXPLORE_LOCATION;
-            playerMapArray[playerLocation[0]][playerLocation[1]] = "#";
+            gameMap[playerLocation[0]][playerLocation[1]] = EXPLORE_LOCATION;
+            playerMap[playerLocation[0]][playerLocation[1]] = "#";
         }
         // Get the Location Value of the current Player Location and Mod by 100 to find the last 2 digits.
         // If the Digits match a not visited Combat Location then update the Map.
-        if (mapArray[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_COMBAT_LOCATION) {
+        if (gameMap[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_COMBAT_LOCATION) {
             // If: the current Location is an unexplored Combat Location, set it to be found.
-            mapArray[playerLocation[0]][playerLocation[1]] = COMBAT_LOCATION;
-            playerMapArray[playerLocation[  0]][playerLocation[1]] = "!";
+            gameMap[playerLocation[0]][playerLocation[1]] = COMBAT_LOCATION;
+            playerMap[playerLocation[0]][playerLocation[1]] = "!";
         }
     }
 
@@ -256,11 +274,11 @@ public class Map {
     public void beatBattle() {
         // Set the new Location Area Value for the Game Map
         // New Location Value equals (Old Value / 100 * 100 = Location Area)
-        int beatenLocationValue = mapArray[playerLocation[0]][playerLocation[1]] / LOCATION_DIVIDER * LOCATION_DIVIDER;
+        int beatenLocationValue = gameMap[playerLocation[0]][playerLocation[1]] / LOCATION_DIVIDER * LOCATION_DIVIDER;
         // Update the Location Value with the Location Area Value + the Beaten Combat Type & Status Value.
-        mapArray[playerLocation[0]][playerLocation[1]] = beatenLocationValue + BEATEN_LOCATION;
+        gameMap[playerLocation[0]][playerLocation[1]] = beatenLocationValue + BEATEN_LOCATION;
         // Update the Player Map with a beaten Location ASCII Character.
-        playerMapArray[playerLocation[0]][playerLocation[1]] = "#";
+        playerMap[playerLocation[0]][playerLocation[1]] = "#";
     }
 }
 
