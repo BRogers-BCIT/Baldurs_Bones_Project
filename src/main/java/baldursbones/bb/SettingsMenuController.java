@@ -107,7 +107,7 @@ public class SettingsMenuController implements Initializable {
         Parent root = loader.load();
         // Get the controller for the Saved Games Scene and pass the Parent Layout Element.
         SaveMenuController controller = loader.getController();
-        controller.getContainerElement(container);
+        controller.setSceneVariables(container);
         if (container.getId().equals("mainMenuGrid")) {
             // If: The Parent Layout Element is the Main Menu:
             // Load the Scene into the Main Menu Display Cell.
@@ -134,7 +134,7 @@ public class SettingsMenuController implements Initializable {
         Parent root = loader.load();
         // Get the controller for the Saved Games Scene and pass the Parent Layout Element.
         SaveMenuController controller = loader.getController();
-        controller.getContainerElement(container);
+        controller.setSceneVariables(container);
         if (container.getId().equals("mainMenuGrid")) {
             // If: The Parent Layout Element is the Main Menu:
             // Load the Scene into the Main Menu Display Cell.
@@ -231,7 +231,7 @@ public class SettingsMenuController implements Initializable {
      * Also sets the Sound Settings States to match the current Game Sound Settings.
      * @param parentGrid The Parent Layout Element of the Settings Menu Scene
      */
-    public void getContainerElement(final GridPane parentGrid) {
+    public void setSceneVariables(final GridPane parentGrid) {
         container = parentGrid;
         CheckBox musicState = (CheckBox) container.lookup("#EnableMusic");
         enableMusicState.setSelected(musicState.isSelected());

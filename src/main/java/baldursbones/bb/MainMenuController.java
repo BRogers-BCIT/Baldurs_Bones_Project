@@ -51,7 +51,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         SettingsMenuController controller = loader.getController();
-        controller.getContainerElement(mainMenuGrid);
+        controller.setSceneVariables(mainMenuGrid);
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
@@ -72,7 +72,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         NewGameController controller = loader.getController();
-        controller.getContainerElement(mainMenuGrid);
+        controller.setSceneVariables(mainMenuGrid);
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
@@ -93,7 +93,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         SaveMenuController controller = loader.getController();
-        controller.getContainerElement(mainMenuGrid);
+        controller.setSceneVariables(mainMenuGrid);
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
@@ -114,7 +114,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         GameInfoController controller = loader.getController();
-        controller.getContainerElement(mainMenuGrid);
+        controller.setSceneVariables(mainMenuGrid);
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);

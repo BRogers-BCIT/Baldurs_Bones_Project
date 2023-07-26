@@ -11,9 +11,9 @@ import javafx.scene.layout.GridPane;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 /**
  * Location Menu Controller.
@@ -35,39 +35,39 @@ public class LocationMenuController implements Initializable {
     @FXML
     private GridPane locationMenuMap;
 
-    // FXML Element: Menu button that calls the Start Fight method.
+    // FXML Element: Menu Button that calls the Start Fight method.
     @FXML
-    private Button startFightButton;
+    private Button combatButton;
 
-    // FXML Element: Menu button that calls the View Character method.
+    // FXML Element: Menu Button that calls the View Character method.
     @FXML
     private Button viewCharacterButton;
 
-    // FXML Element: Menu button that calls the View Map method.
+    // FXML Element: Menu Button that calls the View Map method.
     @FXML
     private Button viewMapButton;
 
-    // FXML Element: Menu button that calls the End Game method for testing.
+    // FXML Element: Menu Button that calls the End Game method for testing.
     @FXML
     private Button endGameButton;
 
-    // FXML Element: Menu button that calls the open Settings Menu method.
+    // FXML Element: Menu Button that calls the open Settings Menu method.
     @FXML
-    private Button openSettingsButton;
+    private Button settingsButton;
 
-    // FXML Element: Movement button for north. Calls move player method.
+    // FXML Element: Movement Button for north. Calls move player method.
     @FXML
     private Button moveNorthButton;
 
-    // FXML Element: Movement button for south. Calls move player method.
+    // FXML Element: Movement Button for south. Calls move player method.
     @FXML
     private Button moveSouthButton;
 
-    // FXML Element: Movement button for east. Calls move player method.
+    // FXML Element: Movement Button for east. Calls move player method.
     @FXML
     private Button moveEastButton;
 
-    // FXML Element: Movement button for west. Calls move player method.
+    // FXML Element: Movement Button for west. Calls move player method.
     @FXML
     private Button moveWestButton;
 
@@ -93,7 +93,7 @@ public class LocationMenuController implements Initializable {
     // Variable: Used to indicate if the tutorial should be skipped when starting a new game.
     private boolean skipTutorial;
 
-    // Variable: Used to record the current game state when waiting for the player to continue after text is displayed.
+    // Variable: A value hold the game in a specific State while waiting for user to confirm after a game action.
     private String gameState;
 
     /**
@@ -104,7 +104,7 @@ public class LocationMenuController implements Initializable {
     public void gameStarter() {
         // If: the tutorial is not being skipped.
         if (!skipTutorial) {
-            // Disable the menu buttons.
+            // Disable the menu Buttons.
             disableMenuButtons();
             // Create a tutorial location, and call method to display the tutorial start description.
             currentLocation = new TutorialLocation(0, locationMenuGrid);
@@ -119,7 +119,7 @@ public class LocationMenuController implements Initializable {
     }
 
     private void tutorialCombat() {
-        // Create an Enemy of Tutorial type and pass the JavaFX layout element.
+        // Create an Enemy of Tutorial type and pass the JavaFX Layout Element
         currentEnemy = new TutorialEnemy(locationMenuGrid);
         // Open the combat menu and get the controller.
         // The combat menu will contain the player and enemy objects.
@@ -164,34 +164,46 @@ public class LocationMenuController implements Initializable {
 
     @FXML
     public void moveNorth() {
+        int[] startLocation = playerCharacter.getLocation();
         playerCharacter.setLocation(playerMovement.moveNorth());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
-        checkLocation();
+        if (!Arrays.equals(startLocation, playerCharacter.getLocation())) {
+            checkLocation();
+        }
     }
 
     @FXML
     public void moveEast() {
+        int[] startLocation = playerCharacter.getLocation();
         playerCharacter.setLocation(playerMovement.moveEast());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
-        checkLocation();
+        if (!Arrays.equals(startLocation, playerCharacter.getLocation())) {
+            checkLocation();
+        }
     }
 
     @FXML
     public void moveSouth() {
+        int[] startLocation = playerCharacter.getLocation();
         playerCharacter.setLocation(playerMovement.moveSouth());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
-        checkLocation();
+        if (!Arrays.equals(startLocation, playerCharacter.getLocation())) {
+            checkLocation();
+        }
     }
 
     @FXML
     public void moveWest() {
+        int[] startLocation = playerCharacter.getLocation();
         playerCharacter.setLocation(playerMovement.moveWest());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
-        checkLocation();
+        if (!Arrays.equals(startLocation, playerCharacter.getLocation())) {
+            checkLocation();
+        }
     }
 
     private void checkLocation() {
@@ -226,9 +238,10 @@ public class LocationMenuController implements Initializable {
     public void startFight() throws FileNotFoundException {
         if (currentLocation.locationValue != 500) {
             regularCombat(currentEnemy.getCombatTitle(), currentEnemy.getCombatDescription());
-            playerCharacter.finishBattle(locationDescription);
+            playerCharacter.finishCombat(locationDescription);
             if (playerCharacter.getLastOutcome() == 1) {
-                gameMaps.beatBattle(playerCharacter.getLocation());
+                gameMaps.setPlayerLocation(playerCharacter.getLocation());
+                gameMaps.beatBattle();
             }
         } else {
             bossCombat();
@@ -254,7 +267,7 @@ public class LocationMenuController implements Initializable {
             playerMove();
         }  else if (Objects.equals(gameState, "combat location")) {
             gameState = "";
-            startFightButton.setDisable(false);
+            combatButton.setDisable(false);
         } else if (Objects.equals(gameState, "finish combat")) {
             gameState = "";
             playerMove();
@@ -263,9 +276,9 @@ public class LocationMenuController implements Initializable {
 
 
     /**
-     * Load the Settings Menu document, display it in the center of the screen, and disable all location menu buttons.
+     * Load the Settings Menu document, display it in the center of the screen, and disable all location menu Buttons.
      *
-     * @throws IOException if the fxml file being loaded does not exist
+     * @throws IOException if the FXML file being loaded does not exist
      */
     @FXML
     public void openSettingsMenu() throws IOException {
@@ -274,18 +287,18 @@ public class LocationMenuController implements Initializable {
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
         SettingsMenuController controller = loader.getController();
-        controller.getContainerElement(locationMenuGrid);
+        controller.setSceneVariables(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
         disableMenuButtons();
-        openSettingsButton.setDisable(true);
+        settingsButton.setDisable(true);
     }
 
     /**
-     * Load the character info menu document, display it in the center of the screen. Call button disable method.
+     * Load the character info menu document, display it in the center of the screen. Call Button disable method.
      *
-     * @throws IOException if the fxml file being loaded does not exist
+     * @throws IOException if the FXML file being loaded does not exist
      */
     @FXML
     public void openCharacterInfo() throws IOException {
@@ -294,7 +307,7 @@ public class LocationMenuController implements Initializable {
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
         CharacterInfoController controller = loader.getController();
-        controller.getContainerElements(locationMenuGrid, playerCharacter);
+        controller.setSceneVariables(locationMenuGrid, playerCharacter);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
@@ -303,9 +316,9 @@ public class LocationMenuController implements Initializable {
     }
 
     /**
-     * Load the map display menu document, display it in the center of the screen. Call button disable method.
+     * Load the map display menu document, display it in the center of the screen. Call Button disable method.
      *
-     * @throws IOException if the fxml file being loaded does not exist
+     * @throws IOException if the FXML file being loaded does not exist
      */
     @FXML
     public void openMapInfo() throws IOException {
@@ -314,7 +327,7 @@ public class LocationMenuController implements Initializable {
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
         MapInfoController controller = loader.getController();
-        controller.getContainerElements(locationMenuGrid, gameMaps);
+        controller.setSceneVariables(locationMenuGrid, gameMaps);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
@@ -323,9 +336,9 @@ public class LocationMenuController implements Initializable {
     }
 
     /**
-     * Load the game end menu document, display it in the center of the screen. Call button disable method.
+     * Load the game end menu document, display it in the center of the screen. Call Button disable method.
      *
-     * @throws IOException if the fxml file being loaded does not exist
+     * @throws IOException if the FXML file being loaded does not exist
      */
     @FXML
     public void openEndGameMenu() throws IOException {
@@ -334,7 +347,7 @@ public class LocationMenuController implements Initializable {
         root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
         EndGameController controller = loader.getController();
-        controller.getContainerElement(locationMenuGrid);
+        controller.setSceneVariables(locationMenuGrid);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
@@ -342,7 +355,7 @@ public class LocationMenuController implements Initializable {
     }
 
     /**
-     * Load the game combat menu document, display it in the center of the screen. Call button disable method.
+     * Load the game combat menu document, display it in the center of the screen. Call Button disable method.
      *
      * @return the FXML loader for the combat menu for the method that called this to use
      * @throws RuntimeException if the fxml file being loaded does not exist
@@ -361,7 +374,7 @@ public class LocationMenuController implements Initializable {
         }
         // Get the controller for the new menu and pass the location menu layout to the class.
         GameCombatController controller = loader.getController();
-        controller.getContainerElement(locationMenuGrid, playerCharacter, currentEnemy);
+        controller.setSceneVariables(locationMenuGrid, playerCharacter, currentEnemy);
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
@@ -369,22 +382,22 @@ public class LocationMenuController implements Initializable {
     }
 
 
-    // Disables the location menu buttons while a different menu is open.
+    // Disables the location menu Buttons while a different menu is open.
     private void disableMenuButtons() {
-        openSettingsButton.setDisable(true);
-        startFightButton.setDisable(true);
+        settingsButton.setDisable(true);
         viewCharacterButton.setDisable(true);
         viewMapButton.setDisable(true);
         endGameButton.setDisable(true);
+        locationDescription.setDisable(true);
     }
 
-    // Disables the location action buttons while the player is displayed a message.
+    // Disables the location action Buttons while the player is displayed a message.
     private void disableActionButtons() {
         moveNorthButton.setDisable(true);
         moveEastButton.setDisable(true);
         moveSouthButton.setDisable(true);
         moveWestButton.setDisable(true);
-        startFightButton.setDisable(true);
+        combatButton.setDisable(true);
     }
 
     /**
@@ -410,7 +423,7 @@ public class LocationMenuController implements Initializable {
         moveEastButton.setDisable(true);
         moveSouthButton.setDisable(true);
         moveWestButton.setDisable(true);
-        startFightButton.setDisable(true);
+        combatButton.setDisable(true);
         playerCharacter = new Player();
         gameMaps = new Map();
         gameMaps.setPlayerLocation(playerCharacter.getLocation());

@@ -77,7 +77,7 @@ public class EndGameController {
         Parent root = loader.load();
         // Get the controller for the Saved Games Scene and pass the End Game Parent Layout Element to the class.
         SaveMenuController controller = loader.getController();
-        controller.getContainerElement(container);
+        controller.setSceneVariables(container);
         // Define the Coordinates to display the new Scene in the Parent Layout Element
         GridPane.setConstraints(root, 1, 1);
         // Display the new Scene
@@ -96,7 +96,7 @@ public class EndGameController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the current Parent Layout Element.
         NewGameController controller = loader.getController();
-        controller.getContainerElement(container);
+        controller.setSceneVariables(container);
         // Define the Coordinates to display the new Scene in the Parent Layout Element.
         GridPane.setConstraints(root, 2, 1);
         // Display the New Game Scene and remove the End Game Scene.
@@ -109,7 +109,7 @@ public class EndGameController {
      *
      * @param parentGrid The Parent Layout Element for the End Game Scene
      */
-    public void getContainerElement(final GridPane parentGrid) {
+    public void setSceneVariables(final GridPane parentGrid) {
         container = parentGrid;
     }
 

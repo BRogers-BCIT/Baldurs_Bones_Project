@@ -157,7 +157,7 @@ public class NewGameController {
      *
      * @param parentGrid The Parent Layout Element of the New Game Scene
      */
-    public void getContainerElement(final GridPane parentGrid) {
+    public void setSceneVariables(final GridPane parentGrid) {
         container = parentGrid;
     }
 }

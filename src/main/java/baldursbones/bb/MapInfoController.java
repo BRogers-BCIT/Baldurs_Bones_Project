@@ -48,7 +48,7 @@ public class MapInfoController {
      * @param parentGrid The Parent Layout Element the Character Info Scene is displayed within
      * @param gameMaps   The Map object that contains the Player Map array and Map Display methods.
      */
-    public void getContainerElements(final GridPane parentGrid, final Map gameMaps) {
+    public void setSceneVariables(final GridPane parentGrid, final Map gameMaps) {
         container = parentGrid;
         currentMaps = gameMaps;
     }

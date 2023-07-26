@@ -42,7 +42,7 @@ public class CharacterInfoController {
      * @param parentGrid      The Parent Layout Element of the Character Info Scene
      * @param playerCharacter The Player object that is used to update the Player Info.
      */
-    public void getContainerElements(final GridPane parentGrid, final Player playerCharacter) {
+    public void setSceneVariables(final GridPane parentGrid, final Player playerCharacter) {
         container = parentGrid;
         currentPlayer = playerCharacter;
     }

@@ -169,7 +169,7 @@ public class GameInfoController implements Initializable {
      *
      * @param parentGrid The Parent Layout Element of the Game Info Scene
      */
-    public void getContainerElement(final GridPane parentGrid) {
+    public void setSceneVariables(final GridPane parentGrid) {
         container = parentGrid;
     }
 

@@ -134,7 +134,7 @@ public class GameCombatController {
      * @param playerCharacter The Player object to be used in the Combat for this Combat Menu
      * @param currentEnemy    The Enemy object to be used in the Combat for this Combat Menu
      */
-    public void getContainerElement(final GridPane parentGrid, final Player playerCharacter, final Enemy currentEnemy) {
+    public void setSceneVariables(final GridPane parentGrid, final Player playerCharacter, final Enemy currentEnemy) {
         container = parentGrid;
         player = playerCharacter;
         enemy = currentEnemy;
