@@ -26,199 +26,221 @@ import java.util.ResourceBundle;
  */
 public class SettingsMenuController implements Initializable {
 
-    // Variable: Records if the sound Settings Menu is currently opened or closed.
+    // Variable: Defines the current state of the Settings menu.
+    // False = Regular Settings, True = Sound Settings.
     private boolean soundSettingsOpen;
 
-    // FXML Element: The parent element the Settings Menu is displayed in.
+    // FXML Element: The Parent Layout Element of the Settings Menu Scene.
     private GridPane container;
 
-    // FXML Element: The layout element for the Settings Menu.
+    // FXML Element: The Layout Element for the Settings Menu Scene.
     @FXML
     private HBox settingsMenu;
 
-    // FXML Element: Settings button that calls the close Settings Menu method.
+    // FXML Element: The Button that calls the close Settings Menu Scene method.
     @FXML
     private Button closeMenuButton;
 
-    // FXML Element: Settings button that calls the open the Save Games menu method.
+    // FXML Element: The Button that calls the open the Save Games Scene method.
     @FXML
     private Button openSaveMenuButton;
 
-    // FXML Element: Settings button that calls the open the Game Info menu method.
+    // FXML Element: The Button that calls the open the Game Info Scene method.
     @FXML
     private Button openGameInfoButton;
 
-    // FXML Element: Settings button that calls the open sound settings method.
+    // FXML Element: The Button that calls the Open Sound Settings method.
     @FXML
     private Button openSoundSettingsButton;
 
-    // FXML Element: Settings button that calls the close sound settings method.
+    // FXML Element: The Button that calls the Close Sound Settings method.
     @FXML
     private Button closeSoundSettingsButton;
 
-    // FXML Element: Settings button that calls the Quit Game method.
+    // FXML Element: The Button that calls the Quit Game method.
     @FXML
     private Button quitGameButton;
 
-    // FXML Element: Settings checkbox to control the music settings.
+    // FXML Element: The Checkbox to set the "Disable Music Setting" state.
+    // False = Enable Music, True = Disable music
     @FXML
-    private CheckBox musicCheckbox;
+    private CheckBox enableMusicState;
 
-    // FXML Element: Settings checkbox to control the sound effects settings.
+    // FXML Element: The Checkbox to set the "Disable SFX Setting" state.
+    // False = Enable Music, True = Disable music
     @FXML
-    private CheckBox effectsCheckbox;
+    private CheckBox enableSFXState;
 
     /**
-     * Removes the Settings Menu layout from the current menu and makes the buttons clickable again.
+     * Checks the ID of the Parent Layout Element to find which Scene it is displayed within.
+     * Enables the Parent Scene Buttons and Removes the Game Info Scene from the Parent Scene.
      */
     @FXML
     public void closeSettings() {
-        // Set the settings button to be clickable.
+        // Re-enable Settings Button, it is present in both primary Scenes (Main Menu & Location Menu).
         container.lookup("#SettingsButton").setDisable(false);
-        // If: the current container is the Main Menu, enable main menu buttons.
+        // If: The Parent Scene is a Main Menu Scene, enable the Main Menu Button.
         if (container.getId().equals("mainMenuGrid")) {
             container.lookup("#NewGameButton").setDisable(false);
             container.lookup("#SavesButton").setDisable(false);
             container.lookup("#GameInfoButton").setDisable(false);
         } else {
-            // Else: Set location menu buttons to be clickable.
+            // Else: The Parent Scene is a Location Menu Scene, enable the Location Menu Buttons.
             container.lookup("#ViewCharacter").setDisable(false);
             container.lookup("#ViewMap").setDisable(false);
+            // ** Temp Testing Button **
             container.lookup("#endGameTest").setDisable(false);
         }
-        // Remove the Settings Menu from the current menu window.
+        // Remove the Game Info menu from its Parent Layout Element.
         container.getChildren().remove(settingsMenu);
     }
 
     /**
-     * Load the Saved Games menu document, remove the Settings Menu scene and display the load saves menu.
+     * Opens a new Saved Games Scene and removes the Settings Menu Scene from the current Scene.
      *
-     * @throws IOException if the fxml file being loaded does not exist
+     * @throws IOException If the FXML file being loaded does not exist
      */
     @FXML
     public void openSaveMenu() throws IOException {
-        // Load the Saved Games  menu FXML document into a root object.
+        // Load the Saved Games FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("SaveMenu.fxml"));
         Parent root = loader.load();
-        // Get the controller for the new menu and pass the current menu layout to the class.
+        // Get the controller for the Saved Games Scene and pass the Parent Layout Element.
         SaveMenuController controller = loader.getController();
         controller.getContainerElement(container);
-        // If the current container is the Main Menu, load scene into correct grid position.
         if (container.getId().equals("mainMenuGrid")) {
+            // If: The Parent Layout Element is the Main Menu:
+            // Load the Scene into the Main Menu Display Cell.
             GridPane.setConstraints(root, 1, 1);
         } else {
-            // Load scene into location menu position.
+            // Else: The Parent Layout Element is the Location Menu:
+            // Load the Scene into the Location Menu Display Cell.
             GridPane.setConstraints(root, 2, 1);
         }
-        // Add new menu to the layout.
+        // Add the new Scene to the Parent Layout Element and remove the Settings Menu Scene.
         container.getChildren().add(root);
         container.getChildren().remove(settingsMenu);
     }
 
     /**
-     * Load the Game Info document, remove the Settings Menu scene and display the game info menu.
+     * Opens a new Game Info Scene and removes the Settings Menu Scene from the current Scene.
      *
-     * @throws IOException if the fxml file being loaded does not exist
+     * @throws IOException If the FXML file being loaded does not exist
      */
     @FXML
     public void openGameInfoMenu() throws IOException {
-        // Load the Game Info menu FXML document into a root object.
+        // Load the Game Info FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
         Parent root = loader.load();
-        // Get the controller for the new menu and pass the current menu layout to the class.
-        GameInfoController controller = loader.getController();
+        // Get the controller for the Saved Games Scene and pass the Parent Layout Element.
+        SaveMenuController controller = loader.getController();
         controller.getContainerElement(container);
-        // If the current container is the Main Menu, load scene into correct grid position.
         if (container.getId().equals("mainMenuGrid")) {
+            // If: The Parent Layout Element is the Main Menu:
+            // Load the Scene into the Main Menu Display Cell.
             GridPane.setConstraints(root, 1, 1);
         } else {
-            // Load scene into location menu position.
+            // Else: The Parent Layout Element is the Location Menu:
+            // Load the Scene into the Location Menu Display Cell.
             GridPane.setConstraints(root, 2, 1);
         }
-        // Add new menu to the layout.
+        // Add the new Scene to the Parent Layout Element and remove the Settings Menu Scene.
         container.getChildren().add(root);
         container.getChildren().remove(settingsMenu);
     }
 
     /**
-     * Load the quit game pop-up document, remove the Settings Menu scene and display the quit game pop-up.
+     * Opens a new Quit Pop-Up Stage, and removes the Settings Menu Scene from the current Scene.
      *
-     * @param event the event object created by clicking the button that called this method
-     * @throws IOException if the fxml file being loaded does not exist
+     * @param event The Action Event object created by clicking the Quit Button
+     * @throws IOException If the FXML file being loaded does not exist
      */
     @FXML
     public void openQuitGamePopUp(final ActionEvent event) throws IOException {
-        // Create the stage for the pop-up and set the stage values (window type, resizing, centering, and title).
+        // Create the Stage for the Quit Pop-Up and set its values (resizing, centering, and title).
         Stage popup = new Stage();
-        popup.initModality(Modality.APPLICATION_MODAL);
         popup.setResizable(false);
         popup.centerOnScreen();
         popup.setTitle("Quit");
-        // Load the Quit Game pop-up FXML document into a root object.
+        // Set the new Scene to act as a Pop-Up (Prevent actions in main Scene while Quit Pop-Up is open.)
+        popup.initModality(Modality.APPLICATION_MODAL);
+        // Load the Quit Pop-Up FXML document into a root object.
         FXMLLoader loader = new FXMLLoader(getClass().getResource("QuitMenu.fxml"));
         Parent root = loader.load();
-        // Get the controller for the new pop-up to pass the current stage to.
+        // Get the Controller for the new Scene.
         QuitPopupController controller = loader.getController();
-        // Get the current stage from the event and pass it to the Quit Game pop-up.
+        // Get the current Stage by tracing the source of the Action Event. Event -> Scene -> Stage.
+        // Pass the current Stage object to the Quit Pop-Up - allows it to close the Stage.
         controller.getMainStage((Stage) ((Node) event.getSource()).getScene().getWindow());
+        // Get the Scene from the loaded root.
         Scene popupDisplay = new Scene(root);
-        // Load the pop-up scene into the stage and display it. Will pause game until window is closed.
+        // Load the Pop-Up Scene into the Stage and display it.
         popup.setScene(popupDisplay);
+        // Show and Wait works with Application Modal to pause the main Stage while Pop-Up is open.
         popup.showAndWait();
     }
 
     /**
-     * Update the visibility of buttons whenever the user open / closes the sound Settings Menu.
-     * ** Layout changes may also be needed in the future. **
+     * Switches Settings Menu between displaying Regular Settings and Sound Settings.
      */
     @FXML
     public void toggleSoundSettings() {
-        // Visibility setters for regular menu and sound Settings Menu
+        // Visibility Setters for Regular Settings Elements and Sound Settings Elements.
         boolean soundSettingsVisibility;
         boolean settingsVisibility;
-        // Set the visibility values for each menu.
+        // Set Visibility Setters based on current Sound Settings State.
         if (!soundSettingsOpen) {
+            // If: Sound Setting are already opened, switch to Regular Settings.
+            // Set Sound Settings Visibility Setter to False.
             settingsVisibility = false;
+            // Set Regular Settings Visibility Setter to True.
             soundSettingsVisibility = true;
         } else {
+            // Else: Regular Setting are open, switch to Sound Settings.
+            // Set Sound Settings Visibility Setter to True.
             settingsVisibility = true;
+            // Set Regular Settings Visibility Setter to False.
             soundSettingsVisibility = false;
         }
-        // Update menu visibility based on visibility setter values.
+        // Set Regular Settings Elements Visibility with Regular Visibility Setter.
         closeMenuButton.setVisible(settingsVisibility);
         openSaveMenuButton.setVisible(settingsVisibility);
         openGameInfoButton.setVisible(settingsVisibility);
         openSoundSettingsButton.setVisible(settingsVisibility);
         quitGameButton.setVisible(settingsVisibility);
-        musicCheckbox.setVisible(soundSettingsVisibility);
-        effectsCheckbox.setVisible(soundSettingsVisibility);
+        // Set Sound Settings Elements Visibility with Sound Visibility Setter.
+        enableMusicState.setVisible(soundSettingsVisibility);
+        enableSFXState.setVisible(soundSettingsVisibility);
         closeSoundSettingsButton.setVisible(soundSettingsVisibility);
+        // Update the Sound Settings State of the Settings Menu.
         soundSettingsOpen = soundSettingsVisibility;
     }
 
     /**
-     * Gets the status of the sound menu and passes them to the game driver.
-     * ** Currently uses print lines for testing **
+     * Sets the Enable Music and Enable SFX Checkboxes in the Parent Layout Element.
      */
-    @FXML
     public void updateSoundSettings() {
-        // ** TEMP PRINT INSTEAD OF PASS VARIABLE STATUS **
-        System.out.println("Music Disabled: " + musicCheckbox.isSelected() + ".");
-        System.out.println("Sound Effects Disabled: " + effectsCheckbox.isSelected() + ".");
+        CheckBox musicState = (CheckBox) container.lookup("#EnableMusic");
+        musicState.setSelected(enableMusicState.isSelected());
+        CheckBox effectsState = (CheckBox) container.lookup("#EnableSFX");
+        effectsState.setSelected(enableSFXState.isSelected());
     }
 
-
     /**
-     * Takes the parent element that the layout will be displayed in and saves it. Disables settings button on menu.
-     *
-     * @param parentGrid The parent element of the Settings Menu layout
+     * Receives the Parent Layout Element for the Settings Menu Scene.
+     * Also sets the Sound Settings States to match the current Game Sound Settings.
+     * @param parentGrid The Parent Layout Element of the Settings Menu Scene
      */
     public void getContainerElement(final GridPane parentGrid) {
         container = parentGrid;
+        CheckBox musicState = (CheckBox) container.lookup("#EnableMusic");
+        enableMusicState.setSelected(musicState.isSelected());
+        CheckBox effectsState = (CheckBox) container.lookup("#EnableSFX");
+        enableSFXState.setSelected(effectsState.isSelected());
     }
 
     /**
-     * When the Settings Menu is first opened, set the sound settings variable to be false.
+     * When the Settings Scene is created set the Sound Settings to be hidden.
      *
      * @param url            N/A
      * @param resourceBundle N/A
