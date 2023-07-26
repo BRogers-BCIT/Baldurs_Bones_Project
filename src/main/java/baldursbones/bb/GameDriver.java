@@ -53,7 +53,7 @@ public class GameDriver extends Application {
 
     }
 
-    // Open the quit pop-up menu when a quit Action Event is caught.
+    // Open the Quit Pop-Up when a quit Action Event is caught.
     // Allows users to cancel the quit action, return to Main Menu, or close the game.
     private void openQuitPopup(final Stage currentStage) {
         try {
@@ -64,12 +64,12 @@ public class GameDriver extends Application {
             popup.setTitle("Quit");
             // Set the new Scene to act as a Pop-Up (Prevent actions in main Scene while Quit Pop-Up is open.)
             popup.initModality(Modality.APPLICATION_MODAL);
-            // Load the Quit Game Pop-Up FXML document into a root object.
+            // Load the Quit Pop-Up FXML document into a root object.
             FXMLLoader loader = new FXMLLoader(getClass().getResource("QuitMenu.fxml"));
             Parent root = loader.load();
             // Get the Controller for the new Scene.
             QuitPopupController controller = loader.getController();
-            // Pass the current Stage object to the Quit Game Pop-Up - allows it to close the Stage.
+            // Pass the current Stage object to the Quit Pop-Up - allows it to close the Stage.
             controller.getMainStage(currentStage);
             // Get the Scene from the loaded root.
             Scene popupDisplay = new Scene(root);

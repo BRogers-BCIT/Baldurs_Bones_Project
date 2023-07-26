@@ -4,6 +4,7 @@
 <?import javafx.geometry.Rectangle2D?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.image.Image?>
@@ -187,4 +188,6 @@
    <Region GridPane.columnIndex="1" GridPane.rowIndex="3" />
    <Region GridPane.columnIndex="2" GridPane.rowIndex="3" />
    <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+   <CheckBox id="EnableSFX" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" selected="true" text="SFXState" textOverrun="CLIP" visible="false" />
+   <CheckBox id="EnableMusic" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" selected="true" text="MusicState" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
 </GridPane>

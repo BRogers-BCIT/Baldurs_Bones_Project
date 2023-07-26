@@ -29,7 +29,7 @@
          </Label>
       </HBox>
       <HBox id="QuitButtonsContainer" alignment="CENTER" VBox.vgrow="ALWAYS">
-         <Button id="CancelQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#cancelQuit" text="Cancel Quit" textAlignment="CENTER" textOverrun="CLIP">
+         <Button id="CancelQuit" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" minWidth="100.0" mnemonicParsing="false" onAction="#closeQuit" text="Cancel Quit" textAlignment="CENTER" textOverrun="CLIP">
             <HBox.margin>
                <Insets />
             </HBox.margin>

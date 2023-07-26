@@ -28,7 +28,7 @@
             <Insets bottom="30.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Button>
-      <CheckBox id="MusicDisable" fx:id="musicCheckbox" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateSoundSettings" text="Disable Music" textAlignment="CENTER" textOverrun="CLIP" visible="false">
+      <CheckBox id="MusicEnable" fx:id="enableMusicState" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateSoundSettings" text="Enable Music" textAlignment="CENTER" textOverrun="CLIP" visible="false">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -38,7 +38,7 @@
             <Insets bottom="30.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Button>
-      <CheckBox id="EffectsDisable" fx:id="effectsCheckbox" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#updateSoundSettings" text="Disable Effects" textAlignment="CENTER" textOverrun="CLIP" visible="false">
+      <CheckBox id="EffectsEnable" fx:id="enableSFXState" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#updateSoundSettings" text="Enable SFX" textAlignment="CENTER" textOverrun="CLIP" visible="false">
          <VBox.margin>
             <Insets />
          </VBox.margin>
@@ -48,7 +48,7 @@
             <Insets bottom="22.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Button>
-      <Button id="ReturnFromSound" fx:id="closeSoundSettingsButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#toggleSoundSettings" text="Close Sound Settings" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
+      <Button id="ReturnFromSound" fx:id="closeSoundSettingsButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" text="Close Sound Settings" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
       <Button id="SoundButton" fx:id="openSoundSettingsButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#toggleSoundSettings" text="Sound Settings" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="30.0" left="20.0" right="20.0" />
