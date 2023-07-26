@@ -20,7 +20,7 @@ import java.util.Objects;
  */
 public class GameDriver extends Application {
 
-    // Define the amount of space to leave available for the Anchor Bar.
+    // Constant: Define the amount of space to leave available for the Anchor Bar.
     private static final int ANCHOR_BAR_SIZE = 65;
 
     /**

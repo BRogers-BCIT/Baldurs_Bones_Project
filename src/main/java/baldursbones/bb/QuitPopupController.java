@@ -21,7 +21,7 @@ import java.util.Objects;
  */
 public class QuitPopupController {
 
-    // Define the amount of space to leave available for the Anchor Bar.
+    // Constant: Define the amount of space to leave available for the Anchor Bar.
     private static final int ANCHOR_BAR_SIZE = 65;
 
     // The Parent Stage of the Quit Pop-Up Scene.

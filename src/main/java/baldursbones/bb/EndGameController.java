@@ -23,7 +23,7 @@ import java.io.IOException;
  */
 public class EndGameController {
 
-    // Define the amount of space to leave available for the Anchor Bar.
+    // Constant: Define the amount of space to leave available for the Anchor Bar.
     private static final int ANCHOR_BAR_SIZE = 65;
 
     // The Parent Layout Element that the End Game Scene is displayed in.

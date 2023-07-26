@@ -26,7 +26,7 @@ import java.util.Objects;
  */
 public class NewGameController {
 
-    // Define the amount of space to leave available for the Anchor Bar when creating a new Stage.
+    // Constant: Define the amount of space to leave available for the Anchor Bar.
     private static final int ANCHOR_BAR_SIZE = 65;
 
     // Constant: Maximum length of a Character Name (Prevents issues with using Character Name).
