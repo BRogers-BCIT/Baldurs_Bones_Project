@@ -70,7 +70,7 @@ public class GameDriver extends Application {
             // Get the Controller for the new Scene.
             QuitPopupController controller = loader.getController();
             // Pass the current Stage object to the Quit Pop-Up - allows it to close the Stage.
-            controller.getMainStage(currentStage);
+            controller.getSceneVariables(currentStage);
             // Get the Scene from the loaded root.
             Scene popupDisplay = new Scene(root);
             // Load the Pop-Up Scene into the Stage and display it.

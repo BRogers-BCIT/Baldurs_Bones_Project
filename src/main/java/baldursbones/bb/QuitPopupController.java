@@ -83,7 +83,7 @@ public class QuitPopupController {
      *
      * @param mainStage The Stage object for the Primary Game Window
      */
-    public void getMainStage(final Stage mainStage) {
+    public void getSceneVariables(final Stage mainStage) {
         parentStage = mainStage;
     }
 }
