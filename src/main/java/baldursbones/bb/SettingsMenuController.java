@@ -64,12 +64,12 @@ public class SettingsMenuController implements Initializable {
     private Button quitGameButton;
 
     // FXML Element: The Checkbox to set the "Disable Music Setting" state.
-    // False = Enable Music, True = Disable music
+    // True = Enable Music, False = Disable Music
     @FXML
     private CheckBox enableMusicState;
 
     // FXML Element: The Checkbox to set the "Disable SFX Setting" state.
-    // False = Enable Music, True = Disable music
+    // True = Enable SFX, False = Disable SFX
     @FXML
     private CheckBox enableSFXState;
 
@@ -120,7 +120,7 @@ public class SettingsMenuController implements Initializable {
         Parent root = loader.load();
         // Get the controller for the Saved Games Scene and pass the Parent Layout Element.
         SaveMenuController controller = loader.getController();
-        controller.setSceneVariables(container);
+        controller.setSceneVariables(container, enableMusicState.isSelected(), enableSFXState.isSelected());
         if (container.getId().equals("mainMenuGrid")) {
             // If: The Parent Layout Element is the Main Menu:
             // Load the Scene into the Main Menu Display Cell.
@@ -151,7 +151,7 @@ public class SettingsMenuController implements Initializable {
         Parent root = loader.load();
         // Get the controller for the Saved Games Scene and pass the Parent Layout Element.
         SaveMenuController controller = loader.getController();
-        controller.setSceneVariables(container);
+        controller.setSceneVariables(container, enableMusicState.isSelected(), enableSFXState.isSelected());
         if (container.getId().equals("mainMenuGrid")) {
             // If: The Parent Layout Element is the Main Menu:
             // Load the Scene into the Main Menu Display Cell.
@@ -188,11 +188,13 @@ public class SettingsMenuController implements Initializable {
         QuitPopupController controller = loader.getController();
         // Get the current Stage by tracing the source of the Action Event. Event -> Scene -> Stage.
         // Pass the current Stage object to the Quit Pop-Up - allows it to close the Stage.
-        controller.getMainStage((Stage) ((Node) event.getSource()).getScene().getWindow());
+        controller.getSceneVariables((Stage) ((Node) event.getSource()).getScene().getWindow());
         // Get the Scene from the loaded root.
         Scene popupDisplay = new Scene(root);
         // Load the Pop-Up Scene into the Stage and display it.
         popup.setScene(popupDisplay);
+        // Pass the Sound Settings to the Quit Pop-Up Controller
+        controller.setSoundSettings(enableMusicState.isSelected(), enableSFXState.isSelected());
         // Show and Wait works with Application Modal to pause the main Stage while Pop-Up is open.
         popup.showAndWait();
     }
@@ -247,22 +249,22 @@ public class SettingsMenuController implements Initializable {
      * Receives the Parent Layout Element for the Settings Menu Scene.
      * Also sets the Sound Settings States to match the current Game Sound Settings.
      *
-     * @param parentGrid The Parent Layout Element of the Settings Menu Scene
+     * @param parentGrid  The Parent Layout Element of the Settings Menu Scene
+     * @param enableMusic A boolean value that indicates if Music is currently enabled
+     * @param enableSFX   A boolean value that indicates if SFX are currently enabled
      */
-    public void setSceneVariables(final GridPane parentGrid) {
+    public void setSceneVariables(final GridPane parentGrid, final boolean enableMusic, final boolean enableSFX) {
         container = parentGrid;
-        CheckBox musicState = (CheckBox) container.lookup("#EnableMusic");
-        enableMusicState.setSelected(musicState.isSelected());
-        CheckBox effectsState = (CheckBox) container.lookup("#EnableSFX");
-        enableSFXState.setSelected(effectsState.isSelected());
+        enableMusicState.setSelected(enableMusic);
+        enableSFXState.setSelected(enableSFX);
     }
 
     /**
      * Receives Array Lists of strings containing game info to be used by the Saved Games Scene.
      *
-     * @param gameStats An Array List of Game Stats: Name, Coordinates, Level, Exp, Health.
+     * @param gameStats     An Array List of Game Stats: Name, Coordinates, Level, Exp, Health.
      * @param gameAbilities An Array List of Game Ability uses: Re-Roll, Add, Take-Away
-     * @param gameMaps An Array List of Game Maps: Game Map, Player Map
+     * @param gameMaps      An Array List of Game Maps: Game Map, Player Map
      */
     public void setGameInfo(final ArrayList<String> gameStats,
                             final ArrayList<String> gameAbilities,

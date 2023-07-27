@@ -16,7 +16,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * New Game Menu Controller.
@@ -51,6 +50,11 @@ public class NewGameController {
     @FXML
     private CheckBox disableTutorial;
 
+    // Variable: A boolean value used to track if Music is enabled.
+    private boolean enableMusicState;
+    // Variable: A boolean value used to track if SFX are enabled.
+    private boolean enableSFXState;
+
     /**
      * Finds ID of Parent Layout Element to find the Parent Scene (Location Menu Controller or Main Menu Controller).
      * If (Location Menu): Create a new to Main Menu Scene in the current Stage.
@@ -65,9 +69,11 @@ public class NewGameController {
         // ** Note: If a user closes a New Game Scene opened from an End Game Scene, the game would soft-lock. **
         // ** Fix: Instead of closing the End Game Scene, the Scene returns to a new Main Menu Scene. **
         if (container.getId().equals("locationMenuGrid")) {
-            // Invoked when a Player Ends a game -> Selects new game -> Closes new game menu.
             // Load the Main Menu FXML document into a root object.
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
+            FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("LocationMenu.fxml"));
+            Parent root = mainLoader.load();
+            // Get the Controller for the Main Menu and get the Grid Pane object from the Controller.
+            LocationMenuController controller = mainLoader.getController();
             // Get the current Stage by tracing the source of the Action Event. Event -> Scene -> Stage.
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             // Get the size of the screen to set the size of the Stage.
@@ -79,6 +85,8 @@ public class NewGameController {
             stage.centerOnScreen();
             stage.setResizable(false);
             stage.setTitle("Baldur's Bones");
+            // Pass the Sound Settings to the Location Menu Controller
+            controller.setSoundSettings(enableMusicState, enableSFXState);
             // Display the window.
             stage.show();
         } else {
@@ -120,6 +128,8 @@ public class NewGameController {
             stage.show();
             // Get Controller of Location Menu Scene.
             LocationMenuController gameDriverController = loader.getController();
+            // Pass the Sound Settings to the Location Menu Controller
+            gameDriverController.setSoundSettings(enableMusicState, enableSFXState);
             // Call the Start Game method in the Location Menu Controller.
             gameDriverController.gameStarter();
         }
@@ -155,9 +165,13 @@ public class NewGameController {
     /**
      * Receives the Parent Layout Element for the New Game Scene.
      *
-     * @param parentGrid The Parent Layout Element of the New Game Scene
+     * @param parentGrid  The Parent Layout Element of the New Game Scene
+     * @param enableMusic A boolean value that indicates if Music is currently enabled
+     * @param enableSFX   A boolean value that indicates if SFX are currently enabled
      */
-    public void setSceneVariables(final GridPane parentGrid) {
+    public void setSceneVariables(final GridPane parentGrid, final boolean enableMusic, final boolean enableSFX) {
         container = parentGrid;
+        enableMusicState = enableMusic;
+        enableSFXState = enableSFX;
     }
 }

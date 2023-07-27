@@ -11,7 +11,6 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.Objects;
 
 /**
  * Quit Pop-Up Controller.
@@ -26,6 +25,12 @@ public class QuitPopupController {
 
     // The Parent Stage of the Quit Pop-Up Scene.
     private Stage parentStage;
+
+    // Variable: A boolean value used to track if Music is enabled.
+    private boolean enableMusicState;
+
+    // Variable: A boolean value used to track if SFX are enabled.
+    private boolean enableSFXState;
 
     /**
      * Closes the Quit Pop-Up Scene.
@@ -48,8 +53,11 @@ public class QuitPopupController {
      */
     @FXML
     public void returnToMainMenu(final ActionEvent event) throws IOException {
-        // Get the Main Menu FXML file and load it into root.
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("MainMenu.fxml")));
+        // Load the Main Menu FXML document into a root object.
+        FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
+        Parent root = mainLoader.load();
+        // Get the Controller for the Main Menu and get the Grid Pane object from the Controller.
+        MainMenuController controller = mainLoader.getController();
         // Get the size of the screen to set the size of the Stage.
         Rectangle2D userScreen = Screen.getPrimary().getBounds();
         // Load the Scene with the size. Leave extra space in height to display the Anchor Bar.
@@ -59,6 +67,8 @@ public class QuitPopupController {
         parentStage.centerOnScreen();
         parentStage.setResizable(false);
         parentStage.setTitle("Baldur's Bones");
+        // Pass the Sound Settings to the Location Menu Controller
+        controller.setSoundSettings(enableMusicState, enableSFXState);
         // Display the window.
         parentStage.show();
         // Call method to close the Quit Pop-Up.
@@ -77,6 +87,16 @@ public class QuitPopupController {
         // Call method to close the Quit Pop-Up Stage.
         closeQuit(event);
     }
+    /**
+     * Sets the Sound Settings values for the Quit Pop-Up when creating a new Scene.
+     *
+     * @param enableMusic A boolean value indicating if Music is enabled
+     * @param enableSFX   A boolean value indicating if SFX is enabled
+     */
+    public void setSoundSettings(final boolean enableMusic, final boolean enableSFX) {
+        enableMusicState = enableMusic;
+        enableSFXState = enableSFX;
+    }
 
     /**
      * Receives the Stage object for the Primary Game Window (Parent Stage).
@@ -85,5 +105,7 @@ public class QuitPopupController {
      */
     public void getSceneVariables(final Stage mainStage) {
         parentStage = mainStage;
+        enableMusicState = true;
+        enableSFXState = true;
     }
 }

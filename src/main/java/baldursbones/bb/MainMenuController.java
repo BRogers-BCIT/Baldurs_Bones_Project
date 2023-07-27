@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
@@ -37,6 +38,15 @@ public class MainMenuController {
     @FXML
     private Button gameInfoButton;
 
+    // FXML Element: Hidden Checkbox to record the "Disable Music Setting" state.
+    // True = Enable Music, False = Disable Music
+    @FXML
+    private CheckBox enableMusicState;
+
+    // FXML Element: Hidden Checkbox to record the "Disable SFX Setting" state.
+    // True = Enable SFX, False = Disable SFX
+    @FXML
+    private CheckBox enableSFXState;
 
     /**
      * Load the Settings Scene and passes the Layout Element for the Main Menu Scene to its controller.
@@ -51,7 +61,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         SettingsMenuController controller = loader.getController();
-        controller.setSceneVariables(mainMenuGrid);
+        controller.setSceneVariables(mainMenuGrid, enableSFXState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
@@ -72,7 +82,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         NewGameController controller = loader.getController();
-        controller.setSceneVariables(mainMenuGrid);
+        controller.setSceneVariables(mainMenuGrid, enableMusicState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
@@ -93,7 +103,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         SaveMenuController controller = loader.getController();
-        controller.setSceneVariables(mainMenuGrid);
+        controller.setSceneVariables(mainMenuGrid, enableSFXState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
@@ -114,7 +124,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         GameInfoController controller = loader.getController();
-        controller.setSceneVariables(mainMenuGrid);
+        controller.setSceneVariables(mainMenuGrid, enableSFXState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
@@ -128,6 +138,17 @@ public class MainMenuController {
         savedGamesButton.setDisable(true);
         gameInfoButton.setDisable(true);
         settingsButton.setDisable(true);
+    }
+
+    /**
+     * Sets the Sound Settings values for the Main Menu when creating a new Scene.
+     *
+     * @param enableMusic A boolean value indicating if Music is enabled
+     * @param enableSFX   A boolean value indicating if SFX is enabled
+     */
+    public void setSoundSettings(final boolean enableMusic, final boolean enableSFX) {
+        enableMusicState.setSelected(enableMusic);
+        enableSFXState.setSelected(enableSFX);
     }
 
     /**

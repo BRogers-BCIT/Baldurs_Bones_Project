@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.GridPane;
 
@@ -97,6 +98,16 @@ public class LocationMenuController implements Initializable {
     // FXML Element: The Text Area that displays Location Menu text.
     @FXML
     private TextArea locationDescription;
+
+    // FXML Element: Hidden Checkbox to record the "Disable Music Setting" state.
+    // True = Enable Music, False = Disable Music
+    @FXML
+    private CheckBox enableMusicState;
+
+    // FXML Element: Hidden Checkbox to record the "Disable SFX Setting" state.
+    // True = Enable SFX, False = Disable SFX
+    @FXML
+    private CheckBox enableSFXState;
 
     // Game Object: The Player game object for the current Game.
     private Player playerCharacter;
@@ -417,7 +428,7 @@ public class LocationMenuController implements Initializable {
         Parent root = loader.load();
         // Get the controller for the new menu and pass the location menu layout to the class.
         SettingsMenuController controller = loader.getController();
-        controller.setSceneVariables(locationMenuGrid);
+        controller.setSceneVariables(locationMenuGrid, enableMusicState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new menu and add it to the layout.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
@@ -487,7 +498,8 @@ public class LocationMenuController implements Initializable {
         Parent root = loader.load();
         // Get the Controller for the Character Info Scene and pass the Parent Layout Element.
         CharacterInfoController controller = loader.getController();
-        controller.setSceneVariables(locationMenuGrid, playerCharacter);
+        controller.setSceneVariables(locationMenuGrid, playerCharacter,
+                enableMusicState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene in the Grid Pane and add it to the Grid Pane.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
@@ -512,7 +524,8 @@ public class LocationMenuController implements Initializable {
         Parent root = loader.load();
         // Get the Controller for the Map Info Scene and pass the Parent Layout Element.
         MapInfoController controller = loader.getController();
-        controller.setSceneVariables(locationMenuGrid, gameMaps);
+        controller.setSceneVariables(locationMenuGrid, gameMaps,
+                enableMusicState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene in the Grid Pane and add it to the Grid Pane.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
@@ -537,7 +550,7 @@ public class LocationMenuController implements Initializable {
         Parent root = loader.load();
         // Get the Controller for the End Game Scene and pass the Parent Layout Element.
         EndGameController controller = loader.getController();
-        controller.setSceneVariables(locationMenuGrid);
+        controller.setSceneVariables(locationMenuGrid, enableMusicState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene in the Grid Pane and add it to the Grid Pane.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
@@ -563,7 +576,8 @@ public class LocationMenuController implements Initializable {
         // Get the Controller for the Game Combat Scene and pass the Parent Layout Enemy.
         GameCombatController controller = loader.getController();
         // Also pass the Player object and the Current Enemy object for Combat creation.
-        controller.setSceneVariables(locationMenuGrid, playerCharacter, currentEnemy);
+        controller.setSceneVariables(locationMenuGrid, playerCharacter, currentEnemy,
+                enableMusicState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene in the Grid Pane and add it to the Grid Pane.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
@@ -709,6 +723,17 @@ public class LocationMenuController implements Initializable {
         }
         // Set the Game Map to the Loaded Game Map.
         gameMaps.setGameMap(newGameMap);
+    }
+
+    /**
+     * Sets the Sound Settings values for the Location Menu when creating a new Scene.
+     *
+     * @param enableMusic A boolean value indicating if Music is enabled
+     * @param enableSFX   A boolean value indicating if SFX is enabled
+     */
+    public void setSoundSettings(final boolean enableMusic, final boolean enableSFX) {
+        enableMusicState.setSelected(enableMusic);
+        enableSFXState.setSelected(enableSFX);
     }
 
     /**

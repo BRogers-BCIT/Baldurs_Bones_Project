@@ -32,6 +32,12 @@ public class GameCombatController {
     // Variable: A value hold the game in a specific State while waiting for user to confirm after a game action.
     private String gameState;
 
+    // Variable: A boolean value used to track if Music is enabled.
+    private boolean enableMusicState;
+
+    // Variable: A boolean value used to track if SFX are enabled.
+    private boolean enableSFXState;
+
     /**
      * Enables the Parent Scene Buttons and Removes the Game Combat Scene from the Parent Scene.
      */
@@ -135,11 +141,16 @@ public class GameCombatController {
      * @param parentGrid      The Parent Layout Element of the character info Scene layout
      * @param playerCharacter The Player object to be used in the Combat for this Combat Menu
      * @param currentEnemy    The Enemy object to be used in the Combat for this Combat Menu
+     * @param enableMusic     A boolean value that indicates if Music is currently enabled
+     * @param enableSFX       A boolean value that indicates if SFX are currently enabled
      */
-    public void setSceneVariables(final GridPane parentGrid, final Player playerCharacter, final Enemy currentEnemy) {
+    public void setSceneVariables(final GridPane parentGrid, final Player playerCharacter, final Enemy currentEnemy,
+                                  final boolean enableMusic, final boolean enableSFX) {
         container = parentGrid;
         player = playerCharacter;
         enemy = currentEnemy;
+        enableMusicState = enableMusic;
+        enableSFXState = enableSFX;
         // Set the default Game State.
         gameState = "";
     }

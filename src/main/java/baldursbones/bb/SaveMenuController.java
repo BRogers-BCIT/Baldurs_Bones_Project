@@ -115,6 +115,12 @@ public class SaveMenuController implements Initializable {
     // Variable (Maps): A 2D array representing the Player Map being written into a Save Info File.
     private String playerMap = "Temp Player Map";
 
+    // Variable: A boolean value used to track if Music is enabled.
+    private boolean enableMusicState;
+
+    // Variable: A boolean value used to track if SFX are enabled.
+    private boolean enableSFXState;
+
     /**
      * Checks the ID of the Parent Layout Element to find which Scene it is displayed within.
      * Enables the Parent Scene Buttons and Removes the Game Info Scene from the Parent Scene.
@@ -173,6 +179,8 @@ public class SaveMenuController implements Initializable {
         gameDriverController.loadStats(getCharacterStats());
         gameDriverController.loadAbilities(getCharacterAbilities());
         gameDriverController.loadMaps(getGameMaps());
+        // Pass the Sound Settings to the Location Menu Controller
+        gameDriverController.setSoundSettings(enableMusicState, enableSFXState);
         // Call the Start Game method in the Location Menu Controller.
         gameDriverController.gameStarter();
     }
@@ -516,10 +524,14 @@ public class SaveMenuController implements Initializable {
     /**
      * Receives the Parent Layout Element for the Saved Games Scene.
      *
-     * @param parentGrid The Parent Layout Element of the New Game Scene
+     * @param parentGrid  The Parent Layout Element of the New Game Scene
+     * @param enableMusic A boolean value that indicates if Music is currently enabled
+     * @param enableSFX   A boolean value that indicates if SFX are currently enabled
      */
-    public void setSceneVariables(final GridPane parentGrid) {
+    public void setSceneVariables(final GridPane parentGrid, final boolean enableMusic, final boolean enableSFX) {
         container = parentGrid;
+        enableMusicState = enableMusic;
+        enableSFXState = enableSFX;
     }
 
     /**

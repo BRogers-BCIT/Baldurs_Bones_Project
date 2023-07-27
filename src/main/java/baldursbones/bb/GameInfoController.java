@@ -67,6 +67,12 @@ public class GameInfoController implements Initializable {
     @FXML
     private TextArea infoAreaThree;
 
+    // Variable: A boolean value used to track if Music is enabled.
+    private boolean enableMusicState;
+
+    // Variable: A boolean value used to track if SFX are enabled.
+    private boolean enableSFXState;
+
     /**
      * Checks the ID of the Parent Layout Element to find which Scene it is displayed within.
      * Enables the Parent Scene Buttons and Removes the Game Info Scene from the Parent Scene.
@@ -169,10 +175,14 @@ public class GameInfoController implements Initializable {
     /**
      * Sets the Parent Layout Element of the Game Info Scene.
      *
-     * @param parentGrid The Parent Layout Element of the Game Info Scene
+     * @param parentGrid  The Parent Layout Element of the Game Info Scene
+     * @param enableMusic A boolean value that indicates if Music is currently enabled
+     * @param enableSFX   A boolean value that indicates if SFX are currently enabled
      */
-    public void setSceneVariables(final GridPane parentGrid) {
+    public void setSceneVariables(final GridPane parentGrid, final boolean enableMusic, final boolean enableSFX) {
         container = parentGrid;
+        enableMusicState = enableMusic;
+        enableSFXState = enableSFX;
     }
 
     /**

@@ -27,6 +27,12 @@ public class MapInfoController {
     // Object: The Map object that contains the Map Display method.
     private Map currentMaps;
 
+    // Variable: A boolean value used to track if Music is enabled.
+    private boolean enableMusicState;
+
+    // Variable: A boolean value used to track if SFX are enabled.
+    private boolean enableSFXState;
+
     /**
      * Enables the Parent Scene Buttons and Removes the Map Info Scene from the Parent Scene.
      */
@@ -47,12 +53,17 @@ public class MapInfoController {
     /**
      * Sets the Parent Layout Element for the Map Info Scene and the Map object to use.
      *
-     * @param parentGrid The Parent Layout Element the Character Info Scene is displayed within
-     * @param gameMaps   The Map object that contains the Player Map array and Map Display methods.
+     * @param parentGrid  The Parent Layout Element the Character Info Scene is displayed within
+     * @param gameMaps    The Map object that contains the Player Map array and Map Display methods.
+     * @param enableMusic A boolean value that indicates if Music is currently enabled
+     * @param enableSFX   A boolean value that indicates if SFX are currently enabled
      */
-    public void setSceneVariables(final GridPane parentGrid, final Map gameMaps) {
+    public void setSceneVariables(final GridPane parentGrid, final Map gameMaps,
+                                  final boolean enableMusic, final boolean enableSFX) {
         container = parentGrid;
         currentMaps = gameMaps;
+        enableMusicState = enableMusic;
+        enableSFXState = enableSFX;
     }
 
     /**
