@@ -132,6 +132,8 @@ public class SaveMenuController implements Initializable {
             // Else: The Parent Scene is a Location Menu Scene, enable the Location Menu Buttons.
             container.lookup("#ViewCharacter").setDisable(false);
             container.lookup("#ViewMap").setDisable(false);
+            // Enable the Parent Scene Text Area.
+            container.lookup("#GameDescription").setDisable(false);
             // ** Temp Testing Button **
             container.lookup("#endGameTest").setDisable(false);
         }

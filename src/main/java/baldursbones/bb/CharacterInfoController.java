@@ -30,6 +30,8 @@ public class CharacterInfoController {
         container.lookup("#ViewCharacter").setDisable(false);
         container.lookup("#ViewMap").setDisable(false);
         container.lookup("#SettingsButton").setDisable(false);
+        // Enable the Parent Scene Text Area.
+        container.lookup("#GameDescription").setDisable(false);
         // ** Temp Testing Button **
         container.lookup("#endGameTest").setDisable(false);
         // Remove the Character Info Scene from the Parent Scene.
