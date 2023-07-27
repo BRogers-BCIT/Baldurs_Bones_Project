@@ -188,6 +188,6 @@
    <Region GridPane.columnIndex="1" GridPane.rowIndex="3" />
    <Region GridPane.columnIndex="2" GridPane.rowIndex="3" />
    <Region minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="30.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
-   <CheckBox id="EnableSFX" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" selected="true" text="SFXState" textOverrun="CLIP" visible="false" />
-   <CheckBox id="EnableMusic" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" selected="true" text="MusicState" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
+   <CheckBox id="EnableSFX" fx:id="enableSFXState" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" selected="true" text="SFXState" textOverrun="CLIP" visible="false" />
+   <CheckBox id="EnableMusic" fx:id="enableMusicState" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0" selected="true" text="MusicState" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
 </GridPane>
