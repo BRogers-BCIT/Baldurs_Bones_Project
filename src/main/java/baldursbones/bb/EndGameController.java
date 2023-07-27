@@ -33,6 +33,12 @@ public class EndGameController {
     @FXML
     private HBox endGameBox;
 
+    // Variable: A boolean value used to track if Music is enabled.
+    private boolean enableMusicState;
+
+    // Variable: A boolean value used to track if SFX are enabled.
+    private boolean enableSFXState;
+
     /**
      * Creates a new Stage to Replace the current one and opens the Main Menu Scene in the new Stage.
      *
@@ -58,6 +64,8 @@ public class EndGameController {
         stage.centerOnScreen();
         stage.setResizable(false);
         stage.setTitle("Baldur's Bones");
+        // Pass the Sound Settings to the Main Menu Controller
+        controller.setSoundSettings(enableMusicState, enableSFXState);
         // Display the window.
         stage.show();
     }
@@ -77,7 +85,7 @@ public class EndGameController {
         Parent root = loader.load();
         // Get the controller for the Saved Games Scene and pass the End Game Parent Layout Element to the class.
         SaveMenuController controller = loader.getController();
-        controller.setSceneVariables(container);
+        controller.setSceneVariables(container, enableMusicState, enableSFXState);
         // Define the Coordinates to display the new Scene in the Parent Layout Element
         GridPane.setConstraints(root, 1, 1);
         // Display the new Scene
@@ -96,7 +104,7 @@ public class EndGameController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the current Parent Layout Element.
         NewGameController controller = loader.getController();
-        controller.setSceneVariables(container);
+        controller.setSceneVariables(container, enableMusicState, enableSFXState);
         // Define the Coordinates to display the new Scene in the Parent Layout Element.
         GridPane.setConstraints(root, 2, 1);
         // Display the New Game Scene and remove the End Game Scene.
@@ -107,10 +115,14 @@ public class EndGameController {
     /**
      * Sets the Parent Layout Element of the End Game Scene.
      *
-     * @param parentGrid The Parent Layout Element for the End Game Scene
+     * @param parentGrid  The Parent Layout Element for the End Game Scene
+     * @param enableMusic A boolean value that indicates if Music is currently enabled
+     * @param enableSFX   A boolean value that indicates if SFX are currently enabled
      */
-    public void setSceneVariables(final GridPane parentGrid) {
+    public void setSceneVariables(final GridPane parentGrid, final boolean enableMusic, final boolean enableSFX) {
         container = parentGrid;
+        enableMusicState = enableMusic;
+        enableSFXState = enableSFX;
     }
 
 }

@@ -21,6 +21,12 @@ public class CharacterInfoController {
     // Object: The Player object for the current game.
     private Player currentPlayer;
 
+    // Variable: A boolean value used to track if Music is enabled.
+    private boolean enableMusicState;
+
+    // Variable: A boolean value used to track if SFX are enabled.
+    private boolean enableSFXState;
+
     /**
      * Enables the Parent Scene Buttons and Removes the Character Info Scene from the Parent Scene.
      */
@@ -43,10 +49,15 @@ public class CharacterInfoController {
      *
      * @param parentGrid      The Parent Layout Element of the Character Info Scene
      * @param playerCharacter The Player object that is used to update the Player Info.
+     * @param enableMusic     A boolean value that indicates if Music is currently enabled
+     * @param enableSFX       A boolean value that indicates if SFX are currently enabled
      */
-    public void setSceneVariables(final GridPane parentGrid, final Player playerCharacter) {
+    public void setSceneVariables(final GridPane parentGrid, final Player playerCharacter,
+                                  final boolean enableMusic, final boolean enableSFX) {
         container = parentGrid;
         currentPlayer = playerCharacter;
+        enableMusicState = enableMusic;
+        enableSFXState = enableSFX;
     }
 
     /**
