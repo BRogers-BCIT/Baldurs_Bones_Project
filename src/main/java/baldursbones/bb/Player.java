@@ -140,6 +140,15 @@ public class Player {
     }
 
     /**
+     * Returns the current value of the Player's Exp stat.
+     *
+     * @return An integer value representing the current Player Exp stat
+     */
+    public int getStatExp() {
+        return statExp;
+    }
+
+    /**
      * Return the string value for the Player's Name.
      *
      * @return A string that represents the Player's Name
@@ -196,10 +205,61 @@ public class Player {
     /**
      * Set the Player's Name to a new string value.
      *
-     * @param name A string representing the new Player Name
+     * @param newName A string representing the new Player Name
      */
-    public void setName(final String name) {
-        this.name = name;
+
+    public void setName(final String newName) {
+        name = newName;
+    }
+    /**
+     * Set the Player's Health Stat to a new integer value.
+     *
+     * @param newStatHealth A string representing the new Player Name
+     */
+    public void setStatHealth(final int newStatHealth) {
+        statHealth = newStatHealth;
+    }
+    /**
+     * Set the Player's Exp Stat to a new integer value.
+     *
+     * @param newStatExp A string representing the new Player Name
+     */
+    public void setStatExp(final int newStatExp) {
+        statExp = newStatExp;
+    }
+    /**
+     * Set the Player's Level Stat to a new integer value.
+     *
+     * @param newStatLevel A string representing the new Player Name
+     */
+    public void setStatLevel(final int newStatLevel) {
+        statLevel = newStatLevel;
+    }
+    /**
+     * Set the Player's Re-Roll uses to a new integer value.
+     *
+     * @param newAbilityReRoll A string representing the new Player Name
+     */
+    public void setAbilityReRoll(final int newAbilityReRoll) {
+        abilityReRoll = newAbilityReRoll;
+    }
+
+    /**
+     * Set the Player's Add uses to a new integer value.
+     *
+     * @param newAbilityAdd A string representing the new Player Name
+     */
+    public void setAbilityAdd(final int newAbilityAdd) {
+        abilityAdd = newAbilityAdd;
+    }
+
+    /**
+     * Set the Player's Take Away uses to a new integer value.
+     *
+     * @param newAbilityTakeAway A string representing the new Player Name
+     */
+    public void setAbilityTakeAway(final int newAbilityTakeAway) {
+        abilityTakeAway = newAbilityTakeAway;
     }
 
     /**

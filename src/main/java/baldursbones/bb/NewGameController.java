@@ -146,7 +146,7 @@ public class NewGameController {
             // Get controller of Game Location Scene from the FXML Loader.
             LocationMenuController gameDriverController = loader.getController();
             // Else: Pass the New Game values to the Location Menu controller.
-            gameDriverController.getGameInfo(characterName.getText(), disableTutorial.isSelected());
+            gameDriverController.newGameInfo(characterName.getText(), disableTutorial.isSelected());
             // Allow a New Game to start.
             return true;
         }

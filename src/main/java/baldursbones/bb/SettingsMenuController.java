@@ -16,11 +16,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 /**
  * Settings Menu Controller.
  * Game Settings Driver
+ *
  * @author Braden Rogers
  * @version Baldur's Bones v1.1
  */
@@ -71,6 +73,15 @@ public class SettingsMenuController implements Initializable {
     @FXML
     private CheckBox enableSFXState;
 
+    // Variable: Array List of Strings representing Game Stat Info for Saving Games.
+    private ArrayList<String> saveGameStats;
+
+    // Variable: Array List of Strings representing Game Ability Info for Saving Games.
+    private ArrayList<String> saveGameAbilities;
+
+    // Variable: Array List of Strings representing Game Map Info for Saving Games.
+    private ArrayList<String> saveGameMaps;
+
     /**
      * Checks the ID of the Parent Layout Element to find which Scene it is displayed within.
      * Enables the Parent Scene Buttons and Removes the Game Info Scene from the Parent Scene.
@@ -116,6 +127,10 @@ public class SettingsMenuController implements Initializable {
             // Else: The Parent Layout Element is the Location Menu:
             // Load the Scene into the Location Menu Display Cell.
             GridPane.setConstraints(root, 2, 1);
+            // Pass the Game Info to the Saved Games Scene for Saving. Stats, Abilities, Maps.
+            controller.setCharacterStats(saveGameStats);
+            controller.setCharacterAbilities(saveGameAbilities);
+            controller.setGameMaps(saveGameMaps);
         }
         // Add the new Scene to the Parent Layout Element and remove the Settings Menu Scene.
         container.getChildren().add(root);
@@ -229,6 +244,7 @@ public class SettingsMenuController implements Initializable {
     /**
      * Receives the Parent Layout Element for the Settings Menu Scene.
      * Also sets the Sound Settings States to match the current Game Sound Settings.
+     *
      * @param parentGrid The Parent Layout Element of the Settings Menu Scene
      */
     public void setSceneVariables(final GridPane parentGrid) {
@@ -237,6 +253,22 @@ public class SettingsMenuController implements Initializable {
         enableMusicState.setSelected(musicState.isSelected());
         CheckBox effectsState = (CheckBox) container.lookup("#EnableSFX");
         enableSFXState.setSelected(effectsState.isSelected());
+    }
+
+    /**
+     * Receives Array Lists of strings containing game info to be used by the Saved Games Scene.
+     *
+     * @param gameStats An Array List of Game Stats: Name, Coordinates, Level, Exp, Health.
+     * @param gameAbilities An Array List of Game Ability uses: Re-Roll, Add, Take-Away
+     * @param gameMaps An Array List of Game Maps: Game Map, Player Map
+     */
+    public void setGameInfo(final ArrayList<String> gameStats,
+                            final ArrayList<String> gameAbilities,
+                            final ArrayList<String> gameMaps) {
+        // Save the Game Info to variables that can be passed to the Saved Games Scene.
+        saveGameStats = gameStats;
+        saveGameAbilities = gameAbilities;
+        saveGameMaps = gameMaps;
     }
 
     /**

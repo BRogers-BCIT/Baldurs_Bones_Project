@@ -17,7 +17,7 @@ import java.io.IOException;
  */
 public class MainMenuController {
 
-    // FXML Element: The Layout Element the Main Menu Scene.
+    // FXML Element: The Layout Element for the Main Menu Scene.
     @FXML
     private GridPane mainMenuGrid;
 
@@ -39,8 +39,8 @@ public class MainMenuController {
 
 
     /**
-     * Load the Settings Scene and pass the Layout Element for the Main Menu Scene to its controller.
-     * Displays the Scene in the Display Scene Cell (1, 1) and disables the background Main Menu buttons.
+     * Load the Settings Scene and passes the Layout Element for the Main Menu Scene to its controller.
+     * Displays the Scene in the Display Scene Cell (1, 1) and disables the background Menu buttons.
      *
      * @throws IOException If the FXML file being loaded does not exist
      */
@@ -60,8 +60,8 @@ public class MainMenuController {
     }
 
     /**
-     * Load the New Game Scene and pass the Layout Element for the Main Menu Scene to its controller.
-     * Displays the Scene in the Display Scene Cell (1, 1) and disables the background Main Menu buttons.
+     * Load the New Game Scene and passes the Layout Element for the Main Menu Scene to its controller.
+     * Displays the Scene in the Display Scene Cell (1, 1) and disables the background Menu buttons.
      *
      * @throws IOException If the FXML file being loaded does not exist
      */
@@ -81,8 +81,8 @@ public class MainMenuController {
     }
 
     /**
-     * Load the Saved Games Scene and pass the Layout Element for the Main Menu Scene to its controller.
-     * Displays the Scene in the Display Scene Cell (1, 1) and disables the background Main Menu buttons.
+     * Load the Saved Games Scene and passes the Layout Element for the Main Menu Scene to its controller.
+     * Displays the Scene in the Display Scene Cell (1, 1) and disables the background Menu buttons.
      *
      * @throws IOException If the FXML file being loaded does not exist
      */
@@ -102,8 +102,8 @@ public class MainMenuController {
     }
 
     /**
-     * Load the Game Info Scene and pass the Layout Element for the Main Menu Scene to its controller.
-     * Displays the Scene in the Display Scene Cell (1, 1) and disables the background Main Menu buttons.
+     * Load the Game Info Scene and passes the Layout Element for the Main Menu Scene to its controller.
+     * Displays the Scene in the Display Scene Cell (1, 1) and disables the background Menu buttons.
      *
      * @throws IOException If the FXML file being loaded does not exist
      */

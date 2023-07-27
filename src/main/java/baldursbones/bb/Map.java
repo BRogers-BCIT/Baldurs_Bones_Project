@@ -105,6 +105,70 @@ public class Map {
     }
 
     /**
+     * Converts the Game Map array to a string and returns it. Format: (111 222 333 444 ...).
+     *
+     * @return A string conversion of the Game Map 2D array
+     */
+    public String getGameMap() {
+        // Set the starting Row and Column of the Game Map.
+        int currentRow = 0;
+        int currentColum = 0;
+        // Create a String Builder to construct the Game Map String.
+        StringBuilder locationValueBuilder = new StringBuilder();
+        // For each Cell in the Game Map (Length * Length):
+        // Add the Cells Location Value to the Game Map String.
+        for (int gameMapCell = 0; gameMapCell < gameMap.length * gameMap.length; gameMapCell++) {
+            // If at the end of a Column, move to first Column of next Row.
+            if (currentColum > gameMap.length) {
+                currentColum = 0;
+                currentRow++;
+            }
+            // Add the current Cells Location Value to the Game Map String.
+            locationValueBuilder.append((gameMap[currentRow][currentColum]));
+            // If: Not currently the last cell (Length * Length - 1):
+            if (gameMapCell != (gameMap.length * gameMap.length) - 1) {
+                // Add a space before the next Location Value.
+                locationValueBuilder.append(" ");
+            }
+            // Move to the next Cell of the Game Map.
+            currentColum++;
+        }
+        return locationValueBuilder.toString();
+    }
+
+    /**
+     * Converts the Player Map array to a string and returns it. Format: (# # # @ ? ? ...).
+     *
+     * @return A string conversion of the Player Map 2D array
+     */
+    public String getPlayerMap() {
+        // Set the starting Row and Column of the Player Map.
+        int currentRow = 0;
+        int currentColum = 0;
+        // Create a String Builder to construct the Player Map String.
+        StringBuilder locationCharacterBuilder = new StringBuilder();
+        // For each Cell in the Player Map (Length * Length):
+        // Add the Cells ASCII Character to the Game Map String.
+        for (int playerMapCell = 0; playerMapCell < playerMap.length * playerMap.length; playerMapCell++) {
+            // If at the end of a Column, move to first Column of next Row.
+            if (currentColum > playerMap.length) {
+                currentColum = 0;
+                currentRow++;
+            }
+            // Add the current Cells ASCII Character to the Game Map String.
+            locationCharacterBuilder.append((playerMap[currentRow][currentColum]));
+            // If: Not currently the last cell (Length * Length - 1):
+            if (playerMapCell != (playerMap.length * playerMap.length) - 1) {
+                // Add a space before the next ASCII Character.
+                locationCharacterBuilder.append(" ");
+            }
+            // Move to the next Cell of the Player Map.
+            currentColum++;
+        }
+        return locationCharacterBuilder.toString();
+    }
+
+    /**
      * Takes a 8x8 Grid Pane object and updates Rows and Columns 1-7 with the Player Map.
      * Takes the ASCII values from the Player Map array and converts them to images to display.
      *

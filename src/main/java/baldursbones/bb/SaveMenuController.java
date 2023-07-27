@@ -168,11 +168,9 @@ public class SaveMenuController implements Initializable {
         // Get Controller of Location Menu Scene.
         LocationMenuController gameDriverController = loader.getController();
         // Pass the Game Info to the Location Menu Controller.
-        /*
-        gameDriverController.loadStats(getCharacterStats);
-        gameDriverController.loadAbilities(getCharacterAbilities);
-        gameDriverController.loadMaps(getGameMaps);
-         */
+        gameDriverController.loadStats(getCharacterStats());
+        gameDriverController.loadAbilities(getCharacterAbilities());
+        gameDriverController.loadMaps(getGameMaps());
         // Call the Start Game method in the Location Menu Controller.
         gameDriverController.gameStarter();
     }
@@ -448,46 +446,37 @@ public class SaveMenuController implements Initializable {
     }
 
     /**
-     * Receives the current characters Stats as strings and saves them to the character Stat variables.
+     * Receives Game Info: Stats as an Array List of strings and saves them to the Character Stat variables.
      *
-     * @param name        The Character's Name as a string
-     * @param coordinates The Character's Coordinates as a string. Format: (X,Y)
-     * @param level       The Character's Level as a string
-     * @param exp         The Character's Experience as a string
-     * @param health      The Character's Health as a string
+     * @param characterStats An Array List of strings containing Character Stat Info.
      */
-    public void setCharacterStats(final String name, final String coordinates, final String level,
-                                  final String exp, final String health) {
-        this.characterName = name;
-        this.characterCoordinates = coordinates;
-        this.statLevel = level;
-        this.statExp = exp;
-        this.statHealth = health;
+    public void setCharacterStats(final ArrayList<String> characterStats) {
+        this.characterName = characterStats.get(0);
+        this.characterCoordinates = characterStats.get(1);
+        this.statLevel = characterStats.get(2);
+        this.statExp = characterStats.get(3);
+        this.statHealth = characterStats.get(4);
     }
 
     /**
-     * Receives the current characters Ability uses as strings and saves them to the Abilities variables.
+     * Receives Game Info: Abilities as an Array List of strings and saves them to the Ability variables.
      *
-     * @param reRollUses   Available uses of the Re-Roll ability for the character as a string
-     * @param addUses      Available uses of the Add ability for the character as a string
-     * @param takeAwayUses Available uses of the Take-Away ability for the character as a string
+     * @param characterAbilities An Array List of strings containing Character Ability Info.
      */
-    public void setCharacterAbilities(final String reRollUses, final String addUses,
-                                      final String takeAwayUses) {
-        this.abilityReRoll = reRollUses;
-        this.abilityAdd = addUses;
-        this.abilityTakeAway = takeAwayUses;
+    public void setCharacterAbilities(final ArrayList<String> characterAbilities) {
+        this.abilityReRoll = characterAbilities.get(0);
+        this.abilityAdd = characterAbilities.get(1);
+        this.abilityTakeAway = characterAbilities.get(2);
     }
 
     /**
-     * Receives the current values of the Game Map and Player Map as strings and saves them to the Map variables.
+     * Receives Game Info: Maps as an Array List of strings and saves them to the Map variables.
      *
-     * @param gameMapString   A string version of the 2D array in format (111 112 113 114 ...)
-     * @param playerMapString A string version of the 2D array in format (# # @ @ ! ...)
+     * @param gameMaps An Array List of strings containing Game Map Info.
      */
-    public void setGameMaps(final String gameMapString, final String playerMapString) {
-        this.gameMap = gameMapString;
-        this.playerMap = playerMapString;
+    public void setGameMaps(final ArrayList<String> gameMaps) {
+        this.gameMap = gameMaps.get(0);
+        this.playerMap = gameMaps.get(1);
     }
 
     // Returns an ArrayList of Strings that represent the Character Stats.
