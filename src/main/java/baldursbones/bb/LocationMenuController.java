@@ -33,7 +33,7 @@ public class LocationMenuController implements Initializable {
     private static final int LOCATION_AREA_DIVIDER = 100;
 
     // Constant: The Size (Row and Column) of Game Map Arrays and Player Map Arrays.
-    private static final int MAP_ARRAY_SIZE = 6;
+    private static final int MAP_ARRAY_SIZE = 7;
 
     // Constant: The Location Area Value for the Tutorial Location.
     private static final int TUTORIAL_AREA_VALUE = 0;

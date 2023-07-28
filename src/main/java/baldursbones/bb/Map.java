@@ -117,9 +117,9 @@ public class Map {
         StringBuilder locationValueBuilder = new StringBuilder();
         // For each Cell in the Game Map (Length * Length):
         // Add the Cells Location Value to the Game Map String.
-        for (int gameMapCell = 0; gameMapCell < gameMap.length * gameMap.length; gameMapCell++) {
+        for (int gameMapCell = 0; gameMapCell < MAP_SIZE * MAP_SIZE; gameMapCell++) {
             // If at the end of a Column, move to first Column of next Row.
-            if (currentColum >= gameMap.length) {
+            if (currentColum >= MAP_SIZE) {
                 currentColum = 0;
                 currentRow++;
             }
@@ -145,9 +145,9 @@ public class Map {
         StringBuilder locationCharacterBuilder = new StringBuilder();
         // For each Cell in the Player Map (Length * Length):
         // Add the Cells ASCII Character to the Game Map String.
-        for (int playerMapCell = 0; playerMapCell < playerMap.length * playerMap.length; playerMapCell++) {
+        for (int playerMapCell = 0; playerMapCell < MAP_SIZE * MAP_SIZE; playerMapCell++) {
             // If at the end of a Column, move to first Column of next Row.
-            if (currentColum >= playerMap.length) {
+            if (currentColum >= MAP_SIZE) {
                 currentColum = 0;
                 currentRow++;
             }
