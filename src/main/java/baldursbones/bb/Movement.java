@@ -106,7 +106,7 @@ public class Movement {
      * @return The updated X & Y Coordinates of the new Player Location
      */
     protected int[] moveEast() {
-        if (location[1] + 1 > MAP_LOWER_BOUNDARY) {
+        if (location[1] + 1 > MAP_UPPER_BOUNDARY) {
             // If: the new Player Coordinate will put the Player Location outside the map area.
             cantMove();
         } else {
