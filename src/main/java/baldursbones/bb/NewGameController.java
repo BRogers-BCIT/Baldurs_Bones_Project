@@ -70,10 +70,10 @@ public class NewGameController {
         // ** Fix: Instead of closing the End Game Scene, the Scene returns to a new Main Menu Scene. **
         if (container.getId().equals("locationMenuGrid")) {
             // Load the Main Menu FXML document into a root object.
-            FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("LocationMenu.fxml"));
+            FXMLLoader mainLoader = new FXMLLoader(getClass().getResource("MainMenu.fxml"));
             Parent root = mainLoader.load();
             // Get the Controller for the Main Menu and get the Grid Pane object from the Controller.
-            LocationMenuController controller = mainLoader.getController();
+            MainMenuController controller = mainLoader.getController();
             // Get the current Stage by tracing the source of the Action Event. Event -> Scene -> Stage.
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             // Get the size of the screen to set the size of the Stage.

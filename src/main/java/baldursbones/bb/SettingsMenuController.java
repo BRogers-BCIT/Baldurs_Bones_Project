@@ -150,7 +150,7 @@ public class SettingsMenuController implements Initializable {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("GameInfoMenu.fxml"));
         Parent root = loader.load();
         // Get the controller for the Saved Games Scene and pass the Parent Layout Element.
-        SaveMenuController controller = loader.getController();
+        GameInfoController   controller = loader.getController();
         controller.setSceneVariables(container, enableMusicState.isSelected(), enableSFXState.isSelected());
         if (container.getId().equals("mainMenuGrid")) {
             // If: The Parent Layout Element is the Main Menu:
