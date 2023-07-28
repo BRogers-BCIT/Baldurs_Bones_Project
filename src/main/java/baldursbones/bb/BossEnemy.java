@@ -92,7 +92,7 @@ public class BossEnemy extends Enemy {
             Scanner fileReader = new Scanner(BOSS_FILE);
             // Display the win Round text in the Game Description display.
             TextArea descriptionBox = (TextArea) combatContainer.lookup("#CombatDescription");
-            descriptionBox.appendText(fileReader.nextLine());
+            descriptionBox.appendText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
@@ -114,7 +114,7 @@ public class BossEnemy extends Enemy {
             fileReader.nextLine();
             // Display the win Round text in the Game Description display.
             TextArea descriptionBox = (TextArea) combatContainer.lookup("#CombatDescription");
-            descriptionBox.appendText(fileReader.nextLine());
+            descriptionBox.appendText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
@@ -136,7 +136,7 @@ public class BossEnemy extends Enemy {
             fileReader.nextLine();
             // Display the win Combat in the Game Description display.
             TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
-            descriptionBox.appendText(fileReader.nextLine());
+            descriptionBox.appendText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
@@ -159,7 +159,7 @@ public class BossEnemy extends Enemy {
             fileReader.nextLine();
             // Display the lose Combat text in the Game Description display.
             TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
-            descriptionBox.appendText(fileReader.nextLine());
+            descriptionBox.appendText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);

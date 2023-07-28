@@ -131,11 +131,11 @@ public class Combat {
         // Get the starting Rolls for the Player.
         startRoll();
         // Display the value of the last Roll by the Player.
-        Label playerStartTotal = (Label) container.lookup("#LastRoll");
-        playerStartTotal.setText("Last Roll: " + lastRoll);
+        Label playerStartLastRoll = (Label) container.lookup("#LastRoll");
+        playerStartLastRoll.setText("Last Roll: " + lastRoll);
         // Display the starting Total value for the Player.
-        Label playerStartLastRoll = (Label) container.lookup("#InfoTotal");
-        playerStartLastRoll.setText("Current Total: " + playerTotal);
+        Label playerStartTotal = (Label) container.lookup("#PlayerTotal");
+        playerStartTotal.setText("Current Total: " + playerTotal);
     }
 
     /**
@@ -173,7 +173,7 @@ public class Combat {
         Label playerStartingRolls = (Label) container.lookup("#StartRolls");
         playerStartingRolls.setText(startRolls.toString());
         // Append the Starting Rolls to the Combat Description.
-        Label combatDescription = (Label) container.lookup("#CombatDescription");
+        TextArea combatDescription = (TextArea) container.lookup("#CombatDescription");
         combatDescription.setText(combatDescription.getText() + "\n" + startRolls);
     }
 

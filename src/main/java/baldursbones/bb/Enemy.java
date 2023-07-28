@@ -117,7 +117,7 @@ public abstract class Enemy {
             Scanner fileReader = new Scanner(enemyFile);
             // Display the win Combat text in the Game Description display.
             TextArea descriptionArea = (TextArea) container.lookup("#GameDescription");
-            descriptionArea.setText(fileReader.nextLine());
+            descriptionArea.setText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
@@ -137,7 +137,7 @@ public abstract class Enemy {
             fileReader.nextLine();
             // Display the lose Combat text in the Game Description display.
             TextArea descriptionArea = (TextArea) container.lookup("#GameDescription");
-            descriptionArea.setText(fileReader.nextLine());
+            descriptionArea.setText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
