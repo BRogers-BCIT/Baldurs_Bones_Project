@@ -119,7 +119,7 @@ public class Map {
         // Add the Cells Location Value to the Game Map String.
         for (int gameMapCell = 0; gameMapCell < gameMap.length * gameMap.length; gameMapCell++) {
             // If at the end of a Column, move to first Column of next Row.
-            if (currentColum > gameMap.length) {
+            if (currentColum >= gameMap.length) {
                 currentColum = 0;
                 currentRow++;
             }
@@ -147,7 +147,7 @@ public class Map {
         // Add the Cells ASCII Character to the Game Map String.
         for (int playerMapCell = 0; playerMapCell < playerMap.length * playerMap.length; playerMapCell++) {
             // If at the end of a Column, move to first Column of next Row.
-            if (currentColum > playerMap.length) {
+            if (currentColum >= playerMap.length) {
                 currentColum = 0;
                 currentRow++;
             }

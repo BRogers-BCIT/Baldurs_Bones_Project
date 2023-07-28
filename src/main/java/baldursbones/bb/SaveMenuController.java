@@ -258,9 +258,9 @@ public class SaveMenuController implements Initializable {
                         readSaves.nextLine();
                     }
                 }
-                // Close the File Reader.
-                readSaves.close();
             }
+            // Close the File Reader.
+            readSaves.close();
         }
         // Return a boolean value indicating if a Save File can be created.
         return enableSave;

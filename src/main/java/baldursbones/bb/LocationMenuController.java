@@ -130,6 +130,17 @@ public class LocationMenuController implements Initializable {
     private String gameState;
 
     /**
+     * Set Player Character Name and Disable Tutorial State when starting a new Game.
+     *
+     * @param characterName   A string representing the Player Character Name
+     * @param disableTutorial The Disable Tutorial State boolean value
+     */
+    public void newGameInfo(final String characterName, final boolean disableTutorial) {
+        playerCharacter.setName(characterName);
+        skipTutorial = disableTutorial;
+    }
+
+    /**
      * Starts the Game based on the Starting State of the Game. (Start Tutorial, Skip Tutorial, Load Game)
      */
     public void gameStarter() {
@@ -172,12 +183,15 @@ public class LocationMenuController implements Initializable {
         gameState = "Finished Tutorial";
     }
 
-
-    // Starts a Combat by calling the Open Combat and Start Combat methods.
-    // Calls a Boss Combat if current Location Value is a Boss Combat Location.
-    // combatTitle: A string to display as a Combat Title
-    // combatDescription: A String to Display as a Combat Description
-    private void startCombat(final String combatTitle, final String combatDescription) {
+    /**
+     * Creates a new Combat with the Current Enemy Title and Description and sets Game State.
+     * Calls Boss Combat method if the current location is a Boss Location.
+     *
+     * @throws FileNotFoundException If the Enemy Text File cannot be read.
+     */
+    @FXML
+    public void startFight() throws FileNotFoundException {
+        // Check for regular Combat or Boss Combat.
         if (gameMaps.getLocation() == BOSS_COMBAT_LOCATION) {
             // If: Current Location is a Boss Combat Location.
             bossCombat();
@@ -185,9 +199,11 @@ public class LocationMenuController implements Initializable {
             // Else: Current Combat is not a Boss Combat.
             // Open a Game Combat Scene and get its Controller.
             GameCombatController combatController = openGameCombatMenu().getController();
-            // Begin a new Combat. Pass the Combat Title and Combat Description parameters.
-            combatController.combatStarter(combatTitle, combatDescription);
+            // Begin a new Combat. Pass the Combat Title and Combat Description from the Current Enemy.
+            combatController.combatStarter(currentEnemy.getCombatTitle(), currentEnemy.getCombatDescription());
         }
+        // End State: Wait after displaying Finish Combat description.
+        gameState = "Finished Combat";
     }
 
     // Starts a Boss Combat by calling the Open Combat and Start Combat methods.
@@ -202,6 +218,34 @@ public class LocationMenuController implements Initializable {
         combatController.combatStarter(bossCombatTitle, bossCombatDescription);
         // End State: Wait after displaying Finish Boss Combat description.
         gameState = "Finished Boss";
+    }
+
+    // Opens a new Game Combat Scene, displays it in the current Scene and disables the background Menu buttons.
+    // Also returns the Loader for the new Scene so caller methods can get the Scene Controller for the Combat.
+    private FXMLLoader openGameCombatMenu() {
+        // Load the Game Combat FXML document into a root object.
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("CombatMenu.fxml"));
+        Parent root;
+        try {
+            // Try: Load the Game Combat FXML document into a root object.
+            root = loader.load();
+        } catch (IOException e) {
+            // Catches any errors loading the Game Combat FXML file.
+            throw new RuntimeException(e);
+        }
+        // Get the Controller for the Game Combat Scene and pass the Parent Layout Enemy.
+        GameCombatController controller = loader.getController();
+        // Also pass the Player object and the Current Enemy object for Combat creation.
+        controller.setSceneVariables(locationMenuGrid, playerCharacter, currentEnemy,
+                enableMusicState.isSelected(), enableSFXState.isSelected());
+        // Define where to display the new Scene in the Grid Pane and add it to the Grid Pane.
+        GridPane.setConstraints(root, 2, 1);
+        locationMenuGrid.getChildren().add(root);
+        // Disable Menu / Action Buttons while Scene is open.
+        disableMenuButtons();
+        disableActionButtons();
+        // Return the Loader to allow the Parent method to call the Start Combat method for the new Scene.
+        return loader;
     }
 
     // Displays the Movement description, enables the Movement Buttons, and Updates Player Location in Movement.
@@ -348,23 +392,6 @@ public class LocationMenuController implements Initializable {
     }
 
     /**
-     * Creates a Combat by passing the Player object and Current Enemy object.
-     * Preforms Post-Combat actions (Update Map, Win Game, or Lose Game).
-     *
-     * @throws FileNotFoundException If the Enemy Text File cannot be read.
-     */
-    @FXML
-    public void startFight() throws FileNotFoundException {
-        // Start a Combat and pass the Combat Title and Combat Description for the Current Enemy.
-        startCombat(currentEnemy.getCombatTitle(), currentEnemy.getCombatDescription());
-        // Call the Player Finish Combat display Outcome method.
-        playerCharacter.finishCombat(locationDescription);
-        // End State: Wait after displaying Finish Combat description.
-        gameState = "Finished Combat";
-    }
-
-
-    /**
      * Compares the Game State string to specific strings and calls the appropriate method if there is a match.
      * The Game State string is set whenever the game is waiting for the user to continue after an action.
      */
@@ -403,6 +430,9 @@ public class LocationMenuController implements Initializable {
 
     // Preforms the appropriate Game actions after a Combat is finished.
     private void endFightCheck() {
+        // Call the Player Finish Combat display Outcome method.
+        playerCharacter.finishCombat(locationDescription);
+        // Preform the Game actions based on the outcome.
         if (playerCharacter.getLastOutcome() == 1) {
             // If: The Player won the Combat, update the Game Map and Player Map.
             gameMaps.beatBattle();
@@ -438,14 +468,10 @@ public class LocationMenuController implements Initializable {
         locationMenuGrid.getChildren().add(root);
         // Disable the Menu Buttons.
         disableMenuButtons();
-        // Call method to pass game info to the Settings Controller
-        passGameInfo(controller);
+        // Pass the Game Info to the Settings Controller using helper methods to build String Arrays.
+        controller.setGameInfo(playerInfoArrayBuilder(), playerAbilitiesArrayBuilder(), gameMapsArrayBuilder());
         // Disable Settings Scene Button while Another Scene is Open
         settingsButton.setDisable(true);
-    }
-
-    private void passGameInfo(final SettingsMenuController settingsController) {
-        settingsController.setGameInfo(playerInfoArrayBuilder(), playerAbilitiesArrayBuilder(), gameMapsArrayBuilder());
     }
 
     private ArrayList<String> playerInfoArrayBuilder() {
@@ -564,35 +590,6 @@ public class LocationMenuController implements Initializable {
         settingsButton.setDisable(true);
     }
 
-    // Opens a new Game Combat Scene, displays it in the current Scene and disables the background Menu buttons.
-    // Also returns the Loader for the new Scene so caller methods can get the Scene Controller for the Combat.
-    private FXMLLoader openGameCombatMenu() {
-        // Load the Game Combat FXML document into a root object.
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("CombatMenu.fxml"));
-        Parent root;
-        try {
-            // Try: Load the Game Combat FXML document into a root object.
-            root = loader.load();
-        } catch (IOException e) {
-            // Catches any errors loading the Game Combat FXML file.
-            throw new RuntimeException(e);
-        }
-        // Get the Controller for the Game Combat Scene and pass the Parent Layout Enemy.
-        GameCombatController controller = loader.getController();
-        // Also pass the Player object and the Current Enemy object for Combat creation.
-        controller.setSceneVariables(locationMenuGrid, playerCharacter, currentEnemy,
-                enableMusicState.isSelected(), enableSFXState.isSelected());
-        // Define where to display the new Scene in the Grid Pane and add it to the Grid Pane.
-        GridPane.setConstraints(root, 2, 1);
-        locationMenuGrid.getChildren().add(root);
-        // Disable Menu / Action Buttons while Scene is open.
-        disableMenuButtons();
-        disableActionButtons();
-        // Return the Loader to allow the Parent method to call the Start Combat method for the new Scene.
-        return loader;
-    }
-
-
     // Disables the Menu Buttons while a different Scene is open.
     private void disableMenuButtons() {
         settingsButton.setDisable(true);
@@ -609,17 +606,6 @@ public class LocationMenuController implements Initializable {
         moveSouthButton.setDisable(true);
         moveWestButton.setDisable(true);
         combatButton.setDisable(true);
-    }
-
-    /**
-     * Set Player Character Name and Disable Tutorial State when starting a new Game.
-     *
-     * @param characterName   A string representing the Player Character Name
-     * @param disableTutorial The Disable Tutorial State boolean value
-     */
-    public void newGameInfo(final String characterName, final boolean disableTutorial) {
-        playerCharacter.setName(characterName);
-        skipTutorial = disableTutorial;
     }
 
     /**
@@ -682,7 +668,7 @@ public class LocationMenuController implements Initializable {
         int currentColum = 0;
         for (char playerMapChar : mapsArray.get(1).toCharArray()) {
             // If at the end of a Column, move to first Column of next Row.
-            if (currentColum > MAP_ARRAY_SIZE) {
+            if (currentColum >= MAP_ARRAY_SIZE) {
                 currentColum = 0;
                 currentRow++;
             }
@@ -708,7 +694,7 @@ public class LocationMenuController implements Initializable {
         // Iterate through each character in the Game Map string.
         for (char gameMapChar : stringGameMap.toCharArray()) {
             // If at the end of a Column, move to first Column of next Row.
-            if (currentColum > MAP_ARRAY_SIZE) {
+            if (currentColum >= MAP_ARRAY_SIZE) {
                 currentColum = 0;
                 currentRow++;
             }
