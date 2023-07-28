@@ -124,12 +124,8 @@ public class Map {
                 currentRow++;
             }
             // Add the current Cells Location Value to the Game Map String.
-            locationValueBuilder.append((gameMap[currentRow][currentColum]));
-            // If: Not currently the last cell (Length * Length - 1):
-            if (gameMapCell != (gameMap.length * gameMap.length) - 1) {
-                // Add a space before the next Location Value.
-                locationValueBuilder.append(" ");
-            }
+            // Add a space after the Location Value to add a delimiter for reading.
+            locationValueBuilder.append(gameMap[currentRow][currentColum]).append(" ");
             // Move to the next Cell of the Game Map.
             currentColum++;
         }
@@ -157,11 +153,6 @@ public class Map {
             }
             // Add the current Cells ASCII Character to the Game Map String.
             locationCharacterBuilder.append((playerMap[currentRow][currentColum]));
-            // If: Not currently the last cell (Length * Length - 1):
-            if (playerMapCell != (playerMap.length * playerMap.length) - 1) {
-                // Add a space before the next ASCII Character.
-                locationCharacterBuilder.append(" ");
-            }
             // Move to the next Cell of the Player Map.
             currentColum++;
         }
