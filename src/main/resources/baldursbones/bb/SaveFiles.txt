@@ -6,7 +6,3 @@ File 2
 Delete File
 2013-08-22
 DeleteFileInfo.txt
-TestLoader
-Temp Char
-2023-07-12
-TestLoaderInfo.txt
