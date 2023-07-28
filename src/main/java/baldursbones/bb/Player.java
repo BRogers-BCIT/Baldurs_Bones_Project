@@ -367,12 +367,12 @@ public class Player {
                 descriptionArea.appendText(fileReader.nextLine());
             } else {
                 // Else: Print the current Stats for the Player.
-                descriptionArea.appendText("Level: " + statLevel);
-                descriptionArea.appendText("\nExperience: " + statExp);
-                descriptionArea.appendText("\nHealth: " + statHealth);
+                descriptionArea.appendText("Level: " + statLevel  + "\n");
+                descriptionArea.appendText("Experience: " + statExp  + "\n");
+                descriptionArea.appendText("Health: " + statHealth  + "\n");
                 // Print the amount of Exp needed for the Player to Level Up.
-                descriptionArea.appendText("\nYou need " + ((2 * statLevel + 1) - statExp)
-                        + " experience to level up.");
+                descriptionArea.appendText("You need " + ((2 * statLevel + 1) - statExp)
+                        + " experience to level up.\n");
             }
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
@@ -399,12 +399,12 @@ public class Player {
             descriptionArea.appendText(fileReader.nextLine() + "\n");
             if (statLevel == LEVEL_2) {
                 // If: Player is Level 2 then display the Level 2 description.
-                descriptionArea.appendText(fileReader.nextLine());
+                descriptionArea.appendText(fileReader.nextLine() + "\n");
             }
             if (statLevel == LEVEL_3) {
                 // If: Player is Level 2 then display the Level 3 description.
                 fileReader.nextLine();
-                descriptionArea.appendText(fileReader.nextLine());
+                descriptionArea.appendText(fileReader.nextLine() + "\n");
             }
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
@@ -426,8 +426,8 @@ public class Player {
                 statHealth -= 1;
                 // If the Player Health is greater than 0, display lose Combat description.
                 if (statHealth >= 1) {
-                    descriptionArea.setText(fileReader.nextLine());
-                    descriptionArea.appendText("\n" + statHealth + " Health remaining.");
+                    descriptionArea.setText(fileReader.nextLine() + "\n");
+                    descriptionArea.appendText(statHealth + " Health remaining.\n");
                 }
             } else if (outcome == LOSE_TO_BOSS) {
                 // Else: Player lost a Combat to Boss
@@ -437,7 +437,7 @@ public class Player {
                 if (statHealth >= 1) {
                     fileReader.nextLine();
                     descriptionArea.setText(fileReader.nextLine());
-                    descriptionArea.appendText("\n" + statHealth + " Health remaining.");
+                    descriptionArea.appendText("\n" + statHealth + " Health remaining.\n");
                 }
             }
         } catch (FileNotFoundException e) {
@@ -457,12 +457,12 @@ public class Player {
         // If: There are available uses, decrement the uses counter and display the remaining uses.
         if (abilityReRoll >= 1) {
             abilityReRoll -= 1;
-            descriptionArea.setText("Re-Roll Ability Used. ");
-            descriptionArea.setText(abilityTakeAway + " uses remaining of Re-Roll.\n");
+            descriptionArea.setText("Re-Roll Ability Used.\n");
+            descriptionArea.appendText(abilityTakeAway + " uses remaining of Re-Roll.\n");
             return true;
             // Else: Display that there are no remaining uses.
         } else {
-            descriptionArea.setText("Cannot use Re-Roll. No uses.");
+            descriptionArea.setText("Cannot use Re-Roll. No uses.\n");
             return false;
         }
     }
@@ -478,12 +478,12 @@ public class Player {
         // If: There are available uses, decrement the uses counter and display the remaining uses.
         if (abilityAdd >= 1) {
             abilityAdd -= 1;
-            descriptionArea.setText("Add Ability Used. ");
-            descriptionArea.setText(abilityAdd + " uses remaining of Add 1.\n");
+            descriptionArea.setText("Add Ability Used.\n");
+            descriptionArea.appendText(abilityAdd + " uses remaining of Add 1.\n");
             return true;
             // Else: Display that there are no remaining uses.
         } else {
-            descriptionArea.setText("Cannot use Add. No uses.");
+            descriptionArea.setText("Cannot use Add. No uses.\n");
             return false;
         }
     }
@@ -499,12 +499,12 @@ public class Player {
         // If: There are available uses, decrement the uses counter and display the remaining uses.
         if (abilityTakeAway >= 1) {
             abilityTakeAway -= 1;
-            descriptionArea.setText("Take-Away Ability Used. ");
-            descriptionArea.setText(abilityTakeAway + " uses remaining of Take-Away.\n");
+            descriptionArea.setText("Take-Away Ability Used.\n");
+            descriptionArea.appendText(abilityTakeAway + " uses remaining of Take-Away.\n");
             return true;
             // Else: Display that there are no remaining uses.
         } else {
-            descriptionArea.setText("Cannot use Take-Away. No uses.");
+            descriptionArea.setText("Cannot use Take-Away. No uses.\n");
             return false;
         }
     }
