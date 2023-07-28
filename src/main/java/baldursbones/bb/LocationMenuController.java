@@ -13,7 +13,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -153,7 +152,7 @@ public class LocationMenuController implements Initializable {
             // Set the Tutorial to be Beaten for future Player encounters.
             gameMaps.beatTutorial();
             // Display the Game Start Movement Message and call the Player Movement method.
-            locationDescription.setText("Game Start Movement Message.");
+            locationDescription.setText("Game Start Movement Message.\n");
             // End State: Calls the Movement method.
             playerMove();
         }
@@ -224,14 +223,14 @@ public class LocationMenuController implements Initializable {
      */
     @FXML
     public void moveNorth() {
-        // Record the current player location to test check for Player Movement.
-        int[] startLocation = playerCharacter.getLocation();
+        // Record the current Player Location Row to test for Player Movement.
+        int startLocationRow = playerCharacter.getLocation()[0];
         // Try to move the Player North, update Game Map, and update Mini-Map.
         playerCharacter.setLocation(playerMovement.moveNorth());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
-        // If: Movement was valid / the Player moved. (Current Location is not starting Location.)
-        if (!Arrays.equals(startLocation, playerCharacter.getLocation())) {
+        // If: Movement was valid / the Player moved. (Current Location Row is not Starting Location Row.)
+        if (startLocationRow != playerCharacter.getLocation()[0]) {
             // End State: Get the new Location description.
             checkLocation();
         }
@@ -243,14 +242,14 @@ public class LocationMenuController implements Initializable {
      */
     @FXML
     public void moveEast() {
-        // Record the current player location to test check for Player Movement.
-        int[] startLocation = playerCharacter.getLocation();
+        // Record the current Player Location Column to test for Player Movement.
+        int startLocationColumn = playerCharacter.getLocation()[1];
         // Try to move the Player East, update Game Map, and update Mini-Map.
         playerCharacter.setLocation(playerMovement.moveEast());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
-        // If: Movement was valid / the Player moved. (Current Location is not starting Location.)
-        if (!Arrays.equals(startLocation, playerCharacter.getLocation())) {
+        // If: Movement was valid / the Player moved. (Current Location Column is not Starting Location Column.)
+        if (startLocationColumn != playerCharacter.getLocation()[1]) {
             // End State: Get the new Location description.
             checkLocation();
         }
@@ -262,14 +261,14 @@ public class LocationMenuController implements Initializable {
      */
     @FXML
     public void moveSouth() {
-        // Record the current player location to test check for Player Movement.
-        int[] startLocation = playerCharacter.getLocation();
+        // Record the current Player Location Row to test for Player Movement.
+        int startLocationRow = playerCharacter.getLocation()[0];
         // Try to move the Player South, update Game Map, and update Mini-Map.
         playerCharacter.setLocation(playerMovement.moveSouth());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
-        // If: Movement was valid / the Player moved. (Current Location is not starting Location.)
-        if (!Arrays.equals(startLocation, playerCharacter.getLocation())) {
+        // If: Movement was valid / the Player moved. (Current Location Row is not Starting Location Row.)
+        if (startLocationRow != playerCharacter.getLocation()[0]) {
             // End State: Get the new Location description.
             checkLocation();
         }
@@ -281,14 +280,14 @@ public class LocationMenuController implements Initializable {
      */
     @FXML
     public void moveWest() {
-        // Record the current player location to test check for Player Movement.
-        int[] startLocation = playerCharacter.getLocation();
+        // Record the current Player Location Column to test for Player Movement.
+        int startLocationColumn = playerCharacter.getLocation()[1];
         // Try to move the Player West, update Game Map, and update Mini-Map.
         playerCharacter.setLocation(playerMovement.moveWest());
         gameMaps.setPlayerLocation(playerCharacter.getLocation());
         gameMaps.displayMiniMap(locationMenuMap);
-        // If: Movement was valid / the Player moved. (Current Location is not starting Location.)
-        if (!Arrays.equals(startLocation, playerCharacter.getLocation())) {
+        // If: Movement was valid / the Player moved. (Current Location Column is not Starting Location Column.)
+        if (startLocationColumn != playerCharacter.getLocation()[1]) {
             // End State: Get the new Location description.
             checkLocation();
         }

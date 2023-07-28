@@ -61,7 +61,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         SettingsMenuController controller = loader.getController();
-        controller.setSceneVariables(mainMenuGrid, enableSFXState.isSelected(), enableSFXState.isSelected());
+        controller.setSceneVariables(mainMenuGrid, enableMusicState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
@@ -103,7 +103,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         SaveMenuController controller = loader.getController();
-        controller.setSceneVariables(mainMenuGrid, enableSFXState.isSelected(), enableSFXState.isSelected());
+        controller.setSceneVariables(mainMenuGrid, enableMusicState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);
@@ -124,7 +124,7 @@ public class MainMenuController {
         Parent root = loader.load();
         // Get the Controller for the new Scene and pass the Parent Layout Element.
         GameInfoController controller = loader.getController();
-        controller.setSceneVariables(mainMenuGrid, enableSFXState.isSelected(), enableSFXState.isSelected());
+        controller.setSceneVariables(mainMenuGrid, enableMusicState.isSelected(), enableSFXState.isSelected());
         // Define where to display the new Scene and add it to the Grid Pane Element.
         GridPane.setConstraints(root, 1, 1);
         mainMenuGrid.getChildren().add(root);

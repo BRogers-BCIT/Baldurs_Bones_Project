@@ -188,7 +188,7 @@ public class SettingsMenuController implements Initializable {
         QuitPopupController controller = loader.getController();
         // Get the current Stage by tracing the source of the Action Event. Event -> Scene -> Stage.
         // Pass the current Stage object to the Quit Pop-Up - allows it to close the Stage.
-        controller.getSceneVariables((Stage) ((Node) event.getSource()).getScene().getWindow());
+        controller.setSceneVariables((Stage) ((Node) event.getSource()).getScene().getWindow());
         // Get the Scene from the loaded root.
         Scene popupDisplay = new Scene(root);
         // Load the Pop-Up Scene into the Stage and display it.

@@ -48,7 +48,7 @@
             <Insets bottom="22.0" left="20.0" right="20.0" />
          </VBox.margin>
       </Button>
-      <Button id="ReturnFromSound" fx:id="closeSoundSettingsButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" text="Close Sound Settings" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
+      <Button id="ReturnFromSound" fx:id="closeSoundSettingsButton" contentDisplay="TEXT_ONLY" graphicTextGap="0.0" maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onAction="#toggleSoundSettings" text="Close Sound Settings" textAlignment="CENTER" textOverrun="CLIP" visible="false" />
       <Button id="SoundButton" fx:id="openSoundSettingsButton" contentDisplay="TEXT_ONLY" ellipsisString="" graphicTextGap="0.0" mnemonicParsing="false" onAction="#toggleSoundSettings" text="Sound Settings" textAlignment="CENTER" textOverrun="CLIP">
          <VBox.margin>
             <Insets bottom="30.0" left="20.0" right="20.0" />
