@@ -103,7 +103,7 @@ public class QuitPopupController {
      *
      * @param mainStage The Stage object for the Primary Game Window
      */
-    public void getSceneVariables(final Stage mainStage) {
+    public void setSceneVariables(final Stage mainStage) {
         parentStage = mainStage;
         enableMusicState = true;
         enableSFXState = true;
