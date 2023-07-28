@@ -68,11 +68,11 @@ public class BossLocation extends Location {
             fileReader.nextLine();
             if (locationValue == EXPLORE_LOCATION) {
                 // If: The Location has not been visited, then display the First Visit Location description.
-                descriptionBox.setText(fileReader.nextLine());
+                descriptionBox.setText(fileReader.nextLine() + "\n");
             } else {
                 // Else: The Location has been visited, then display the Returning Visit Location description.
                 fileReader.nextLine();
-                descriptionBox.setText(fileReader.nextLine());
+                descriptionBox.setText(fileReader.nextLine() + "\n");
             }
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.

@@ -96,12 +96,12 @@ public abstract class Location {
             // First encounter at this Location.
             if (locationValue % LOCATION_DIGIT == EXPLORE_LOCATION) {
                 // Display the Explore Location text.
-                descriptionBox.appendText(fileReader.nextLine());
+                descriptionBox.appendText(fileReader.nextLine() + "\n");
                 // Returning to a Found Location.
             } else {
                 // Display the Returning Location text.
                 fileReader.nextLine();
-                descriptionBox.appendText(fileReader.nextLine());
+                descriptionBox.appendText(fileReader.nextLine() + "\n");
             }
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
@@ -132,14 +132,14 @@ public abstract class Location {
             // First encounter at the Location.
             if (locationValue % LOCATION_DIGIT == FIGHT_LOCATION) {
                 // Display the First Encounter text.
-                descriptionBox.appendText(fileReader.nextLine());
+                descriptionBox.appendText(fileReader.nextLine() + "\n");
                 // Return True to allow Combat at this Location.
                 return true;
                 // Returning encounter at the Location (lost first Combat).
             } else if (locationValue % LOCATION_DIGIT == FIGHT_LOCATION_FOUND) {
                 // Display the Return Encounter text.
                 fileReader.nextLine();
-                descriptionBox.appendText(fileReader.nextLine());
+                descriptionBox.appendText(fileReader.nextLine() + "\n");
                 // Return True to allow Combat at this Location.
                 return true;
                 // Beaten the fight at this Location.
@@ -147,7 +147,7 @@ public abstract class Location {
                 // Display the Beaten Combat text.
                 fileReader.nextLine();
                 fileReader.nextLine();
-                descriptionBox.appendText(fileReader.nextLine());
+                descriptionBox.appendText(fileReader.nextLine() + "\n");
                 // Return False to prevent Combat at a beaten Location.
                 return false;
             }
