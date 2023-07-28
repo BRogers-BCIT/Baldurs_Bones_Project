@@ -25,6 +25,9 @@ import java.util.ResourceBundle;
  */
 public class LocationMenuController implements Initializable {
 
+    //Constant: The difference between a Char number value and its Integer value.
+    private static final int CHAR_TO_INT = 48;
+
     // Constant: The Location Value of a Boss Combat Location.
     private static final int BOSS_COMBAT_LOCATION = 500;
 
@@ -620,8 +623,9 @@ public class LocationMenuController implements Initializable {
 
         // Convert the Coordinates to an array of char. Format = {'0', '0'}.
         char[] coordinates = statsArray.get(1).toCharArray();
-        // Set the Coordinates int array to the values from the char array.
-        int[] newCoordinates = {coordinates[0], coordinates[1]};
+        // Set the Coordinates Int Array to the values from the Char Array.
+        // Char to Int conversion: Char - 48 = Int.
+        int[] newCoordinates = {coordinates[0] - CHAR_TO_INT, coordinates[1] - CHAR_TO_INT};
         playerCharacter.setLocation(newCoordinates);
 
         // Convert the Level string to an integer and set the Player Level Stat to its value.
