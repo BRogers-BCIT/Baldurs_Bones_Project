@@ -361,20 +361,6 @@ public class LocationMenuController implements Initializable {
         playerCharacter.finishCombat(locationDescription);
         // End State: Wait after displaying Finish Combat description.
         gameState = "Finished Combat";
-        if (playerCharacter.getLastOutcome() == 1) {
-            // If: The Player won the Combat, update the Game Map and Player Map.
-            gameMaps.beatBattle();
-        } else if (playerCharacter.getLastOutcome() == 2) {
-            // If: The Player won a Boss Combat, call the "Win Game" method.
-            // winGame();
-            // Un-Set Game State if Player wins the Game.
-            gameState = "";
-        } else if (playerCharacter.getStatHealth() < 1) {
-            // If: The Player has less than 1 Health, call the "Lose Game" Method.
-            // loseGame();
-            // Un-Set Game State if Player loses the Game.
-            gameState = "";
-        }
     }
 
 
@@ -406,13 +392,32 @@ public class LocationMenuController implements Initializable {
             // Enable the Combat Button.
             combatButton.setDisable(false);
         } else if (Objects.equals(gameState, "Finished Combat")) {
-            // If a Combat was finished and Outcome description was displayed. Un-Set Game State.
+            // If a Combat was finished. Un-Set Game State.
             gameState = "";
+            // Display the outcome for the Combat.
+            endFightCheck();
             // Call Player Movement Message.
             playerMove();
         }
     }
 
+    // Preforms the appropriate Game actions after a Combat is finished.
+    private void endFightCheck() {
+        if (playerCharacter.getLastOutcome() == 1) {
+            // If: The Player won the Combat, update the Game Map and Player Map.
+            gameMaps.beatBattle();
+        } else if (playerCharacter.getLastOutcome() == 2) {
+            // If: The Player won a Boss Combat, call the "Win Game" method.
+            // winGame();
+            // Un-Set Game State if Player wins the Game.
+            gameState = "";
+        } else if (playerCharacter.getStatHealth() < 1) {
+            // If: The Player has less than 1 Health, call the "Lose Game" Method.
+            // loseGame();
+            // Un-Set Game State if Player loses the Game.
+            gameState = "";
+        }
+    }
 
     /**
      * Load the Character Info Scene and passes the Layout Element for the Location Menu Scene to its controller.
@@ -580,8 +585,9 @@ public class LocationMenuController implements Initializable {
         // Define where to display the new Scene in the Grid Pane and add it to the Grid Pane.
         GridPane.setConstraints(root, 2, 1);
         locationMenuGrid.getChildren().add(root);
-        // Disable Menu buttons while Scene is open.
+        // Disable Menu / Action Buttons while Scene is open.
         disableMenuButtons();
+        disableActionButtons();
         // Return the Loader to allow the Parent method to call the Start Combat method for the new Scene.
         return loader;
     }

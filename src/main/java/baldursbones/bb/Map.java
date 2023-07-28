@@ -311,15 +311,19 @@ public class Map {
         // If the Digits match a not visited Explore Location then update the Map.
         if (gameMap[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_EXPLORE_LOCATION) {
             // If: the current Location is an unexplored non-Combat Location, set it to be found.
-            gameMap[playerLocation[0]][playerLocation[1]] = EXPLORE_LOCATION;
             playerMap[playerLocation[0]][playerLocation[1]] = "#";
+            // Remove the old Location State and Add the new Location State.
+            gameMap[playerLocation[0]][playerLocation[1]] -= NEW_EXPLORE_LOCATION;
+            gameMap[playerLocation[0]][playerLocation[1]] += EXPLORE_LOCATION;
         }
         // Get the Location Value of the current Player Location and Mod by 100 to find the last 2 digits.
         // If the Digits match a not visited Combat Location then update the Map.
         if (gameMap[playerLocation[0]][playerLocation[1]] % LOCATION_DIVIDER == NEW_COMBAT_LOCATION) {
             // If: the current Location is an unexplored Combat Location, set it to be found.
-            gameMap[playerLocation[0]][playerLocation[1]] = COMBAT_LOCATION;
             playerMap[playerLocation[0]][playerLocation[1]] = "!";
+            // Remove the old Location State and Add the new Location State.
+            gameMap[playerLocation[0]][playerLocation[1]] -= NEW_COMBAT_LOCATION;
+            gameMap[playerLocation[0]][playerLocation[1]] += COMBAT_LOCATION;
         }
     }
 
@@ -327,11 +331,9 @@ public class Map {
      * Update the Maps with the correct values for a beaten Combat Location at the current Player Cell.
      */
     public void beatBattle() {
-        // Set the new Location Area Value for the Game Map
-        // New Location Value equals (Old Value / 100 * 100 = Location Area)
-        int beatenLocationValue = gameMap[playerLocation[0]][playerLocation[1]] / LOCATION_DIVIDER * LOCATION_DIVIDER;
-        // Update the Location Value with the Location Area Value + the Beaten Combat Type & Status Value.
-        gameMap[playerLocation[0]][playerLocation[1]] = beatenLocationValue + BEATEN_LOCATION;
+        // Remove the old Location State and Add the new Location State.
+        gameMap[playerLocation[0]][playerLocation[1]] -= COMBAT_LOCATION;
+        gameMap[playerLocation[0]][playerLocation[1]] += BEATEN_LOCATION;
         // Update the Player Map with a beaten Location ASCII Character.
         playerMap[playerLocation[0]][playerLocation[1]] = "#";
     }
