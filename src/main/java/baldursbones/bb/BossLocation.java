@@ -96,7 +96,7 @@ public class BossLocation extends Location {
             TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
             // Create a new Scanner for the Text File and display the Boss Combat text.
             Scanner fileReader = new Scanner(BOSS_TEXT);
-            descriptionBox.setText(fileReader.nextLine());
+            descriptionBox.setText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);

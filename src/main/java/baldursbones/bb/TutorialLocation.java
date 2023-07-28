@@ -63,7 +63,7 @@ public class TutorialLocation extends Location {
             fileReader.nextLine();
             // Display the Return to Tutorial description in the Game Description display.
             TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
-            descriptionBox.setText(fileReader.nextLine());
+            descriptionBox.setText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
@@ -86,7 +86,7 @@ public class TutorialLocation extends Location {
             Scanner fileReader = new Scanner(TUTORIAL_TEXT);
             // Display the Start Tutorial description in the Game Description display.
             TextArea descriptionBox = (TextArea) container.lookup("#GameDescription");
-            descriptionBox.setText(fileReader.nextLine());
+            descriptionBox.setText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);

@@ -72,7 +72,7 @@ public class TutorialEnemy extends Enemy {
             // Display the End Tutorial text in the Location Menu Description display.
             TextArea descriptionArea = (TextArea) container.lookup("#GameDescription");
             // Add a new line to the Display Area before adding the Tutorial Finish text.
-            descriptionArea.appendText("\n" + fileReader.nextLine());
+            descriptionArea.appendText(fileReader.nextLine() + "\n");
         } catch (FileNotFoundException e) {
             // Catch any errors with reading the Text File.
             throw new RuntimeException(e);
